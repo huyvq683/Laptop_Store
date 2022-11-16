@@ -1,4 +1,4 @@
-package Utilities;
+package utilities;
 
 import java.util.Properties;
 import org.hibernate.SessionFactory;
@@ -17,9 +17,9 @@ public class HibernatUtil {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=");
+        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1");
         properties.put(Environment.USER, "sa");
-        properties.put(Environment.PASS, "");
+        properties.put(Environment.PASS, "25082003");
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
