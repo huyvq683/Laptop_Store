@@ -41,7 +41,7 @@ public class NhanVien implements Serializable {
     private String hoTen;
 
     @Column(name = "GioiTinh")
-    private String gioiTinh;
+    private boolean gioiTinh;
 
     @Column(name = "NgaySinh")
     private Date ngaySinh;
