@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-public class HibernatUtil {
+public class HibernateUtil {
 
     private static final SessionFactory FACTORY;
 
