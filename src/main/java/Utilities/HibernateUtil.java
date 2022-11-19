@@ -1,12 +1,12 @@
 package utilities;
 
 import domainModel.ChiTietSp;
+import domainModel.ChucVu;
 import domainModel.HoaDon;
 import domainModel.HoaDonChiTiet;
 import domainModel.KhachHang;
 import domainModel.NhanVien;
 import domainModel.SanPham;
-import domainModel.TaiKhoan;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -32,7 +32,7 @@ public class HibernateUtil {
         conf.setProperties(properties);
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(NhanVien.class);
-        conf.addAnnotatedClass(TaiKhoan.class);
+        conf.addAnnotatedClass(ChucVu.class);
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(HoaDon.class);
         conf.addAnnotatedClass(ChiTietSp.class);
