@@ -43,9 +43,6 @@ public class KhachHang implements Serializable {
     @Column(name = "GioiTinh")
     private String gioiTinh;
 
-    @Column(name = "NgaySinh")
-    private Date ngaySinh;
-
     @Column(name = "DiaChi")
     private String diaChi;
 

@@ -99,7 +99,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
         jLabel35 = new javax.swing.JLabel();
@@ -110,7 +109,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
-        dpNgaySinh = new com.github.lgooddatepicker.components.DatePicker();
         jLabel8 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
@@ -730,8 +728,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
         jLabel31.setText("Giới tính");
 
-        jLabel32.setText("Ngày sinh");
-
         jLabel33.setText("Số điện thoại");
 
         jButton11.setBackground(new java.awt.Color(0, 51, 51));
@@ -766,21 +762,25 @@ public class ViewQuanLy extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel33)
-                            .addComponent(jLabel35)
-                            .addComponent(jLabel29)
-                            .addComponent(jLabel31)
-                            .addComponent(jLabel32))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2))
-                            .addComponent(txtHoTenKH, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                            .addComponent(txtDiaChiKH, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                            .addComponent(txtSoDienThoaiKH)
-                            .addComponent(dpNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel29)
+                                    .addComponent(jLabel31))
+                                .addGap(31, 31, 31)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton2))
+                                    .addComponent(txtHoTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel33)
+                                    .addComponent(jLabel35))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDiaChiKH, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(txtSoDienThoaiKH)))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addComponent(jButton11)
@@ -804,17 +804,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
                     .addComponent(jRadioButton2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel32)
-                    .addComponent(dpNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
                     .addComponent(txtSoDienThoaiKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
                     .addComponent(txtDiaChiKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(57, 57, 57)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton11)
                     .addComponent(jButton14)
@@ -1523,7 +1519,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cboSanPham;
-    private com.github.lgooddatepicker.components.DatePicker dpNgaySinh;
     private com.github.lgooddatepicker.components.DatePicker dpNhanVien;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -1571,7 +1566,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
