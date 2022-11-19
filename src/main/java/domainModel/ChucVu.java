@@ -6,12 +6,11 @@ package domainModel;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,31 +26,24 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "TaiKhoan")
-public class TaiKhoan implements Serializable {
+@Table(name = "ChucVu")
+public class ChucVu implements Serializable {
 
     @Id
     @GeneratedValue
     @Column(name = "Id")
-    private Long id;
+    private UUID id;
+    
+    @Column(name = "Ma")
+    private String ma;
 
-    @OneToOne
-    @JoinColumn(name = "IdNhanVien")
-    private NhanVien idNhanVien;
-
-    @Column(name = "MatKhau")
-    private String matKhau;
-
-    @Column(name = "ChucVu")
-    private int chucVu;
-
-    @Column(name = "TrangThai")
-    private int trangThai;
+    @Column(name = "Ten")
+    private String ten;
 
     @Column(name = "CreatedDate")
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date lastModifiedDate;
-    
+    private Date alstModifiedDate;
+
 }
