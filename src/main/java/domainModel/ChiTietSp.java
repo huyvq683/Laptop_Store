@@ -60,8 +60,8 @@ public class ChiTietSp implements Serializable {
     private BigDecimal gia;
 
     @Column(name = "CreatedDate")
-    private Date CreatedDate;
+    private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date LastModifiedDate;
+    private Date lastModifiedDate;
 }
