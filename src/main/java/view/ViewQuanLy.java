@@ -229,40 +229,40 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
+        btnKhachHang1.setText("Sản Phẩm");
         btnKhachHang1.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnKhachHang1.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang1.setText("Sản Phẩm");
         btnKhachHang1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKhachHang1ActionPerformed(evt);
             }
         });
 
+        btnKhachHang2.setText("Khuyến Mại");
         btnKhachHang2.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnKhachHang2.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang2.setText("Khuyến Mại");
         btnKhachHang2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKhachHang2ActionPerformed(evt);
             }
         });
 
+        btnKhachHang3.setText("Nhân Viên");
         btnKhachHang3.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnKhachHang3.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang3.setText("Nhân Viên");
         btnKhachHang3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKhachHang3ActionPerformed(evt);
             }
         });
 
+        btnKhachHang4.setText("Thống Kê");
         btnKhachHang4.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnKhachHang4.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang4.setText("Thống Kê");
         btnKhachHang4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKhachHang4ActionPerformed(evt);
@@ -747,15 +747,15 @@ public class ViewQuanLy extends javax.swing.JFrame {
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Nữ");
 
+        jButton14.setText("Sửa");
         jButton14.setBackground(new java.awt.Color(0, 51, 51));
         jButton14.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton14.setForeground(new java.awt.Color(255, 255, 255));
-        jButton14.setText("Sửa");
 
+        jButton15.setText("Xóa");
         jButton15.setBackground(new java.awt.Color(0, 51, 51));
         jButton15.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton15.setForeground(new java.awt.Color(255, 255, 255));
-        jButton15.setText("Xóa");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -822,8 +822,8 @@ public class ViewQuanLy extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel8.setText("Quản lí Khách Hàng");
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
 
         javax.swing.GroupLayout panelKhachHangLayout = new javax.swing.GroupLayout(panelKhachHang);
         panelKhachHang.setLayout(panelKhachHangLayout);
@@ -876,20 +876,20 @@ public class ViewQuanLy extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(tblSanPham2);
 
+        jButton12.setText("Thêm");
         jButton12.setBackground(new java.awt.Color(0, 51, 51));
         jButton12.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setText("Thêm");
 
+        jButton16.setText("Sửa");
         jButton16.setBackground(new java.awt.Color(0, 51, 51));
         jButton16.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton16.setForeground(new java.awt.Color(255, 255, 255));
-        jButton16.setText("Sửa");
 
+        jButton17.setText("Xóa");
         jButton17.setBackground(new java.awt.Color(0, 51, 51));
         jButton17.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton17.setForeground(new java.awt.Color(255, 255, 255));
-        jButton17.setText("Xóa");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -954,20 +954,20 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
         jLabel43.setText("Giá");
 
+        jButton13.setText("Thêm");
         jButton13.setBackground(new java.awt.Color(0, 51, 51));
         jButton13.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton13.setForeground(new java.awt.Color(255, 255, 255));
-        jButton13.setText("Thêm");
 
+        jButton18.setText("Sửa");
         jButton18.setBackground(new java.awt.Color(0, 51, 51));
         jButton18.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton18.setForeground(new java.awt.Color(255, 255, 255));
-        jButton18.setText("Sửa");
 
+        jButton19.setText("Xóa");
         jButton19.setBackground(new java.awt.Color(0, 51, 51));
         jButton19.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton19.setForeground(new java.awt.Color(255, 255, 255));
-        jButton19.setText("Xóa");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -1077,8 +1077,8 @@ public class ViewQuanLy extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel10.setText("Quản Lý Sản Phẩm");
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -1162,20 +1162,20 @@ public class ViewQuanLy extends javax.swing.JFrame {
         buttonGroup2.add(rdoNhanVien);
         rdoNhanVien.setText("Nhân Viên");
 
+        jButton20.setText("Thêm");
         jButton20.setBackground(new java.awt.Color(0, 51, 51));
         jButton20.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton20.setForeground(new java.awt.Color(255, 255, 255));
-        jButton20.setText("Thêm");
 
+        jButton21.setText("Sửa");
         jButton21.setBackground(new java.awt.Color(0, 51, 51));
         jButton21.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton21.setForeground(new java.awt.Color(255, 255, 255));
-        jButton21.setText("Sửa");
 
+        jButton22.setText("Xóa");
         jButton22.setBackground(new java.awt.Color(0, 51, 51));
         jButton22.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton22.setForeground(new java.awt.Color(255, 255, 255));
-        jButton22.setText("Xóa");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1282,8 +1282,8 @@ public class ViewQuanLy extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel45.setText("Quản Lý Nhân Viên");
+        jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
 
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh Sách Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 

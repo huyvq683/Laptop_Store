@@ -1,4 +1,4 @@
-package utilities;
+package utiliti;
 
 import domainModel.ChiTietSp;
 import domainModel.ChucVu;
