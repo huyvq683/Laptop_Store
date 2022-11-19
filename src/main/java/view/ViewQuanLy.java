@@ -40,7 +40,9 @@ public class ViewQuanLy extends javax.swing.JFrame {
         String[] headeroaDon = {"STT", "Mã HĐ", "Ngày tạo", "Tên NV", "Tình trạng"};
         dtmHoaDon.setColumnIdentifiers(headeroaDon);
         tbGioHang.setModel(dtmGioHang);
+        String[] headerGioHang = {"STT", "Mã SP", "Tên SP", "Số lượng", "Đơn giá", "Thành tiền"};
         tbSanPham.setModel(dtmSanPham);
+        dtmGioHang.setColumnIdentifiers(headerGioHang);
         String[] header = {"STT", "Mã", "Tên", "CPU", "Ram", "Card", "Hãng", "Gia"};
         dtmSanPham.setColumnIdentifiers(header);
         showDataHoaDonTable(listHoaDon);
