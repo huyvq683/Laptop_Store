@@ -63,6 +63,8 @@ public class PanelNhanVien extends javax.swing.JPanel {
         jLabel57 = new javax.swing.JLabel();
         jComboBox8 = new javax.swing.JComboBox<>();
 
+        setPreferredSize(new java.awt.Dimension(1223, 718));
+
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông Tin Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
         jLabel46.setText("Mã");

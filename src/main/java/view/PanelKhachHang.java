@@ -49,6 +49,8 @@ public class PanelKhachHang extends javax.swing.JPanel {
         jButton15 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1223, 718));
+
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
         tblDanhSachKhachHang.setModel(new javax.swing.table.DefaultTableModel(
@@ -75,7 +77,7 @@ public class PanelKhachHang extends javax.swing.JPanel {
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtTimKiemSDTKH, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 774, Short.MAX_VALUE)))
+                        .addGap(0, 825, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -87,7 +89,7 @@ public class PanelKhachHang extends javax.swing.JPanel {
                     .addComponent(txtTimKiemSDTKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(46, 46, 46))
         );
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
@@ -100,10 +102,10 @@ public class PanelKhachHang extends javax.swing.JPanel {
 
         jLabel33.setText("Số điện thoại");
 
+        jButton11.setText("Thêm");
         jButton11.setBackground(new java.awt.Color(0, 51, 51));
         jButton11.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setText("Thêm");
 
         jLabel35.setText("Địa chỉ");
 
@@ -111,15 +113,15 @@ public class PanelKhachHang extends javax.swing.JPanel {
 
         jRadioButton2.setText("Nữ");
 
+        jButton14.setText("Sửa");
         jButton14.setBackground(new java.awt.Color(0, 51, 51));
         jButton14.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton14.setForeground(new java.awt.Color(255, 255, 255));
-        jButton14.setText("Sửa");
 
+        jButton15.setText("Xóa");
         jButton15.setBackground(new java.awt.Color(0, 51, 51));
         jButton15.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton15.setForeground(new java.awt.Color(255, 255, 255));
-        jButton15.setText("Xóa");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -186,8 +188,8 @@ public class PanelKhachHang extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel8.setText("Quản lí Khách Hàng");
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
 
         javax.swing.GroupLayout panelKhachHangLayout = new javax.swing.GroupLayout(panelKhachHang);
         panelKhachHang.setLayout(panelKhachHangLayout);
