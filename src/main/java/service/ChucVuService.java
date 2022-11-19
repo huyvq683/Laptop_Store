@@ -5,7 +5,6 @@
 package service;
 
 import customModel.ChucVuResponse;
-import domainModel.NhanVien;
 import java.util.List;
 
 /**
@@ -14,6 +13,6 @@ import java.util.List;
  */
 public interface ChucVuService {
 
-    public List<ChucVuResponse> getAll();
-
+    List<ChucVuResponse> getAll();
+    
 }

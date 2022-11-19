@@ -10,8 +10,10 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import service.impl.ViewChucVuServiceImpl;
+import service.impl.ChucVuServiceImpl;
 import service.ChucVuService;
+import service.NhanVienService;
+import service.impl.NhanVienServiceImpl;
 
 /**
  *
@@ -19,9 +21,10 @@ import service.ChucVuService;
  */
 public class ViewDangNhap extends javax.swing.JFrame {
 
-    List<ChucVuResponse> list = new ArrayList<>();
-    ChucVuService viewChucVuService = new ViewChucVuServiceImpl();
-    ChucVuResponse One = new ChucVuResponse();
+    private List<ChucVuResponse> list = new ArrayList<>();
+    private ChucVuService viewChucVuService = new ChucVuServiceImpl();
+    private NhanVienService nhanVienService = new NhanVienServiceImpl();
+    private ChucVuResponse One = new ChucVuResponse();
 
     /**
      * Creates new form DangNhap
@@ -41,7 +44,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
         getList();
         for (ChucVuResponse ChucVuResponse : list) {
             if (txtTaiKhoan.getText().equalsIgnoreCase(ChucVuResponse.getEmail())) {
-                One = new ChucVuResponse(ChucVuResponse.getEmail(), ChucVuResponse.getMatKhau(), ChucVuResponse.getTen(), ChucVuResponse.getTrangThai());
+                One = new ChucVuResponse(ChucVuResponse.getEmail(), ChucVuResponse.getMatKhau(), ChucVuResponse.getTen(), ChucVuResponse.getMa(), ChucVuResponse.getTrangThai());
             }
         }
     }
@@ -71,7 +74,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
                 if (String.valueOf(txtMatKhau.getPassword()).trim().isBlank()) {
                     return "Mật Khẩu Trống";
                 } else {
-                    if (!String.valueOf(txtMatKhau.getPassword()).trim().equalsIgnoreCase(One.getMatKhau())) {;
+                    if (!String.valueOf(txtMatKhau.getPassword()).trim().equalsIgnoreCase(One.getMatKhau())) {
                         return "Mật Khẩu Sai";
                     } else {
                         if (!rdoQuanLi.isSelected() && !rdoNhanVien.isSelected()) {
@@ -235,7 +238,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblQuenMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseClicked
-        this.dispose();;
+        this.dispose();
     }//GEN-LAST:event_lblQuenMKMouseClicked
 
     private void lblQuenMKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseEntered

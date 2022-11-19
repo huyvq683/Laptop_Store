@@ -36,4 +36,9 @@ public class ChiTietSPRepository implements Repository<ChiTietSPResponse>{
         List<ChiTietSPResponse>list = new ChiTietSPRepository().getAll();
         System.out.println(list);
     }
+
+    @Override
+    public Boolean add(ChiTietSPResponse t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -24,5 +24,6 @@ public class ChucVuResponse {
     private String email;
     private String matKhau;
     private String ten;
+    private String ma;
     private int trangThai;
 }

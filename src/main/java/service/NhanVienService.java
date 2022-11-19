@@ -4,20 +4,14 @@
  */
 package service;
 
-import customModel.HoaDonResponse;
-import domainModel.HoaDon;
-import java.util.List;
+import domainModel.NhanVien;
 
 /**
  *
  * @author FPT
  */
-public interface HoaDonService {
+public interface NhanVienService {
 
-    List<HoaDonResponse> getAll();
-
-    String add(HoaDon hoaDon);
-    
-    int genMaHD();
+    NhanVien getOne(String email);
     
 }

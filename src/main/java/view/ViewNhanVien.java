@@ -5,11 +5,35 @@
  */
 package view;
 
+import customModel.ChiTietSPResponse;
+import customModel.HoaDonResponse;
+import domainModel.HoaDon;
+import domainModel.NhanVien;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import service.ChiTietSPService;
+import service.HoaDonService;
+import service.NhanVienService;
+import service.impl.ChiTietSPServiceImpl;
+import service.impl.HoaDonServiceImpl;
+import service.impl.NhanVienServiceImpl;
+
 /**
  *
  * @author dinhv
  */
 public class ViewNhanVien extends javax.swing.JFrame {
+
+    private DefaultTableModel dtmSanPham = new DefaultTableModel();
+    private DefaultTableModel dtmHoaDon = new DefaultTableModel();
+    private DefaultTableModel dtmGioHang = new DefaultTableModel();
+    private ChiTietSPService chiTietSPService = new ChiTietSPServiceImpl();
+    private HoaDonService hoaDonService = new HoaDonServiceImpl();
+    private List<ChiTietSPResponse> listChiTietSP = chiTietSPService.getAll();
+    private List<HoaDonResponse> listHoaDon = hoaDonService.getAll();
+    private NhanVienService nhanVienService = new NhanVienServiceImpl();
 
     /**
      * Creates new form FrmNhanVien1
@@ -18,8 +42,35 @@ public class ViewNhanVien extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(this.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        panelKhachHang.hide();
-        panelBanHang.hide();
+        tbHoaDon.setModel(dtmHoaDon);
+        String[] headeroaDon = {"STT", "Mã HĐ", "Ngày tạo", "Tên NV", "Tình trạng"};
+        dtmHoaDon.setColumnIdentifiers(headeroaDon);
+        tbGioHang.setModel(dtmGioHang);
+        String[] headerGioHang = {"STT", "Mã SP", "Tên SP", "Số lượng", "Đơn giá", "Thành tiền"};
+        tbSanPham.setModel(dtmSanPham);
+        dtmGioHang.setColumnIdentifiers(headerGioHang);
+        String[] header = {"STT", "Mã", "Tên", "CPU", "Ram", "Card", "Hãng", "Gia"};
+        dtmSanPham.setColumnIdentifiers(header);
+        showDataHoaDonTable(listHoaDon);
+        showDataTableSanPham(listChiTietSP);
+    }
+
+    private void showDataHoaDonTable(List<HoaDonResponse> lists) {
+        dtmHoaDon.setRowCount(0);
+        int stt = 0;
+        for (HoaDonResponse hoaDonResponse : lists) {
+            stt++;
+            dtmHoaDon.addRow(hoaDonResponse.toDataRow(stt));
+        }
+    }
+
+    private void showDataTableSanPham(List<ChiTietSPResponse> lists) {
+        dtmSanPham.setRowCount(0);
+        int stt = 0;
+        for (ChiTietSPResponse chiTietSPResponse : lists) {
+            stt++;
+            dtmSanPham.addRow(chiTietSPResponse.toDataRow(stt));
+        }
     }
 
     /**
@@ -47,16 +98,16 @@ public class ViewNhanVien extends javax.swing.JFrame {
         panelBanHang = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblHoaDon = new javax.swing.JTable();
+        tbHoaDon = new javax.swing.JTable();
         btnTaoHoaDon = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblGioHang = new javax.swing.JTable();
+        tbGioHang = new javax.swing.JTable();
         btnBoKhoiGioHang = new javax.swing.JButton();
         btnClearGioHang = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblSanPham = new javax.swing.JTable();
+        tbSanPham = new javax.swing.JTable();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -118,40 +169,40 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel1.setText("Nhân viên:");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
 
+        jLabel2.setText(" Họ tên");
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel2.setText(" Họ tên");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel3.setText("Vai trò:");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel4.setText("Quản lí");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel5.setText("Thời gian:");
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
 
+        jLabel6.setText("17:02:00");
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel6.setText("17:02:00");
 
+        btnBanHang.setText("Bán Hàng");
         btnBanHang.setBackground(new java.awt.Color(22, 111, 229));
         btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnBanHang.setForeground(new java.awt.Color(255, 255, 255));
-        btnBanHang.setText("Bán Hàng");
         btnBanHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBanHangActionPerformed(evt);
             }
         });
 
+        btnKhachHang.setText("Khách Hàng");
         btnKhachHang.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnKhachHang.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang.setText("Khách Hàng");
         btnKhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKhachHangActionPerformed(evt);
@@ -213,7 +264,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
-        tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
+        tbHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -221,12 +272,17 @@ public class ViewNhanVien extends javax.swing.JFrame {
                 "STT", "Mã Hóa Đơn", "Ngày Tạo", "Tên Nhân Viên"
             }
         ));
-        jScrollPane1.setViewportView(tblHoaDon);
+        jScrollPane1.setViewportView(tbHoaDon);
 
+        btnTaoHoaDon.setText("Tạo hóa đơn");
         btnTaoHoaDon.setBackground(new java.awt.Color(0, 51, 51));
         btnTaoHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnTaoHoaDon.setForeground(new java.awt.Color(255, 255, 255));
-        btnTaoHoaDon.setText("Tạo hóa đơn");
+        btnTaoHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaoHoaDonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -253,7 +309,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giỏ Hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
-        tblGioHang.setModel(new javax.swing.table.DefaultTableModel(
+        tbGioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -261,17 +317,17 @@ public class ViewNhanVien extends javax.swing.JFrame {
                 "STT", "Mã Sản Phẩm", "Tên Sản Phẩm", "Đơn Giá"
             }
         ));
-        jScrollPane3.setViewportView(tblGioHang);
+        jScrollPane3.setViewportView(tbGioHang);
 
+        btnBoKhoiGioHang.setText("Bỏ khỏi giỏ hàng");
         btnBoKhoiGioHang.setBackground(new java.awt.Color(0, 51, 51));
         btnBoKhoiGioHang.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnBoKhoiGioHang.setForeground(new java.awt.Color(255, 255, 255));
-        btnBoKhoiGioHang.setText("Bỏ khỏi giỏ hàng");
 
+        btnClearGioHang.setText("Clear giỏ hàng");
         btnClearGioHang.setBackground(new java.awt.Color(0, 51, 51));
         btnClearGioHang.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnClearGioHang.setForeground(new java.awt.Color(255, 255, 255));
-        btnClearGioHang.setText("Clear giỏ hàng");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -301,7 +357,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
-        tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
+        tbSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -309,7 +365,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
                 "STT", "Mã Sản Phẩm", "Tên Sản Phẩm", "Đơn Giá", "Thương Hiệu", "CPU", "Ram", "Card"
             }
         ));
-        jScrollPane2.setViewportView(tblSanPham);
+        jScrollPane2.setViewportView(tbSanPham);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "(Trống)", "Intel Core i3", "Intel Core i5", "Intel Core i7", "Intel Core i9", "Ryzen 3", "Ryzen 5", "Ryzen 7", "Ryzen 9" }));
 
@@ -418,20 +474,20 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
         jTextField2.setText("17022003");
 
+        jButton5.setText("Xác nhận");
         jButton5.setBackground(new java.awt.Color(0, 153, 0));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Xác nhận");
 
+        btnHuyHoaDon.setText("Hủy hóa đơn");
         btnHuyHoaDon.setBackground(new java.awt.Color(255, 51, 51));
         btnHuyHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnHuyHoaDon.setForeground(new java.awt.Color(255, 255, 255));
-        btnHuyHoaDon.setText("Hủy hóa đơn");
 
+        btnThanhToan.setText("Thanh toán");
         btnThanhToan.setBackground(new java.awt.Color(0, 153, 0));
         btnThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnThanhToan.setForeground(new java.awt.Color(255, 255, 255));
-        btnThanhToan.setText("Thanh toán");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -611,10 +667,10 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
         jLabel33.setText("Số điện thoại");
 
+        jButton11.setText("Thêm");
         jButton11.setBackground(new java.awt.Color(0, 51, 51));
         jButton11.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setText("Thêm");
 
         jLabel35.setText("Địa chỉ");
 
@@ -624,15 +680,15 @@ public class ViewNhanVien extends javax.swing.JFrame {
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Nữ");
 
+        jButton14.setText("Sửa");
         jButton14.setBackground(new java.awt.Color(0, 51, 51));
         jButton14.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton14.setForeground(new java.awt.Color(255, 255, 255));
-        jButton14.setText("Sửa");
 
+        jButton15.setText("Xóa");
         jButton15.setBackground(new java.awt.Color(0, 51, 51));
         jButton15.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton15.setForeground(new java.awt.Color(255, 255, 255));
-        jButton15.setText("Xóa");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -699,8 +755,8 @@ public class ViewNhanVien extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel8.setText("Quản Lý Khách Hàng");
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
 
         javax.swing.GroupLayout panelKhachHangLayout = new javax.swing.GroupLayout(panelKhachHang);
         panelKhachHang.setLayout(panelKhachHangLayout);
@@ -774,6 +830,20 @@ public class ViewNhanVien extends javax.swing.JFrame {
     private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
         panelKhachHang.hide();
     }//GEN-LAST:event_btnBanHangActionPerformed
+
+    private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
+        // TODO add your handling code here:
+        HoaDon hoaDon = new HoaDon();
+        int maHD = hoaDonService.genMaHD();
+        hoaDon.setMa("HD" + maHD);
+        hoaDon.setNgayTao((new Date()));
+        NhanVien nhanVien = nhanVienService.getOne("huy@gmail.com");
+        hoaDon.setIdNV(nhanVien);
+        hoaDon.setTinhTrang(0);
+        JOptionPane.showMessageDialog(this, hoaDonService.add(hoaDon));
+        listHoaDon = hoaDonService.getAll();
+        showDataHoaDonTable(listHoaDon);
+    }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -885,10 +955,10 @@ public class ViewNhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel panelBanHang;
     private javax.swing.JPanel panelKhachHang;
     private javax.swing.JTabbedPane tablepanel;
+    private javax.swing.JTable tbGioHang;
+    private javax.swing.JTable tbHoaDon;
+    private javax.swing.JTable tbSanPham;
     private javax.swing.JTable tblDanhSachKhachHang;
-    private javax.swing.JTable tblGioHang;
-    private javax.swing.JTable tblHoaDon;
-    private javax.swing.JTable tblSanPham;
     private javax.swing.JTextField txtDiaChiKH;
     private javax.swing.JTextField txtHoTenKH;
     private com.github.lgooddatepicker.components.DatePicker txtNgaySinhKH;

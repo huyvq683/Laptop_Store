@@ -21,8 +21,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class HoaDonChiTietResponse {
 
-    private UUID id;
+    private UUID idCTSP;
+    private UUID idHoaDon;
     private String ma;
     private String ten;
     private BigDecimal gia;
+    
+    public Object[] toDataRow(int stt){
+        return new Object[]{stt, ma, ten, gia};
+    }
 }

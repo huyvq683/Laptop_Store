@@ -38,7 +38,7 @@ public class HoaDon implements Serializable {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "KhachHang")
+    @JoinColumn(name = "IdKH")
     private KhachHang idKH;
 
     @ManyToOne

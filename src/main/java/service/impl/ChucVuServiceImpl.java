@@ -1,7 +1,6 @@
 package service.impl;
 
 import customModel.ChucVuResponse;
-import domainModel.NhanVien;
 import java.util.List;
 import repository.impl.ChucVuRepository;
 import service.ChucVuService;
@@ -14,7 +13,7 @@ import service.ChucVuService;
  *
  * @author WIN11
  */
-public class ViewChucVuServiceImpl implements ChucVuService {
+public class ChucVuServiceImpl implements ChucVuService {
 
     private ChucVuRepository ChucVuRepository = new ChucVuRepository();
 

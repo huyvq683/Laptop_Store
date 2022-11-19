@@ -5,6 +5,7 @@
 package repository.impl;
 
 import customModel.ChucVuResponse;
+import domainModel.ChucVu;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -17,20 +18,16 @@ import utiliti.HibernateUtil;
 public class ChucVuRepository {
 
     public List<ChucVuResponse> getAll() {
-        try(Session session = HibernateUtil.getFACTORY().openSession();) {
-            String sql = "SELECT new custommodel.ChucVuResponse (n.email, n.matKhau, c.ten, n.trangThai)"
-                + " FROM ChucVu c  JOIN"
-                + " NhanVien n ON c.id = n.idChucVu";
-        Query<ChucVuResponse> query = session.createQuery(sql);
-        return query.list();
+        try ( Session session = HibernateUtil.getFACTORY().openSession();) {
+            String sql = "SELECT new customModel.ChucVuResponse (n.email, n.matKhau, c.ten, c.ma, n.trangThai)"
+                    + " FROM ChucVu c JOIN"
+                    + " NhanVien n ON c.id = n.idChucVu";
+            Query<ChucVuResponse> query = session.createQuery(sql);
+            return query.list();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return null;
     }
 
-    public static void main(String[] args) {
-        List<ChucVuResponse> lists = new ChucVuRepository().getAll();
-        System.out.println(lists);
-    }
 }

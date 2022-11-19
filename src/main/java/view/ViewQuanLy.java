@@ -6,17 +6,23 @@
 package view;
 
 import customModel.ChiTietSPResponse;
+import customModel.HoaDonChiTietResponse;
 import customModel.HoaDonResponse;
+import domainModel.HoaDon;
+import domainModel.NhanVien;
 import java.awt.FlowLayout;
 import static java.lang.Thread.sleep;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import service.ChiTietSPService;
 import service.HoaDonService;
+import service.NhanVienService;
 import service.impl.ChiTietSPServiceImpl;
 import service.impl.HoaDonServiceImpl;
+import service.impl.NhanVienServiceImpl;
 
 /**
  *
@@ -31,6 +37,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
     private HoaDonService hoaDonService = new HoaDonServiceImpl();
     private List<ChiTietSPResponse> listChiTietSP = chiTietSPService.getAll();
     private List<HoaDonResponse> listHoaDon = hoaDonService.getAll();
+    private NhanVienService nhanVienService = new NhanVienServiceImpl();
 
     /**
      * Creates new form FrmNhanVien1
@@ -68,6 +75,15 @@ public class ViewQuanLy extends javax.swing.JFrame {
         for (ChiTietSPResponse chiTietSPResponse : lists) {
             stt++;
             dtmSanPham.addRow(chiTietSPResponse.toDataRow(stt));
+        }
+    }
+
+    private void showDataTableGioHang(List<HoaDonChiTietResponse> lists) {
+        dtmSanPham.setRowCount(0);
+        int stt = 0;
+        for (HoaDonChiTietResponse hoaDonChiTietResponse : lists) {
+            stt++;
+            dtmSanPham.addRow(hoaDonChiTietResponse.toDataRow(stt));
         }
     }
 
@@ -163,6 +179,11 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnTaoHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnTaoHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         btnTaoHoaDon.setText("Tạo hóa đơn");
+        btnTaoHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaoHoaDonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -547,11 +568,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnBanHang.setForeground(new java.awt.Color(255, 255, 255));
         btnBanHang.setText("Bán Hàng");
-        btnBanHang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBanHangActionPerformed(evt);
-            }
-        });
 
         btnKhachHang.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -711,9 +727,20 @@ public class ViewQuanLy extends javax.swing.JFrame {
         this.setExtendedState(this.MAXIMIZED_BOTH);
     }//GEN-LAST:event_btnKhuyenMaiActionPerformed
 
-    private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
+    private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
+        // TODO add your handling code here:
+        HoaDon hoaDon = new HoaDon();
+        int maHD = hoaDonService.genMaHD();
+        hoaDon.setMa("HD" + maHD);
+        hoaDon.setNgayTao((new Date()));
+        NhanVien nhanVien = nhanVienService.getOne("huy@gmail.com");
+        hoaDon.setIdNV(nhanVien);
+        hoaDon.setTinhTrang(0);
+        JOptionPane.showMessageDialog(this, hoaDonService.add(hoaDon));
+        listHoaDon = hoaDonService.getAll();
+        showDataHoaDonTable(listHoaDon);
+    }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
-    }//GEN-LAST:event_btnBanHangActionPerformed
     private void dongHo() {
         Thread t1 = new Thread() {
             @Override
@@ -757,22 +784,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ViewQuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
