@@ -38,7 +38,7 @@ public class NhanVien implements Serializable {
     private UUID id;
     
     @ManyToOne
-    @JoinColumn(name = "IdChuVu")
+    @JoinColumn(name = "IdChucVu")
     private ChucVu idChuVu;
 
     @Column(name = "Ma")
