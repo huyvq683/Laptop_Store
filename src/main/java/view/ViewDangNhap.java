@@ -5,13 +5,23 @@
  */
 package view;
 
+import custommodel.ViewChucVuCustomModel;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import service.ViewChucVuService;
+import service.impl.ViewChucVuServiceImpl;
 
 /**
  *
  * @author dinhv
  */
 public class ViewDangNhap extends javax.swing.JFrame {
+
+    List<ViewChucVuCustomModel> list = new ArrayList<>();
+    ViewChucVuService viewChucVuService = new ViewChucVuServiceImpl();
+    ViewChucVuCustomModel One = new ViewChucVuCustomModel();
 
     /**
      * Creates new form DangNhap
@@ -21,6 +31,67 @@ public class ViewDangNhap extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         txtTaiKhoan.setBackground(new Color(0, 0, 0, 0));
         txtMatKhau.setBackground(new Color(0, 0, 0, 0));
+    }
+
+    public void getList() {
+        list = viewChucVuService.getAll();
+    }
+
+    public void getOne() {
+        getList();
+        for (ViewChucVuCustomModel viewChucVuCustomModel : list) {
+            if (txtTaiKhoan.getText().equalsIgnoreCase(viewChucVuCustomModel.getEmail())) {
+                One = new ViewChucVuCustomModel(viewChucVuCustomModel.getEmail(), viewChucVuCustomModel.getMatKhau(), viewChucVuCustomModel.getTen(), viewChucVuCustomModel.getTrangThai());
+            }
+        }
+    }
+
+    public void StartPro() {
+        if (getCV().equalsIgnoreCase("Quản Lý")) {
+            ViewQuanLy viewQuanLy = new ViewQuanLy();
+            viewQuanLy.setVisible(true);
+        } else {
+            ViewNhanVien viewNhanVien = new ViewNhanVien();
+            viewNhanVien.setVisible(true);
+        }
+    }
+
+    public String getCV() {
+        return rdoQuanLi.isSelected() ? "Quản Lý" : "Nhân Viên";
+    }
+
+    public String validateCV() {
+        if (txtTaiKhoan.getText().trim().isBlank()) {
+            return "Tài Khoản Trống";
+        } else {
+            getOne();
+            if (!txtTaiKhoan.getText().trim().equalsIgnoreCase(One.getEmail())) {
+                return "Tài Khoản Không Tồn Tại";
+            } else {
+                if (String.valueOf(txtMatKhau.getPassword()).trim().isBlank()) {
+                    return "Mật Khẩu Trống";
+                } else {
+                    if (!String.valueOf(txtMatKhau.getPassword()).trim().equalsIgnoreCase(One.getMatKhau())) {;
+                        return "Mật Khẩu Sai";
+                    } else {
+                        if (!rdoQuanLi.isSelected() && !rdoNhanVien.isSelected()) {
+                            return "Chưa Chọn Chức Vụ";
+                        } else {
+                            if (!getCV().equalsIgnoreCase(One.getTen())) {
+                                return "Chức Vụ Không Chính Xác";
+                            } else {
+                                if (One.getTrangThai() == 1) {
+                                    return "Tài Khoản Đã Xóa";
+                                } else {
+                                    return null;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
     }
 
     /**
@@ -89,11 +160,21 @@ public class ViewDangNhap extends javax.swing.JFrame {
         btnDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
 
         btnHuyBo.setBackground(new java.awt.Color(255, 51, 51));
         btnHuyBo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnHuyBo.setForeground(new java.awt.Color(255, 255, 255));
         btnHuyBo.setText("Hủy bỏ");
+        btnHuyBo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyBoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,6 +246,20 @@ public class ViewDangNhap extends javax.swing.JFrame {
         lblQuenMK.setForeground(new Color(0, 102, 102));
     }//GEN-LAST:event_lblQuenMKMouseExited
 
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        // TODO add your handling code here:
+        if (validateCV() == null) {
+            StartPro();
+        } else {
+            JOptionPane.showMessageDialog(this, validateCV());
+        }
+    }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnHuyBoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,16 +274,24 @@ public class ViewDangNhap extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

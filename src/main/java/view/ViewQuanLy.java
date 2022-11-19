@@ -108,7 +108,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         txtHoTenKH = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        txtNgaySinhKH = new com.github.lgooddatepicker.components.DatePicker();
+        txtNgaySinhKH = new org.netbeans.modules.form.InvalidComponent();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -156,7 +156,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         rdoNam1 = new javax.swing.JRadioButton();
         rdoNu1 = new javax.swing.JRadioButton();
         jLabel49 = new javax.swing.JLabel();
-        txtNgaySinhNhanVien = new com.github.lgooddatepicker.components.DatePicker();
+        txtNgaySinhNhanVien = new org.netbeans.modules.form.InvalidComponent();
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
@@ -1346,18 +1346,19 @@ public class ViewQuanLy extends javax.swing.JFrame {
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel54)
-                    .addComponent(txtTimKiemSDTKH2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel55)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel57)
+                        .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel56)
-                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel57)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel54)
+                        .addComponent(txtTimKiemSDTKH2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel55)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1655,8 +1656,8 @@ public class ViewQuanLy extends javax.swing.JFrame {
     private javax.swing.JTextField txtHoTenNhanVien;
     private javax.swing.JTextField txtMaNhanVien;
     private javax.swing.JTextField txtMaSanPham;
-    private com.github.lgooddatepicker.components.DatePicker txtNgaySinhKH;
-    private com.github.lgooddatepicker.components.DatePicker txtNgaySinhNhanVien;
+    private org.netbeans.modules.form.InvalidComponent txtNgaySinhKH;
+    private org.netbeans.modules.form.InvalidComponent txtNgaySinhNhanVien;
     private javax.swing.JTextField txtRamSP;
     private javax.swing.JTextField txtSerialSP;
     private javax.swing.JTextField txtSoDienThoaiKH;

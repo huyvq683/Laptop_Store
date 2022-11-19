@@ -1,5 +1,7 @@
 package utilities;
 
+import domainModel.ChucVu;
+import domainModel.NhanVien;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -17,12 +19,14 @@ public class HibernateUtil {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1");
+        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAN1");
         properties.put(Environment.USER, "sa");
         properties.put(Environment.PASS, "123456");
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
+        conf.addAnnotatedClass(ChucVu.class);
+        conf.addAnnotatedClass(NhanVien.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
