@@ -32,13 +32,13 @@ public class ChucVu implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "Id")
-    private UUID Id;
+    private UUID id;
 
     @Column(name = "Ma")
-    private String Ma;
+    private String ma;
 
     @Column(name = "Ten")
-    private String Ten;
+    private String ten;
 
     @Column(name = "CreatedDate")
     private Date createdDate;

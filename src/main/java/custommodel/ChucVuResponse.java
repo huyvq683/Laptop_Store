@@ -19,10 +19,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ViewChucVuCustomModel {
+public class ChucVuResponse {
 
     private String email;
-    private String MatKhau;
-    private String Ten;
-    private int TrangThai;
+    private String matKhau;
+    private String ten;
+    private int trangThai;
 }
