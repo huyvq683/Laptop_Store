@@ -19,13 +19,11 @@ public class HibernateUtil {
     private static final SessionFactory FACTORY;
 
     static {
-
         Properties prop = getProperties();
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(prop).build();
-        Configuration conf = new Configuration();
+        Configuration conf = getConfiguration(prop);
         FACTORY = conf.buildSessionFactory(registry);
-
     }
 
     public static SessionFactory getFACTORY() {
@@ -42,8 +40,9 @@ public class HibernateUtil {
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1");
         properties.put(Environment.USER, "sa");
-        properties.put(Environment.PASS, "123456");
+        properties.put(Environment.PASS, "25082003");
         properties.put(Environment.SHOW_SQL, "true");
+        properties.put(Environment.HBM2DDL_AUTO, "create");
         return properties;
     }
 
@@ -51,12 +50,12 @@ public class HibernateUtil {
         Configuration conf = new Configuration();
         conf.setProperties(prop);
         conf.addAnnotatedClass(SanPham.class);
-        conf.addAnnotatedClass(ChiTietSp.class);
-        conf.addAnnotatedClass(HoaDon.class);
-        conf.addAnnotatedClass(HoaDonChiTiet.class);
-        conf.addAnnotatedClass(KhachHang.class);
+//        conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(NhanVien.class);
-        conf.addAnnotatedClass(TaiKhoan.class);
+//        conf.addAnnotatedClass(TaiKhoan.class);
+//        conf.addAnnotatedClass(HoaDon.class);
+        conf.addAnnotatedClass(ChiTietSp.class);
+//        conf.addAnnotatedClass(HoaDonChiTiet.class);
         return conf;
     }
 }
