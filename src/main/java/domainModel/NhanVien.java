@@ -53,15 +53,15 @@ public class NhanVien implements Serializable {
     private String sdt;
 
     @Column(name = "Email")
-    private String Email;
+    private String email;
 
     @Column(name = "TrangThai")
-    private int TrangThai;
+    private int trangThai;
 
     @Column(name = "CreatedDate")
-    private Date CreatedDate;
+    private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date LastModifiedDate;
+    private Date lastModifiedDate;
     
 }

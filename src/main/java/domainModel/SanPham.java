@@ -41,9 +41,9 @@ public class SanPham implements Serializable {
     private String ten;
 
     @Column(name = "CreatedDate")
-    private Date CreatedDate;
+    private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date LastModifiedDate;
+    private Date alstModifiedDate;
 
 }
