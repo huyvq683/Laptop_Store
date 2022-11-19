@@ -18,7 +18,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.bytebuddy.utility.nullability.MaybeNull;
 
 /**
  *
@@ -36,7 +35,7 @@ public class NhanVien implements Serializable {
     @GeneratedValue
     @Column(name = "Id")
     private UUID id;
-    
+
     @ManyToOne
     @JoinColumn(name = "IdChuVu")
     private ChucVu idChuVu;
@@ -61,7 +60,7 @@ public class NhanVien implements Serializable {
 
     @Column(name = "Email")
     private String email;
-    
+
     @Column(name = "MatKhau")
     private String matKhau;
 
@@ -73,5 +72,5 @@ public class NhanVien implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
-    
+
 }
