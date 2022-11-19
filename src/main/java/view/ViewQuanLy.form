@@ -373,7 +373,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" pref="284" max="-2" attributes="0"/>
-                      <EmptySpace pref="143" max="32767" attributes="0"/>
+                      <EmptySpace pref="153" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1088,7 +1088,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane4" min="-2" pref="243" max="-2" attributes="0"/>
-                          <EmptySpace pref="138" max="32767" attributes="0"/>
+                          <EmptySpace pref="178" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1162,7 +1162,7 @@
                                       <Component id="txtHoTenKH" pref="255" max="32767" attributes="0"/>
                                       <Component id="txtDiaChiKH" pref="255" max="32767" attributes="0"/>
                                       <Component id="txtSoDienThoaiKH" max="32767" attributes="0"/>
-                                      <Component id="txtNgaySinhKH" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="dpNgaySinh" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -1195,7 +1195,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNgaySinhKH" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dpNgaySinh" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1280,8 +1280,6 @@
                     <Property name="text" type="java.lang.String" value="N&#x1eef;"/>
                   </Properties>
                 </Component>
-                <Component class="org.netbeans.modules.form.InvalidComponent" name="txtNgaySinhKH">
-                </Component>
                 <Component class="javax.swing.JButton" name="jButton14">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1309,6 +1307,8 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                   </Properties>
+                </Component>
+                <Component class="com.github.lgooddatepicker.components.DatePicker" name="dpNgaySinh">
                 </Component>
               </SubComponents>
             </Container>
@@ -1373,7 +1373,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="tblChiTietSanPham" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="96" max="32767" attributes="0"/>
+                      <EmptySpace pref="140" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1830,7 +1830,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="825" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="835" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1871,7 +1871,7 @@
                       <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="128" max="32767" attributes="0"/>
+                      <EmptySpace pref="163" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1897,26 +1897,27 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="rdoNam1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="rdoNu1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtNgaySinhNhanVien" min="-2" pref="245" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="dpNhanVien" pref="239" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel47" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel46" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel48" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtMaNhanVien" max="32767" attributes="0"/>
-                                              <Component id="txtHoTenNhanVien" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="rdoNam1" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                                  <Component id="rdoNu1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtMaNhanVien" pref="239" max="32767" attributes="0"/>
+                                                  <Component id="txtHoTenNhanVien" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -1943,7 +1944,7 @@
                                                   <Component id="rdoQuanLy" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="rdoNhanVien" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  <EmptySpace min="0" pref="114" max="32767" attributes="0"/>
                                               </Group>
                                               <Component id="txtEmailNhanVien" pref="245" max="32767" attributes="0"/>
                                           </Group>
@@ -2010,7 +2011,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel49" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtNgaySinhNhanVien" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dpNhanVien" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -2061,8 +2062,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ng&#xe0;y sinh"/>
                   </Properties>
-                </Component>
-                <Component class="org.netbeans.modules.form.InvalidComponent" name="txtNgaySinhNhanVien">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel50">
                   <Properties>
@@ -2151,6 +2150,8 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                   </Properties>
+                </Component>
+                <Component class="com.github.lgooddatepicker.components.DatePicker" name="dpNhanVien">
                 </Component>
               </SubComponents>
             </Container>
@@ -2359,7 +2360,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="825" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="835" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
