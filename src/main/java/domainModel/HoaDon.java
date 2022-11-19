@@ -42,7 +42,7 @@ public class HoaDon implements Serializable {
     private KhachHang idKH;
 
     @ManyToOne
-    @JoinColumn(name = "NhanVien")
+    @JoinColumn(name = "IdNV")
     private NhanVien idNV;
 
     @Column(name = "Ma")
@@ -54,8 +54,8 @@ public class HoaDon implements Serializable {
     @Column(name = "TongTien")
     private BigDecimal tongTien;
 
-    @Column(name = "TrangThai")
-    private int trangThai;
+    @Column(name = "TinhTrang")
+    private int tinhTrang;
 
     @Column(name = "CreatedDate")
     private Date createdDate;

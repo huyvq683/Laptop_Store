@@ -39,7 +39,7 @@ public class HoaDonChiTiet implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "IdCTSP")
-    private ChiTietSp idCTSP;
+    private ChiTietSP idCTSP;
 
     @ManyToOne
     @JoinColumn(name = "IdHoaDon")

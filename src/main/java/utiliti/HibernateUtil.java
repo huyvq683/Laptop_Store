@@ -1,6 +1,6 @@
-package utilities;
+package utiliti;
 
-import domainModel.ChiTietSp;
+import domainModel.ChiTietSP;
 import domainModel.ChucVu;
 import domainModel.HoaDon;
 import domainModel.HoaDonChiTiet;
@@ -35,7 +35,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(ChucVu.class);
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(HoaDon.class);
-        conf.addAnnotatedClass(ChiTietSp.class);
+        conf.addAnnotatedClass(ChiTietSP.class);
         conf.addAnnotatedClass(HoaDonChiTiet.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()

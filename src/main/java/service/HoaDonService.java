@@ -4,16 +4,13 @@
  */
 package service;
 
-import custommodel.ChucVuResponse;
-import domainModel.NhanVien;
+import customModel.HoaDonResponse;
 import java.util.List;
 
 /**
  *
- * @author WIN11
+ * @author FPT
  */
-public interface ViewChucVuService {
-
-    public List<ChucVuResponse> getAll();
-
+public interface HoaDonService {
+    List<HoaDonResponse> getAll();
 }

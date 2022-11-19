@@ -1,10 +1,10 @@
 package service.impl;
 
-import custommodel.ChucVuResponse;
+import customModel.ChucVuResponse;
 import domainModel.NhanVien;
 import java.util.List;
-import repository.ChucVuRepository;
-import service.ViewChucVuService;
+import repository.impl.ChucVuRepository;
+import service.ChucVuService;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,7 +14,7 @@ import service.ViewChucVuService;
  *
  * @author WIN11
  */
-public class ViewChucVuServiceImpl implements ViewChucVuService {
+public class ViewChucVuServiceImpl implements ChucVuService {
 
     private ChucVuRepository ChucVuRepository = new ChucVuRepository();
 

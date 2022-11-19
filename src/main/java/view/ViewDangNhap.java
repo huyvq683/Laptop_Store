@@ -5,13 +5,13 @@
  */
 package view;
 
-import custommodel.ChucVuResponse;
+import customModel.ChucVuResponse;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import service.ViewChucVuService;
 import service.impl.ViewChucVuServiceImpl;
+import service.ChucVuService;
 
 /**
  *
@@ -20,7 +20,7 @@ import service.impl.ViewChucVuServiceImpl;
 public class ViewDangNhap extends javax.swing.JFrame {
 
     List<ChucVuResponse> list = new ArrayList<>();
-    ViewChucVuService viewChucVuService = new ViewChucVuServiceImpl();
+    ChucVuService viewChucVuService = new ViewChucVuServiceImpl();
     ChucVuResponse One = new ChucVuResponse();
 
     /**
