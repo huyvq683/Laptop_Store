@@ -19,19 +19,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChiTietSPResponse {
+public class HoaDonChiTietResponse {
 
     private UUID id;
     private String ma;
     private String ten;
-    private String serial;
-    private String cPU;
-    private String hang;
-    private String ram;
-    private String card;
     private BigDecimal gia;
-
-    public Object[] toDataRow(int stt) {
-        return new Object[]{stt, ma, ten, cPU, ram, card, hang, gia};
-    }
 }

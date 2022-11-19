@@ -4,21 +4,22 @@
  */
 package service.impl;
 
-import customModel.ChiTietSPResponse;
+import customModel.HoaDonResponse;
 import java.util.List;
-import repository.impl.ChiTietSPRepository;
+import repository.impl.HoaDonRepository;
 import service.ChiTietSPService;
+import service.HoaDonService;
 
 /**
  *
  * @author FPT
  */
-public class ChiTietSPServiceImpl implements ChiTietSPService{
-    private ChiTietSPRepository chiTietSPRepository = new ChiTietSPRepository();
+public class HoaDonServiceImpl implements HoaDonService{
+
+    private HoaDonRepository hoaDonRepository = new HoaDonRepository();
 
     @Override
-    public List<ChiTietSPResponse> getAll() {
-       return chiTietSPRepository.getAll();
+    public List<HoaDonResponse> getAll() {
+        return hoaDonRepository.getAll();
     }
-    
 }

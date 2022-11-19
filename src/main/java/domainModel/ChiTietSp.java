@@ -30,7 +30,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ChiTietSp")
-public class ChiTietSp implements Serializable {
+public class ChiTietSP implements Serializable {
 
     @Id
     @GeneratedValue
@@ -53,7 +53,7 @@ public class ChiTietSp implements Serializable {
     @Column(name = "Ram")
     private String ram;
 
-    @Column(name = "Card")
+    @Column(name = "CardMH")
     private String card;
 
     @Column(name = "Gia")

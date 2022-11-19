@@ -4,10 +4,13 @@
  */
 package service;
 
+import customModel.HoaDonResponse;
+import java.util.List;
+
 /**
  *
  * @author FPT
  */
-public interface chiTietSPService {
-    
+public interface HoaDonService {
+    List<HoaDonResponse> getAll();
 }

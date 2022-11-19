@@ -5,11 +5,28 @@
  */
 package view;
 
+import customModel.ChiTietSPResponse;
+import customModel.HoaDonResponse;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import service.impl.ChiTietSPServiceImpl;
+import service.impl.HoaDonServiceImpl;
+import service.ChiTietSPService;
+import service.HoaDonService;
+
 /**
  *
  * @author dinhv
  */
 public class ViewQuanLy extends javax.swing.JFrame {
+
+    private DefaultTableModel dtmSanPham = new DefaultTableModel();
+    private DefaultTableModel dtmHoaDon = new DefaultTableModel();
+    private DefaultTableModel dtmGioHang = new DefaultTableModel();
+    private ChiTietSPService chiTietSPService = new ChiTietSPServiceImpl();
+    private HoaDonService hoaDonService = new HoaDonServiceImpl();
+    private List<ChiTietSPResponse> listChiTietSP = chiTietSPService.getAll();
+    private List<HoaDonResponse> listHoaDon = hoaDonService.getAll();
 
     /**
      * Creates new form FrmNhanVien1
@@ -19,6 +36,33 @@ public class ViewQuanLy extends javax.swing.JFrame {
         this.setExtendedState(this.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         panelKhachHang.setVisible(false);
+        tbHoaDon.setModel(dtmHoaDon);
+        String[] headeroaDon = {"STT", "Mã HĐ", "Ngày tạo", "Tên NV", "Tình trạng"};
+        dtmHoaDon.setColumnIdentifiers(headeroaDon);
+        tbGioHang.setModel(dtmGioHang);
+        tbSanPham.setModel(dtmSanPham);
+        String[] header = {"STT", "Mã", "Tên", "CPU", "Ram", "Card", "Hãng", "Gia"};
+        dtmSanPham.setColumnIdentifiers(header);
+        showDataHoaDonTable(listHoaDon);
+        showDataTableSanPham(listChiTietSP);
+    }
+
+    private void showDataHoaDonTable(List<HoaDonResponse> lists) {
+        dtmHoaDon.setRowCount(0);
+        int stt = 0;
+        for (HoaDonResponse hoaDonResponse : lists) {
+            stt++;
+            dtmHoaDon.addRow(hoaDonResponse.toDataRow(stt));
+        }
+    }
+
+    private void showDataTableSanPham(List<ChiTietSPResponse> lists) {
+        dtmSanPham.setRowCount(0);
+        int stt = 0;
+        for (ChiTietSPResponse chiTietSPResponse : lists) {
+            stt++;
+            dtmSanPham.addRow(chiTietSPResponse.toDataRow(stt));
+        }
     }
 
     /**
@@ -50,16 +94,16 @@ public class ViewQuanLy extends javax.swing.JFrame {
         panelBanHang = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblHoaDon = new javax.swing.JTable();
+        tbHoaDon = new javax.swing.JTable();
         btnTaoHoaDon = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblGioHang = new javax.swing.JTable();
+        tbGioHang = new javax.swing.JTable();
         btnBoKhoiGioHang = new javax.swing.JButton();
         btnClearGioHang = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblSanPham = new javax.swing.JTable();
+        tbSanPham = new javax.swing.JTable();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -223,51 +267,26 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnKhachHang.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnKhachHang.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKhachHangActionPerformed(evt);
-            }
-        });
 
         btnKhachHang1.setText("Sản Phẩm");
         btnKhachHang1.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnKhachHang1.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKhachHang1ActionPerformed(evt);
-            }
-        });
 
         btnKhachHang2.setText("Khuyến Mại");
         btnKhachHang2.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnKhachHang2.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKhachHang2ActionPerformed(evt);
-            }
-        });
 
         btnKhachHang3.setText("Nhân Viên");
         btnKhachHang3.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnKhachHang3.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKhachHang3ActionPerformed(evt);
-            }
-        });
 
         btnKhachHang4.setText("Thống Kê");
         btnKhachHang4.setBackground(new java.awt.Color(22, 111, 229));
         btnKhachHang4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnKhachHang4.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKhachHang4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -336,7 +355,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
-        tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
+        tbHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -344,7 +363,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
                 "STT", "Mã Hóa Đơn", "Ngày Tạo", "Tên Nhân Viên"
             }
         ));
-        jScrollPane1.setViewportView(tblHoaDon);
+        jScrollPane1.setViewportView(tbHoaDon);
 
         btnTaoHoaDon.setText("Tạo hóa đơn");
         btnTaoHoaDon.setBackground(new java.awt.Color(0, 51, 51));
@@ -376,7 +395,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giỏ Hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
-        tblGioHang.setModel(new javax.swing.table.DefaultTableModel(
+        tbGioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -384,7 +403,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
                 "STT", "Mã Sản Phẩm", "Tên Sản Phẩm", "Đơn Giá"
             }
         ));
-        jScrollPane3.setViewportView(tblGioHang);
+        jScrollPane3.setViewportView(tbGioHang);
 
         btnBoKhoiGioHang.setText("Bỏ khỏi giỏ hàng");
         btnBoKhoiGioHang.setBackground(new java.awt.Color(0, 51, 51));
@@ -424,7 +443,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
-        tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
+        tbSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -432,7 +451,12 @@ public class ViewQuanLy extends javax.swing.JFrame {
                 "STT", "Mã Sản Phẩm", "Tên Sản Phẩm", "Đơn Giá", "Thương Hiệu", "CPU", "Ram", "Card"
             }
         ));
-        jScrollPane2.setViewportView(tblSanPham);
+        tbSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbSanPhamMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbSanPham);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "(Trống)", "Intel Core i3", "Intel Core i5", "Intel Core i7", "Intel Core i9", "Ryzen 3", "Ryzen 5", "Ryzen 7", "Ryzen 9" }));
 
@@ -857,12 +881,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
         jLabel30.setText("Mã");
-
-        txtTenSanPham.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTenSanPhamActionPerformed(evt);
-            }
-        });
 
         jLabel36.setText("Tên SP");
 
@@ -1442,29 +1460,10 @@ public class ViewQuanLy extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
-        panelKhachHang.setVisible(false);
-    }//GEN-LAST:event_btnKhachHangActionPerformed
-
-    private void btnKhachHang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHang1ActionPerformed
+    private void tbSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSanPhamMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnKhachHang1ActionPerformed
 
-    private void btnKhachHang2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHang2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnKhachHang2ActionPerformed
-
-    private void btnKhachHang3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHang3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnKhachHang3ActionPerformed
-
-    private void btnKhachHang4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHang4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnKhachHang4ActionPerformed
-
-    private void txtTenSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenSanPhamActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTenSanPhamActionPerformed
+    }//GEN-LAST:event_tbSanPhamMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1638,12 +1637,12 @@ public class ViewQuanLy extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdoNu1;
     private javax.swing.JRadioButton rdoQuanLy;
     private javax.swing.JTabbedPane tablepanel;
+    private javax.swing.JTable tbGioHang;
+    private javax.swing.JTable tbHoaDon;
+    private javax.swing.JTable tbSanPham;
     private javax.swing.JPanel tblChiTietSanPham;
     private javax.swing.JTable tblDanhSachKhachHang;
-    private javax.swing.JTable tblGioHang;
-    private javax.swing.JTable tblHoaDon;
     private javax.swing.JTable tblNhanVien;
-    private javax.swing.JTable tblSanPham;
     private javax.swing.JTable tblSanPham2;
     private javax.swing.JTextField txtCardSP;
     private javax.swing.JTextField txtCpuSP;

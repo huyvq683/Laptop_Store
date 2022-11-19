@@ -1,6 +1,6 @@
 package utiliti;
 
-import domainModel.ChiTietSp;
+import domainModel.ChiTietSP;
 import domainModel.ChucVu;
 import domainModel.HoaDon;
 import domainModel.HoaDonChiTiet;
@@ -26,7 +26,7 @@ public class HibernateUtil {
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1");
         properties.put(Environment.USER, "sa");
-        properties.put(Environment.PASS, "");
+        properties.put(Environment.PASS, "25082003");
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
@@ -35,7 +35,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(ChucVu.class);
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(HoaDon.class);
-        conf.addAnnotatedClass(ChiTietSp.class);
+        conf.addAnnotatedClass(ChiTietSP.class);
         conf.addAnnotatedClass(HoaDonChiTiet.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
