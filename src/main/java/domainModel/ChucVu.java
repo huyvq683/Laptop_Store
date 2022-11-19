@@ -32,18 +32,18 @@ public class ChucVu implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "Id")
-    private UUID id;
-    
+    private UUID Id;
+
     @Column(name = "Ma")
-    private String ma;
+    private String Ma;
 
     @Column(name = "Ten")
-    private String ten;
+    private String Ten;
 
     @Column(name = "CreatedDate")
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date alstModifiedDate;
+    private Date lastModifiedDate;
 
 }
