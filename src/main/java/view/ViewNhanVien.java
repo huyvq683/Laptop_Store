@@ -6,9 +6,11 @@
 package view;
 
 import customModel.ChiTietSPResponse;
+import customModel.ChucVuResponse;
 import customModel.HoaDonResponse;
 import domainModel.HoaDon;
 import domainModel.NhanVien;
+import domainModel.TenTkNhanVien;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -837,7 +839,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
         int maHD = hoaDonService.genMaHD();
         hoaDon.setMa("HD" + maHD);
         hoaDon.setNgayTao((new Date()));
-        NhanVien nhanVien = nhanVienService.getOne("huy@gmail.com");
+        NhanVien nhanVien = nhanVienService.getOne(TenTkNhanVien.tenNV.getEmail());
         hoaDon.setIdNV(nhanVien);
         hoaDon.setTinhTrang(0);
         JOptionPane.showMessageDialog(this, hoaDonService.add(hoaDon));

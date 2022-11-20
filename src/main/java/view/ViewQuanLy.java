@@ -10,6 +10,7 @@ import customModel.HoaDonChiTietResponse;
 import customModel.HoaDonResponse;
 import domainModel.HoaDon;
 import domainModel.NhanVien;
+import domainModel.TenTkNhanVien;
 import java.awt.FlowLayout;
 import static java.lang.Thread.sleep;
 import java.text.SimpleDateFormat;
@@ -684,7 +685,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         panelBanHang.setLayout(new FlowLayout());
         this.pack();
         nv.setVisible(true);
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+//        this.setExtendedState(this.MAXIMIZED_BOTH);
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
@@ -704,7 +705,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         panelBanHang.setLayout(new FlowLayout());
         this.pack();
         kh.setVisible(true);
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+//        this.setExtendedState(this.MAXIMIZED_BOTH);
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
@@ -714,7 +715,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         panelBanHang.setLayout(new FlowLayout());
         this.pack();
         sp.setVisible(true);
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+//        this.setExtendedState(this.MAXIMIZED_BOTH);
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
     private void btnKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenMaiActionPerformed
@@ -733,7 +734,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         int maHD = hoaDonService.genMaHD();
         hoaDon.setMa("HD" + maHD);
         hoaDon.setNgayTao((new Date()));
-        NhanVien nhanVien = nhanVienService.getOne("huy@gmail.com");
+        NhanVien nhanVien = nhanVienService.getOne(TenTkNhanVien.tenNV.getEmail());
         hoaDon.setIdNV(nhanVien);
         hoaDon.setTinhTrang(0);
         JOptionPane.showMessageDialog(this, hoaDonService.add(hoaDon));

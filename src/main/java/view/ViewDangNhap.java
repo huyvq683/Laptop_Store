@@ -6,6 +6,7 @@
 package view;
 
 import customModel.ChucVuResponse;
+import domainModel.TenTkNhanVien;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
     private List<ChucVuResponse> list = new ArrayList<>();
     private ChucVuService viewChucVuService = new ChucVuServiceImpl();
     private NhanVienService nhanVienService = new NhanVienServiceImpl();
-    private ChucVuResponse One = new ChucVuResponse();
+    private ChucVuResponse one = new ChucVuResponse();
 
     /**
      * Creates new form DangNhap
@@ -44,7 +45,8 @@ public class ViewDangNhap extends javax.swing.JFrame {
         getList();
         for (ChucVuResponse ChucVuResponse : list) {
             if (txtTaiKhoan.getText().equalsIgnoreCase(ChucVuResponse.getEmail())) {
-                One = new ChucVuResponse(ChucVuResponse.getEmail(), ChucVuResponse.getMatKhau(), ChucVuResponse.getTen(), ChucVuResponse.getMa(), ChucVuResponse.getTrangThai());
+                one = new ChucVuResponse(ChucVuResponse.getEmail(), ChucVuResponse.getMatKhau(), ChucVuResponse.getTen(), ChucVuResponse.getMa(), ChucVuResponse.getTrangThai());
+                TenTkNhanVien.tenNV = one;
             }
         }
     }
@@ -68,22 +70,22 @@ public class ViewDangNhap extends javax.swing.JFrame {
             return "Tài Khoản Trống";
         } else {
             getOne();
-            if (!txtTaiKhoan.getText().trim().equalsIgnoreCase(One.getEmail())) {
+            if (!txtTaiKhoan.getText().trim().equalsIgnoreCase(one.getEmail())) {
                 return "Tài Khoản Không Tồn Tại";
             } else {
                 if (String.valueOf(txtMatKhau.getPassword()).trim().isBlank()) {
                     return "Mật Khẩu Trống";
                 } else {
-                    if (!String.valueOf(txtMatKhau.getPassword()).trim().equalsIgnoreCase(One.getMatKhau())) {
+                    if (!String.valueOf(txtMatKhau.getPassword()).trim().equalsIgnoreCase(one.getMatKhau())) {
                         return "Mật Khẩu Sai";
                     } else {
                         if (!rdoQuanLi.isSelected() && !rdoNhanVien.isSelected()) {
                             return "Chưa Chọn Chức Vụ";
                         } else {
-                            if (!getCV().equalsIgnoreCase(One.getTen())) {
+                            if (!getCV().equalsIgnoreCase(one.getTen())) {
                                 return "Chức Vụ Không Chính Xác";
                             } else {
-                                if (One.getTrangThai() == 1) {
+                                if (one.getTrangThai() == 1) {
                                     return "Tài Khoản Đã Xóa";
                                 } else {
                                     return null;
