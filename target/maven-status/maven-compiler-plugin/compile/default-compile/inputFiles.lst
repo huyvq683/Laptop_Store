@@ -1,6 +1,23 @@
-D:\FPT Polytechnic\Ki 4\Du an 1\project2\src\main\java\view\ViewDangNhap.java
-D:\FPT Polytechnic\Ki 4\Du an 1\project2\src\main\java\Utilities\HibernatUtil.java
-D:\FPT Polytechnic\Ki 4\Du an 1\project2\src\main\java\view\ViewDoiMatKhau1.java
-D:\FPT Polytechnic\Ki 4\Du an 1\project2\src\main\java\view\ViewQuenMatKhau.java
-D:\FPT Polytechnic\Ki 4\Du an 1\project2\src\main\java\view\ViewNhanVien.java
-D:\FPT Polytechnic\Ki 4\Du an 1\project2\src\main\java\view\ViewDoiMatKhau2.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\view\ViewQuenMatKhau.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\service\ChiTietSPService.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\service\impl\ChiTietSPServiceImpl.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\service\impl\HoaDonServiceImpl.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\repository\Repository.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\domainModel\HoaDonChiTiet.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\domainModel\NhanVien.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\domainModel\SanPham.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\service\HoaDonService.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\domainModel\ChiTietSP.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\view\ViewNhanVien.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\view\ViewDoiMatKhau2.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\customModel\ChiTietSPResponse.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\repository\impl\HoaDonRepository.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\utiliti\HibernateUtil.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\view\ViewQuanLy.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\customModel\HoaDonResponse.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\domainModel\KhachHang.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\repository\impl\ChiTietSPRepository.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\customModel\HoaDonChiTietResponse.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\view\ViewDoiMatKhau1.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\view\ViewDangNhap.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangLaptop\src\main\java\domainModel\HoaDon.java
