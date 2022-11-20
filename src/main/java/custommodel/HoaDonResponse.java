@@ -22,7 +22,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HoaDonResponse {
-
     private UUID id;
     private String ma;
     private Date ngayTao;
