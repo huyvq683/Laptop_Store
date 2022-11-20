@@ -5,10 +5,13 @@
 package repository.impl;
 
 import customModel.HoaDonResponse;
+import domainModel.HoaDon;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import repository.Repository;
 import utiliti.HibernateUtil;
 
@@ -33,8 +36,44 @@ public class HoaDonRepository implements Repository<HoaDonResponse> {
         return lists;
     }
 
+    public Boolean add(HoaDon hoaDon) {
+        boolean check = false;
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(hoaDon);
+            transaction.commit();
+            check = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+
+    public int genMaHD() {
+        String maHD = "";
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            NativeQuery query = session.createNativeQuery("SELECT MAX(CONVERT(INT, SUBSTRING(Ma, 3, 10))) FROM HoaDon");
+            maHD = query.getSingleResult().toString();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        if (maHD == null) {
+            maHD = "0";
+            int ma = Integer.valueOf(maHD);
+            return ++ma;
+        }
+        int ma = Integer.valueOf(maHD);
+        return ++ma;
+    }
+
+    @Override
+    public Boolean add(HoaDonResponse t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public static void main(String[] args) {
-        List<HoaDonResponse> lists = new HoaDonRepository().getAll();
+        List<HoaDonResponse>lists = new HoaDonRepository().getAll();
         System.out.println(lists);
     }
 }

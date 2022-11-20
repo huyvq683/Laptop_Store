@@ -5,13 +5,26 @@
  */
 package view;
 
+import customModel.NhanVienResponse;
+import domainModel.TenTkNhanVien;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import service.impl.ChucVuServiceImpl;
+import service.ChucVuService;
+import service.NhanVienService;
+import service.impl.NhanVienServiceImpl;
 
 /**
  *
  * @author dinhv
  */
 public class ViewDangNhap extends javax.swing.JFrame {
+
+    private List<NhanVienResponse> list = new ArrayList<>();
+    private NhanVienService nhanVienService = new NhanVienServiceImpl();
+    private NhanVienResponse one = new NhanVienResponse();
 
     /**
      * Creates new form DangNhap
@@ -21,6 +34,68 @@ public class ViewDangNhap extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         txtTaiKhoan.setBackground(new Color(0, 0, 0, 0));
         txtMatKhau.setBackground(new Color(0, 0, 0, 0));
+    }
+
+    public void getList() {
+        list = nhanVienService.getAll();
+    }
+
+    public void getOne() {
+        getList();
+        for (NhanVienResponse nhanVienResponse : list) {
+            if (txtTaiKhoan.getText().equalsIgnoreCase(nhanVienResponse.getEmail())) {
+                one = new NhanVienResponse(nhanVienResponse.getId(), nhanVienResponse.getMa(), nhanVienResponse.getTen(), nhanVienResponse.getEmail(), nhanVienResponse.getMatKhau(), nhanVienResponse.getChucVu(), nhanVienResponse.getTrangThai());
+                TenTkNhanVien.tenNV = one;
+            }
+        }
+    }
+
+    public void StartPro() {
+        if (getCV() == 0) {
+            ViewQuanLy viewQuanLy = new ViewQuanLy();
+            viewQuanLy.setVisible(true);
+        } else {
+            ViewNhanVien viewNhanVien = new ViewNhanVien();
+            viewNhanVien.setVisible(true);
+        }
+    }
+
+    public int getCV() {
+        return rdoQuanLi.isSelected() ? 0 : 1;
+    }
+
+    public String validateCV() {
+        if (txtTaiKhoan.getText().trim().isBlank()) {
+            return "Tài Khoản Trống";
+        } else {
+            getOne();
+            if (!txtTaiKhoan.getText().trim().equalsIgnoreCase(one.getEmail())) {
+                return "Tài Khoản Không Tồn Tại";
+            } else {
+                if (String.valueOf(txtMatKhau.getPassword()).trim().isBlank()) {
+                    return "Mật Khẩu Trống";
+                } else {
+                    if (!String.valueOf(txtMatKhau.getPassword()).trim().equalsIgnoreCase(one.getMatKhau())) {
+                        return "Mật Khẩu Sai";
+                    } else {
+                        if (!rdoQuanLi.isSelected() && !rdoNhanVien.isSelected()) {
+                            return "Chưa Chọn Chức Vụ";
+                        } else {
+                            if (getCV() != (one.getChucVu())) {
+                                return "Chức Vụ Không Chính Xác";
+                            } else {
+                                if (one.getTrangThai() == 1) {
+                                    return "Tài Khoản Đã Xóa";
+                                } else {
+                                    return null;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
     }
 
     /**
@@ -89,11 +164,21 @@ public class ViewDangNhap extends javax.swing.JFrame {
         btnDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
 
         btnHuyBo.setBackground(new java.awt.Color(255, 51, 51));
         btnHuyBo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnHuyBo.setForeground(new java.awt.Color(255, 255, 255));
         btnHuyBo.setText("Hủy bỏ");
+        btnHuyBo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyBoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,7 +239,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblQuenMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseClicked
-        this.dispose();;
+        this.dispose();
     }//GEN-LAST:event_lblQuenMKMouseClicked
 
     private void lblQuenMKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseEntered
@@ -164,6 +249,20 @@ public class ViewDangNhap extends javax.swing.JFrame {
     private void lblQuenMKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseExited
         lblQuenMK.setForeground(new Color(0, 102, 102));
     }//GEN-LAST:event_lblQuenMKMouseExited
+
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        // TODO add your handling code here:
+        if (validateCV() == null) {
+            StartPro();
+        } else {
+            JOptionPane.showMessageDialog(this, validateCV());
+        }
+    }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnHuyBoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,16 +278,24 @@ public class ViewDangNhap extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

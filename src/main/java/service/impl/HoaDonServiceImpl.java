@@ -5,9 +5,9 @@
 package service.impl;
 
 import customModel.HoaDonResponse;
+import domainModel.HoaDon;
 import java.util.List;
 import repository.impl.HoaDonRepository;
-import service.ChiTietSPService;
 import service.HoaDonService;
 
 /**
@@ -21,5 +21,21 @@ public class HoaDonServiceImpl implements HoaDonService{
     @Override
     public List<HoaDonResponse> getAll() {
         return hoaDonRepository.getAll();
+    }
+
+    @Override
+    public String add(HoaDon hoaDon) {
+        boolean add = hoaDonRepository.add(hoaDon);
+        if(add){
+            return "Thành công";
+        }
+        else{
+            return "Thất bại";
+        }
+    }
+
+    @Override
+    public int genMaHD() {
+        return hoaDonRepository.genMaHD();
     }
 }

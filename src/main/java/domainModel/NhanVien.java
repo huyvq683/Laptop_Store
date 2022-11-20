@@ -11,14 +11,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.bytebuddy.utility.nullability.MaybeNull;
 
 /**
  *
@@ -59,8 +56,8 @@ public class NhanVien implements Serializable {
     private String email;
     
     @Column(name = "ChucVu")
-    private String chucVu;
-    
+    private int chucVu;
+
     @Column(name = "MatKhau")
     private String matKhau;
 
@@ -72,5 +69,5 @@ public class NhanVien implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
-    
+
 }

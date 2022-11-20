@@ -32,8 +32,9 @@ public class ChiTietSPRepository implements Repository<ChiTietSPResponse>{
         }
         return lists;
     }
-    public static void main(String[] args) {
-        List<ChiTietSPResponse>list = new ChiTietSPRepository().getAll();
-        System.out.println(list);
+
+    @Override
+    public Boolean add(ChiTietSPResponse t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

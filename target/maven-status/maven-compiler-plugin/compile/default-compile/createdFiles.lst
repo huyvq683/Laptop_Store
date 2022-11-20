@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 service\HoaDonService.class
 service\impl\ChiTietSPServiceImpl.class
+=======
+>>>>>>> develop_phase2_hungpv
 view\ViewDangNhap.class
 repository\impl\ChiTietSPRepository.class
 repository\Repository.class
 view\ViewDangNhap$2.class
+<<<<<<< HEAD
 utiliti\HibernateUtil.class
 view\ViewQuenMatKhau$1.class
 domainModel\KhachHang.class
@@ -21,13 +25,24 @@ domainModel\SanPham.class
 view\ViewDangNhap$1.class
 view\ViewNhanVien$3.class
 repository\impl\HoaDonRepository.class
+=======
+view\ViewQuenMatKhau$1.class
+view\ViewDoiMatKhau1$1.class
+view\ViewNhanVien$2.class
+view\ViewDoiMatKhau2$1.class
+view\ViewDangNhap$1.class
+>>>>>>> develop_phase2_hungpv
 view\ViewDoiMatKhau2.class
 view\ViewNhanVien.class
 view\ViewNhanVien$1.class
 view\ViewDoiMatKhau1.class
+<<<<<<< HEAD
 domainModel\ChiTietSP.class
 domainModel\HoaDonChiTiet.class
 service\impl\HoaDonServiceImpl.class
 view\ViewQuanLy$1.class
 view\ViewQuenMatKhau.class
 customModel\HoaDonResponse.class
+=======
+view\ViewQuenMatKhau.class
+>>>>>>> develop_phase2_hungpv

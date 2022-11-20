@@ -5,6 +5,7 @@
 package service;
 
 import customModel.HoaDonResponse;
+import domainModel.HoaDon;
 import java.util.List;
 
 /**
@@ -12,5 +13,11 @@ import java.util.List;
  * @author FPT
  */
 public interface HoaDonService {
+
     List<HoaDonResponse> getAll();
+
+    String add(HoaDon hoaDon);
+    
+    int genMaHD();
+    
 }
