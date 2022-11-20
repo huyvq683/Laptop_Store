@@ -25,7 +25,7 @@ public class HoaDonChiTietResponse {
     private String ma;
     private String ten;
     private BigDecimal gia;
-    
+
     public Object[] toDataRow(int stt) {
         return new Object[]{stt, ma, ten, gia};
     }
