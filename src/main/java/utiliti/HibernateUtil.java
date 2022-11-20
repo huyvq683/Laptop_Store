@@ -1,7 +1,6 @@
 package utiliti;
 
 import domainModel.ChiTietSP;
-import domainModel.ChucVu;
 import domainModel.HoaDon;
 import domainModel.HoaDonChiTiet;
 import domainModel.KhachHang;
@@ -32,7 +31,6 @@ public class HibernateUtil {
         conf.setProperties(properties);
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(NhanVien.class);
-        conf.addAnnotatedClass(ChucVu.class);
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(HoaDon.class);
         conf.addAnnotatedClass(ChiTietSP.class);

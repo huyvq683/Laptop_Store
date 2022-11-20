@@ -36,10 +36,6 @@ public class NhanVien implements Serializable {
     @GeneratedValue
     @Column(name = "Id")
     private UUID id;
-    
-    @ManyToOne
-    @JoinColumn(name = "IdChucVu")
-    private ChucVu idChuVu;
 
     @Column(name = "Ma")
     private String ma;
@@ -61,6 +57,9 @@ public class NhanVien implements Serializable {
 
     @Column(name = "Email")
     private String email;
+    
+    @Column(name = "ChucVu")
+    private String chucVu;
     
     @Column(name = "MatKhau")
     private String matKhau;
