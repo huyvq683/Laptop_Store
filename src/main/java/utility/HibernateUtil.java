@@ -1,4 +1,4 @@
-package utilities;
+package utility;
 
 import java.util.Properties;
 import org.hibernate.SessionFactory;
@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-public class HibernatUtil {
+public class HibernateUtil {
 
     private static final SessionFactory FACTORY;
 
@@ -37,5 +37,4 @@ public class HibernatUtil {
     public static void main(String[] args) {
         getFACTORY();
     }
-
 }
