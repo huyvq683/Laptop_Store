@@ -5,7 +5,7 @@
  */
 package view;
 
-import customModel.ChucVuResponse;
+import customModel.NhanVienResponse;
 import domainModel.TenTkNhanVien;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -22,10 +22,9 @@ import service.impl.NhanVienServiceImpl;
  */
 public class ViewDangNhap extends javax.swing.JFrame {
 
-    private List<ChucVuResponse> list = new ArrayList<>();
-    private ChucVuService viewChucVuService = new ChucVuServiceImpl();
+    private List<NhanVienResponse> list = new ArrayList<>();
     private NhanVienService nhanVienService = new NhanVienServiceImpl();
-    private ChucVuResponse one = new ChucVuResponse();
+    private NhanVienResponse one = new NhanVienResponse();
 
     /**
      * Creates new form DangNhap
@@ -38,21 +37,21 @@ public class ViewDangNhap extends javax.swing.JFrame {
     }
 
     public void getList() {
-        list = viewChucVuService.getAll();
+        list = nhanVienService.getAll();
     }
 
     public void getOne() {
         getList();
-        for (ChucVuResponse ChucVuResponse : list) {
-            if (txtTaiKhoan.getText().equalsIgnoreCase(ChucVuResponse.getEmail())) {
-                one = new ChucVuResponse(ChucVuResponse.getEmail(), ChucVuResponse.getMatKhau(), ChucVuResponse.getTen(), ChucVuResponse.getMa(), ChucVuResponse.getTrangThai());
+        for (NhanVienResponse nhanVienResponse : list) {
+            if (txtTaiKhoan.getText().equalsIgnoreCase(nhanVienResponse.getEmail())) {
+                one = new NhanVienResponse(nhanVienResponse.getId(), nhanVienResponse.getMa(), nhanVienResponse.getTen(), nhanVienResponse.getEmail(), nhanVienResponse.getMatKhau(), nhanVienResponse.getChucVu(), nhanVienResponse.getTrangThai());
                 TenTkNhanVien.tenNV = one;
             }
         }
     }
 
     public void StartPro() {
-        if (getCV().equalsIgnoreCase("Quản Lý")) {
+        if (getCV() == 0) {
             ViewQuanLy viewQuanLy = new ViewQuanLy();
             viewQuanLy.setVisible(true);
         } else {
@@ -61,8 +60,8 @@ public class ViewDangNhap extends javax.swing.JFrame {
         }
     }
 
-    public String getCV() {
-        return rdoQuanLi.isSelected() ? "Quản Lý" : "Nhân Viên";
+    public int getCV() {
+        return rdoQuanLi.isSelected() ? 0 : 1;
     }
 
     public String validateCV() {
@@ -82,7 +81,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
                         if (!rdoQuanLi.isSelected() && !rdoNhanVien.isSelected()) {
                             return "Chưa Chọn Chức Vụ";
                         } else {
-                            if (!getCV().equalsIgnoreCase(one.getTen())) {
+                            if (getCV() != (one.getChucVu())) {
                                 return "Chức Vụ Không Chính Xác";
                             } else {
                                 if (one.getTrangThai() == 1) {

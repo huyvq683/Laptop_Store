@@ -11,8 +11,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,10 +34,6 @@ public class NhanVien implements Serializable {
     @Column(name = "Id")
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "idChucVu")
-    private ChucVu idChucVu;
-
     @Column(name = "Ma")
     private String ma;
 
@@ -60,6 +54,9 @@ public class NhanVien implements Serializable {
 
     @Column(name = "Email")
     private String email;
+    
+    @Column(name = "ChucVu")
+    private int chucVu;
 
     @Column(name = "MatKhau")
     private String matKhau;

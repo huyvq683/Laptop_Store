@@ -6,7 +6,7 @@
 package view;
 
 import customModel.ChiTietSPResponse;
-import customModel.ChucVuResponse;
+import customModel.NhanVienResponse;
 import customModel.HoaDonResponse;
 import domainModel.HoaDon;
 import domainModel.NhanVien;

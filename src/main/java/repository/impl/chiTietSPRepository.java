@@ -32,10 +32,6 @@ public class ChiTietSPRepository implements Repository<ChiTietSPResponse>{
         }
         return lists;
     }
-    public static void main(String[] args) {
-        List<ChiTietSPResponse>list = new ChiTietSPRepository().getAll();
-        System.out.println(list);
-    }
 
     @Override
     public Boolean add(ChiTietSPResponse t) {

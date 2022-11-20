@@ -1,6 +1,6 @@
 package service.impl;
 
-import customModel.ChucVuResponse;
+import customModel.NhanVienResponse;
 import java.util.List;
 import repository.impl.ChucVuRepository;
 import service.ChucVuService;
@@ -18,7 +18,7 @@ public class ChucVuServiceImpl implements ChucVuService {
     private ChucVuRepository ChucVuRepository = new ChucVuRepository();
 
     @Override
-    public List<ChucVuResponse> getAll() {
+    public List<NhanVienResponse> getAll() {
         return ChucVuRepository.getAll();
     }
 

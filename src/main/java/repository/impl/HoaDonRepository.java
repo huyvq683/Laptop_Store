@@ -72,4 +72,8 @@ public class HoaDonRepository implements Repository<HoaDonResponse> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public static void main(String[] args) {
+        List<HoaDonResponse>lists = new HoaDonRepository().getAll();
+        System.out.println(lists);
+    }
 }

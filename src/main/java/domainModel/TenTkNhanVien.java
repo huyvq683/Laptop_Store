@@ -4,7 +4,7 @@
  */
 package domainModel;
 
-import customModel.ChucVuResponse;
+import customModel.NhanVienResponse;
 
 /**
  *
@@ -12,5 +12,5 @@ import customModel.ChucVuResponse;
  */
 
 public class TenTkNhanVien {
-    public static ChucVuResponse tenNV;
+    public static NhanVienResponse tenNV;
 }

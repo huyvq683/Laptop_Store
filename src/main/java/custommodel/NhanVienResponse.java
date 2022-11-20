@@ -4,6 +4,7 @@
  */
 package customModel;
 
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,11 +20,14 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ChucVuResponse {
-
+public class NhanVienResponse {
+    
+    private UUID id;
+    private String ma;
+    private String ten;
     private String email;
     private String matKhau;
-    private String ten;
-    private String ma;
+    private int chucVu;
     private int trangThai;
+    
 }

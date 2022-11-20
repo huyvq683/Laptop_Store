@@ -4,7 +4,9 @@
  */
 package service.impl;
 
+import customModel.NhanVienResponse;
 import domainModel.NhanVien;
+import java.util.List;
 import repository.impl.NhanVienRepository;
 import service.NhanVienService;
 
@@ -19,6 +21,11 @@ public class NhanVienServiceImpl implements NhanVienService {
     @Override
     public NhanVien getOne(String email) {
         return nhanVienRepository.getOne(email);
+    }
+
+    @Override
+    public List<NhanVienResponse> getAll() {
+        return nhanVienRepository.getAll();
     }
 
 }

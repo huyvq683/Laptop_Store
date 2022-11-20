@@ -4,7 +4,9 @@
  */
 package service;
 
+import customModel.NhanVienResponse;
 import domainModel.NhanVien;
+import java.util.List;
 
 /**
  *
@@ -13,5 +15,7 @@ import domainModel.NhanVien;
 public interface NhanVienService {
 
     NhanVien getOne(String email);
+
+    List<NhanVienResponse> getAll();
     
 }
