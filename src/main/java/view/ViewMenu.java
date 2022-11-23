@@ -55,8 +55,6 @@ public class ViewMenu extends javax.swing.JPanel {
         g2.fillRect(getWidth() - 20, 0, getWidth(), getHeight());
         super.paintChildren(g);
     }
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

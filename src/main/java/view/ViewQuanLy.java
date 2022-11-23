@@ -5,6 +5,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -14,6 +15,16 @@ import javax.swing.ImageIcon;
  */
 public class ViewQuanLy extends javax.swing.JFrame {
 
+    //Biến để làm hover í mà anh không cần quan tâm
+    private int b1 = 0;
+    private int b2 = 0;
+    private int b3 = 0;
+    private int b4 = 0;
+    private int b5 = 0;
+    private int b6 = 0;
+    private int b7 = 0;
+    private int b8 = 0;
+
     /**
      * Creates new form ViewQuanLy
      */
@@ -21,6 +32,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
         initComponents();
         designImg();
         designMenu();
+        btnBanHang.setBackground(new Color(50, 159, 200));
+        panelMain.removeAll();
+        ViewBanHang viewBanHang = new ViewBanHang();
+        panelMain.add(viewBanHang);
+        panelMain.setLayout(new FlowLayout());
+        this.pack();
+        viewBanHang.setVisible(true);
     }
 
     private Image scaleImage(Image image, int w, int h) {
@@ -124,10 +142,10 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnKhachHang = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        panelMain = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1500, 850));
+        setPreferredSize(new java.awt.Dimension(1450, 850));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -142,6 +160,17 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnSanPham.setAlignmentY(0.0F);
         btnSanPham.setBorder(null);
         btnSanPham.setMargin(new java.awt.Insets(2, 13, 2, 14));
+        btnSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSanPhamMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSanPhamMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSanPhamMouseExited(evt);
+            }
+        });
         btnSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSanPhamActionPerformed(evt);
@@ -155,6 +184,17 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnBanHang.setText("Bán hàng");
         btnBanHang.setAlignmentY(0.0F);
         btnBanHang.setBorder(null);
+        btnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBanHangMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBanHangMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBanHangMouseExited(evt);
+            }
+        });
         btnBanHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBanHangActionPerformed(evt);
@@ -168,6 +208,17 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnNhanVien.setText("Nhân viên");
         btnNhanVien.setAlignmentY(0.0F);
         btnNhanVien.setBorder(null);
+        btnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNhanVienMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNhanVienMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNhanVienMouseExited(evt);
+            }
+        });
         btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNhanVienActionPerformed(evt);
@@ -183,6 +234,17 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnHoaDon.setActionCommand("   Hóa đơn");
         btnHoaDon.setAlignmentY(0.0F);
         btnHoaDon.setBorder(null);
+        btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHoaDonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnHoaDonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnHoaDonMouseExited(evt);
+            }
+        });
         btnHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHoaDonActionPerformed(evt);
@@ -196,6 +258,17 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnkhuyenMai.setText("Khuyến mãi");
         btnkhuyenMai.setAlignmentY(0.0F);
         btnkhuyenMai.setBorder(null);
+        btnkhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnkhuyenMaiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnkhuyenMaiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnkhuyenMaiMouseExited(evt);
+            }
+        });
         btnkhuyenMai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnkhuyenMaiActionPerformed(evt);
@@ -209,6 +282,17 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnKhachHang.setText("Khách hàng");
         btnKhachHang.setAlignmentY(0.0F);
         btnKhachHang.setBorder(null);
+        btnKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKhachHangMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnKhachHangMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnKhachHangMouseExited(evt);
+            }
+        });
         btnKhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKhachHangActionPerformed(evt);
@@ -222,6 +306,17 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnThongKe.setText("Thống kê");
         btnThongKe.setAlignmentY(0.0F);
         btnThongKe.setBorder(null);
+        btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThongKeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnThongKeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnThongKeMouseExited(evt);
+            }
+        });
         btnThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThongKeActionPerformed(evt);
@@ -235,6 +330,17 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnThoat.setText("Thoát");
         btnThoat.setAlignmentY(0.0F);
         btnThoat.setBorder(null);
+        btnThoat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThoatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnThoatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnThoatMouseExited(evt);
+            }
+        });
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThoatActionPerformed(evt);
@@ -293,16 +399,20 @@ public class ViewQuanLy extends javax.swing.JFrame {
             .addComponent(view2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        panelMain.setBackground(new java.awt.Color(255, 255, 255));
+        panelMain.setMaximumSize(new java.awt.Dimension(1254, 850));
+        panelMain.setMinimumSize(new java.awt.Dimension(1254, 850));
+        panelMain.setName(""); // NOI18N
+        panelMain.setPreferredSize(new java.awt.Dimension(1254, 850));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
+        panelMain.setLayout(panelMainLayout);
+        panelMainLayout.setHorizontalGroup(
+            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1254, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelMainLayout.setVerticalGroup(
+            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -312,13 +422,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -359,6 +469,231 @@ public class ViewQuanLy extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThoatActionPerformed
 
+    private void btnBanHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseExited
+        if (b1 == 0) {
+            btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        }
+    }//GEN-LAST:event_btnBanHangMouseExited
+
+    private void btnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseClicked
+        b1 = 1;
+        b2 = 0;
+        b3 = 0;
+        b4 = 0;
+        b5 = 0;
+        b6 = 0;
+        b7 = 0;
+        b8 = 0;
+
+        btnSanPham.setBackground(new Color(0, 0, 0, 0));
+        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
+        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
+        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
+        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThoat.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_btnBanHangMouseClicked
+
+    private void btnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseClicked
+        b1 = 0;
+        b2 = 1;
+        b3 = 0;
+        b4 = 0;
+        b5 = 0;
+        b6 = 0;
+        b7 = 0;
+        b8 = 0;
+        btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
+        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
+        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
+        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThoat.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_btnSanPhamMouseClicked
+
+    private void btnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseClicked
+        b1 = 0;
+        b2 = 0;
+        b3 = 1;
+        b4 = 0;
+        b5 = 0;
+        b6 = 0;
+        b7 = 0;
+        b8 = 0;
+        btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        btnSanPham.setBackground(new Color(0, 0, 0, 0));
+        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
+        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
+        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThoat.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_btnNhanVienMouseClicked
+
+    private void btnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseClicked
+        b1 = 0;
+        b2 = 0;
+        b3 = 0;
+        b4 = 1;
+        b5 = 0;
+        b6 = 0;
+        b7 = 0;
+        b8 = 0;
+        btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        btnSanPham.setBackground(new Color(0, 0, 0, 0));
+        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
+        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
+        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThoat.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_btnHoaDonMouseClicked
+
+    private void btnkhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnkhuyenMaiMouseClicked
+        b1 = 0;
+        b2 = 0;
+        b3 = 0;
+        b4 = 0;
+        b5 = 1;
+        b6 = 0;
+        b7 = 0;
+        b8 = 0;
+        btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        btnSanPham.setBackground(new Color(0, 0, 0, 0));
+        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
+        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
+        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThoat.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_btnkhuyenMaiMouseClicked
+
+    private void btnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseClicked
+        b1 = 0;
+        b2 = 0;
+        b3 = 0;
+        b4 = 0;
+        b5 = 0;
+        b6 = 1;
+        b7 = 0;
+        b8 = 0;
+        btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        btnSanPham.setBackground(new Color(0, 0, 0, 0));
+        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
+        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
+        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
+        btnThoat.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_btnKhachHangMouseClicked
+
+    private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
+        b1 = 0;
+        b2 = 0;
+        b3 = 0;
+        b4 = 0;
+        b5 = 0;
+        b6 = 0;
+        b7 = 1;
+        b8 = 0;
+        btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        btnSanPham.setBackground(new Color(0, 0, 0, 0));
+        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
+        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
+        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
+        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThoat.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_btnThongKeMouseClicked
+
+    private void btnThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseClicked
+        b1 = 0;
+        b2 = 0;
+        b3 = 0;
+        b4 = 0;
+        b5 = 0;
+        b6 = 0;
+        b7 = 0;
+        b8 = 1;
+        btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        btnSanPham.setBackground(new Color(0, 0, 0, 0));
+        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
+        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
+        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
+        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_btnThoatMouseClicked
+
+    private void btnBanHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseEntered
+        btnBanHang.setBackground(new Color(50, 159, 200));
+    }//GEN-LAST:event_btnBanHangMouseEntered
+
+    private void btnSanPhamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseEntered
+        btnSanPham.setBackground(new Color(50, 159, 200));
+    }//GEN-LAST:event_btnSanPhamMouseEntered
+
+    private void btnNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseEntered
+        btnNhanVien.setBackground(new Color(50, 159, 200));
+    }//GEN-LAST:event_btnNhanVienMouseEntered
+
+    private void btnHoaDonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseEntered
+        btnHoaDon.setBackground(new Color(50, 159, 200));
+    }//GEN-LAST:event_btnHoaDonMouseEntered
+
+    private void btnkhuyenMaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnkhuyenMaiMouseEntered
+        btnkhuyenMai.setBackground(new Color(50, 159, 200));
+    }//GEN-LAST:event_btnkhuyenMaiMouseEntered
+
+    private void btnKhachHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseEntered
+        btnKhachHang.setBackground(new Color(50, 159, 200));
+    }//GEN-LAST:event_btnKhachHangMouseEntered
+
+    private void btnThongKeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseEntered
+        btnThongKe.setBackground(new Color(50, 159, 200));
+    }//GEN-LAST:event_btnThongKeMouseEntered
+
+    private void btnThoatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseEntered
+        btnThoat.setBackground(new Color(50, 159, 200));
+    }//GEN-LAST:event_btnThoatMouseEntered
+
+    private void btnSanPhamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseExited
+        if (b2 == 0) {
+            btnSanPham.setBackground(new Color(0, 0, 0, 0));
+        }
+    }//GEN-LAST:event_btnSanPhamMouseExited
+
+    private void btnNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseExited
+        if (b3 == 0) {
+            btnNhanVien.setBackground(new Color(0, 0, 0, 0));
+        }
+    }//GEN-LAST:event_btnNhanVienMouseExited
+
+    private void btnHoaDonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseExited
+        if (b4 == 0) {
+            btnHoaDon.setBackground(new Color(0, 0, 0, 0));
+        }
+    }//GEN-LAST:event_btnHoaDonMouseExited
+
+    private void btnkhuyenMaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnkhuyenMaiMouseExited
+        if (b5 == 0) {
+            btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
+        }
+    }//GEN-LAST:event_btnkhuyenMaiMouseExited
+
+    private void btnKhachHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseExited
+        if (b6 == 0) {
+            btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        }
+    }//GEN-LAST:event_btnKhachHangMouseExited
+
+    private void btnThongKeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseExited
+        if (b7 == 0) {
+            btnThongKe.setBackground(new Color(0, 0, 0, 0));
+        }
+    }//GEN-LAST:event_btnThongKeMouseExited
+
+    private void btnThoatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseExited
+        if (b8 == 0) {
+            btnThoat.setBackground(new Color(0, 0, 0, 0));
+        }
+    }//GEN-LAST:event_btnThoatMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -385,6 +720,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ViewQuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -404,8 +740,8 @@ public class ViewQuanLy extends javax.swing.JFrame {
     private javax.swing.JButton btnThongKe;
     private javax.swing.JButton btnkhuyenMai;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JPanel panelMain;
     private view.ViewMenu view2;
     // End of variables declaration//GEN-END:variables
 }
