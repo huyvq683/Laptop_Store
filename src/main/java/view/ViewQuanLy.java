@@ -13,15 +13,6 @@ import javax.swing.ImageIcon;
  * @author FPT
  */
 public class ViewQuanLy extends javax.swing.JFrame {
-    //Biến để làm hover í mà anh không cần quan tâm
-    private int b1 = 0;
-    private int b2 = 0;
-    private int b3 = 0;
-    private int b4 = 0;
-    private int b5 = 0;
-    private int b6 = 0;
-    private int b7 = 0;
-    private int b8 = 0;
 
     private int index = 0;
 
@@ -152,15 +143,10 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnSanPham.setActionCommand(" Sản phẩm");
         btnSanPham.setAlignmentY(0.0F);
         btnSanPham.setBorder(null);
-        btnSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSanPhamMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSanPhamMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSanPhamMouseExited(evt);
+        btnSanPham.setMargin(new java.awt.Insets(2, 13, 2, 14));
+        btnSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSanPhamActionPerformed(evt);
             }
         });
 
@@ -171,17 +157,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnBanHang.setText("Bán hàng");
         btnBanHang.setAlignmentY(0.0F);
         btnBanHang.setBorder(null);
-        btnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBanHangMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnBanHangMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnBanHangMouseExited(evt);
-            }
-        });
         btnBanHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBanHangActionPerformed(evt);
@@ -195,15 +170,9 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnNhanVien.setText("Nhân viên");
         btnNhanVien.setAlignmentY(0.0F);
         btnNhanVien.setBorder(null);
-        btnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnNhanVienMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnNhanVienMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnNhanVienMouseExited(evt);
+        btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienActionPerformed(evt);
             }
         });
 
@@ -216,15 +185,9 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnHoaDon.setActionCommand("   Hóa đơn");
         btnHoaDon.setAlignmentY(0.0F);
         btnHoaDon.setBorder(null);
-        btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnHoaDonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnHoaDonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnHoaDonMouseExited(evt);
+        btnHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoaDonActionPerformed(evt);
             }
         });
 
@@ -235,15 +198,9 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnkhuyenMai.setText("Khuyến mãi");
         btnkhuyenMai.setAlignmentY(0.0F);
         btnkhuyenMai.setBorder(null);
-        btnkhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnkhuyenMaiMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnkhuyenMaiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnkhuyenMaiMouseExited(evt);
+        btnkhuyenMai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkhuyenMaiActionPerformed(evt);
             }
         });
 
@@ -254,15 +211,9 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnKhachHang.setText("Khách hàng");
         btnKhachHang.setAlignmentY(0.0F);
         btnKhachHang.setBorder(null);
-        btnKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnKhachHangMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnKhachHangMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnKhachHangMouseExited(evt);
+        btnKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhachHangActionPerformed(evt);
             }
         });
 
@@ -273,15 +224,9 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnThongKe.setText("Thống kê");
         btnThongKe.setAlignmentY(0.0F);
         btnThongKe.setBorder(null);
-        btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnThongKeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnThongKeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnThongKeMouseExited(evt);
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKeActionPerformed(evt);
             }
         });
 
@@ -292,15 +237,9 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnThoat.setText("Thoát");
         btnThoat.setAlignmentY(0.0F);
         btnThoat.setBorder(null);
-        btnThoat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnThoatMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnThoatMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnThoatMouseExited(evt);
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
             }
         });
 
@@ -388,241 +327,39 @@ public class ViewQuanLy extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSanPhamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseEntered
-        btnSanPham.setBackground(new Color(53, 150, 195));
-    }//GEN-LAST:event_btnSanPhamMouseEntered
-
-    private void btnBanHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseEntered
+    private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
         // TODO add your handling code here:
-        btnBanHang.setBackground(new Color(50, 159, 200));
-    }//GEN-LAST:event_btnBanHangMouseEntered
 
-    private void btnNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseEntered
+    }//GEN-LAST:event_btnBanHangActionPerformed
+
+    private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
         // TODO add your handling code here:
-        btnNhanVien.setBackground(new Color(56, 140, 190));
-    }//GEN-LAST:event_btnNhanVienMouseEntered
 
-    private void btnHoaDonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseEntered
-        // TODO add your handling code here:
-        btnHoaDon.setBackground(new Color(60, 131, 186));
-    }//GEN-LAST:event_btnHoaDonMouseEntered
-
-    private void btnHoaDonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseExited
-        if (b4 == 0) {
-            btnHoaDon.setBackground(new Color(0, 0, 0, 0));
-        }
-    }//GEN-LAST:event_btnHoaDonMouseExited
-
-    private void btnNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseExited
-        if (b3 == 0) {
-            btnNhanVien.setBackground(new Color(0, 0, 0, 0));
-        }
-    }//GEN-LAST:event_btnNhanVienMouseExited
-
-    private void btnSanPhamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseExited
-        if (b2 == 0) {
-            btnSanPham.setBackground(new Color(0, 0, 0, 0));
-        }
-    }//GEN-LAST:event_btnSanPhamMouseExited
-
-    private void btnBanHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseExited
-        if (b1 == 0) {
-            btnBanHang.setBackground(new Color(0, 0, 0, 0));
-        }
-    }//GEN-LAST:event_btnBanHangMouseExited
+    }//GEN-LAST:event_btnSanPhamActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
-    private void btnkhuyenMaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnkhuyenMaiMouseExited
-        if (b5 == 0) {
-            btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
-        }
-    }//GEN-LAST:event_btnkhuyenMaiMouseExited
-
-    private void btnKhachHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseEntered
-        // TODO add your handling code here:    
-        btnKhachHang.setBackground(new Color(66, 113, 177));
-    }//GEN-LAST:event_btnKhachHangMouseEntered
-
-    private void btnKhachHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseExited
-        if (b6 == 0) {
-            btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        }
-    }//GEN-LAST:event_btnKhachHangMouseExited
-
-    private void btnThongKeMouseEntered(java.awt.event.MouseEvent evt) {                                        
+    private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
         // TODO add your handling code here:
-    }                                            
+    }//GEN-LAST:event_btnHoaDonActionPerformed
 
-    private void btnThongKeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseExited
-        if (b7 == 0) {
-            btnThongKe.setBackground(new Color(0, 0, 0, 0));
-        }
-    }//GEN-LAST:event_btnThongKeMouseExited
+    private void btnkhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhuyenMaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnkhuyenMaiActionPerformed
+
+    private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThongKeActionPerformed
 
-    private void btnThoatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseExited
-        if (b8 == 0) {
-            btnThoat.setBackground(new Color(0, 0, 0, 0));
-        }
-    }//GEN-LAST:event_btnThoatMouseExited
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThoatActionPerformed
-
-    private void btnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseClicked
-        b1 = 1;
-        b2 = 0;
-        b3 = 0;
-        b4 = 0;
-        b5 = 0;
-        b6 = 0;
-        b7 = 0;
-        b8 = 0;
-
-        btnSanPham.setBackground(new Color(0, 0, 0, 0));
-        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
-        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
-        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
-        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        btnThoat.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
-    }//GEN-LAST:event_btnBanHangMouseClicked
-
-    private void btnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseClicked
-        b1 = 0;
-        b2 = 1;
-        b3 = 0;
-        b4 = 0;
-        b5 = 0;
-        b6 = 0;
-        b7 = 0;
-        b8 = 0;
-        btnBanHang.setBackground(new Color(0, 0, 0, 0));
-        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
-        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
-        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
-        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        btnThoat.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
-    }//GEN-LAST:event_btnSanPhamMouseClicked
-
-    private void btnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseClicked
-        b1 = 0;
-        b2 = 0;
-        b3 = 1;
-        b4 = 0;
-        b5 = 0;
-        b6 = 0;
-        b7 = 0;
-        b8 = 0;
-        btnBanHang.setBackground(new Color(0, 0, 0, 0));
-        btnSanPham.setBackground(new Color(0, 0, 0, 0));
-        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
-        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
-        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        btnThoat.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
-    }//GEN-LAST:event_btnNhanVienMouseClicked
-
-    private void btnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseClicked
-        b1 = 0;
-        b2 = 0;
-        b3 = 0;
-        b4 = 1;
-        b5 = 0;
-        b6 = 0;
-        b7 = 0;
-        b8 = 0;
-        btnBanHang.setBackground(new Color(0, 0, 0, 0));
-        btnSanPham.setBackground(new Color(0, 0, 0, 0));
-        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
-        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
-        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        btnThoat.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
-    }//GEN-LAST:event_btnHoaDonMouseClicked
-
-    private void btnkhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnkhuyenMaiMouseClicked
-        b1 = 0;
-        b2 = 0;
-        b3 = 0;
-        b4 = 0;
-        b5 = 1;
-        b6 = 0;
-        b7 = 0;
-        b8 = 0;
-        btnBanHang.setBackground(new Color(0, 0, 0, 0));
-        btnSanPham.setBackground(new Color(0, 0, 0, 0));
-        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
-        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
-        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        btnThoat.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
-    }//GEN-LAST:event_btnkhuyenMaiMouseClicked
-
-    private void btnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseClicked
-        b1 = 0;
-        b2 = 0;
-        b3 = 0;
-        b4 = 0;
-        b5 = 0;
-        b6 = 1;
-        b7 = 0;
-        b8 = 0;
-        btnBanHang.setBackground(new Color(0, 0, 0, 0));
-        btnSanPham.setBackground(new Color(0, 0, 0, 0));
-        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
-        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
-        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
-        btnThoat.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
-    }//GEN-LAST:event_btnKhachHangMouseClicked
-
-    private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
-        b1 = 0;
-        b2 = 0;
-        b3 = 0;
-        b4 = 0;
-        b5 = 0;
-        b6 = 0;
-        b7 = 1;
-        b8 = 0;
-        btnBanHang.setBackground(new Color(0, 0, 0, 0));
-        btnSanPham.setBackground(new Color(0, 0, 0, 0));
-        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
-        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
-        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
-        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        btnThoat.setBackground(new Color(0, 0, 0, 0));
-    }//GEN-LAST:event_btnThongKeMouseClicked
-
-    private void btnThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseClicked
-        b1 = 0;
-        b2 = 0;
-        b3 = 0;
-        b4 = 0;
-        b5 = 0;
-        b6 = 0;
-        b7 = 0;
-        b8 = 1;
-        btnBanHang.setBackground(new Color(0, 0, 0, 0));
-        btnSanPham.setBackground(new Color(0, 0, 0, 0));
-        btnNhanVien.setBackground(new Color(0, 0, 0, 0));
-        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
-        btnkhuyenMai.setBackground(new Color(0, 0, 0, 0));
-        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
-    }//GEN-LAST:event_btnThoatMouseClicked
-
-    private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBanHangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -638,25 +375,18 @@ public class ViewQuanLy extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewQuanLy.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(ViewQuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewQuanLy.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(ViewQuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewQuanLy.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(ViewQuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewQuanLy.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewQuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
