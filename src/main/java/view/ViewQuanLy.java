@@ -14,8 +14,6 @@ import javax.swing.ImageIcon;
  */
 public class ViewQuanLy extends javax.swing.JFrame {
 
-    private int index = 0;
-
     /**
      * Creates new form ViewQuanLy
      */
