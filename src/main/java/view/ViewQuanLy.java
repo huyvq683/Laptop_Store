@@ -145,7 +145,8 @@ public class ViewQuanLy extends javax.swing.JFrame {
         panelMain = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1450, 850));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1540, 850));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -400,16 +401,16 @@ public class ViewQuanLy extends javax.swing.JFrame {
         );
 
         panelMain.setBackground(new java.awt.Color(255, 255, 255));
-        panelMain.setMaximumSize(new java.awt.Dimension(1254, 850));
-        panelMain.setMinimumSize(new java.awt.Dimension(1254, 850));
+        panelMain.setMaximumSize(new java.awt.Dimension(1300, 850));
+        panelMain.setMinimumSize(new java.awt.Dimension(1300, 850));
         panelMain.setName(""); // NOI18N
-        panelMain.setPreferredSize(new java.awt.Dimension(1254, 850));
+        panelMain.setPreferredSize(new java.awt.Dimension(1300, 850));
 
         javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
         panelMain.setLayout(panelMainLayout);
         panelMainLayout.setHorizontalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1254, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panelMainLayout.setVerticalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -422,8 +423,8 @@ public class ViewQuanLy extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 1294, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
