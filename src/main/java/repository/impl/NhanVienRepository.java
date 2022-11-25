@@ -19,17 +19,19 @@ public class NhanVienRepository {
 
     private String fromTable = "FROM NhanVien";
 
+    private Session session = HibernateUtil.getFACTORY().openSession();
+
     public NhanVien getOne(String email) {
-        NhanVien nhanVien = null;
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("SELECT n FROM NhanVien n "
-                    + " WHERE n.email = :email");
+        NhanVien nv = null;
+        try {
+            String sql = fromTable + " Where email = :email";
+            Query query = session.createQuery(sql);
             query.setParameter("email", email);
-            nhanVien = (NhanVien) query.getSingleResult();
+            nv = (NhanVien) query.getSingleResult();
+            return nv;
         } catch (Exception e) {
-            e.printStackTrace(System.out);
+            return null;
         }
-        return nhanVien;
     }
 
     public List<NhanVien> getAll() {
@@ -68,6 +70,11 @@ public class NhanVienRepository {
             e.printStackTrace(System.out);
         }
         return check;
+    }
+
+    public static void main(String[] args) {
+        NhanVien nv = new NhanVienRepository().getOne("hung@fpt.edu");
+        System.out.println(nv.toString());
     }
 
 }

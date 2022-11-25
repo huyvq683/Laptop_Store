@@ -22,7 +22,6 @@ public class NhanVienServiceImpl implements NhanVienService {
         return nhanVienRepository.getOne(email);
     }
 
-
     @Override
     public List<NhanVien> getAll() {
         return nhanVienRepository.getAll();
@@ -35,7 +34,7 @@ public class NhanVienServiceImpl implements NhanVienService {
             return "Thành công";
         } else {
             return "Thất bại";
-        }    
+        }
     }
 
     @Override
@@ -43,4 +42,20 @@ public class NhanVienServiceImpl implements NhanVienService {
         return nhanVienRepository.search(sdt);
     }
 
+    @Override
+    public String validateLogin(String email, String mk, NhanVien nv) {
+        if (nv == null) {
+            return "Tài Khoản Không Tồn Tại";
+        }
+        if ( mk.trim() == null) {
+            return "Mật Khẩu Trống";
+        }
+        if (!nv.getMatKhau().trim().equalsIgnoreCase(mk.trim())) {
+            return "Mật Khẩu Sai";
+        }
+        if (nv.getTrangThai() == 1) {
+            return "Nhân Viên Đã Xóa";
+        }
+        return null;
+    }
 }

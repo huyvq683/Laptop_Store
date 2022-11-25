@@ -14,12 +14,13 @@ import java.util.List;
 public interface NhanVienService {
 
     NhanVien getOne(String email);
-    
+
     List<NhanVien> getAll();
-    
+
     String addOrUpdate(NhanVien nhanVien);
-    
+
     List<NhanVien> search(String sdt);
-    
-    
+
+    String validateLogin(String email, String mk , NhanVien nv);
+
 }

@@ -43,7 +43,7 @@ public class NhanVien implements Serializable {
     private String hoTen;
 
     @Column(name = "GioiTinh")
-    private boolean gioiTinh;
+    private String gioiTinh;
 
     @Column(name = "NgaySinh")
     private Date ngaySinh;
@@ -71,7 +71,7 @@ public class NhanVien implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
-    
+
     private String convertDate() {
         String date;
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -80,6 +80,6 @@ public class NhanVien implements Serializable {
     }
 
     public Object[] toDataRow() {
-        return new Object[]{ma, hoTen, gioiTinh == true ? "Nam" : "Nữ", convertDate(), diaChi, sdt, email, trangThai == 0 ? "Đang làm việc" : "Đã nghỉ việc", chucVu == 1 ? "Quản lý" : "Nhân viên"};
+        return new Object[]{ma, hoTen, gioiTinh, convertDate(), diaChi, sdt, email, trangThai == 0 ? "Đang làm việc" : "Đã nghỉ việc", chucVu == 1 ? "Quản lý" : "Nhân viên"};
     }
 }
