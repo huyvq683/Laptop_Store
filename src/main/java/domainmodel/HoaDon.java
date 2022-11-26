@@ -51,6 +51,15 @@ public class HoaDon implements Serializable {
     @Column(name = "NgayTao")
     private Date ngayTao;
 
+    @Column(name = "TienKhachTra")
+    private BigDecimal tienKhachTra;
+
+    @Column(name = "TienThua")
+    private BigDecimal tienThua;
+
+    @Column(name = "TienCK")
+    private BigDecimal tienCK;
+
     @Column(name = "TongTien")
     private BigDecimal tongTien;
 
@@ -62,5 +71,12 @@ public class HoaDon implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
-    
+
+    public String getTinhTrang1() {
+        return this.tinhTrang == 1 ? "Chưa Thanh Toán" : "Đã Thanh Toán";
+    }
+
+    public Object[] toDataRow() {
+        return new Object[]{ma, idNV.getMa(), idKH.getMa(), ngayTao, tongTien, getTinhTrang1()};
+    }
 }

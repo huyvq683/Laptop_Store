@@ -1,5 +1,6 @@
 package utility;
 
+import domainmodel.HoaDon;
 import domainmodel.NhanVien;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
@@ -25,6 +26,7 @@ public class HibernateUtil {
 
         conf.setProperties(properties);
         conf.addAnnotatedClass(NhanVien.class);
+        conf.addAnnotatedClass(HoaDon.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
