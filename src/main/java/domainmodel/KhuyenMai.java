@@ -39,12 +39,20 @@ public class KhuyenMai implements Serializable{
     @Column(name = "Ma")
     private String ma;
     
-    @Column(name = "KhuyenMai")
+    @Column(name = "Ten")
     private String tenKM;
     
-    @ManyToOne
-    @JoinColumn(name = "IdChiTietSP")
-    private ChiTietSP idCTSP;
+    @Column(name = "LoaiKhuyenMai")
+    private String loaiKM;
+    
+    @Column(name = "GiaTriKM")
+    private String giaTriKM;
+    
+    @Column(name = "NgayBatDau")
+    private Date ngayBD;
+    
+    @Column(name = "NgayKetThuc")
+    private Date ngayKT;
     
     @Column(name = "TrangThai")
     private int trangThai;

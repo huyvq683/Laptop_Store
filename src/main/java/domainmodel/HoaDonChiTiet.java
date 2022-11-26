@@ -50,6 +50,9 @@ public class HoaDonChiTiet implements Serializable {
     
     @Column(name = "DonGia")
     private BigDecimal donGia;
+    
+    @Column(name = "TrangThai")
+    private int trangThai;
 
     @Column(name = "CreatedDate")
     private Date createdDate;

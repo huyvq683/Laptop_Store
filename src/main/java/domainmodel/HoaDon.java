@@ -51,8 +51,20 @@ public class HoaDon implements Serializable {
     @Column(name = "NgayTao")
     private Date ngayTao;
 
+    @Column(name = "TienKhachTra")
+    private BigDecimal tienKhacTra;
+
+    @Column(name = "TienCK")
+    private BigDecimal tienCK;
+
+    @Column(name = "TienThua")
+    private BigDecimal tienThua;
+
     @Column(name = "TongTien")
     private BigDecimal tongTien;
+
+    @Column(name = "HinhThuc")
+    private BigDecimal hinhThuc;
 
     @Column(name = "TinhTrang")
     private int tinhTrang;
@@ -62,5 +74,5 @@ public class HoaDon implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
-    
+
 }

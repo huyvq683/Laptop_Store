@@ -5,7 +5,6 @@
 package domainmodel;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -29,42 +28,24 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ChiTietSp")
-public class ChiTietSP implements Serializable {
+@Table(name = "SerialDaBan")
+public class SerialDaBan implements Serializable {
 
     @Id
     @GeneratedValue
     @Column(name = "Id")
     private UUID id;
 
+    @Column(name = "Ma")
+    private String ma;
+
     @ManyToOne
-    @JoinColumn(name = "IdSanPham")
-    private SanPham idSanPham;
-
-    @Column(name = "Serial")
-    private String serial;
-
-    @Column(name = "CPU")
-    private String cPU;
-
-    @Column(name = "Hang")
-    private String hang;
-
-    @Column(name = "Ram")
-    private String ram;
-
-    @Column(name = "CardMH")
-    private String card;
-    
-    @Column(name = "OCung")
-    private String oCung;
-
-    @Column(name = "Gia")
-    private BigDecimal gia;
+    @JoinColumn(name = "IdHDCT")
+    private ChiTietSP idHDCT;
 
     @Column(name = "CreatedDate")
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date lastModifiedDate;
+    private Date alstModifiedDate;
 }
