@@ -116,10 +116,8 @@
                           <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jButton5" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnSua2" max="32767" attributes="0"/>
-                                  <Component id="btnThem2" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="btnSua2" max="32767" attributes="0"/>
+                              <Component id="btnThem2" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
                       </Group>

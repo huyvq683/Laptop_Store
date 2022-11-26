@@ -21,6 +21,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
@@ -32,6 +33,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ChiTietSp")
+@ToString
 public class ChiTietSP implements Serializable {
 
     @Id
@@ -90,7 +92,5 @@ public class ChiTietSP implements Serializable {
     public ChiTietSP(UUID id, String serial) {
         this.id = id;
         this.serial = serial;
-    }
-        
-        
+    }   
 }

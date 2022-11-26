@@ -43,7 +43,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         showDataTable(listSanPham);
         cbbMasp.setModel(dfcbbSP);
         CbbSP();
-
         showDataCTSP(listCTSP);
     }
 

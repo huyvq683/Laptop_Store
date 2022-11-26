@@ -65,6 +65,4 @@ public class SanPham implements Serializable {
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
     }
-    
-    
 }
