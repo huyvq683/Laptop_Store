@@ -6,6 +6,8 @@ package domainmodel;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -41,9 +43,6 @@ public class ChiTietSP implements Serializable {
     @JoinColumn(name = "IdSanPham")
     private SanPham idSanPham;
 
-    @Column(name = "Serial")
-    private String serial;
-
     @Column(name = "CPU")
     private String cPU;
 
@@ -56,6 +55,12 @@ public class ChiTietSP implements Serializable {
     @Column(name = "CardMH")
     private String card;
 
+    @Column(name = "OCung")
+    private String oCung;
+    
+    @Column(name = "Serial")
+    private String serial;
+    
     @Column(name = "Gia")
     private BigDecimal gia;
 
@@ -64,4 +69,28 @@ public class ChiTietSP implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
+
+    public ChiTietSP(SanPham idSanPham, String cPU, String hang, String ram, String card, String oCung, String serial, BigDecimal gia, Date createdDate, Date lastModifiedDate) {
+        this.idSanPham = idSanPham;
+        this.cPU = cPU;
+        this.hang = hang;
+        this.ram = ram;
+        this.card = card;
+        this.oCung = oCung;
+        this.serial = serial;
+        this.gia = gia;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
+    }
+        public String conVert(Date x) {
+        DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+        return date.format(x);
+    }
+
+    public ChiTietSP(UUID id, String serial) {
+        this.id = id;
+        this.serial = serial;
+    }
+        
+        
 }

@@ -5,6 +5,8 @@
 package domainmodel;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -16,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
@@ -27,6 +30,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "SanPham")
+@ToString
 public class SanPham implements Serializable {
 
     @Id
@@ -44,6 +48,23 @@ public class SanPham implements Serializable {
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date alstModifiedDate;
+    private Date lastModifiedDate;
 
+    public String conVert(Date x) {
+        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        return format.format(x);
+    }
+
+    public SanPham(UUID id) {
+        this.id = id;
+    }
+
+    public SanPham(String ma, String ten, Date createdDate, Date lastModifiedDate) {
+        this.ma = ma;
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
+    }
+    
+    
 }
