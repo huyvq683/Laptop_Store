@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 view\ViewQuanLy$13.class
 view\ViewQuanLy$9.class
 view\ViewDangNhap.class
@@ -35,3 +36,11 @@ service\impl\NhanVienServiceImpl.class
 view\ViewQuanLy$12.class
 view\ViewQuanLy$15.class
 service\NhanVienService.class
+=======
+view\ViewMenu.class
+view\ViewDangNhap.class
+repository\Repository.class
+repository\impl\NhanVienRepository.class
+view\ViewDangNhap$1.class
+custommodel\ChiTietSPResponse.class
+>>>>>>> develop
