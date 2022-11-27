@@ -6,6 +6,8 @@ package domainmodel;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -55,7 +57,7 @@ public class ChiTietSP implements Serializable {
 
     @Column(name = "CardMH")
     private String card;
-    
+
     @Column(name = "OCung")
     private String oCung;
 
@@ -67,4 +69,26 @@ public class ChiTietSP implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
+
+    public ChiTietSP(SanPham idSanPham, String serial, String cPU, String hang, String ram, String card, String oCung, BigDecimal gia, Date createdDate, Date lastModifiedDate) {
+        this.idSanPham = idSanPham;
+        this.serial = serial;
+        this.cPU = cPU;
+        this.hang = hang;
+        this.ram = ram;
+        this.card = card;
+        this.oCung = oCung;
+        this.gia = gia;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
+    public ChiTietSP(UUID id) {
+        this.id = id;
+    }
+
+    public String conVert(Date x) {
+        DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+        return date.format(x);
+    }
 }

@@ -1,19 +1,31 @@
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\KhachHang.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\Repository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewMenu.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ChiTietSPResponse.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\SanPhamDoiTra.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\utility\HibernateUtil.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\SanPhamBaoHanh.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\ChiTietSP.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\HoaDon.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\application\Application.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\NhanVienService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\NhanVien.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\HoaDonChiTiet.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewDangNhap.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\NhanVienServiceImpl.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewQuanLy.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\SanPham.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\NhanVienRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\KhuyenMai.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\KhachHangService.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\ChiTietSPService.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\repository\impl\NhanVienRepository.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\view\ViewMenu.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\domainmodel\ChiTietSP.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\utility\HibernateUtil.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\repository\impl\KhachHangRepository.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\NhanVienService.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\impl\ChiTietSPServiceImql.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\custommodel\ChiTietSPResponse.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\domainmodel\HoaDon.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\domainmodel\KhachHang.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\domainmodel\NhanVien.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\repository\impl\ChiTietSPRepository.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\view\PanelNhanVien.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\view\ViewQuanLy.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\impl\NhanVienServiceImpl.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\domainmodel\HoaDonChiTiet.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\impl\SanPhamServiceImpl.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\application\Application.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\view\PanelSanPham.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\repository\impl\SanPhamRepository.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\view\ViewDangNhap.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\repository\Repository.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\SanPhamService.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\impl\KhachHangServiceImpl.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\domainmodel\SanPham.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\domainmodel\SerialDaBan.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\domainmodel\SanPhamKM.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\view\PanelKhachHang.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\domainmodel\KhuyenMai.java

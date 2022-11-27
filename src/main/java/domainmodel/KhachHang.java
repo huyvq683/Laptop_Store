@@ -16,12 +16,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author FPT
  */
 @Entity
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -39,16 +41,13 @@ public class KhachHang implements Serializable {
 
     @Column(name = "HoTen")
     private String hoTen;
-    
-    @Column(name = "GioiTinh")
-    private boolean gioiTinh;
 
     @Column(name = "DiaChi")
     private String diaChi;
 
     @Column(name = "SDT")
     private String sdt;
-    
+
     @Column(name = "Email")
     private String email;
 
@@ -58,4 +57,9 @@ public class KhachHang implements Serializable {
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
 
+    public Object[] toDataRow() {
+        return new Object[]{
+            ma, hoTen, sdt, email, diaChi
+        };
+    }
 }
