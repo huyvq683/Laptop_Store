@@ -342,6 +342,11 @@ public class PanelNhanVien extends javax.swing.JPanel {
                 txtSearchCaretUpdate(evt);
             }
         });
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnDanhSachNVLayout = new javax.swing.GroupLayout(pnDanhSachNV);
         pnDanhSachNV.setLayout(pnDanhSachNVLayout);
@@ -577,6 +582,10 @@ public class PanelNhanVien extends javax.swing.JPanel {
         radioNhanVien.setSelected(true);
         radioDangLamViec.setSelected(true);
     }//GEN-LAST:event_btnNewActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
     private void showData(List<NhanVien> list) {
         dtm.setRowCount(0);
         for (NhanVien nhanVien : list) {

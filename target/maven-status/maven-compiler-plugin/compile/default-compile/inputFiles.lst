@@ -1,19 +1,20 @@
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\application\Application.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\service\impl\NhanVienServiceImpl.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\domainmodel\HoaDonChiTiet.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\custommodel\ChiTietSPResponse.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\domainmodel\NhanVien.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\view\ViewQuanLy.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\domainmodel\SanPhamKM.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\repository\Repository.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\domainmodel\HoaDon.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\domainmodel\ChiTietSP.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\repository\impl\NhanVienRepository.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\utility\HibernateUtil.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\domainmodel\KhuyenMai.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\domainmodel\SanPham.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\view\ViewMenu.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\domainmodel\KhachHang.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\domainmodel\SerialDaBan.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\service\NhanVienService.java
-C:\Users\Quang Huy\OneDrive\Máy tính\FPOLY\4. FALL 22\Block 2\PRO1040_Du_an_1\File\src\main\java\view\ViewDangNhap.java
+E:\DuAn1\Code\src\main\java\domainmodel\ChiTietSP.java
+E:\DuAn1\Code\src\main\java\domainmodel\SanPhamKM.java
+E:\DuAn1\Code\src\main\java\utility\HibernateUtil.java
+E:\DuAn1\Code\src\main\java\view\ViewDangNhap.java
+E:\DuAn1\Code\src\main\java\domainmodel\HoaDon.java
+E:\DuAn1\Code\src\main\java\domainmodel\HoaDonChiTiet.java
+E:\DuAn1\Code\src\main\java\view\PanelNhanVien.java
+E:\DuAn1\Code\src\main\java\view\ViewMenu.java
+E:\DuAn1\Code\src\main\java\domainmodel\KhuyenMai.java
+E:\DuAn1\Code\src\main\java\domainmodel\KhachHang.java
+E:\DuAn1\Code\src\main\java\domainmodel\SanPham.java
+E:\DuAn1\Code\src\main\java\domainmodel\SerialDaBan.java
+E:\DuAn1\Code\src\main\java\service\impl\NhanVienServiceImpl.java
+E:\DuAn1\Code\src\main\java\custommodel\ChiTietSPResponse.java
+E:\DuAn1\Code\src\main\java\domainmodel\NhanVien.java
+E:\DuAn1\Code\src\main\java\repository\impl\NhanVienRepository.java
+E:\DuAn1\Code\src\main\java\view\ViewQuanLy.java
+E:\DuAn1\Code\src\main\java\application\Application.java
+E:\DuAn1\Code\src\main\java\service\NhanVienService.java
+E:\DuAn1\Code\src\main\java\repository\Repository.java

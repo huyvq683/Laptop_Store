@@ -1,6 +1,8 @@
 package utility;
 
+import domainmodel.ChiTietSP;
 import domainmodel.NhanVien;
+import domainmodel.SanPham;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -25,6 +27,8 @@ public class HibernateUtil {
 
         conf.setProperties(properties);
         conf.addAnnotatedClass(NhanVien.class);
+        conf.addAnnotatedClass(SanPham.class);
+        conf.addAnnotatedClass(ChiTietSP.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
