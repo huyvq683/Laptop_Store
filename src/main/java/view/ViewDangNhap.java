@@ -312,7 +312,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
 
     private void btnQuenMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuenMKActionPerformed
         this.dispose();
-       // new ViewQuenMatKhau().setVisible(true);
+        new ViewQuenMatKhau().setVisible(true);
     }//GEN-LAST:event_btnQuenMKActionPerformed
 
     /**
