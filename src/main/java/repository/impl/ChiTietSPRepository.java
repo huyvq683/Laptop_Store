@@ -4,8 +4,7 @@
  */
 package repository.impl;
 
-
-
+import custommodel.ChiTietSPResponse;
 import domainmodel.ChiTietSP;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +13,6 @@ import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utility.HibernateUtil;
-
-
 
 /**
  *
@@ -35,7 +32,7 @@ public class ChiTietSPRepository {
 
     private String fromTable = "From SanPham";
     private Session session = HibernateUtil.getFACTORY().openSession();
-    
+
     public ChiTietSP getOne(String serial) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery(" SELECT new ChiTietSP (ct.id , ct.serial) FROM ChiTietSP ct WHERE Serial =:serial ", ChiTietSP.class);
@@ -43,7 +40,7 @@ public class ChiTietSPRepository {
             ChiTietSP ctsp = (ChiTietSP) query.getSingleResult();
             return ctsp;
         } catch (Exception e) {
-             e.printStackTrace(System.out);
+            e.printStackTrace(System.out);
         }
         return null;
     }
@@ -111,4 +108,61 @@ public class ChiTietSPRepository {
         return null;
     }
 
+    public List<ChiTietSPResponse> getAll() {
+        List<ChiTietSPResponse> lists = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            org.hibernate.query.Query query = session.createQuery("SELECT new custommodel.ChiTietSPResponse "
+                    + "(ct.idSanPham.ma, ct.idSanPham.ten,"
+                    + "ct.cPU, ct.ram, ct.card, ct.oCung, ct.hang, ct.tinhTrang, ct.gia, COUNT(ct.idSanPham)) "
+                    + "FROM ChiTietSP ct WHERE ct.tinhTrang = 0"
+                    + "GROUP BY ct.idSanPham.ma, ct.idSanPham.ten, ct.cPU, ct.ram, ct.card, ct.oCung, ct.hang, ct.tinhTrang, ct.gia");
+            lists = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return lists;
+    }
+
+    public List<ChiTietSPResponse> getList() {
+        List<ChiTietSPResponse> lists = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            org.hibernate.query.Query query = session.createQuery("SELECT new custommodel.ChiTietSPResponse "
+                    + "(ct.id, ct.serial) "
+                    + "FROM ChiTietSP ct WHERE ct.tinhTrang = 0");
+            lists = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return lists;
+    }
+
+    public ChiTietSP getBySerialChiTietSP(String serial) {
+        ChiTietSP chiTietSP = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            org.hibernate.query.Query query = session.createQuery("SELECT c "
+                    + "FROM ChiTietSP c WHERE c.serial = :serial");
+            query.setParameter("serial", serial);
+            chiTietSP = (ChiTietSP) query.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return chiTietSP;
+    }
+
+    public boolean updateTinhTrangSP(ChiTietSP chiTietSP, UUID id) {
+        boolean check = true;
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            ChiTietSP ctsp = session.get(ChiTietSP.class, id);
+            ctsp.setTinhTrang(1);
+            session.update(ctsp);
+            transaction.commit();
+            check = true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check;
+    }
+    
 }

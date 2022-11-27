@@ -63,6 +63,9 @@ public class ChiTietSP implements Serializable {
 
     @Column(name = "Gia")
     private BigDecimal gia;
+    
+    @Column(name = "TinhTrang")
+    private int tinhTrang;
 
     @Column(name = "CreatedDate")
     private Date createdDate;

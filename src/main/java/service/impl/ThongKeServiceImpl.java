@@ -8,7 +8,7 @@ import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.util.Date;
 import java.util.List;
-import repository.ThongKeRepository;
+import repository.impl.ThongKeRepository;
 import service.ThongKeService;
 
 /**

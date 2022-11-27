@@ -5,7 +5,7 @@
 package service.impl;
 
 import domainmodel.NhanVien;
-import repository.QuenMatKhauRepository;
+import repository.impl.QuenMatKhauRepository;
 import service.QuenMatKhauService;
 
 /**

@@ -64,7 +64,7 @@ public class HoaDon implements Serializable {
     private BigDecimal tongTien;
 
     @Column(name = "HinhThuc")
-    private BigDecimal hinhThuc;
+    private String hinhThuc;
 
     @Column(name = "TinhTrang")
     private int tinhTrang;

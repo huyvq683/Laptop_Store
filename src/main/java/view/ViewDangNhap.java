@@ -5,6 +5,7 @@
 package view;
 
 import domainmodel.NhanVien;
+import domainmodel.TenTKNV;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -61,6 +62,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
 
     public NhanVien getOne() {
         NhanVien nv = nhanVienService.getOne(txtTaiKhoan.getText());
+        TenTKNV.tenNV = nv;
         return nv;
     }
 
@@ -138,11 +140,6 @@ public class ViewDangNhap extends javax.swing.JFrame {
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtMatKhau.setForeground(new java.awt.Color(51, 51, 51));
         txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
-        txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMatKhauActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setText("Đăng nhập");
@@ -295,10 +292,6 @@ public class ViewDangNhap extends javax.swing.JFrame {
         txtMatKhau.setEchoChar('*');
         lblEye.setVisible(true);
     }//GEN-LAST:event_lblEMousePressed
-
-    private void txtMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhauActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatKhauActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
