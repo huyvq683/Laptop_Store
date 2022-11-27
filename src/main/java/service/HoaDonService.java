@@ -6,6 +6,7 @@ package service;
 
 import custommodel.HoaDonResponse;
 import domainmodel.HoaDon;
+import domainmodel.NhanVien;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ import java.util.UUID;
  */
 public interface HoaDonService {
 
-    List<HoaDonResponse> getAll();
+    List<HoaDonResponse> getAll(NhanVien nhanVien);
 
     String add(HoaDon hoaDon);
 

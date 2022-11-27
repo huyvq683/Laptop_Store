@@ -10,6 +10,7 @@ import custommodel.HoaDonResponse;
 import domainmodel.ChiTietSP;
 import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
+import domainmodel.KhachHang;
 import domainmodel.NhanVien;
 import domainmodel.TenTKNV;
 import java.math.BigDecimal;
@@ -25,10 +26,12 @@ import javax.swing.table.DefaultTableModel;
 import service.ChiTietSPService;
 import service.HoaDonChiTietService;
 import service.HoaDonService;
+import service.KhachHangService;
 import service.NhanVienService;
 import service.impl.ChiTietSPServiceImql;
 import service.impl.HoaDonChiTietSeviceImpl;
 import service.impl.HoaDonServiceImpl;
+import service.impl.KhachHangServiceImpl;
 import service.impl.NhanVienServiceImpl;
 
 /**
@@ -39,7 +42,7 @@ public class PanelBanHang extends javax.swing.JPanel {
 
     private DefaultTableModel dtmHoaDon = new DefaultTableModel();
     private HoaDonService hoaDonService = new HoaDonServiceImpl();
-    private List<HoaDonResponse> listHoaDon = hoaDonService.getAll();
+    private List<HoaDonResponse> listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
     private DefaultTableModel dtmGioHang = new DefaultTableModel();
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietSeviceImpl();
     private List<HoaDonChiTietResponse> listHoaDonChiTiet = new ArrayList<>();
@@ -47,6 +50,7 @@ public class PanelBanHang extends javax.swing.JPanel {
     private ChiTietSPService chiTietSPService = new ChiTietSPServiceImql();
     private List<ChiTietSPResponse> listChiTietSP = chiTietSPService.getAll();
     private NhanVienService nhanVienService = new NhanVienServiceImpl();
+    private KhachHangService khachHangService = new KhachHangServiceImpl();
     private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     /**
@@ -125,12 +129,11 @@ public class PanelBanHang extends javax.swing.JPanel {
         int rowHD = tbHoaDon.getSelectedRow();
         HoaDonResponse hoaDonResponse = listHoaDon.get(rowHD);
         HoaDon idHoaDon = hoaDonService.getByIdHoaDon(hoaDonResponse.getId());
-        String serial = JOptionPane.showInputDialog("Nhập số serial: ");     
+        String serial = JOptionPane.showInputDialog("Nhập số serial: ");
         ChiTietSP idChiTietSP = chiTietSPService.getBySerialChiTietSP(serial);
         chiTietSPService.updateTinhTrangSP(idChiTietSP, idChiTietSP.getId());
         listChiTietSP = chiTietSPService.getAll();
         showDataTableSanPham(listChiTietSP);
-        System.out.println(idHoaDon);
         HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
         hoaDonChiTiet.setIdCTSP(idChiTietSP);
         hoaDonChiTiet.setIdHoaDon(idHoaDon);
@@ -183,10 +186,8 @@ public class PanelBanHang extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btnXacNhan = new javax.swing.JButton();
         txtMaKH = new javax.swing.JTextField();
-        txtTenKH = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -367,53 +368,47 @@ public class PanelBanHang extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Mã KH:");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setText("Tên KH:");
-
         btnXacNhan.setBackground(new java.awt.Color(41, 183, 212));
         btnXacNhan.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnXacNhan.setIcon(new ImageIcon("src/main/img/xacNhan.png"));
         btnXacNhan.setText("Xác nhận");
+        btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacNhanActionPerformed(evt);
+            }
+        });
 
         txtMaKH.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtMaKH.setForeground(new java.awt.Color(51, 51, 51));
         txtMaKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
-
-        txtTenKH.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtTenKH.setForeground(new java.awt.Color(51, 51, 51));
-        txtTenKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
+        txtMaKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaKHActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMaKH)
-                    .addComponent(txtTenKH, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
+                .addComponent(txtMaKH)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(btnXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -467,11 +462,6 @@ public class PanelBanHang extends javax.swing.JPanel {
         txtTienTraLai.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtTienTraLai.setForeground(new java.awt.Color(51, 51, 51));
         txtTienTraLai.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
-        txtTienTraLai.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtTienTraLaiCaretUpdate(evt);
-            }
-        });
         txtTienTraLai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtTienTraLaiMouseClicked(evt);
@@ -680,7 +670,7 @@ public class PanelBanHang extends javax.swing.JPanel {
         hoaDon.setIdNV(nhanVien);
         hoaDon.setTinhTrang(0);
         JOptionPane.showMessageDialog(this, hoaDonService.add(hoaDon));
-        listHoaDon = hoaDonService.getAll();
+        listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnTaoHDActionPerformed
 
@@ -726,12 +716,8 @@ public class PanelBanHang extends javax.swing.JPanel {
         HoaDonResponse hd = listHoaDon.get(row);
         UUID id = hd.getId();
         HoaDon hoaDon = new HoaDon();
-        hoaDon.setTienKhacTra(new BigDecimal(txtTienKhachDua.getText()));
-        hoaDon.setTienCK(new BigDecimal(txtTienKhachDua.getText()));
-        hoaDon.setHinhThuc((String) cbbHinhThuc.getSelectedItem());
-        hoaDon.setTinhTrang(1);
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon, id));
-        listHoaDon = hoaDonService.getAll();
+        listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
@@ -743,10 +729,22 @@ public class PanelBanHang extends javax.swing.JPanel {
         txtTienTraLai.setText(String.valueOf(tienThua));
     }//GEN-LAST:event_txtTienTraLaiMouseClicked
 
-    private void txtTienTraLaiCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienTraLaiCaretUpdate
+    private void txtMaKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaKHActionPerformed
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtMaKHActionPerformed
 
-    }//GEN-LAST:event_txtTienTraLaiCaretUpdate
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        // TODO add your handling code here:
+        String ma = txtMaKH.getText();
+        KhachHang khachHang = khachHangService.getMa(ma);
+        if(khachHang == null){
+            JOptionPane.showMessageDialog(this, "Khác hàng chưa có thông tin");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Successed");
+        }
+    }//GEN-LAST:event_btnXacNhanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -760,7 +758,6 @@ public class PanelBanHang extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel42;
@@ -785,7 +782,6 @@ public class PanelBanHang extends javax.swing.JPanel {
     private javax.swing.JTextField txtMaHD;
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtNgayTao;
-    private javax.swing.JTextField txtTenKH;
     private javax.swing.JTextField txtTenNV;
     private javax.swing.JTextField txtTienCK;
     private javax.swing.JTextField txtTienKhachDua;

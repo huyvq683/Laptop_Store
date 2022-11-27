@@ -6,6 +6,7 @@ package service.impl;
 
 import custommodel.HoaDonResponse;
 import domainmodel.HoaDon;
+import domainmodel.NhanVien;
 import java.util.List;
 import java.util.UUID;
 import repository.impl.HoaDonRepository;
@@ -20,8 +21,8 @@ public class HoaDonServiceImpl implements HoaDonService {
     private HoaDonRepository hoaDonRepository = new HoaDonRepository();
 
     @Override
-    public List<HoaDonResponse> getAll() {
-        return hoaDonRepository.getAll();
+    public List<HoaDonResponse> getAll(NhanVien nhanVien) {
+        return hoaDonRepository.getAll(nhanVien);
     }
 
     @Override

@@ -48,15 +48,11 @@ public class SanPham implements Serializable {
     @Column(name = "LastModifiedDate")
     private Date alstModifiedDate;
 
-    @Column(name = "TinhTrang")
-    private int tinhTrang;
-
-    public SanPham(String ma, String ten, Date createdDate, Date alstModifiedDate, int tinhTrang) {
+    public SanPham(String ma, String ten, Date createdDate, Date alstModifiedDate) {
         this.ma = ma;
         this.ten = ten;
         this.createdDate = createdDate;
         this.alstModifiedDate = alstModifiedDate;
-        this.tinhTrang = tinhTrang;
     }
 
     public String conVert(Date x) {

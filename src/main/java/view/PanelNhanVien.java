@@ -321,7 +321,6 @@ public class PanelNhanVien extends javax.swing.JPanel {
         tbNhanVien.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         tbNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tbNhanVien.setGridColor(new java.awt.Color(0, 0, 0));
-        tbNhanVien.setRowHeight(20);
         tbNhanVien.setShowGrid(false);
         tbNhanVien.getTableHeader().setReorderingAllowed(false);
         tbNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {

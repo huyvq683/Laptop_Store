@@ -6,6 +6,7 @@ package repository.impl;
 
 import custommodel.HoaDonResponse;
 import domainmodel.HoaDon;
+import domainmodel.NhanVien;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -21,13 +22,14 @@ import utility.HibernateUtil;
  */
 public class HoaDonRepository {
 
-    public List<HoaDonResponse> getAll() {
+    public List<HoaDonResponse> getAll(NhanVien nhanVien) {
         List<HoaDonResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.HoaDonResponse"
                     + "(h.id, h.ma, h.ngayTao, nv.hoTen, h.tinhTrang) "
                     + "FROM HoaDon h LEFT JOIN NhanVien nv "
-                    + "on h.idNV = nv.id ORDER BY h.ma DESC");
+                    + "on h.idNV = nv.id WHERE nv.id = :id ORDER BY h.ma DESC");
+            query.setParameter("id", nhanVien.getId());
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -55,6 +57,7 @@ public class HoaDonRepository {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             HoaDon hd = session.get(HoaDon.class, id);
+            hd.setTinhTrang(1);
             session.update(hd);
             transaction.commit();
             check = true;

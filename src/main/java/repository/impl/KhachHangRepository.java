@@ -1,4 +1,3 @@
-
 package repository.impl;
 
 import domainmodel.KhachHang;
@@ -30,11 +29,17 @@ public class KhachHangRepository {
     }
 
     public KhachHang getMa(String ma) {
-        String sql = fromTable + " WHERE ma = :ma";
-        Query query = session.createQuery(sql);
-        query.setParameter("ma", ma);
-        KhachHang kh = (KhachHang) query.getSingleResult();
-        return kh;
+        try ( Session session = HibernateUtil.getFACTORY().openSession();) {
+            String sql = fromTable + " WHERE ma = :ma";
+            Query query = session.createQuery(sql);
+            query.setParameter("ma", ma);
+            KhachHang kh = (KhachHang) query.getSingleResult();
+            return kh;
+        }
+        catch(Exception e){
+            return null;
+        }
+
     }
 
     public KhachHang getEmail(String email) {
@@ -70,4 +75,5 @@ public class KhachHangRepository {
         }
         return false;
     }
+
 }
