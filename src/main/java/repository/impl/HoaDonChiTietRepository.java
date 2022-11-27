@@ -54,9 +54,13 @@ public class HoaDonChiTietRepository {
 //    }
     public Boolean delete(UUID id) {
         boolean check = false;
+        
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("DELETE FROM HoaDonChiTiet WHERE idHoaDon.id = :id");
+            Transaction transaction = session.beginTransaction();
+            Query query = session.createQuery("DELETE FROM HoaDonChiTiet hd WHERE hd.idHoaDon.id = :id");
             query.setParameter("id", id);
+            query.executeUpdate();
+            transaction.commit();
             check = true;
         } catch (Exception e) {
             e.printStackTrace(System.out);
