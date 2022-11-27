@@ -29,7 +29,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ChiTietSp")
+@Table(name = "ChiTietSP")
 public class ChiTietSP implements Serializable {
 
     @Id
@@ -56,8 +56,14 @@ public class ChiTietSP implements Serializable {
     @Column(name = "CardMH")
     private String card;
 
+    @Column(name = "OCung")
+    private String oCung;
+
     @Column(name = "Gia")
     private BigDecimal gia;
+    
+    @Column(name = "TinhTrang")
+    private int tinhTrang;
 
     @Column(name = "CreatedDate")
     private Date createdDate;

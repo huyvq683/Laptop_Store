@@ -44,17 +44,20 @@ public class HoaDonChiTiet implements Serializable {
     @ManyToOne
     @JoinColumn(name = "IdHoaDon")
     private HoaDon idHoaDon;
-    
+
     @Column(name = "TenSP")
     private String tenSP;
-    
+
     @Column(name = "DonGia")
     private BigDecimal donGia;
+
+    @Column(name = "TrangThai")
+    private int trangThai;
 
     @Column(name = "CreatedDate")
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
-    
+
 }
