@@ -28,11 +28,11 @@ public class ThongKeRepository {
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
                     + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang=1 AND hd.createdDate =:date ORDER BY hd.ma ASC");
+                    + " WHERE hd.tinhTrang = 1 AND hd.createdDate =:date ORDER BY hd.ma ASC");
             query.setParameter("date", n);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
+            // e.printStackTrace(System.out);
         }
         return getAllDoanhThu;
     }
@@ -46,7 +46,7 @@ public class ThongKeRepository {
             query.setParameter("date", n);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
+            // e.printStackTrace(System.out);
         }
         return getAllDoanhThu;
     }
@@ -60,7 +60,7 @@ public class ThongKeRepository {
             query.setParameter("date", n);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
+            // e.printStackTrace(System.out);
         }
         return getAllDoanhThu;
     }
@@ -110,7 +110,7 @@ public class ThongKeRepository {
             query.setParameter("mo", n);
             getAllSanPham = query.getResultList();
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
+            // e.printStackTrace(System.out);
         }
         return getAllSanPham;
     }
@@ -128,7 +128,7 @@ public class ThongKeRepository {
             query.setParameter("ye", n);
             getAllSanPham = query.getResultList();
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
+            // e.printStackTrace(System.out);
         }
         return getAllSanPham;
     }
@@ -136,11 +136,11 @@ public class ThongKeRepository {
     public long spKinhDoanh(int t) {
         String count = null;
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
-            NativeQuery query = session.createNativeQuery("SELECT count(sp.id) From SanPham sp WHERE sp.tinhTrang =:tt");
+            NativeQuery query = session.createNativeQuery("SELECT count(*) From ChiTietSP sp WHERE sp.tinhTrang =:tt");
             query.setParameter("tt", t);
             count = query.getSingleResult().toString();
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
+            // e.printStackTrace(System.out);
         }
         return Long.valueOf(count);
     }
@@ -151,7 +151,7 @@ public class ThongKeRepository {
             NativeQuery query = session.createNativeQuery("SELECT Min(Year(sr.createdDate)) FROM SerialDaBan sr");
             date = query.getSingleResult().toString();
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
+            // e.printStackTrace(System.out);
         }
         return Integer.parseInt(date);
     }

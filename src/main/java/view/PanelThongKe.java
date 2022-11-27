@@ -478,29 +478,31 @@ public class PanelThongKe extends javax.swing.JPanel {
 
     private void cbbLoaiThoiGianItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiThoiGianItemStateChanged
         Date date = new Date();
-        if (cbbLoaiThoiGian.getSelectedIndex() == 0) {
-            lbNhapNgayThangNam.setText("Nhập ngày :");
-            txtNgayThangNam.setVisible(true);
-            cbbThangNam.setVisible(false);
-        } else if (cbbLoaiThoiGian.getSelectedIndex() == 1) {
-            dcbmThangNam = new DefaultComboBoxModel();
-            lbNhapNgayThangNam.setText("Chọn tháng :");
-            txtNgayThangNam.setVisible(false);
-            cbbThangNam.setVisible(true);
-            for (int i = 1; i <= Integer.parseInt(dateFor.format(new Date()).substring(5, 7)); i++) {
-                dcbmThangNam.addElement(i);
+        if (listSP.size() > 0) {
+            if (cbbLoaiThoiGian.getSelectedIndex() == 0) {
+                lbNhapNgayThangNam.setText("Nhập ngày :");
+                txtNgayThangNam.setVisible(true);
+                cbbThangNam.setVisible(false);
+            } else if (cbbLoaiThoiGian.getSelectedIndex() == 1) {
+                dcbmThangNam = new DefaultComboBoxModel();
+                lbNhapNgayThangNam.setText("Chọn tháng :");
+                txtNgayThangNam.setVisible(false);
+                cbbThangNam.setVisible(true);
+                for (int i = 1; i <= Integer.parseInt(dateFor.format(new Date()).substring(5, 7)); i++) {
+                    dcbmThangNam.addElement(i);
+                }
+                cbbThangNam.setModel(dcbmThangNam);
+            } else {
+                dcbmThangNam = new DefaultComboBoxModel();
+                lbNhapNgayThangNam.setText("Chọn năm :");
+                txtNgayThangNam.setVisible(false);
+                cbbThangNam.setVisible(true);
+                int nam = Integer.parseInt(dateFor.format(new Date()).substring(0, 4));
+                for (int i = serviceThongKe.thangNamBatDau(); i <= nam; i++) {
+                    dcbmThangNam.addElement(i);
+                }
+                cbbThangNam.setModel(dcbmThangNam);
             }
-            cbbThangNam.setModel(dcbmThangNam);
-        } else {
-            dcbmThangNam = new DefaultComboBoxModel();
-            lbNhapNgayThangNam.setText("Chọn năm :");
-            txtNgayThangNam.setVisible(false);
-            cbbThangNam.setVisible(true);
-            int nam = Integer.parseInt(dateFor.format(new Date()).substring(0, 4));
-            for (int i = serviceThongKe.thangNamBatDau(); i <= nam; i++) {
-                dcbmThangNam.addElement(i);
-            }
-            cbbThangNam.setModel(dcbmThangNam);
         }
     }//GEN-LAST:event_cbbLoaiThoiGianItemStateChanged
 
