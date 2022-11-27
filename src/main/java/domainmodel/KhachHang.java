@@ -42,9 +42,6 @@ public class KhachHang implements Serializable {
     @Column(name = "HoTen")
     private String hoTen;
 
-    @Column(name = "GioiTinh")
-    private boolean gioiTinh;
-
     @Column(name = "DiaChi")
     private String diaChi;
 
@@ -62,7 +59,7 @@ public class KhachHang implements Serializable {
 
     public Object[] toDataRow() {
         return new Object[]{
-            ma, hoTen, gioiTinh == true ? "Nam" : "Nữ", sdt, email, diaChi
+            ma, hoTen, sdt, email, diaChi
         };
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 public interface KhachHangService<T> {
 
     List<T> getAll();
-    
+
     List<T> searchBySDT(List<T> list, String sdt);
 
     KhachHang getMa(String ma);
@@ -24,5 +24,4 @@ public interface KhachHangService<T> {
     String add(T t);
 
     String delete(T t);
-    String validate(String ma);
 }

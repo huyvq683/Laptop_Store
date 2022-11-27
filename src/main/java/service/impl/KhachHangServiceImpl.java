@@ -35,21 +35,27 @@ public class KhachHangServiceImpl implements KhachHangService<KhachHang> {
 
     @Override
     public String add(KhachHang t) {
-        if (t.getHoTen().trim().isBlank()) {
-            return "Tên trống";
+        if (t.getMa().trim().isBlank() || t.getHoTen().trim().isBlank()
+                || t.getSdt().trim().isBlank() || t.getEmail().trim().isBlank()
+                || t.getDiaChi().trim().isBlank()) {
+            return "Không được để trống";
         }
-        if (!t.getHoTen().trim().matches("^[a-zA-z]$")) {
-            return "Tên sai";
+        if (!t.getSdt().matches("^[0-9]{10}+$")) {
+            return "Số điện thoại sai định dạng";
         }
-        if (t.getSdt().trim().isBlank()) {
-            return "Sđt trống";
+        if (!t.getHoTen().matches("^[a-zA-Z ]+$")) {
+            return "Tên sai định dạng";
         }
-        if (t.getDiaChi().trim().isBlank()) {
-            return "Địa chỉ trống";
+        if (!t.getEmail().matches("\\w+@gmail.com$")) {
+            return "Email sai định dạng";
         }
         Boolean check = repository.add(t);
         if (check) {
             return "Thành công";
+        } else if (getMa(t.getMa()) != null) {
+            return "Mã trùng";
+        } else if (getEmail(t.getEmail()) != null) {
+            return "Email trùng";
         } else {
             return "Thất bại";
         }
@@ -75,13 +81,4 @@ public class KhachHangServiceImpl implements KhachHangService<KhachHang> {
         }
         return listSearch;
     }
-
-    @Override
-    public String validate(String ma) {
-        if (getMa(ma) != null) {
-            return "Mã trùng";
-        }
-        return null;
-    }
-
 }
