@@ -183,7 +183,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         });
 
         btnBoLoc.setBackground(new java.awt.Color(241, 242, 242));
-        btnBoLoc.setIcon(new ImageIcon("src/main/img/quayLaiThongKe.png"));
+        btnBoLoc.setIcon(new ImageIcon("src/main/img/quayLaiThongKe.jpg"));
         btnBoLoc.setText("Bỏ lọc");
         btnBoLoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,7 +348,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tbDoanhThu);
 
         btnBoLocDT.setBackground(new java.awt.Color(241, 242, 242));
-        btnBoLocDT.setIcon(new ImageIcon("src/main/img/quayLaiThongKe.png"));
+        btnBoLocDT.setIcon(new ImageIcon("src/main/img/quayLaiThongKe.jpg"));
         btnBoLocDT.setText("Bỏ lọc");
         btnBoLocDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
