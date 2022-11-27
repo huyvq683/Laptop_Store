@@ -80,6 +80,6 @@ public class NhanVien implements Serializable {
     }
 
     public Object[] toDataRow() {
-        return new Object[]{ma, hoTen, gioiTinh == true ? "Nam" : "Nữ", convertDate(), diaChi, sdt, email, trangThai == 0 ? "Đang làm việc" : "Đã nghỉ việc", chucVu == 1 ? "Quản lý" : "Nhân viên"};
+        return new Object[]{ma, hoTen, gioiTinh == true ? "Nam" : "Nữ", convertDate(), diaChi, sdt, email, trangThai == 0 ? "Đang làm việc" : "Đã nghỉ việc", chucVu == 0 ? "Quản lý" : "Nhân viên"};
     }
 }
