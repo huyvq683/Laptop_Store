@@ -27,63 +27,63 @@ public class ViewQuanLy extends javax.swing.JFrame {
         Image scaled = scaleImage(originalIcon.getImage(), width, height);
         ImageIcon scaledIcon = new ImageIcon(scaled);
         lblLogo.setIcon(scaledIcon);
-        
+
         ImageIcon thoat = new ImageIcon("src/main/img/thoat.png");
         int widthThoat = 55;
         int heightThoat = 55;
         Image imgThoat = scaleImage(thoat.getImage(), widthThoat, heightThoat);
         ImageIcon scaledIconThoat = new ImageIcon(imgThoat);
         btnThoat.setIcon(scaledIconThoat);
-        
+
         ImageIcon banHang = new ImageIcon("src/main/img/ban.png");
         int withBan = 45;
         int heightBan = 45;
         Image imgBanHang = scaleImage(banHang.getImage(), withBan, heightBan);
         ImageIcon scaledIconBanHang = new ImageIcon(imgBanHang);
         btnBanHang.setIcon(scaledIconBanHang);
-        
+
         ImageIcon mayTinh = new ImageIcon("src/main/img/maytinh.png");
         int withMayTinh = 40;
         int heightMayTinh = 40;
         Image imgMayTinh = scaleImage(mayTinh.getImage(), withMayTinh, heightMayTinh);
         ImageIcon scaledIconMayTinh = new ImageIcon(imgMayTinh);
         btnSanPham.setIcon(scaledIconMayTinh);
-        
+
         ImageIcon nhanVien = new ImageIcon("src/main/img/nhanvien.png");
         int withNhanVien = 45;
         int heightNhanVien = 45;
         Image imgNhanVien = scaleImage(nhanVien.getImage(), withNhanVien, heightNhanVien);
         ImageIcon scaledIconNhanVien = new ImageIcon(imgNhanVien);
         btnNhanVien.setIcon(scaledIconNhanVien);
-        
+
         ImageIcon hoaDon = new ImageIcon("src/main/img/hoadon.png");
         int withHoaDon = 40;
         int heightHoaDon = 40;
         Image imgHoaDon = scaleImage(hoaDon.getImage(), withHoaDon, heightHoaDon);
         ImageIcon scaledIconHoaDon = new ImageIcon(imgHoaDon);
         btnHoaDon.setIcon(scaledIconHoaDon);
-        
+
         ImageIcon sale = new ImageIcon("src/main/img/sale.png");
         int withSale = 45;
         int heightSale = 45;
         Image imgSale = scaleImage(sale.getImage(), withSale, heightSale);
         ImageIcon scaledIconSale = new ImageIcon(imgSale);
         btnkhuyenMai.setIcon(scaledIconSale);
-        
+
         ImageIcon khachHang = new ImageIcon("src/main/img/khachhang.png");
         int withKhachHang = 45;
         int heightKhachHang = 45;
         Image imgKhachHang = scaleImage(khachHang.getImage(), withKhachHang, heightKhachHang);
         ImageIcon scaledIconKhachHang = new ImageIcon(imgKhachHang);
         btnKhachHang.setIcon(scaledIconKhachHang);
-        
+
         ImageIcon thongKe = new ImageIcon("src/main/img/thongke.png");
         int withThongKe = 50;
         int heightThongKe = 50;
         Image imgThongKe = scaleImage(thongKe.getImage(), withThongKe, heightThongKe);
         ImageIcon scaledIconThongKe = new ImageIcon(imgThongKe);
         btnThongKe.setIcon(scaledIconThongKe);
-        
+
         btnSanPham.setBackground(new Color(0, 0, 0, 0));
         btnBanHang.setBackground(new Color(0, 0, 0, 0));
         btnNhanVien.setBackground(new Color(0, 0, 0, 0));
@@ -318,7 +318,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         panelBanHang.setLayout(panelBanHangLayout);
         panelBanHangLayout.setHorizontalGroup(
             panelBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1260, Short.MAX_VALUE)
+            .addGap(0, 1227, Short.MAX_VALUE)
         );
         panelBanHangLayout.setVerticalGroup(
             panelBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
