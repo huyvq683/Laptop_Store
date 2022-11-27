@@ -468,6 +468,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
         // TODO add your handling code here:
+        panelBanHang.removeAll();
+        PanelKhachHang kh = new PanelKhachHang();
+        panelBanHang.add(kh);
+        panelBanHang.setLayout(new FlowLayout());
+        this.pack();
+        kh.setVisible(true);
+        this.setSize(1546, 850);
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
