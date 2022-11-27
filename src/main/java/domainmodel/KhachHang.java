@@ -41,7 +41,7 @@ public class KhachHang implements Serializable {
 
     @Column(name = "HoTen")
     private String hoTen;
-    
+
     @Column(name = "GioiTinh")
     private boolean gioiTinh;
 
@@ -50,7 +50,7 @@ public class KhachHang implements Serializable {
 
     @Column(name = "SDT")
     private String sdt;
-    
+
     @Column(name = "Email")
     private String email;
 
@@ -60,4 +60,9 @@ public class KhachHang implements Serializable {
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
 
+    public Object[] toDataRow() {
+        return new Object[]{
+            ma, hoTen, gioiTinh == true ? "Nam" : "Nữ", sdt, email, diaChi
+        };
+    }
 }

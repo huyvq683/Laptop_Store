@@ -34,7 +34,7 @@ public class KhachHangRepository {
     }
 
     public KhachHang getMa(String ma) {
-        String sql = fromTable + "WHERE ma = :ma";
+        String sql = fromTable + " WHERE ma = :ma";
         Query query = session.createQuery(sql);
         query.setParameter("ma", ma);
         KhachHang kh = (KhachHang) query.getSingleResult();
@@ -42,7 +42,7 @@ public class KhachHangRepository {
     }
 
     public KhachHang getEmail(String email) {
-        String sql = fromTable + "WHERE email = :email";
+        String sql = fromTable + " WHERE email = :email";
         Query query = session.createQuery(sql);
         query.setParameter("email", email);
         KhachHang kh = (KhachHang) query.getSingleResult();
