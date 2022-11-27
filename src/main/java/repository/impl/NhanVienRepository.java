@@ -9,6 +9,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import service.NhanVienService;
 import utility.HibernateUtil;
 
 /**
@@ -19,6 +20,8 @@ public class NhanVienRepository {
 
     private String fromTable = "FROM NhanVien";
 
+    private Session session = HibernateUtil.getFACTORY().openSession();
+
     public NhanVien getOne(String email) {
         NhanVien nhanVien = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -26,12 +29,24 @@ public class NhanVienRepository {
                     + " WHERE n.email = :email");
             query.setParameter("email", email);
             nhanVien = (NhanVien) query.getSingleResult();
+            return nhanVien;
         } catch (Exception e) {
-            e.printStackTrace(System.out);
+            return null;
         }
-        return nhanVien;
     }
 
+//    public NhanVien get_One(String email) {
+//        NhanVien nv = null;
+//        try {
+//            String sql = fromTable + " Where email = :email";
+//            Query query = session.createQuery(sql);
+//            query.setParameter("email", email);
+//            nv = (NhanVien) query.getSingleResult();
+//            return nv;
+//        } catch (Exception e) {
+//            return null;
+//        }
+//    }
     public List<NhanVien> getAll() {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             javax.persistence.Query query = session.createQuery(fromTable, NhanVien.class);

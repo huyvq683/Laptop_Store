@@ -54,7 +54,7 @@ public class NhanVienServiceImpl implements NhanVienService {
         } else if (!convertDate(nhanVien.getNgaySinh()).matches("^([0-2][0-9]|(3)[0-1])(\\-)(((0)[0-9])|((1)[0-2]))(\\-)\\d{4}$")) {
             return "Vui lòng nhập ngày sinh theo định dạng dd-mm-yyyy";
         } else if (Integer.valueOf(convertDate(nhanVien.getNgaySinh()).substring(6, 10)) < 1950 || Integer.valueOf(convertDate(nhanVien.getNgaySinh()).substring(6, 10)) > 2022) {
-            return "Năm sinh không hợp lệ"+ Integer.valueOf(convertDate(nhanVien.getNgaySinh()).substring(6, 10));
+            return "Năm sinh không hợp lệ" + Integer.valueOf(convertDate(nhanVien.getNgaySinh()).substring(6, 10));
         } else if (!nhanVien.getEmail().matches("\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b")) {
             return "Vui lòng nhập email đúng định dạng!!";
         } else {
@@ -72,4 +72,20 @@ public class NhanVienServiceImpl implements NhanVienService {
         return nhanVienRepository.search(sdt);
     }
 
+    @Override
+    public String validateLogin(String email, String mk, NhanVien nv) {
+        if (nv == null) {
+            return "Tài Khoản Không Tồn Tại";
+        } else if (!nv.getMatKhau().trim().equalsIgnoreCase(mk.trim())) {
+            return "Mật Khẩu Sai";
+        } else if (nv.getTrangThai() == 1) {
+            return "Nhân Viên Đã Xóa";
+        }
+        return null;
+    }
+
+//    @Override
+//    public NhanVien get_One(String email) {
+//        return nhanVienRepository.get_One(email);
+//    }
 }
