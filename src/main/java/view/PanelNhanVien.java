@@ -6,6 +6,9 @@ package view;
 
 import domainmodel.NhanVien;
 import java.awt.Color;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -444,7 +447,7 @@ public class PanelNhanVien extends javax.swing.JPanel {
         nhanVien.setDiaChi(txtDiaChi.getText());
         nhanVien.setSdt(txtSdt.getText());
         nhanVien.setEmail(txtEmail.getText());
-        nhanVien.setMatKhau("123456");
+        nhanVien.setMatKhau(getMd5("123456"));
         if (radioDangLamViec.isSelected()) {
             nhanVien.setTrangThai(0);
         } else {
@@ -631,6 +634,22 @@ public class PanelNhanVien extends javax.swing.JPanel {
             
         } catch (MessagingException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public String getMd5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        }
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         }
     }
 
