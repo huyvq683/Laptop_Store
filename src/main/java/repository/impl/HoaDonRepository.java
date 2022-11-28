@@ -5,16 +5,6 @@
 package repository.impl;
 
 import custommodel.ViewHoaDonReponse;
-import domainmodel.HoaDon;
-import domainmodel.KhachHang;
-import domainmodel.NhanVien;
-import java.util.Date;
-import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-import utility.HibernateUtil;
-import view.PanelHoaDon;
 import custommodel.HoaDonResponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
@@ -38,8 +28,7 @@ public class HoaDonRepository {
     private Session session = HibernateUtil.getFACTORY().openSession();
 
     public List<ViewHoaDonReponse> getByOne(int tt) {
-        String sql = "SELECT new custommodel.ViewHoaDonReponse(h.ma , n.ma , k.ma , h.ngayTao , h.tongTien , h.tinhTrang) From HoaDon h"
-                + " JOIN KhachHang k ON h.idKH = k.id "
+        String sql = "SELECT new custommodel.ViewHoaDonReponse(h.id , h.ma , h.ngayTao  , n.hoTen , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id"
                 + " WHERE h.tinhTrang = :tinhTrang";
         Query query = session.createQuery(sql, ViewHoaDonReponse.class);

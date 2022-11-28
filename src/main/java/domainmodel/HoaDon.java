@@ -64,7 +64,7 @@ public class HoaDon implements Serializable {
     private BigDecimal tongTien;
 
     @Column(name = "HinhThuc")
-    private String hinhThuc;
+    private int hinhThuc;
 
     @Column(name = "TinhTrang")
     private int tinhTrang;
@@ -80,7 +80,13 @@ public class HoaDon implements Serializable {
     }
 
     public String getHinhThuc1() {
-        return this.hinhThuc .equals(0) ? "Tiền Mặt" : "Chuyển Khoản";
+        if (this.hinhThuc == 0) {
+            return "Tiền Mặt";
+        } else if (this.hinhThuc == 1) {
+            return "Chuyển Khoản";
+        } else {
+            return "Chuyển Khoản + Tiền Mặt";
+        }
     }
 
 }

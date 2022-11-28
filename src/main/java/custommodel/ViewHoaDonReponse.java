@@ -5,6 +5,8 @@
 package custommodel;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,7 +32,13 @@ public class ViewHoaDonReponse {
     private BigDecimal tongTien;
     private int tinhTrang;
 
+    private String ngayTao() {
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
+        String ngayTaoConvert = dateFormat.format(this.ngayTao);
+        return ngayTaoConvert;
+    }
+
     public Object[] toDataRow() {
-        return new Object[]{Ma, maNV, maKH, ngayTao, tongTien, tinhTrang == 0 ? "Đã Thanh Toán" : "Chưa Thanh Toán"};
+        return new Object[]{Ma, maNV, maKH, ngayTao, tongTien, tinhTrang == 0 ? "Đã Thanh Toán" : "Chờ Thanh Toán"};
     }
 }

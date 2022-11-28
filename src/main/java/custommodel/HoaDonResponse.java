@@ -49,6 +49,6 @@ public class HoaDonResponse {
     }
 
     public Object[] toDataRow(int stt) {
-        return new Object[]{stt, ma, ngayTao(), tenNhanVien, trangThai()};
+        return new Object[]{ma, ngayTao(), tenNhanVien, trangThai()};
     }
 }

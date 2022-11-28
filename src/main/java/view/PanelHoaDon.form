@@ -43,11 +43,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="25" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="161" max="32767" attributes="0"/>
+              <EmptySpace pref="157" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -133,13 +133,12 @@
             <Component class="javax.swing.JTable" name="tbaBang">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="4">
+                  <Table columnCount="5" rowCount="4">
                     <Column editable="true" title="M&#xe3;" type="java.lang.Object"/>
-                    <Column editable="true" title="M&#xe3; NV" type="java.lang.Object"/>
-                    <Column editable="true" title="M&#xe3; KH" type="java.lang.Object"/>
+                    <Column editable="true" title="T&#xea;n Nh&#xe2;n Vi&#xea;n" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
                     <Column editable="true" title="Ng&#xe0;y T&#x1ea1;o" type="java.lang.Object"/>
-                    <Column editable="true" title="T&#x1ed5;ng Ti&#x1ec1;n" type="java.lang.Object"/>
-                    <Column editable="true" title="Tr&#x1ea1;ng Th&#xe1;i" type="java.lang.Object"/>
+                    <Column editable="true" title="T&#xec;nh Tr&#x1ea1;ng" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
@@ -220,17 +219,13 @@
                       <Component id="jLabel2" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                      <Component id="jLabel6" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="lblMa" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblTongTien" alignment="0" pref="215" max="32767" attributes="0"/>
                       <Component id="cbbTT1" alignment="0" max="32767" attributes="0"/>
                       <Component id="lblNgayTao" alignment="0" pref="215" max="32767" attributes="0"/>
-                      <Component id="lblMaKH" alignment="0" pref="215" max="32767" attributes="0"/>
                       <Component id="lblMaNV" alignment="0" pref="215" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="107" max="32767" attributes="0"/>
@@ -253,32 +248,19 @@
                           <Component id="jLabel3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="btnSua" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="lblMaNV" pref="35" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel4" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="lblMaKH" pref="35" max="32767" attributes="0"/>
+                      <Component id="lblMaNV" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel5" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="lblNgayTao" pref="35" max="32767" attributes="0"/>
+                      <Component id="lblNgayTao" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel6" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="lblTongTien" pref="35" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel7" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="cbbTT1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel7" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="cbbTT1" max="32767" attributes="0"/>
-                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -291,22 +273,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="M&#xe3; NV"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="M&#xe3; KH"/>
+            <Property name="text" type="java.lang.String" value="T&#xea;n NV"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ng&#xe0;y T&#x1ea1;o"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="T&#x1ed5;ng Ti&#x1ec1;n"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -319,17 +291,6 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                 <EtchetBorder bevelType="0">
-                  <Color PropertyName="highlight" blue="0" green="ff" red="5e" type="rgb"/>
-                </EtchetBorder>
-              </Border>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblTongTien">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder>
                   <Color PropertyName="highlight" blue="0" green="ff" red="5e" type="rgb"/>
                 </EtchetBorder>
               </Border>
@@ -358,17 +319,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblNgayTao">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder>
-                  <Color PropertyName="highlight" blue="0" green="ff" red="5e" type="rgb"/>
-                </EtchetBorder>
-              </Border>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblMaKH">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">

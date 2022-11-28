@@ -63,16 +63,12 @@ public class PanelHoaDon extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lblMa = new javax.swing.JLabel();
-        lblTongTien = new javax.swing.JLabel();
         cbbTT1 = new javax.swing.JComboBox<>();
         btnSua = new javax.swing.JButton();
         lblNgayTao = new javax.swing.JLabel();
-        lblMaKH = new javax.swing.JLabel();
         lblMaNV = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1254, 850));
@@ -88,13 +84,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
         tbaBang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã", "Mã NV", "Mã KH", "Ngày Tạo", "Tổng Tiền", "Trạng Thái"
+                "Mã", "Tên Nhân Viên", "Title 3", "Ngày Tạo", "Tình Trạng"
             }
         ));
         tbaBang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,19 +161,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
         jLabel2.setText("Mã");
 
-        jLabel3.setText("Mã NV");
-
-        jLabel4.setText("Mã KH");
+        jLabel3.setText("Tên NV");
 
         jLabel5.setText("Ngày Tạo");
-
-        jLabel6.setText("Tổng Tiền");
 
         jLabel7.setText("Tình Trạng");
 
         lblMa.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(94, 255, 0), null));
-
-        lblTongTien.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(94, 255, 0), null));
 
         cbbTT1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đã Thanh Toán", "Chưa Thanh Toán" }));
 
@@ -189,8 +179,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
         });
 
         lblNgayTao.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(94, 255, 0), null));
-
-        lblMaKH.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(94, 255, 0), null));
 
         lblMaNV.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(94, 225, 0), null));
 
@@ -204,16 +192,12 @@ public class PanelHoaDon extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(lblMa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTongTien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                     .addComponent(cbbTT1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNgayTao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                    .addComponent(lblMaKH, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                     .addComponent(lblMaNV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addComponent(btnSua)
@@ -231,26 +215,16 @@ public class PanelHoaDon extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblMaNV, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(lblMaNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNgayTao, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(lblNgayTao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTongTien, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cbbTT1)
-                        .addGap(4, 4, 4)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                    .addComponent(cbbTT1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -272,11 +246,11 @@ public class PanelHoaDon extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addGap(108, 108, 108)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 public void getCBB() {
@@ -305,10 +279,8 @@ public void getCBB() {
         int index = tbaBang.getSelectedRow();
         lblMa.setText(tbaBang.getModel().getValueAt(index, 0).toString());
         lblMaNV.setText(tbaBang.getModel().getValueAt(index, 1).toString());
-        lblMaKH.setText(tbaBang.getModel().getValueAt(index, 2).toString());
-        lblNgayTao.setText(tbaBang.getModel().getValueAt(index, 3).toString());
-        lblTongTien.setText(tbaBang.getModel().getValueAt(index, 4).toString());
-        cbbTT1.setSelectedItem(tbaBang.getModel().getValueAt(index, 5).toString());
+        lblNgayTao.setText(tbaBang.getModel().getValueAt(index, 2).toString());
+        cbbTT1.setSelectedItem(tbaBang.getModel().getValueAt(index, 3).toString());
     }//GEN-LAST:event_tbaBangMouseClicked
 
     private void txtSearchMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchMaActionPerformed
@@ -409,18 +381,14 @@ public void getCBB() {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMa;
-    private javax.swing.JLabel lblMaKH;
     private javax.swing.JLabel lblMaNV;
     private javax.swing.JLabel lblNgayTao;
-    private javax.swing.JLabel lblTongTien;
     private javax.swing.JTable tbaBang;
     private javax.swing.JTextField txtSearchMa;
     // End of variables declaration//GEN-END:variables
