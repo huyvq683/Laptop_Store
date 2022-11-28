@@ -1,8 +1,10 @@
+package custommodel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package custommodel;
+
 
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
@@ -25,9 +27,12 @@ public class ThongKeDoanhThuRespone {
     private String maHD;
     private String maNV;
     private String tenNV;
+    private int hinhThuc;
+    private BigDecimal tienKhachTra;
+    private BigDecimal tienCK;
     private BigDecimal tongTien;
 
     public Object[] toDataRow() {
-        return new Object[]{maHD, maNV, tenNV, tongTien};
+        return new Object[]{maHD, maNV, tenNV, hinhThuc == 0 ? "Tiền mặt" : hinhThuc == 1 ? "Chuyển khoản" : "Cả tiền mặt và chuyển khoản", tienKhachTra, tienCK, tongTien};
     }
 }

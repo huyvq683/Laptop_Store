@@ -1,8 +1,10 @@
+package repository.impl;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package repository.impl;
+
 
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
@@ -27,8 +29,9 @@ public class ThongKeRepository {
         List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
-                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang = 1 AND hd.createdDate =:date ORDER BY hd.ma ASC");
+                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, "
+                    + " hd.tienCK, hd.tongTien) FROM HoaDon hd"
+                    + " WHERE hd.tinhTrang=1 AND hd.createdDate =:date ORDER BY hd.ma ASC");
             query.setParameter("date", n);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
@@ -36,7 +39,12 @@ public class ThongKeRepository {
         }
         return getAllDoanhThu;
     }
-
+    public static void main(String[] args) {
+        List<ThongKeDoanhThuRespone> li = new ThongKeRepository().getAllDoanhThu(new Date());
+        for (ThongKeDoanhThuRespone x : li) {
+            System.out.println(x);
+        }
+    }
     public List<ThongKeDoanhThuRespone> getAllDoanhThuSortTang(Date n) {
         List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {

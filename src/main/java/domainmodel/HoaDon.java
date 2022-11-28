@@ -1,8 +1,10 @@
+package domainmodel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package domainmodel;
+
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -64,7 +66,7 @@ public class HoaDon implements Serializable {
     private BigDecimal tongTien;
 
     @Column(name = "HinhThuc")
-    private String hinhThuc;
+    private int hinhThuc;
 
     @Column(name = "TinhTrang")
     private int tinhTrang;
@@ -74,13 +76,5 @@ public class HoaDon implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
-
-    public String getTinhTrang1() {
-        return this.tinhTrang == 1 ? "Chưa Thanh Toán" : "Đã Thanh Toán";
-    }
-
-    public String getHinhThuc1() {
-        return this.hinhThuc .equals(0) ? "Tiền Mặt" : "Chuyển Khoản";
-    }
 
 }
