@@ -78,7 +78,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
     }
 
     public void startPro() {
-        if (getOne().getChucVu() == 1) {
+        if (getOne().getChucVu() == 0) {
             ViewQuanLy viewQuanLy = new ViewQuanLy();
             viewQuanLy.setVisible(true);
         } else {
