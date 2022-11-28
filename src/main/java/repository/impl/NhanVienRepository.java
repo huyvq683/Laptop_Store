@@ -9,6 +9,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import service.NhanVienService;
 import utility.HibernateUtil;
 
 /**
@@ -19,6 +20,8 @@ public class NhanVienRepository {
 
     private String fromTable = "FROM NhanVien";
 
+    private Session session = HibernateUtil.getFACTORY().openSession();
+
     public NhanVien getOne(String email) {
         NhanVien nhanVien = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -26,10 +29,10 @@ public class NhanVienRepository {
                     + " WHERE n.email = :email");
             query.setParameter("email", email);
             nhanVien = (NhanVien) query.getSingleResult();
+            return nhanVien;
         } catch (Exception e) {
-            e.printStackTrace(System.out);
+            return null;
         }
-        return nhanVien;
     }
 
     public List<NhanVien> getAll() {
