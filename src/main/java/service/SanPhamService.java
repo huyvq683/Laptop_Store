@@ -29,5 +29,7 @@ public interface SanPhamService {
     String validate(SanPham sp);
     
     String validateSP(SanPham spham);
+    
+    List<SanPham> search(String seatchKey);
 
 }

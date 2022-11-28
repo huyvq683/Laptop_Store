@@ -96,4 +96,8 @@ public class SanPhamServiceImpl implements SanPhamService {
         return null;
     }
 
+    @Override
+    public List<SanPham> search(String seatchKey) {
+        return sanPhamRe.search(seatchKey);
+    }
 }
