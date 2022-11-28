@@ -35,18 +35,6 @@ public class NhanVienRepository {
         }
     }
 
-//    public NhanVien get_One(String email) {
-//        NhanVien nv = null;
-//        try {
-//            String sql = fromTable + " Where email = :email";
-//            Query query = session.createQuery(sql);
-//            query.setParameter("email", email);
-//            nv = (NhanVien) query.getSingleResult();
-//            return nv;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
     public List<NhanVien> getAll() {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             javax.persistence.Query query = session.createQuery(fromTable, NhanVien.class);

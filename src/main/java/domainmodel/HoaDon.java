@@ -64,7 +64,11 @@ public class HoaDon implements Serializable {
     private BigDecimal tongTien;
 
     @Column(name = "HinhThuc")
+<<<<<<< HEAD
     private int hinhThuc;
+=======
+    private String hinhThuc;
+>>>>>>> bd39a4751d5e64f1d6ad636b2af8919232587456
 
     @Column(name = "TinhTrang")
     private int tinhTrang;

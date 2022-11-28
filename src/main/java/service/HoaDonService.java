@@ -4,6 +4,7 @@
  */
 package service;
 
+<<<<<<< HEAD
 import custommodel.ViewHoaDonReponse;
 import domainmodel.HoaDon;
 import java.util.Date;
@@ -37,4 +38,30 @@ public interface HoaDonService {
 //    NhanVien getMaNV(String ma);
 //
 //    KhachHang getMaKH(String ma);
+=======
+import custommodel.HoaDonResponse;
+import domainmodel.HoaDon;
+import domainmodel.NhanVien;
+import java.util.List;
+import java.util.UUID;
+
+/**
+ *
+ * @author FPT
+ */
+public interface HoaDonService {
+
+    List<HoaDonResponse> getAll(NhanVien nhanVien);
+
+    String add(HoaDon hoaDon);
+
+    int genMaHD();
+
+    String updateTrangThai(HoaDon hoaDon, UUID id);
+
+    String updateTrangThaiHuy(HoaDon hoaDon, UUID id);
+
+    HoaDon getByIdHoaDon(UUID id);
+    
+>>>>>>> bd39a4751d5e64f1d6ad636b2af8919232587456
 }

@@ -4,13 +4,11 @@
  */
 package service.impl;
 
-
-
+import custommodel.ChiTietSPResponse;
 import domainmodel.ChiTietSP;
 import java.util.List;
 import java.util.UUID;
 import repository.impl.ChiTietSPRepository;
-
 
 import service.ChiTietSPService;
 
@@ -20,7 +18,7 @@ import service.ChiTietSPService;
  */
 public class ChiTietSPServiceImql implements ChiTietSPService {
 
-    ChiTietSPRepository repository = new ChiTietSPRepository();
+    private ChiTietSPRepository repository = new ChiTietSPRepository();
 
     @Override
     public List<ChiTietSP> getAllChiTietSP() {
@@ -109,4 +107,25 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
         }
         return null;
     }
+
+    @Override
+    public List<ChiTietSPResponse> getAll() {
+        return repository.getAll();
+    }
+
+    @Override
+    public ChiTietSP getBySerialChiTietSP(String serial) {
+        return repository.getBySerialChiTietSP(serial);
+    }
+
+    @Override
+    public void updateTinhTrangSP(ChiTietSP chiTietSP, UUID id) {
+        repository.updateTinhTrangSP(chiTietSP, id);
+    }
+
+    @Override
+    public List<ChiTietSPResponse> getlist() {
+        return repository.getList();
+    }
+    
 }

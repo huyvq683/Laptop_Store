@@ -41,7 +41,7 @@ public class SerialDaBan implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "IdHDCT")
-    private ChiTietSP idHDCT;
+    private HoaDonChiTiet idHDCT;
 
     @Column(name = "CreatedDate")
     private Date createdDate;

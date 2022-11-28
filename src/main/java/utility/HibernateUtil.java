@@ -2,9 +2,14 @@ package utility;
 
 import domainmodel.ChiTietSP;
 import domainmodel.HoaDon;
+<<<<<<< HEAD
+=======
+import domainmodel.HoaDonChiTiet;
+>>>>>>> bd39a4751d5e64f1d6ad636b2af8919232587456
 import domainmodel.KhachHang;
 import domainmodel.NhanVien;
 import domainmodel.SanPham;
+import domainmodel.SerialDaBan;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -28,11 +33,16 @@ public class HibernateUtil {
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
-        conf.addAnnotatedClass(NhanVien.class);
         conf.addAnnotatedClass(SanPham.class);
-        conf.addAnnotatedClass(ChiTietSP.class);
+        conf.addAnnotatedClass(NhanVien.class);
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(HoaDon.class);
+<<<<<<< HEAD
+=======
+        conf.addAnnotatedClass(ChiTietSP.class);
+        conf.addAnnotatedClass(HoaDonChiTiet.class);
+        conf.addAnnotatedClass(SerialDaBan.class);
+>>>>>>> bd39a4751d5e64f1d6ad636b2af8919232587456
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

@@ -45,7 +45,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
         showDataCTSP(listCTSP);
     }
-    
+
     // SanPham
     private void fill(int index) {
         SanPham sp = listSanPham.get(index);
@@ -57,7 +57,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         modelSP = (DefaultTableModel) tblSanPham2.getModel();
         modelSP.setRowCount(0);
         for (SanPham x : listss) {
-            modelSP.addRow(new Object[]{x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getAlstModifiedDate()), x.getTinhTrang() == 0 ? "Hoạt động" : "Ngừng hoạt động"});
+            modelSP.addRow(new Object[]{x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getAlstModifiedDate())});
         }
     }
 
@@ -603,13 +603,8 @@ public class PanelSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMaSPActionPerformed
 
     private void btnThem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem2ActionPerformed
-        int tt = 0;
-        if (rbHoatDong.isSelected()) {
-            tt = 0;
-        } else {
-            tt = 1;
-        }
-        SanPham sp = new SanPham(txtMaSP.getText().trim(), txtTenSP.getText().trim(), new Date(), new Date(), tt);
+
+        SanPham sp = new SanPham(txtMaSP.getText().trim(), txtTenSP.getText().trim(), new Date(), new Date());
         JOptionPane.showMessageDialog(this, service.addSanPham(sp));
         listSanPham = service.getAllSanPham();
         showDataTable(listSanPham);
@@ -618,13 +613,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void btnSua2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua2ActionPerformed
         SanPham sp = listSanPham.get(tblSanPham2.getSelectedRow());
-        int tt = 0;
-        if (rbHoatDong.isSelected()) {
-            tt = 0;
-        } else {
-            tt = 1;
-        }
-        SanPham spSua = new SanPham(txtMaSP.getText().trim(), txtTenSP.getText().trim(), sp.getCreatedDate(), new Date(), tt);
+        SanPham spSua = new SanPham(txtMaSP.getText().trim(), txtTenSP.getText().trim(), sp.getCreatedDate(), new Date());
         UUID id = sp.getId();
         JOptionPane.showMessageDialog(this, service.upDateSanPham(spSua, id));
         listSanPham = service.getAllSanPham();
@@ -633,13 +622,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         SanPham sp = listSanPham.get(tblSanPham2.getSelectedRow());
-        int tt = 0;
-        if (rbHoatDong.isSelected()) {
-            tt = 0;
-        } else {
-            tt = 1;
-        }
-        SanPham spSua = new SanPham(txtMaSP.getText().trim(), txtTenSP.getText().trim(), sp.getCreatedDate(), sp.getAlstModifiedDate(), tt);
+        SanPham spSua = new SanPham(txtMaSP.getText().trim(), txtTenSP.getText().trim(), sp.getCreatedDate(), sp.getAlstModifiedDate());
         UUID id = sp.getId();
         JOptionPane.showMessageDialog(this, service.upDateSanPham(spSua, id));
         listSanPham = service.getAllSanPham();
@@ -691,10 +674,10 @@ public class PanelSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_tblBangChiTietSPMouseClicked
 
     private void txtTimKiemSDTKH1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTimKiemSDTKH1CaretUpdate
-       String seatch = txtTimKiemSDTKH1.getText();
+        String seatch = txtTimKiemSDTKH1.getText();
         if (seatch.isEmpty()) {
             showDataCTSP(listCTSP);
-        }else{
+        } else {
             List<ChiTietSP> ctsp = serviceCTSP.seatch(seatch);
             showDataCTSP(ctsp);
         }

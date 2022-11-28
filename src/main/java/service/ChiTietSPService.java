@@ -5,6 +5,7 @@
 package service;
 
 
+import custommodel.ChiTietSPResponse;
 import domainmodel.ChiTietSP;
 import java.util.List;
 import java.util.UUID;
@@ -28,4 +29,13 @@ public interface ChiTietSPService {
     List<ChiTietSP> seatch(String ram);
 
     String checkInt(String gia);
+    
+    List<ChiTietSPResponse> getAll();
+    
+    List<ChiTietSPResponse> getlist();
+
+    ChiTietSP getBySerialChiTietSP(String serial);
+    
+    void updateTinhTrangSP(ChiTietSP chiTietSP, UUID id);
+    
 }
