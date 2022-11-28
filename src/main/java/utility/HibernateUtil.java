@@ -1,6 +1,7 @@
 package utility;
 
 import domainmodel.ChiTietSP;
+import domainmodel.HoaDon;
 import domainmodel.KhachHang;
 import domainmodel.NhanVien;
 import domainmodel.SanPham;
@@ -31,6 +32,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(ChiTietSP.class);
         conf.addAnnotatedClass(KhachHang.class);
+        conf.addAnnotatedClass(HoaDon.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
