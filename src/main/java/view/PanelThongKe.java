@@ -40,7 +40,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private List<ThongKeSanPhamRespone> listSP = new ArrayList<>();
     private List<ThongKeDoanhThuRespone> listDT = new ArrayList<>();
     private Date date = new Date();
-    private DateFormat dateFor = new SimpleDateFormat("yyyy/MM/dd");
+    private DateFormat dateFor = new SimpleDateFormat("dd/MM/yyyy");
     // ép size tiền định dạng VietNam && tạo 1 NumberFormat để định dạng tiền tệ theo tiêu chuẩn của Việt Nam
     // đơn vị tiền tệ của Việt Nam là đồng
     private Locale localeVN = new Locale("vi", "VN");
@@ -57,7 +57,8 @@ public class PanelThongKe extends javax.swing.JPanel {
         String hearSP[] = {"Mã SP", "Tên SP", "Giá", "Số lượng đã bán", "Doanh thu"};
         dtmSP.setColumnIdentifiers(hearSP);
         // tạo date, hiển thị và tắt 
-        nam = Integer.valueOf(dateFor.format(date).substring(0, 4));
+        nam = Integer.valueOf(dateFor.format(date).substring(6, 10));
+        System.out.println(nam);
         showDataSP(dateFor.format(date));
         // setup các lb và cbb
         lbSanPhamDangKinhDoanh.setText(String.valueOf(serviceThongKe.spKinhDoanh(0)));
@@ -526,7 +527,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             lbNhapNgayThangNam.setText("Chọn tháng :");
             txtNgayThangNam.setVisible(false);
             cbbThangNam.setVisible(true);
-            for (int i = 1; i <= Integer.parseInt(dateFor.format(new Date()).substring(5, 7)); i++) {
+            for (int i = 1; i <= Integer.parseInt(dateFor.format(new Date()).substring(3, 5)); i++) {
                 dcbmThangNam.addElement(i);
             }
             cbbThangNam.setModel(dcbmThangNam);
@@ -535,7 +536,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             lbNhapNgayThangNam.setText("Chọn năm :");
             txtNgayThangNam.setVisible(false);
             cbbThangNam.setVisible(true);
-            int nam = Integer.parseInt(dateFor.format(new Date()).substring(0, 4));
+            int nam = Integer.parseInt(dateFor.format(new Date()).substring(6, 10));
             if (serviceThongKe.namBatDau() != 0) {
                 for (int i = serviceThongKe.namBatDau(); i <= nam; i++) {
                     dcbmThangNam.addElement(i);
@@ -548,12 +549,18 @@ public class PanelThongKe extends javax.swing.JPanel {
             cbbThangNam.setModel(dcbmThangNam);
         }
     }//GEN-LAST:event_cbbLoaiThoiGianItemStateChanged
-
+    private boolean validateNgay() {
+        if (txtNgayThangNam.getText().trim().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     private void btnLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocActionPerformed
         Date date = new Date();
-        DateFormat dateFor = new SimpleDateFormat("yyyy/MM/dd");
+        DateFormat dateFor = new SimpleDateFormat("dd/MM/yyyy");
         if (cbbLoaiThoiGian.getSelectedIndex() == 0) {
-            if (!txtNgayThangNam.getText().trim().isEmpty()) {
+            if (!txtNgayThangNam.getText().isEmpty() && validateNgay()) {
                 try {
                     showDataSP(txtNgayThangNam.getText());
                     if (listSP.size() > 0) {
@@ -565,7 +572,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                     //Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày để lọc");
+                JOptionPane.showMessageDialog(this, "Ngày không được để trống hoặc sai định dạng");
             }
         } else if (cbbLoaiThoiGian.getSelectedIndex() == 1) {
             try {

@@ -23,7 +23,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ThongKeDoanhThuRespone {
-    
+
     private String maHD;
     private String maNV;
     private String tenNV;
@@ -31,13 +31,13 @@ public class ThongKeDoanhThuRespone {
     private BigDecimal tienKhachTra;
     private BigDecimal tienCK;
     private BigDecimal tongTien;
-    
+
     private String dinhDangTienVN(BigDecimal tien) {
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         return currencyVN.format(tien);
     }
-    
+
     public Object[] toDataRow() {
         return new Object[]{maHD, maNV, tenNV, hinhThuc == 0 ? "Tiền mặt" : hinhThuc == 1 ? "Chuyển khoản" : "Cả tiền mặt và chuyển khoản", dinhDangTienVN(tienKhachTra), dinhDangTienVN(tienCK), dinhDangTienVN(tongTien)};
     }
