@@ -4,6 +4,7 @@
  */
 package service.impl;
 
+import custommodel.ViewHoaDonReponse;
 import custommodel.HoaDonResponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
@@ -13,12 +14,60 @@ import repository.impl.HoaDonRepository;
 import service.HoaDonService;
 
 /**
- *
- * @author FPT
+ * @author FPT 
  */
 public class HoaDonServiceImpl implements HoaDonService {
 
     private HoaDonRepository hoaDonRepository = new HoaDonRepository();
+
+    @Override
+    public List<ViewHoaDonReponse> getByOne(int tt) {
+        return hoaDonRepository.getByOne(tt);
+    }
+
+    @Override
+    public String update(HoaDon hd) {
+        if (hoaDonRepository.update(hd)) {
+            return "Thành Công";
+        } else {
+            return "Thất Bại";
+        }
+    }
+
+    @Override
+    public List<HoaDon> get_All() {
+        return hoaDonRepository.get_All();
+    }
+
+    @Override
+    public ViewHoaDonReponse getOneByMa(String ma) {
+        return hoaDonRepository.getOneByMa(ma);
+    }
+
+    @Override
+    public List<ViewHoaDonReponse> getByNV(String ma) {
+        return hoaDonRepository.getByNV(ma);
+    }
+
+    @Override
+    public List<ViewHoaDonReponse> getByMaKH(String ma) {
+        return hoaDonRepository.getByMaKH(ma);
+    }
+
+    @Override
+    public List<ViewHoaDonReponse> getByNgayTao(String ma) {
+        return hoaDonRepository.getByNgayTao(ma);
+    }
+
+    @Override
+    public HoaDon getByMa(String ma) {
+        return hoaDonRepository.getOne(ma);
+    }
+
+    @Override
+    public List<ViewHoaDonReponse> getAll() {
+        return hoaDonRepository.getAll();
+    }
 
     @Override
     public List<HoaDonResponse> getAll(NhanVien nhanVien) {
@@ -64,6 +113,4 @@ public class HoaDonServiceImpl implements HoaDonService {
     public HoaDon getByIdHoaDon(UUID id) {
         return hoaDonRepository.getByIdHoaDon(id);
     }
-
-
 }

@@ -75,4 +75,12 @@ public class HoaDon implements Serializable {
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
 
+    public String getTinhTrang1() {
+        return this.tinhTrang == 1 ? "Chưa Thanh Toán" : "Đã Thanh Toán";
+    }
+
+    public String getHinhThuc1() {
+        return this.hinhThuc .equals(0) ? "Tiền Mặt" : "Chuyển Khoản";
+    }
+
 }
