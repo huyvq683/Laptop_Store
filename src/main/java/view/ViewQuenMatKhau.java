@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.util.Properties;
 import java.util.Random;
 import javax.mail.Authenticator;
@@ -16,6 +17,8 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import service.QuenMatKhauService;
 import service.impl.QuenMatKhauServiceImpl;
@@ -28,6 +31,7 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
 
     private QuenMatKhauService quenMKService = new QuenMatKhauServiceImpl();
     private int maXacThuc;
+    private int checkMa = 0;
 
     /**
      * Creates new form DangNhap
@@ -38,6 +42,27 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
         txtTaiKhoan.setBackground(new Color(0, 0, 0, 0));
         txtMaXacThuc.setBackground(new Color(0, 0, 0, 0));
         turnOff();
+
+        anIcon(btnHienMaXacThuc);
+    }
+
+    private void anIcon(JButton a) {
+        ImageIcon privateIcon = new ImageIcon("src/main/img/anquenmk.png");
+        Image closeEye = scaleImage(privateIcon.getImage(), 24, 24);
+        ImageIcon closeEyeView = new ImageIcon(closeEye);
+        a.setIcon(closeEyeView);
+    }
+
+    private void hienIcon(JButton a) {
+        ImageIcon privateIcon = new ImageIcon("src/main/img/hienquenmk.png");
+        Image closeEye = scaleImage(privateIcon.getImage(), 24, 24);
+        ImageIcon closeEyeView = new ImageIcon(closeEye);
+        a.setIcon(closeEyeView);
+    }
+
+    private Image scaleImage(Image image, int w, int h) {
+        Image scaled = image.getScaledInstance(w, h, Image.SCALE_SMOOTH);
+        return scaled;
     }
 
     private void turnOff() {
@@ -46,6 +71,7 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
         lbMaXT.setEnabled(false);
         txtMaXacThuc.setEnabled(false);
         btnXacNhan.setVisible(false);
+        btnHienMaXacThuc.setVisible(false);
     }
 
     private void turnOn() {
@@ -54,6 +80,7 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
         lbMaXT.setEnabled(true);
         txtMaXacThuc.setEnabled(true);
         btnXacNhan.setVisible(true);
+        btnHienMaXacThuc.setVisible(true);
     }
 
     /**
@@ -77,6 +104,7 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblthoat = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnHienMaXacThuc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quên mật  khẩu");
@@ -187,6 +215,14 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnHienMaXacThuc.setIcon(new ImageIcon("src/main/img/hienquenmk.png"));
+        btnHienMaXacThuc.setContentAreaFilled(false);
+        btnHienMaXacThuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHienMaXacThucActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -194,17 +230,20 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnXacNhan)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnHuyBo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbMaXT, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTaiKhoan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(txtMaXacThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuiMa)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnHienMaXacThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnGuiMa)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnXacNhan)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnHuyBo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbMaXT, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTaiKhoan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(38, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -216,13 +255,15 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuiMa)
+                .addGap(2, 2, 2)
                 .addComponent(lbMaXT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMaXacThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuiMa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                    .addComponent(btnHienMaXacThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHuyBo)
                     .addComponent(btnXacNhan))
@@ -326,6 +367,18 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
         lblthoat.setBackground(new Color(0, 102, 102));
         lblthoat.setOpaque(true);
     }//GEN-LAST:event_lblthoatMouseExited
+
+    private void btnHienMaXacThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHienMaXacThucActionPerformed
+        if (checkMa == 0) {
+            txtMaXacThuc.setEchoChar(txtMaXacThuc.getFocusAccelerator());
+            hienIcon(btnHienMaXacThuc);
+            checkMa = 1;
+        } else {
+            txtMaXacThuc.setEchoChar('*');
+            anIcon(btnHienMaXacThuc);
+            checkMa = 0;
+        }
+    }//GEN-LAST:event_btnHienMaXacThucActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,6 +488,7 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuiMa;
+    private javax.swing.JButton btnHienMaXacThuc;
     private javax.swing.JButton btnHuyBo;
     private javax.swing.JButton btnXacNhan;
     private javax.swing.ButtonGroup buttonGroup1;

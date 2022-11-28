@@ -6,10 +6,13 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.xml.bind.DatatypeConverter;
 import service.QuenMatKhauService;
@@ -26,14 +29,37 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
      */
     private QuenMatKhauService quenMKService = new QuenMatKhauServiceImpl();
     public String mail;
+    public int checkHienThiMK1 = 0;
+    public int checkHienThiMK2 = 0;
 
     public ViewDoiMatKhauMoi(String email) {
-        setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
         txtMatKhauMoi.setBackground(new Color(0, 0, 0, 0));
         txtNhapLaiMatKhauMoi.setBackground(new Color(0, 0, 0, 0));
         this.mail = email;
+        anIcon(btnHienMK1);
+        anIcon(btnHienMK2);
+    }
+
+    // function , constructer icon ẩn / hiện
+    private void anIcon(JButton a) {
+        ImageIcon privateIcon = new ImageIcon("src/main/img/anquenmk.png");
+        Image closeEye = scaleImage(privateIcon.getImage(), 24, 24);
+        ImageIcon closeEyeView = new ImageIcon(closeEye);
+        a.setIcon(closeEyeView);
+    }
+
+    private void hienIcon(JButton a) {
+        ImageIcon privateIcon = new ImageIcon("src/main/img/hienquenmk.png");
+        Image closeEye = scaleImage(privateIcon.getImage(), 24, 24);
+        ImageIcon closeEyeView = new ImageIcon(closeEye);
+        a.setIcon(closeEyeView);
+    }
+
+    private Image scaleImage(Image image, int w, int h) {
+        Image scaled = image.getScaledInstance(w, h, Image.SCALE_SMOOTH);
+        return scaled;
     }
 
     /**
@@ -57,9 +83,13 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
         btnDoiMatKhau = new javax.swing.JButton();
         btnQuayLai = new javax.swing.JButton();
         txtMatKhauMoi = new javax.swing.JPasswordField();
+        btnHienMK1 = new javax.swing.JButton();
+        btnHienMK2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Đổi mật khẩu");
         setMinimumSize(new java.awt.Dimension(406, 278));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -92,7 +122,7 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
-                        .addGap(133, 133, 133)))
+                        .addGap(151, 151, 151)))
                 .addComponent(lblthoat)
                 .addContainerGap())
         );
@@ -143,19 +173,32 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
         txtMatKhauMoi.setForeground(new java.awt.Color(51, 51, 51));
         txtMatKhauMoi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
 
+        btnHienMK1.setContentAreaFilled(false);
+        btnHienMK1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHienMK1ActionPerformed(evt);
+            }
+        });
+
+        btnHienMK2.setContentAreaFilled(false);
+        btnHienMK2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHienMK2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 51, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
@@ -166,32 +209,40 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(txtNhapLaiMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(55, 55, 55))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnHienMK2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHienMK1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(31, 31, 31)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHienMK1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNhapLaiMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDoiMatKhau)
-                            .addComponent(btnQuayLai))
-                        .addGap(26, 26, 26))))
+                        .addComponent(txtNhapLaiMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHienMK2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDoiMatKhau)
+                    .addComponent(btnQuayLai))
+                .addGap(26, 26, 26))
         );
+
+        getAccessibleContext().setAccessibleName("Đổi mật khẩu");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,105 +289,42 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
     private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
+        this.dispose();
         new ViewQuenMatKhau().setVisible(true);
     }//GEN-LAST:event_btnQuayLaiActionPerformed
+
+    private void btnHienMK1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHienMK1ActionPerformed
+        if (checkHienThiMK1 == 0) {
+            txtMatKhauMoi.setEchoChar(txtMatKhauMoi.getFocusAccelerator());
+            hienIcon(btnHienMK1);
+            checkHienThiMK1 = 1;
+        } else {
+            txtMatKhauMoi.setEchoChar('*');
+            anIcon(btnHienMK1);
+            checkHienThiMK1 = 0;
+        }
+    }//GEN-LAST:event_btnHienMK1ActionPerformed
+
+    private void btnHienMK2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHienMK2ActionPerformed
+        if (checkHienThiMK2 == 0) {
+            txtNhapLaiMatKhauMoi.setEchoChar(txtNhapLaiMatKhauMoi.getFocusAccelerator());
+            hienIcon(btnHienMK2);
+            checkHienThiMK2 = 1;
+        } else {
+            txtNhapLaiMatKhauMoi.setEchoChar('*');
+            anIcon(btnHienMK2);
+            checkHienThiMK2 = 0;
+        }
+    }//GEN-LAST:event_btnHienMK2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewDoiMatKhauMoi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewDoiMatKhauMoi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewDoiMatKhauMoi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewDoiMatKhauMoi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDoiMatKhau;
+    private javax.swing.JButton btnHienMK1;
+    private javax.swing.JButton btnHienMK2;
     private javax.swing.JButton btnQuayLai;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
@@ -349,4 +337,5 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtMatKhauMoi;
     private javax.swing.JPasswordField txtNhapLaiMatKhauMoi;
     // End of variables declaration//GEN-END:variables
+
 }

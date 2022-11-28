@@ -40,6 +40,9 @@ public class QuenMatKhauServiceImpl implements QuenMatKhauService {
         if (maXT.trim().isBlank()) {
             return "Mã xác thực không được để trống";
         }
+        if (!maXT.trim().matches("^[0-9]+$")) {
+            return "Mã xác thực sai định dạng";
+        }
         return null;
     }
 
