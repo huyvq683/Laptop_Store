@@ -714,9 +714,18 @@ public class PanelBanHang extends javax.swing.JPanel {
         // TODO add your handling code here:
         int row = tbHoaDon.getSelectedRow();
         HoaDonResponse hd = listHoaDon.get(row);
-        UUID id = hd.getId();
         HoaDon hoaDon = new HoaDon();
-        JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon, id));
+        hoaDon.setId(hd.getId());
+        hoaDon.setMa(hd.getMa());
+        hoaDon.setNgayTao(hd.getNgayTao());
+        hoaDon.setIdNV(TenTKNV.tenNV);
+        hoaDon.setHinhThuc((int) cbbHinhThuc.getSelectedIndex());
+        hoaDon.setTienKhacTra(new BigDecimal(txtTienKhachDua.getText()));
+        hoaDon.setTienCK(new BigDecimal(txtTienCK.getText()));
+        hoaDon.setTienThua(new BigDecimal(txtTienTraLai.getText()));
+        hoaDon.setTongTien(new BigDecimal(txtTongTien.getText()));
+        hoaDon.setTinhTrang(1);
+        JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon));
         listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnThanhToanActionPerformed

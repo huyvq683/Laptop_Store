@@ -15,7 +15,6 @@ public interface NhanVienService {
 
     NhanVien getOne(String email);
 
-    //NhanVien get_One(String email);
     List<NhanVien> getAll();
 
     String addOrUpdate(NhanVien nhanVien);

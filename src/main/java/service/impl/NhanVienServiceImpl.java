@@ -84,8 +84,4 @@ public class NhanVienServiceImpl implements NhanVienService {
         return null;
     }
 
-//    @Override
-//    public NhanVien get_One(String email) {
-//        return nhanVienRepository.get_One(email);
-//    }
 }
