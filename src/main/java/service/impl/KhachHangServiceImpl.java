@@ -43,9 +43,6 @@ public class KhachHangServiceImpl implements KhachHangService<KhachHang> {
         if (!t.getSdt().matches("^[0-9]{10}+$")) {
             return "Số điện thoại sai định dạng";
         }
-        if (!t.getHoTen().matches("^[a-zA-Z ]+$")) {
-            return "Tên sai định dạng";
-        }
         if (!t.getEmail().matches("\\w+@gmail.com$")) {
             return "Email sai định dạng";
         }
