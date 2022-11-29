@@ -145,11 +145,12 @@ public class PanelBanHang extends javax.swing.JPanel {
         hoaDonChiTiet.setDonGia(hoaDonChiTietResponse.getGia());
         hoaDonChiTietService.add(hoaDonChiTiet);
         showDataTableGioHang(hoaDonResponse.getId());
-        
+
         SerialDaBan serialDaBan = new SerialDaBan();
         serialDaBan.setIdHDCT(hoaDonChiTiet);
         serialDaBan.setMa(serial);
         serialDaBan.setCreatedDate(new Date());
+        serialDaBan.setAlstModifiedDate(new Date());
         serialDaBanService.add(serialDaBan);
     }
 
@@ -735,7 +736,7 @@ public class PanelBanHang extends javax.swing.JPanel {
         hoaDon.setIdKH(khachHang);
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon));
         listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
-        showDataHoaDonTable(listHoaDon);            
+        showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void txtTienTraLaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTienTraLaiMouseClicked
@@ -750,10 +751,9 @@ public class PanelBanHang extends javax.swing.JPanel {
         // TODO add your handling code here:
         String ma = txtMaKH.getText();
         KhachHang khachHang = khachHangService.getMa(ma);
-        if(khachHang == null){
+        if (khachHang == null) {
             JOptionPane.showMessageDialog(this, "Khác hàng chưa có thông tin");
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "Successed");
         }
     }//GEN-LAST:event_btnXacNhanActionPerformed
