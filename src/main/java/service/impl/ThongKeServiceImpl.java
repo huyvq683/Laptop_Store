@@ -1,9 +1,9 @@
+package service.impl;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service.impl;
-
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.util.Date;
@@ -25,6 +25,36 @@ public class ThongKeServiceImpl implements ThongKeService {
     }
 
     @Override
+    public List<ThongKeDoanhThuRespone> getAllDoanhThuMonth(int thang, int nam) {
+        return res.getAllDoanhThuMonth(thang, nam);
+    }
+
+    @Override
+    public List<ThongKeDoanhThuRespone> getAllDoanhThuYear(int nam) {
+        return res.getAllDoanhThuYear(nam);
+    }
+
+    @Override
+    public String getDoanhThuDay(Date ngay) {
+        return res.getDoanhThuDay(ngay);
+    }
+
+    @Override
+    public String getDoanhThuYear(int nam) {
+        return res.getDoanhThuYear(nam);
+    }
+
+    @Override
+    public String getDoanhThuMonth(int thang, int nam) {
+        return res.getDoanhThuMonth(thang, nam);
+    }
+
+    @Override
+    public Integer namBatDauDoanhThu() {
+        return res.namBatDauDoanhThu();
+    }
+
+    @Override
     public List<ThongKeSanPhamRespone> getAllSanPham(Date date) {
         return res.getAllSanPham(date);
     }
@@ -35,8 +65,8 @@ public class ThongKeServiceImpl implements ThongKeService {
     }
 
     @Override
-    public List<ThongKeSanPhamRespone> getAllSanPhamMonth(int n) {
-        return res.getAllSanPhamMonth(n);
+    public List<ThongKeSanPhamRespone> getAllSanPhamMonth(int thang, int nam) {
+        return res.getAllSanPhamMonth(thang, nam);
     }
 
     @Override
@@ -45,23 +75,8 @@ public class ThongKeServiceImpl implements ThongKeService {
     }
 
     @Override
-    public Integer thangNamBatDau() {
-        return res.thangNamBatDau();
-    }
-
-    @Override
-    public String getDoanhThu() {
-        return res.getDoanhThu();
-    }
-
-    @Override
-    public List<ThongKeDoanhThuRespone> getAllDoanhThuSortTang(Date n) {
-        return res.getAllDoanhThuSortTang(n);
-    }
-
-    @Override
-    public List<ThongKeDoanhThuRespone> getAllDoanhThuSortGiam(Date n) {
-        return res.getAllDoanhThuSortGiam(n);
+    public Integer namBatDau() {
+        return res.namBatDau();
     }
 
 }

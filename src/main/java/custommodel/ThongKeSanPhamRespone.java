@@ -1,10 +1,14 @@
+package custommodel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package custommodel;
+
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.Locale;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,7 +35,13 @@ public class ThongKeSanPhamRespone {
         return count * gia.longValue();
     }
 
+    private String dinhDangTienVN(long tien) {
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+        return currencyVN.format(tien);
+    }
+
     public Object[] toDataRow() {
-        return new Object[]{maSP, tenSP, gia, count, doanhThu()};
+        return new Object[]{maSP, tenSP, dinhDangTienVN(gia.longValue()), count, dinhDangTienVN(doanhThu())};
     }
 }
