@@ -45,7 +45,7 @@ public class ChiTietSPRepository {
         return null;
     }
 
-    public Boolean Add(ChiTietSP ctsp) {
+    public Boolean add(ChiTietSP ctsp) {
         Transaction transantion = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transantion = session.beginTransaction();
@@ -58,7 +58,7 @@ public class ChiTietSPRepository {
         }
     }
 
-    public Boolean Update(ChiTietSP ctsp, UUID id) {
+    public Boolean upDate(ChiTietSP ctsp, UUID id) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
@@ -82,7 +82,7 @@ public class ChiTietSPRepository {
         }
     }
 
-    public Boolean Delete(ChiTietSP ctsp, UUID id) {
+    public Boolean delete(ChiTietSP ctsp, UUID id) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
@@ -96,11 +96,11 @@ public class ChiTietSPRepository {
         }
     }
 
-    public List<ChiTietSP> seatch(String ram) {
+    public List<ChiTietSP> search(String searchKey) {
         List<ChiTietSP> listCTSP = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From ChiTietSP WHERE Ram = :ram");
-            query.setParameter("ram", ram);
+            Query query = session.createQuery("From ChiTietSP WHERE Serial like concat (:searchKey,'%') OR CPU like concat (:searchKey,'%') OR Hang like concat (:searchKey,'%') OR Ram like concat (:searchKey,'%') OR CardMH like concat (:searchKey,'%') OR OCung like concat (:searchKey,'%')");
+            query.setParameter("searchKey", searchKey);
             listCTSP = query.getResultList();
             return listCTSP;
         } catch (Exception e) {
