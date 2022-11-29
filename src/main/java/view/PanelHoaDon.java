@@ -34,7 +34,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
     public PanelHoaDon() {
         initComponents();
         model = (DefaultTableModel) tbaBang.getModel();
-        getRBN();
     }
 
     public void showResult(List<HoaDonResponse> list) {
