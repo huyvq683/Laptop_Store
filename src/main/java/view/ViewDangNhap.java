@@ -81,9 +81,11 @@ public class ViewDangNhap extends javax.swing.JFrame {
         if (getOne().getChucVu() == 0) {
             ViewQuanLy viewQuanLy = new ViewQuanLy();
             viewQuanLy.setVisible(true);
+            this.dispose();
         } else {
             ViewNhanVien viewNhanVien = new ViewNhanVien();
             viewNhanVien.setVisible(true);
+            this.dispose();
         }
     }
 
