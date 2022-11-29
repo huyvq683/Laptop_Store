@@ -5,6 +5,9 @@
 package service.impl;
 
 import domainmodel.NhanVien;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -76,7 +79,7 @@ public class NhanVienServiceImpl implements NhanVienService {
     public String validateLogin(String email, String mk, NhanVien nv) {
         if (nv == null) {
             return "Tài Khoản Không Tồn Tại";
-        } else if (!nv.getMatKhau().trim().equalsIgnoreCase(mk.trim())) {
+        } else if (!nv.getMatKhau().trim().equalsIgnoreCase(getMd5(mk))) {
             return "Mật Khẩu Sai";
         } else if (nv.getTrangThai() == 1) {
             return "Nhân Viên Đã Xóa";
@@ -84,4 +87,23 @@ public class NhanVienServiceImpl implements NhanVienService {
         return null;
     }
 
+    public String getMd5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        }
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+//    @Override
+//    public NhanVien get_One(String email) {
+//        return nhanVienRepository.get_One(email);
+//    }
 }

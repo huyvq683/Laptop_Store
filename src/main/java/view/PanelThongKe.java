@@ -1,9 +1,9 @@
+package view;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
-
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.awt.Color;
@@ -75,7 +75,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         cbbLoaiDoanhThu.setSelectedIndex(0);
         lbNhapNgayThangNam.setText("Nhập ngày :");
         txtDoanhThuNhapNgay.setVisible(true);
-        cbbThangNamDoanhThu.setVisible(false);
+        cbbThangDoanhThu.setVisible(false);
     }
 
     private void showDataDoanhThu(String ngay) throws ParseException {
@@ -83,8 +83,8 @@ public class PanelThongKe extends javax.swing.JPanel {
         listDT = serviceThongKe.getAllDoanhThu(dateFor.parse(ngay));
         listDT.forEach(p -> dtmDT.addRow(p.toDataRow()));
         if (listDT.size() > 0) {
-            if (serviceThongKe.getDoanhThuYear(nam) != null) {
-                lbTongDoanhThu.setText(currencyVN.format(Double.valueOf(serviceThongKe.getDoanhThuDay(ngay))));
+            if (serviceThongKe.getDoanhThuDay(dateFor.parse(ngay)) != null) {
+                lbTongDoanhThu.setText(currencyVN.format(Double.valueOf(serviceThongKe.getDoanhThuDay(dateFor.parse(ngay)))));
             } else {
                 lbTongDoanhThu.setText("0 đ");
             }
@@ -93,13 +93,13 @@ public class PanelThongKe extends javax.swing.JPanel {
         }
     }
 
-    private void showDataDoanhThuMonth(int thang, int nam) throws ParseException {
+    private void showDataDoanhThuMonth(int thangg, int namm) throws ParseException {
         dtmDT.setRowCount(0);
-        listDT = serviceThongKe.getAllDoanhThuMonth(thang, nam);
+        listDT = serviceThongKe.getAllDoanhThuMonth(thangg, namm);
         listDT.forEach(p -> dtmDT.addRow(p.toDataRow()));
         if (listDT.size() > 0) {
-            if (serviceThongKe.getDoanhThuYear(nam) != null) {
-                lbTongDoanhThu.setText(currencyVN.format(Double.valueOf(serviceThongKe.getDoanhThuMonth(thang, nam))));
+            if (serviceThongKe.getDoanhThuMonth(thangg, namm) != null) {
+                lbTongDoanhThu.setText(currencyVN.format(Double.valueOf(serviceThongKe.getDoanhThuMonth(thangg, namm))));
             } else {
                 lbTongDoanhThu.setText("0 đ");
             }
@@ -113,7 +113,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         listDT = serviceThongKe.getAllDoanhThuYear(n);
         listDT.forEach(p -> dtmDT.addRow(p.toDataRow()));
         if (listDT.size() > 0) {
-            if (serviceThongKe.getDoanhThuYear(nam) != null) {
+            if (serviceThongKe.getDoanhThuYear(n) != null) {
                 lbTongDoanhThu.setText(currencyVN.format(Double.valueOf(serviceThongKe.getDoanhThuYear(n))));
             } else {
                 lbTongDoanhThu.setText("0 đ");
@@ -188,18 +188,18 @@ public class PanelThongKe extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         cbbLoaiDoanhThu = new javax.swing.JComboBox<>();
         lbNhapNgayDoanhThu = new javax.swing.JLabel();
-        cbbThangNamDoanhThu = new javax.swing.JComboBox<>();
+        cbbThangDoanhThu = new javax.swing.JComboBox<>();
         txtDoanhThuNhapNgay = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbDoanhThu = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(98, 191, 215));
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1300, 860));
         setMinimumSize(new java.awt.Dimension(1300, 860));
         setPreferredSize(new java.awt.Dimension(1300, 860));
 
-        panelSanPham.setBackground(new java.awt.Color(98, 191, 215));
+        panelSanPham.setBackground(new java.awt.Color(255, 255, 255));
         panelSanPham.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Doanh thu theo sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 20))); // NOI18N
 
         tbSanPham.setModel(new javax.swing.table.DefaultTableModel(
@@ -230,8 +230,9 @@ public class PanelThongKe extends javax.swing.JPanel {
         lbNhapNgayThangNam.setText("Nhập ngày : ");
 
         txtNgayThangNam.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtNgayThangNam.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNgayThangNam.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(40, 184, 213)));
 
+        btnLocSP.setBackground(new java.awt.Color(41, 183, 212));
         btnLocSP.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLocSP.setIcon(new ImageIcon("src/main/img/loc.png"));
         btnLocSP.setText("Lọc");
@@ -251,6 +252,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             }
         });
 
+        btnBoLocSP.setBackground(new java.awt.Color(41, 183, 212));
         btnBoLocSP.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnBoLocSP.setIcon(new ImageIcon("src/main/img/boloc.png"));
         btnBoLocSP.setText("Bỏ lọc");
@@ -404,10 +406,11 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelDoanhThuNgay.setBackground(new java.awt.Color(98, 191, 215));
+        panelDoanhThuNgay.setBackground(new java.awt.Color(255, 255, 255));
         panelDoanhThuNgay.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Doanh thu theo ngày", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 20))); // NOI18N
         panelDoanhThuNgay.setMaximumSize(new java.awt.Dimension(0, 0));
 
+        btnBoLocDT.setBackground(new java.awt.Color(41, 183, 212));
         btnBoLocDT.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnBoLocDT.setIcon(new ImageIcon("src/main/img/boloc.png"));
         btnBoLocDT.setText("Bỏ lọc");
@@ -427,6 +430,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             }
         });
 
+        btnLocDT.setBackground(new java.awt.Color(41, 183, 212));
         btnLocDT.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLocDT.setIcon(new ImageIcon("src/main/img/loc.png"));
         btnLocDT.setText("Lọc");
@@ -465,8 +469,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lbTongDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(lbTongDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -492,7 +495,11 @@ public class PanelThongKe extends javax.swing.JPanel {
         lbNhapNgayDoanhThu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbNhapNgayDoanhThu.setText("Nhập ngày :");
 
-        cbbThangNamDoanhThu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbThangDoanhThu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cbbThangDoanhThu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtDoanhThuNhapNgay.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtDoanhThuNhapNgay.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(40, 184, 213)));
 
         tbDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -530,7 +537,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                             .addGroup(panelDoanhThuNgayLayout.createSequentialGroup()
                                 .addGroup(panelDoanhThuNgayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtDoanhThuNhapNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbbThangNamDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cbbThangDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                                 .addComponent(btnLocDT)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -546,7 +553,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                     .addComponent(cbbLoaiDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(panelDoanhThuNgayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbbThangNamDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbbThangDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDoanhThuNhapNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLocDT)
                     .addComponent(btnBoLocDT)
@@ -587,7 +594,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelDoanhThuNgay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -651,38 +658,40 @@ public class PanelThongKe extends javax.swing.JPanel {
                     }
                 } else {
                     JOptionPane.showMessageDialog(this, "Ngày không được để trống hoặc sai định dạng");
-                }   
+                }
                 break;
             case 1:
                 try {
-                    showDataSPMonth((int) cbbThangNam.getSelectedItem(), nam);
-                    if (listSP.size() > 0) {
-                        JOptionPane.showMessageDialog(this, "Lọc thành công");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Không có sản phẩm nào");
-                    }
-                } catch (ParseException ex) {
-                    Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
-                }   
-                break;
+                int nam = Integer.parseInt(dateFor.format(new Date()).substring(6, 10));
+                showDataSPMonth((int) cbbThangNam.getSelectedItem(), nam);
+                if (listSP.size() > 0) {
+                    JOptionPane.showMessageDialog(this, "Lọc thành công");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Không có sản phẩm nào");
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            break;
             default:
                 try {
-                        showDataSPYear((int) cbbThangNam.getSelectedItem());
-                        if (listSP.size() > 0) {
-                                JOptionPane.showMessageDialog(this, "Lọc thành công");
-                                } else {
-                                        JOptionPane.showMessageDialog(this, "Không có sản phẩm nào");
-                                        }
-                        } catch (ParseException ex) {
-                                Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
-                                }   
-                break;
+                showDataSPYear((int) cbbThangNam.getSelectedItem());
+                if (listSP.size() > 0) {
+                    JOptionPane.showMessageDialog(this, "Lọc thành công");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Không có sản phẩm nào");
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            break;
         }
     }//GEN-LAST:event_btnLocSPActionPerformed
 
     private void btnBoLocSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoLocSPActionPerformed
         try {
             cbbLoaiThoiGian.setSelectedIndex(0);
+            txtNgayThangNam.setText("");
             showDataSP(dateFor.format(date));
         } catch (ParseException ex) {
             Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
@@ -690,26 +699,10 @@ public class PanelThongKe extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBoLocSPActionPerformed
 
     private void btnLocDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocDTActionPerformed
-        switch (cbbLoaiDoanhThu.getSelectedIndex()) {
-            case 0:
-                if (!txtDoanhThuNhapNgay.getText().isEmpty() && validateNgay(txtDoanhThuNhapNgay.getText().trim())) {
-                    try {
-                        showDataDoanhThu(txtDoanhThuNhapNgay.getText());
-                        if (listDT.size() > 0) {
-                            JOptionPane.showMessageDialog(this, "Lọc thành công");
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Không có hóa đơn nào");
-                        }
-                    } catch (ParseException ex) {
-                        Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Ngày không được để trống hoặc sai định dạng");
-                }   break;
-            case 1:
+        if (cbbLoaiDoanhThu.getSelectedIndex() == 0) {
+            if (!txtDoanhThuNhapNgay.getText().isEmpty() && validateNgay(txtDoanhThuNhapNgay.getText().trim())) {
                 try {
-                    int namm = Integer.valueOf(dateFor.format(date).substring(6, 10));
-                    showDataDoanhThuMonth((int) cbbThangNamDoanhThu.getSelectedItem(), namm);
+                    showDataDoanhThu(txtDoanhThuNhapNgay.getText());
                     if (listDT.size() > 0) {
                         JOptionPane.showMessageDialog(this, "Lọc thành công");
                     } else {
@@ -717,26 +710,41 @@ public class PanelThongKe extends javax.swing.JPanel {
                     }
                 } catch (ParseException ex) {
                     Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
-                }   
-                break;
-            default:
-                try {
-                        showDataDoanhThuYear((int) cbbThangNamDoanhThu.getSelectedItem());
-                        if (listDT.size() > 0) {
-                                JOptionPane.showMessageDialog(this, "Lọc thành công");
-                                } else {
-                                        JOptionPane.showMessageDialog(this, "Không có hóa đơn nào");
-                                        }
-                        } catch (ParseException ex) {
-                                Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
-                                }   
-                break;
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Ngày không được để trống hoặc sai định dạng");
+            }
+        } else if (cbbLoaiDoanhThu.getSelectedIndex() == 1) {
+            try {
+                int namm = Integer.valueOf(dateFor.format(new Date()).substring(6, 10));
+                showDataDoanhThuMonth((int) cbbThangDoanhThu.getSelectedItem(), nam);
+                if (listDT.size() > 0) {
+                    JOptionPane.showMessageDialog(this, "Lọc thành công");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Không có hóa đơn nào");
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            try {
+                showDataDoanhThuYear((int) cbbThangDoanhThu.getSelectedItem());
+                if (listDT.size() > 0) {
+                    JOptionPane.showMessageDialog(this, "Lọc thành công");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Không có hóa đơn nào");
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
     }//GEN-LAST:event_btnLocDTActionPerformed
 
     private void btnBoLocDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoLocDTActionPerformed
         try {
             showDataDoanhThu(dateFor.format(date));
+            txtDoanhThuNhapNgay.setText("");
         } catch (ParseException ex) {
             Logger.getLogger(PanelThongKe.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -763,56 +771,59 @@ public class PanelThongKe extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBoLocDTMouseMoved
 // thay đổi màu sắc khi bỏ chuột ra
     private void btnLocSPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLocSPMouseExited
-        btnLocSP.setBackground(new Color(255, 255, 255));
+        btnLocSP.setBackground(new Color(41, 183, 212));
         btnLocSP.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnLocSPMouseExited
 
     private void btnBoLocSPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocSPMouseExited
-        btnBoLocSP.setBackground(new Color(255, 255, 255));
+        btnBoLocSP.setBackground(new Color(41, 183, 212));
         btnBoLocSP.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnBoLocSPMouseExited
 
     private void btnLocDTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLocDTMouseExited
-        btnLocDT.setBackground(new Color(255, 255, 255));
+        btnLocDT.setBackground(new Color(41, 183, 212));
         btnLocDT.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnLocDTMouseExited
 
     private void btnBoLocDTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocDTMouseExited
-        btnBoLocDT.setBackground(new Color(255, 255, 255));
+        btnBoLocDT.setBackground(new Color(41, 183, 212));
         btnBoLocDT.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnBoLocDTMouseExited
 
     private void cbbLoaiDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbLoaiDoanhThuActionPerformed
-        Date date = new Date();
-        if (cbbLoaiDoanhThu.getSelectedIndex() == 0) {
-            lbNhapNgayDoanhThu.setText("Nhập ngày :");
-            txtDoanhThuNhapNgay.setVisible(true);
-            cbbThangNamDoanhThu.setVisible(false);
-        } else if (cbbLoaiDoanhThu.getSelectedIndex() == 1) {
-            dcbmThangNamDoanhThu = new DefaultComboBoxModel();
-            lbNhapNgayDoanhThu.setText("Chọn tháng :");
-            txtDoanhThuNhapNgay.setVisible(false);
-            cbbThangNamDoanhThu.setVisible(true);
-            for (int i = 1; i <= Integer.parseInt(dateFor.format(new Date()).substring(3, 5)); i++) {
-                dcbmThangNamDoanhThu.addElement(i);
-            }
-            cbbThangNamDoanhThu.setModel(dcbmThangNamDoanhThu);
-        } else {
-            dcbmThangNamDoanhThu = new DefaultComboBoxModel();
-            lbNhapNgayDoanhThu.setText("Chọn năm :");
-            txtDoanhThuNhapNgay.setVisible(false);
-            cbbThangNamDoanhThu.setVisible(true);
-            int nam = Integer.parseInt(dateFor.format(new Date()).substring(6, 10));
-            if (serviceThongKe.namBatDauDoanhThu() != 0) {
-                for (int i = serviceThongKe.namBatDauDoanhThu(); i <= nam; i++) {
+        switch (cbbLoaiDoanhThu.getSelectedIndex()) {
+            case 0:
+                lbNhapNgayDoanhThu.setText("Nhập ngày :");
+                txtDoanhThuNhapNgay.setVisible(true);
+                cbbThangDoanhThu.setVisible(false);
+                break;
+            case 1:
+                dcbmThangNamDoanhThu = new DefaultComboBoxModel();
+                lbNhapNgayDoanhThu.setText("Chọn tháng :");
+                txtDoanhThuNhapNgay.setVisible(false);
+                cbbThangDoanhThu.setVisible(true);
+                for (int i = 1; i <= Integer.parseInt(dateFor.format(new Date()).substring(3, 5)); i++) {
                     dcbmThangNamDoanhThu.addElement(i);
                 }
-            } else {
-                for (int i = 2020; i <= nam; i++) {
-                    dcbmThangNamDoanhThu.addElement(i);
+                cbbThangDoanhThu.setModel(dcbmThangNamDoanhThu);
+                break;
+            default:
+                dcbmThangNamDoanhThu = new DefaultComboBoxModel();
+                lbNhapNgayDoanhThu.setText("Chọn năm :");
+                txtDoanhThuNhapNgay.setVisible(false);
+                cbbThangDoanhThu.setVisible(true);
+                int nam = Integer.parseInt(dateFor.format(new Date()).substring(6, 10));
+                if (serviceThongKe.namBatDauDoanhThu() != 0) {
+                    for (int i = serviceThongKe.namBatDauDoanhThu(); i <= nam; i++) {
+                        dcbmThangNamDoanhThu.addElement(i);
+                    }
+                } else {
+                    for (int i = 2020; i <= nam; i++) {
+                        dcbmThangNamDoanhThu.addElement(i);
+                    }
                 }
-            }
-            cbbThangNamDoanhThu.setModel(dcbmThangNamDoanhThu);
+                cbbThangDoanhThu.setModel(dcbmThangNamDoanhThu);
+                break;
         }
     }//GEN-LAST:event_cbbLoaiDoanhThuActionPerformed
 
@@ -824,8 +835,8 @@ public class PanelThongKe extends javax.swing.JPanel {
     private javax.swing.JButton btnLocSP;
     private javax.swing.JComboBox<String> cbbLoaiDoanhThu;
     private javax.swing.JComboBox<String> cbbLoaiThoiGian;
+    private javax.swing.JComboBox<String> cbbThangDoanhThu;
     private javax.swing.JComboBox<String> cbbThangNam;
-    private javax.swing.JComboBox<String> cbbThangNamDoanhThu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

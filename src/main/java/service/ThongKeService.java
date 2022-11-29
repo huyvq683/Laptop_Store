@@ -1,9 +1,9 @@
+package service;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package service;
-
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.util.Date;
@@ -21,7 +21,7 @@ public interface ThongKeService {
 
     List<ThongKeDoanhThuRespone> getAllDoanhThuYear(int nam);
 
-    String getDoanhThuDay(String day);
+    String getDoanhThuDay(Date ngay);
 
     String getDoanhThuYear(int nam);
 

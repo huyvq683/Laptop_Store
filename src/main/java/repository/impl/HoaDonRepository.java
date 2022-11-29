@@ -5,6 +5,16 @@
 package repository.impl;
 
 import custommodel.ViewHoaDonReponse;
+import domainmodel.HoaDon;
+import domainmodel.KhachHang;
+import domainmodel.NhanVien;
+import java.util.Date;
+import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import utility.HibernateUtil;
+import view.PanelHoaDon;
 import custommodel.HoaDonResponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
@@ -147,12 +157,14 @@ public class HoaDonRepository {
         return check;
     }
 
-    public boolean updateTrangThai(HoaDon hoaDon) {
+    public boolean updateTrangThai(HoaDon hoaDon, UUID id) {
         boolean check = false;
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            session.saveOrUpdate(hoaDon);
+            HoaDon hd = session.get(HoaDon.class, id);
+            hd.setTinhTrang(1);
+            session.update(hd);
             transaction.commit();
             check = true;
         } catch (Exception e) {
@@ -183,6 +195,7 @@ public class HoaDonRepository {
             NativeQuery query = session.createNativeQuery("SELECT MAX(CONVERT(INT, SUBSTRING(Ma, 3, 10))) FROM HoaDon");
             maHD = query.getSingleResult().toString();
         } catch (Exception e) {
+//            e.printStackTrace(System.out);
         }
         if (maHD == "") {
             maHD = "0";

@@ -35,6 +35,23 @@ public class HoaDonChiTietRepository {
         return lists;
     }
 
+//    public Boolean delete(UUID id) {
+//        boolean check = false;
+//        List<HoaDonChiTietResponse> lists = new ArrayList<>();
+//        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+//            Transaction transaction = session.beginTransaction();
+//            for (HoaDonChiTietResponse hdctr : lists) {
+//                HoaDonChiTiet hoaDonChiTiet = session.get(HoaDonChiTiet.class, id);
+//                hoaDonChiTiet.setId(hdctr.getId());
+//                session.delete(hoaDonChiTiet);
+//            }
+//            transaction.commit();
+//            check = true;
+//        } catch (Exception e) {
+//            e.printStackTrace(System.out);
+//        }
+//        return check;
+//    }
     public Boolean delete(UUID id) {
         boolean check = false;
         

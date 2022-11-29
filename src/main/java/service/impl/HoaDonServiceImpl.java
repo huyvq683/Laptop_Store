@@ -90,8 +90,8 @@ public class HoaDonServiceImpl implements HoaDonService {
     }
 
     @Override
-    public String updateTrangThai(HoaDon hoaDon) {
-        boolean update = hoaDonRepository.updateTrangThai(hoaDon);
+    public String updateTrangThai(HoaDon hoaDon, UUID id) {
+        boolean update = hoaDonRepository.updateTrangThai(hoaDon, id);
         if (update) {
             return "Thành công";
         } else {

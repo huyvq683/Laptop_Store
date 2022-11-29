@@ -523,13 +523,12 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         try {
-            // TODO add your handling code here:
             panelBanHang.removeAll();
-            PanelThongKe pTK = new PanelThongKe();
-            panelBanHang.add(pTK);
+            PanelThongKe panelTK = new PanelThongKe();
+            panelBanHang.add(panelTK);
             panelBanHang.setLayout(new FlowLayout());
             this.pack();
-            pTK.setVisible(true);
+            panelTK.setVisible(true);
         } catch (ParseException ex) {
             Logger.getLogger(ViewQuanLy.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -804,22 +803,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ViewQuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

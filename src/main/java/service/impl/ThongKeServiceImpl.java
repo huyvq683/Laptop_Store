@@ -1,9 +1,9 @@
+package service.impl;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service.impl;
-
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.util.Date;
@@ -35,8 +35,8 @@ public class ThongKeServiceImpl implements ThongKeService {
     }
 
     @Override
-    public String getDoanhThuDay(String day) {
-        return res.getDoanhThuDay(day);
+    public String getDoanhThuDay(Date ngay) {
+        return res.getDoanhThuDay(ngay);
     }
 
     @Override

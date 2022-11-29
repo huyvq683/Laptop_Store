@@ -1,9 +1,9 @@
+package repository.impl;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package repository.impl;
-
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.text.DateFormat;
@@ -51,12 +51,7 @@ public class ThongKeRepository {
         }
         return getAllDoanhThu;
     }
-    public static void main(String[] args) {
-        List<ThongKeDoanhThuRespone> li = new ThongKeRepository().getAllDoanhThuYear(2022);
-        for (ThongKeDoanhThuRespone x : li) {
-            System.out.println(x);
-        }
-    }
+
     public List<ThongKeDoanhThuRespone> getAllDoanhThuYear(int nam) {
         List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
@@ -110,12 +105,12 @@ public class ThongKeRepository {
 //        }
 //        return getAllDoanhThu;
 //    }
-    public String getDoanhThuDay(String ngay) {
+    public String getDoanhThuDay(Date ngay) {
         String tong = null;
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             NativeQuery query = session.createNativeQuery("SELECT SUM(hd.tongTien) FROM HoaDon hd"
                     + " WHERE hd.tinhTrang= 1 AND hd.createdDate =:date");
-            query.setParameter("date", dateFor.format(new Date()));
+            query.setParameter("date", ngay);
             tong = query.getSingleResult().toString();
             return tong;
         } catch (Exception e) {
@@ -128,15 +123,15 @@ public class ThongKeRepository {
         String tong = null;
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             NativeQuery query = session.createNativeQuery("SELECT SUM(hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang= 1 AND ((Month(hd.createdDate) =:mot AND Year(hd.createdDate) =: yea))");
-            query.setParameter("mot", thang);
-            query.setParameter("yea", nam);
+                    + " WHERE hd.tinhTrang= 1 AND (Month(hd.createdDate) =:aaa AND Year(hd.createdDate) =:bbb)");
+            query.setParameter("aaa", thang);
+            query.setParameter("bbb", nam);
             tong = query.getSingleResult().toString();
-            return tong;
+
         } catch (Exception e) {
             //e.printStackTrace(System.out);
         }
-        return null;
+        return tong;
     }
 
     public String getDoanhThuYear(int nam) {
