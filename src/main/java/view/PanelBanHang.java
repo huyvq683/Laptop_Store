@@ -12,6 +12,7 @@ import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
 import domainmodel.KhachHang;
 import domainmodel.NhanVien;
+import domainmodel.SerialDaBan;
 import domainmodel.TenTKNV;
 import java.math.BigDecimal;
 import java.text.DateFormat;
@@ -28,11 +29,13 @@ import service.HoaDonChiTietService;
 import service.HoaDonService;
 import service.KhachHangService;
 import service.NhanVienService;
+import service.SerialDaBanService;
 import service.impl.ChiTietSPServiceImql;
 import service.impl.HoaDonChiTietSeviceImpl;
 import service.impl.HoaDonServiceImpl;
 import service.impl.KhachHangServiceImpl;
 import service.impl.NhanVienServiceImpl;
+import service.impl.SerialDaBanServiceImpl;
 
 /**
  *
@@ -51,6 +54,7 @@ public class PanelBanHang extends javax.swing.JPanel {
     private List<ChiTietSPResponse> listChiTietSP = chiTietSPService.getAll();
     private NhanVienService nhanVienService = new NhanVienServiceImpl();
     private KhachHangService khachHangService = new KhachHangServiceImpl();
+    private SerialDaBanService serialDaBanService = new SerialDaBanServiceImpl();
     private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     /**
@@ -141,6 +145,12 @@ public class PanelBanHang extends javax.swing.JPanel {
         hoaDonChiTiet.setDonGia(hoaDonChiTietResponse.getGia());
         hoaDonChiTietService.add(hoaDonChiTiet);
         showDataTableGioHang(hoaDonResponse.getId());
+        
+        SerialDaBan serialDaBan = new SerialDaBan();
+        serialDaBan.setIdHDCT(hoaDonChiTiet);
+        serialDaBan.setMa(serial);
+        serialDaBan.setCreatedDate(new Date());
+        serialDaBanService.add(serialDaBan);
     }
 
     private void fillThanhToan() {
@@ -727,7 +737,7 @@ public class PanelBanHang extends javax.swing.JPanel {
         hoaDon.setTinhTrang(1);
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon));
         listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
-        showDataHoaDonTable(listHoaDon);
+        showDataHoaDonTable(listHoaDon);            
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void txtTienTraLaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTienTraLaiMouseClicked
