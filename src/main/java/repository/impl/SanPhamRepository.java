@@ -101,4 +101,17 @@ public class SanPhamRepository {
         }
         return false;
     }
+
+    public List<SanPham> search(String seatchKey) {
+        List<SanPham> listSP = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("From SanPham WHERE Ma like concat (:searchKey,'%') OR Ten like concat (:searchKey , '%')");
+            query.setParameter("searchKey", seatchKey);
+            listSP = query.getResultList();
+            return listSP;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

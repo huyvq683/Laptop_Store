@@ -36,12 +36,16 @@ public class HoaDonChiTietResponse {
         this.gia = gia;
         this.soluong = soluong;
     }
-    
+
     public long thanhTien() {
         return (long) (soluong * gia.doubleValue());
     }
 
     public Object[] toDataRow(int stt) {
         return new Object[]{stt, ma, ten, gia, soluong, thanhTien()};
+    }
+
+    public Object[] toDataRow1() {
+        return new Object[]{ma, ten, gia, soluong, thanhTien()};
     }
 }

@@ -14,14 +14,14 @@ import repository.impl.HoaDonRepository;
 import service.HoaDonService;
 
 /**
- * @author FPT 
+ * @author FPT
  */
 public class HoaDonServiceImpl implements HoaDonService {
 
     private HoaDonRepository hoaDonRepository = new HoaDonRepository();
 
     @Override
-    public List<ViewHoaDonReponse> getByOne(int tt) {
+    public List<HoaDonResponse> getByOne(int tt) {
         return hoaDonRepository.getByOne(tt);
     }
 
@@ -65,7 +65,7 @@ public class HoaDonServiceImpl implements HoaDonService {
     }
 
     @Override
-    public List<ViewHoaDonReponse> getAll() {
+    public List<HoaDonResponse> getAll() {
         return hoaDonRepository.getAll();
     }
 
@@ -90,8 +90,8 @@ public class HoaDonServiceImpl implements HoaDonService {
     }
 
     @Override
-    public String updateTrangThai(HoaDon hoaDon, UUID id) {
-        boolean update = hoaDonRepository.updateTrangThai(hoaDon, id);
+    public String updateTrangThai(HoaDon hoaDon) {
+        boolean update = hoaDonRepository.updateTrangThai(hoaDon);
         if (update) {
             return "Thành công";
         } else {

@@ -9,6 +9,9 @@ import domainmodel.TenTKNV;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -502,6 +505,12 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
         // TODO add your handling code here:
+        panelBanHang.removeAll();
+        PanelHoaDon panelHoaDon = new PanelHoaDon();
+        panelBanHang.add(panelHoaDon);
+        panelBanHang.setLayout(new FlowLayout());
+        this.pack();
+        panelHoaDon.setVisible(true);
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnkhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhuyenMaiActionPerformed
@@ -519,7 +528,16 @@ public class ViewQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        // TODO add your handling code here:
+        try {
+            panelBanHang.removeAll();
+            PanelThongKe panelTK = new PanelThongKe();
+            panelBanHang.add(panelTK);
+            panelBanHang.setLayout(new FlowLayout());
+            this.pack();
+            panelTK.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(ViewQuanLy.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed

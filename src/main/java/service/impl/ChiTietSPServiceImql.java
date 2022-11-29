@@ -6,6 +6,7 @@ package service.impl;
 
 import custommodel.ChiTietSPResponse;
 import domainmodel.ChiTietSP;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 import repository.impl.ChiTietSPRepository;
@@ -30,7 +31,7 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
         if (validate(ctsp) != null) {
             return validate(ctsp);
         } else {
-            boolean add = repository.Add(ctsp);
+            boolean add = repository.add(ctsp);
             if (add) {
                 return "Thêm thành công";
             } else {
@@ -44,7 +45,7 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
         if (ctsp.getSerial().isEmpty()) {
             return "Serial chống";
         } else {
-            boolean update = repository.Update(ctsp, id);
+            boolean update = repository.upDate(ctsp, id);
             if (update) {
                 return "Sửa thành công";
             } else {
@@ -55,7 +56,7 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
 
     @Override
     public String delete(ChiTietSP ctsp, UUID id) {
-        boolean delete = repository.Delete(ctsp, id);
+        boolean delete = repository.delete(ctsp, id);
         if (delete) {
             return "Xóa thành công";
         } else {
@@ -69,8 +70,8 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public List<ChiTietSP> seatch(String ram) {
-        return repository.seatch(ram);
+    public List<ChiTietSP> seatch(String seatch) {
+        return repository.search(seatch);
     }
 
     public String validate(ChiTietSP ctsp) {
@@ -119,13 +120,18 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public void updateTinhTrangSP(ChiTietSP chiTietSP, UUID id) {
-        repository.updateTinhTrangSP(chiTietSP, id);
+    public void updateTinhTrangSP(ChiTietSP chiTietSP) {
+        repository.updateTinhTrangSP(chiTietSP);
     }
 
     @Override
     public List<ChiTietSPResponse> getlist() {
         return repository.getList();
+    }
+    
+    @Override
+    public void updateTTSPDangBan(BigDecimal gia) {
+        repository.updateTTSPDangBan(gia);
     }
     
 }
