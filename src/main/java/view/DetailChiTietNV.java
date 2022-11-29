@@ -5,6 +5,8 @@
 package view;
 
 import domainmodel.NhanVien;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -13,6 +15,8 @@ import domainmodel.NhanVien;
 public class DetailChiTietNV extends javax.swing.JDialog {
 
     private NhanVien nhanVien;
+    private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
 
     /**
      * Creates new form DetailChiTietNV
@@ -31,7 +35,7 @@ public class DetailChiTietNV extends javax.swing.JDialog {
         txtDiaChi.setText(nhanVien.getDiaChi());
         txtEmail.setText(nhanVien.getEmail());
         txtSdt.setText(nhanVien.getSdt());
-        txtNgaySinh.setText(String.valueOf(nhanVien.getNgaySinh()));
+        txtNgaySinh.setText(dateFormat.format(nhanVien.getNgaySinh()));
         if(nhanVien.isGioiTinh()){
             radioNam.setSelected(true);
         }

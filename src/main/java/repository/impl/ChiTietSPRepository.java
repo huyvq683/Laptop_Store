@@ -6,6 +6,7 @@ package repository.impl;
 
 import custommodel.ChiTietSPResponse;
 import domainmodel.ChiTietSP;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -111,7 +112,7 @@ public class ChiTietSPRepository {
     public List<ChiTietSPResponse> getAll() {
         List<ChiTietSPResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            org.hibernate.query.Query query = session.createQuery("SELECT new custommodel.ChiTietSPResponse "
+                    Query query = session.createQuery("SELECT new custommodel.ChiTietSPResponse "
                     + "(ct.idSanPham.ma, ct.idSanPham.ten,"
                     + "ct.cPU, ct.ram, ct.card, ct.oCung, ct.hang, ct.tinhTrang, ct.gia, COUNT(ct.idSanPham)) "
                     + "FROM ChiTietSP ct WHERE ct.tinhTrang = 0"
@@ -149,14 +150,28 @@ public class ChiTietSPRepository {
         return chiTietSP;
     }
 
-    public boolean updateTinhTrangSP(ChiTietSP chiTietSP, UUID id) {
+    public boolean updateTinhTrangSP(ChiTietSP chiTietSP) {
         boolean check = true;
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            ChiTietSP ctsp = session.get(ChiTietSP.class, id);
-            ctsp.setTinhTrang(1);
-            session.update(ctsp);
+            session.saveOrUpdate(chiTietSP);
+            transaction.commit();
+            check = true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check;
+    }
+    
+    public Boolean updateTTSPDangBan(BigDecimal gia) {
+        boolean check = false;
+        
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            Query query = session.createQuery("UPDATE ChiTietSP SET TinhTrang = 0 WHERE Gia = :gia");
+            query.setParameter("gia", gia);
+            query.executeUpdate();
             transaction.commit();
             check = true;
         } catch (Exception e) {

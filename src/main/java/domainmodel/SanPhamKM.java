@@ -28,7 +28,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "SanPhamKM")
+@Table(name = "SanPhamKhuyenMai")
 public class SanPhamKM implements Serializable {
 
     @Id
@@ -37,7 +37,7 @@ public class SanPhamKM implements Serializable {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "IdChiTietSP")
+    @JoinColumn(name = "IdChiTietSanPham")
     private ChiTietSP idCTSP;
     
     @ManyToOne

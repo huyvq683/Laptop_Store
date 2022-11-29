@@ -135,7 +135,8 @@ public class PanelBanHang extends javax.swing.JPanel {
         HoaDon idHoaDon = hoaDonService.getByIdHoaDon(hoaDonResponse.getId());
         String serial = JOptionPane.showInputDialog("Nhập số serial: ");
         ChiTietSP idChiTietSP = chiTietSPService.getBySerialChiTietSP(serial);
-        chiTietSPService.updateTinhTrangSP(idChiTietSP, idChiTietSP.getId());
+        idChiTietSP.setTinhTrang(1);
+        chiTietSPService.updateTinhTrangSP(idChiTietSP);
         listChiTietSP = chiTietSPService.getAll();
         showDataTableSanPham(listChiTietSP);
         HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
@@ -489,6 +490,11 @@ public class PanelBanHang extends javax.swing.JPanel {
         btnHuy.setIcon(new ImageIcon("src/main/img/huy.png"));
         btnHuy.setText("Hủy hóa đơn");
         btnHuy.setPreferredSize(new java.awt.Dimension(110, 25));
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
         btnlamMoi.setBackground(new java.awt.Color(41, 183, 212));
         btnlamMoi.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -703,9 +709,14 @@ public class PanelBanHang extends javax.swing.JPanel {
         int row = tbGioHang.getSelectedRow();
         HoaDonChiTietResponse hdct = listHoaDonChiTiet.get(row);
         hoaDonChiTietService.delete(hdct.getIdHD());
+        
+        chiTietSPService.updateTTSPDangBan(hdct.getGia());
+        
         int rowHD = tbHoaDon.getSelectedRow();
         HoaDonResponse hoaDonResponse = listHoaDon.get(rowHD);
         showDataTableGioHang(hoaDonResponse.getId());
+        listChiTietSP = chiTietSPService.getAll();
+        showDataTableSanPham(listChiTietSP);
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnlamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlamMoiActionPerformed
@@ -720,6 +731,7 @@ public class PanelBanHang extends javax.swing.JPanel {
         // TODO add your handling code here:
         String ma = txtMaKH.getText();
         KhachHang khachHang = khachHangService.getMa(ma);
+        System.out.println(khachHang.getId());
         int row = tbHoaDon.getSelectedRow();
         HoaDonResponse hd = listHoaDon.get(row);
         HoaDon hoaDon = new HoaDon();
@@ -757,6 +769,16 @@ public class PanelBanHang extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Successed");
         }
     }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        // TODO add your handling code here:
+        int row = tbHoaDon.getSelectedRow();
+        HoaDonResponse hoaDonResponse = listHoaDon.get(row);
+        HoaDon hoaDon = new HoaDon();
+        JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThaiHuy(hoaDon, hoaDonResponse.getId()));
+        listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
+        showDataHoaDonTable(listHoaDon);
+    }//GEN-LAST:event_btnHuyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

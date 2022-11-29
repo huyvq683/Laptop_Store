@@ -5,6 +5,7 @@
 package repository.impl;
 
 import domainmodel.SerialDaBan;
+import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utility.HibernateUtil;
@@ -29,4 +30,18 @@ public class SerialDaBanRepository {
         return check;
     }
     
+    public Boolean delete(UUID id){
+         boolean check = false;
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession();) {
+            transaction = session.beginTransaction();
+            SerialDaBan sdb = session.get(SerialDaBan.class, id);
+            session.delete(sdb);
+            transaction.commit();
+            check = true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check;
+    }
 }

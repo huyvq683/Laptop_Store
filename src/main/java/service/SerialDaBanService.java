@@ -5,11 +5,16 @@
 package service;
 
 import domainmodel.SerialDaBan;
+import java.util.UUID;
 
 /**
  *
  * @author FPT
  */
 public interface SerialDaBanService {
+
     void add(SerialDaBan serialDaBan);
+    
+    void delete(UUID id);
+    
 }

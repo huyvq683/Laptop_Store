@@ -6,6 +6,7 @@ package service.impl;
 
 import custommodel.ChiTietSPResponse;
 import domainmodel.ChiTietSP;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 import repository.impl.ChiTietSPRepository;
@@ -119,13 +120,18 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public void updateTinhTrangSP(ChiTietSP chiTietSP, UUID id) {
-        repository.updateTinhTrangSP(chiTietSP, id);
+    public void updateTinhTrangSP(ChiTietSP chiTietSP) {
+        repository.updateTinhTrangSP(chiTietSP);
     }
 
     @Override
     public List<ChiTietSPResponse> getlist() {
         return repository.getList();
+    }
+
+    @Override
+    public void updateTTSPDangBan(BigDecimal gia) {
+        repository.updateTTSPDangBan(gia);
     }
     
 }
