@@ -1,10 +1,11 @@
+package service.impl;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service.impl;
 
-import domainmodel.NhanVien;
+
 import repository.impl.QuenMatKhauRepository;
 import service.QuenMatKhauService;
 
@@ -40,6 +41,9 @@ public class QuenMatKhauServiceImpl implements QuenMatKhauService {
     public String validateMaXacThuc(String maXT) {
         if (maXT.trim().isBlank()) {
             return "Mã xác thực không được để trống";
+        }
+        if (!maXT.trim().matches("^[0-9]+$")) {
+            return "Mã xác thực sai định dạng";
         }
         return null;
     }
