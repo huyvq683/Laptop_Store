@@ -20,7 +20,6 @@ repository\impl\KhachHangRepository.class
 domainmodel\SerialDaBan.class
 service\KhachHangService.class
 repository\Repository.class
-application\Application.class
 view\PanelSanPham$3.class
 view\ViewQuanLy$5.class
 view\PanelNhanVien$7.class
