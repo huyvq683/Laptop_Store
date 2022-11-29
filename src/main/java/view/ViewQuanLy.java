@@ -505,6 +505,12 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
         // TODO add your handling code here:
+        panelBanHang.removeAll();
+        PanelHoaDon panelHoaDon = new PanelHoaDon();
+        panelBanHang.add(panelHoaDon);
+        panelBanHang.setLayout(new FlowLayout());
+        this.pack();
+        panelHoaDon.setVisible(true);
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnkhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhuyenMaiActionPerformed

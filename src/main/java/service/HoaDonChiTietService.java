@@ -15,10 +15,12 @@ import java.util.UUID;
  */
 public interface HoaDonChiTietService {
 
+    List<HoaDonChiTietResponse> get_All(String ma);
+
     List<HoaDonChiTietResponse> getAll(UUID id);
 
     void add(HoaDonChiTiet hoaDonChiTiet);
 
     void delete(UUID id);
-    
+
 }

@@ -48,6 +48,10 @@ public class HoaDonResponse {
         return ngayTaoConvert;
     }
 
+    public Object[] toDataRow1() {
+        return new Object[]{ma, ngayTao(), tenNhanVien, trangThai()};
+    }
+
     public Object[] toDataRow(int stt) {
         return new Object[]{stt, ma, ngayTao(), tenNhanVien, trangThai()};
     }

@@ -14,14 +14,14 @@ import repository.impl.HoaDonRepository;
 import service.HoaDonService;
 
 /**
- * @author FPT 
+ * @author FPT
  */
 public class HoaDonServiceImpl implements HoaDonService {
 
     private HoaDonRepository hoaDonRepository = new HoaDonRepository();
 
     @Override
-    public List<ViewHoaDonReponse> getByOne(int tt) {
+    public List<HoaDonResponse> getByOne(int tt) {
         return hoaDonRepository.getByOne(tt);
     }
 
@@ -65,7 +65,7 @@ public class HoaDonServiceImpl implements HoaDonService {
     }
 
     @Override
-    public List<ViewHoaDonReponse> getAll() {
+    public List<HoaDonResponse> getAll() {
         return hoaDonRepository.getAll();
     }
 

@@ -37,17 +37,16 @@ public class HoaDonRepository {
 
     private Session session = HibernateUtil.getFACTORY().openSession();
 
-    public List<ViewHoaDonReponse> getByOne(int tt) {
-        String sql = "SELECT new custommodel.ViewHoaDonReponse(h.ma , n.ma , k.ma , h.ngayTao , h.tongTien , h.tinhTrang) From HoaDon h"
-                + " JOIN KhachHang k ON h.idKH = k.id "
+    public List<HoaDonResponse> getByOne(int tt) {
+        String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id"
+                + " JOIN KhachHang k ON h.idKH = k.id"
                 + " WHERE h.tinhTrang = :tinhTrang";
-        Query query = session.createQuery(sql, ViewHoaDonReponse.class);
+        Query query = session.createQuery(sql, HoaDonResponse.class);
         query.setParameter("tinhTrang", tt);
-        List<ViewHoaDonReponse> list = query.getResultList();
+        List<HoaDonResponse> list = query.getResultList();
         return list;
     }
-
     public HoaDon getOne(String ma) {
         String sql = fromTable + " Where ma = :ma ";
         javax.persistence.Query query = session.createQuery(sql, HoaDon.class);
@@ -56,11 +55,12 @@ public class HoaDonRepository {
         return category;
     }
 
-    public List<ViewHoaDonReponse> getAll() {
-        String sql = "SELECT new custommodel.ViewHoaDonReponse(h.ma , n.ma , k.ma , h.ngayTao , h.tongTien , h.tinhTrang) From HoaDon h"
+   
+    public List<HoaDonResponse> getAll() {
+        String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN KhachHang k ON h.idKH = k.id "
                 + " JOIN NhanVien n ON h.idNV = n.id";
-        Query<ViewHoaDonReponse> query = session.createQuery(sql);
+        Query<HoaDonResponse> query = session.createQuery(sql);
         return query.list();
     }
 

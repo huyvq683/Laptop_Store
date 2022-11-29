@@ -19,11 +19,11 @@ import java.util.List;
  */
 public interface HoaDonService {
 
-    List<ViewHoaDonReponse> getByOne(int tt);
+    List<HoaDonResponse> getByOne(int tt);
 
     String update(HoaDon hd);
 
-    List<ViewHoaDonReponse> getAll();
+    List<HoaDonResponse> getAll();
 
     ViewHoaDonReponse getOneByMa(String ma);
 
@@ -36,7 +36,7 @@ public interface HoaDonService {
     List<ViewHoaDonReponse> getByNgayTao(String ma);
 
     List<HoaDon> get_All();
-    
+
     List<HoaDonResponse> getAll(NhanVien nhanVien);
 
     String add(HoaDon hoaDon);

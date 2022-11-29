@@ -6,6 +6,8 @@ package domainmodel;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -75,12 +77,24 @@ public class HoaDon implements Serializable {
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
 
-    public String getTinhTrang1() {
+      public String getTinhTrang1() {
         return this.tinhTrang == 1 ? "Chưa Thanh Toán" : "Đã Thanh Toán";
     }
 
     public String getHinhThuc1() {
-        return this.hinhThuc == 0 ? "Tiền qMặt" : "Chuyển Khoản";
+        if (this.hinhThuc == 0) {
+            return "Tiền Mặt";
+        } else if (this.hinhThuc == 1) {
+            return "Chuyển Khoản";
+        } else {
+            return "Chuyển Khoản + Tiền Mặt";
+        }
+    }
+
+    private String ngayTao() {
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
+        String ngayTaoConvert = dateFormat.format(this.ngayTao);
+        return ngayTaoConvert;
     }
 
 }
