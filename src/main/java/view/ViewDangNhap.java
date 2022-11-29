@@ -39,8 +39,8 @@ public class ViewDangNhap extends javax.swing.JFrame {
         ImageIcon closeEyeView = new ImageIcon(closeEye);
         lblE.setIcon(closeEyeView);
         ImageIcon showIcon = new ImageIcon("src/main/img/view.png");
-        int widthVEye = 35;
-        int heightVEye = 35;
+        int widthVEye = 30;
+        int heightVEye = 30;
         Image openEye = scaleImage(showIcon.getImage(), widthVEye, heightVEye);
         ImageIcon openEysView = new ImageIcon(openEye);
         lblEye.setIcon(openEysView);

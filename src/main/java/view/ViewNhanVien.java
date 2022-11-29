@@ -4,10 +4,11 @@
  */
 package view;
 
+import domainmodel.NhanVien;
+import domainmodel.TenTKNV;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
-import java.text.ParseException;
 import javax.swing.ImageIcon;
 
 /**
@@ -20,7 +21,6 @@ public class ViewNhanVien extends javax.swing.JFrame {
     private int b1 = 0;
     private int b4 = 0;
     private int b6 = 0;
-    private int b7 = 0;
     private int b8 = 0;
 
     /**
@@ -80,19 +80,12 @@ public class ViewNhanVien extends javax.swing.JFrame {
         ImageIcon scaledIconKhachHang = new ImageIcon(imgKhachHang);
         btnKhachHang.setIcon(scaledIconKhachHang);
 
-        ImageIcon thongKe = new ImageIcon("src/main/img/thongke.png");
-        int withThongKe = 50;
-        int heightThongKe = 50;
-        Image imgThongKe = scaleImage(thongKe.getImage(), withThongKe, heightThongKe);
-        ImageIcon scaledIconThongKe = new ImageIcon(imgThongKe);
-        btnThongKe.setIcon(scaledIconThongKe);
     }
 
     private void designMenu() {
         btnBanHang.setBackground(new Color(0, 0, 0, 0));
         btnHoaDon.setBackground(new Color(0, 0, 0, 0));
         btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
         btnThoat.setBackground(new Color(0, 0, 0, 0));
     }
 
@@ -111,9 +104,8 @@ public class ViewNhanVien extends javax.swing.JFrame {
         btnBanHang = new javax.swing.JButton();
         btnHoaDon = new javax.swing.JButton();
         btnKhachHang = new javax.swing.JButton();
-        btnThongKe = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnChiTietNV = new javax.swing.JButton();
         btnDoiMK = new javax.swing.JButton();
         panelBanHang = new javax.swing.JPanel();
 
@@ -199,30 +191,6 @@ public class ViewNhanVien extends javax.swing.JFrame {
             }
         });
 
-        btnThongKe.setBackground(new java.awt.Color(0, 0, 0));
-        btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnThongKe.setForeground(new java.awt.Color(255, 255, 255));
-        btnThongKe.setIcon(new ImageIcon("src/main/img/thongke.png"));
-        btnThongKe.setText("Thống kê");
-        btnThongKe.setAlignmentY(0.0F);
-        btnThongKe.setBorder(null);
-        btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnThongKeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnThongKeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnThongKeMouseExited(evt);
-            }
-        });
-        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThongKeActionPerformed(evt);
-            }
-        });
-
         btnThoat.setBackground(new java.awt.Color(0, 0, 0));
         btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnThoat.setForeground(new java.awt.Color(255, 255, 255));
@@ -247,15 +215,25 @@ public class ViewNhanVien extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(77, 83, 161));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Chi tiết nhân viên");
+        btnChiTietNV.setBackground(new java.awt.Color(77, 83, 161));
+        btnChiTietNV.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnChiTietNV.setForeground(new java.awt.Color(255, 255, 255));
+        btnChiTietNV.setText("Chi tiết nhân viên");
+        btnChiTietNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChiTietNVActionPerformed(evt);
+            }
+        });
 
         btnDoiMK.setBackground(new java.awt.Color(77, 83, 161));
         btnDoiMK.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnDoiMK.setForeground(new java.awt.Color(255, 255, 255));
         btnDoiMK.setText("Đổi mật khẩu");
+        btnDoiMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoiMKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout view2Layout = new javax.swing.GroupLayout(view2);
         view2.setLayout(view2Layout);
@@ -264,19 +242,21 @@ public class ViewNhanVien extends javax.swing.JFrame {
             .addComponent(btnBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(view2Layout.createSequentialGroup()
                 .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(view2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(view2Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(view2Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(view2Layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnChiTietNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 14, Short.MAX_VALUE))
+                    .addComponent(btnThoat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         view2Layout.setVerticalGroup(
             view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,11 +270,9 @@ public class ViewNhanVien extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnChiTietNV, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59))
@@ -372,20 +350,6 @@ public class ViewNhanVien extends javax.swing.JFrame {
         this.setSize(1546, 850);
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
-    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        // TODO add your handling code here:
-//        try {
-//            panelBanHang.removeAll();
-//            PanelThongKe thongKepP = new PanelThongKe();
-//            panelBanHang.add(thongKepP);
-//            panelBanHang.setLayout(new FlowLayout());
-//            this.pack();
-//            thongKepP.setVisible(true);
-//        } catch (ParseException ex) {
-//            // Logger.getLogger(ViewQuanLy.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }//GEN-LAST:event_btnThongKeActionPerformed
-
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -401,60 +365,39 @@ public class ViewNhanVien extends javax.swing.JFrame {
         b1 = 1;
         b4 = 0;
         b6 = 0;
-        b7 = 0;
         b8 = 0;
         btnHoaDon.setBackground(new Color(0, 0, 0, 0));
         btnKhachHang.setBackground(new Color(0, 0, 0, 0));
         btnThoat.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
     }//GEN-LAST:event_btnBanHangMouseClicked
 
     private void btnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseClicked
         b1 = 0;
         b4 = 1;
-        b6 = 0;
-        b7 = 0;
         b8 = 0;
         btnBanHang.setBackground(new Color(0, 0, 0, 0));
         btnKhachHang.setBackground(new Color(0, 0, 0, 0));
         btnThoat.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
     }//GEN-LAST:event_btnHoaDonMouseClicked
 
     private void btnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseClicked
         b1 = 0;
         b4 = 0;
         b6 = 1;
-        b7 = 0;
         b8 = 0;
         btnBanHang.setBackground(new Color(0, 0, 0, 0));
         btnHoaDon.setBackground(new Color(0, 0, 0, 0));
         btnThoat.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
     }//GEN-LAST:event_btnKhachHangMouseClicked
-
-    private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
-        b1 = 0;
-        b4 = 0;
-        b6 = 0;
-        b7 = 1;
-        b8 = 0;
-        btnBanHang.setBackground(new Color(0, 0, 0, 0));
-        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
-        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        btnThoat.setBackground(new Color(0, 0, 0, 0));
-    }//GEN-LAST:event_btnThongKeMouseClicked
 
     private void btnThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseClicked
         b1 = 0;
         b4 = 0;
         b6 = 0;
-        b7 = 0;
         b8 = 1;
         btnBanHang.setBackground(new Color(0, 0, 0, 0));
         btnHoaDon.setBackground(new Color(0, 0, 0, 0));
         btnKhachHang.setBackground(new Color(0, 0, 0, 0));
-        btnThongKe.setBackground(new Color(0, 0, 0, 0));
     }//GEN-LAST:event_btnThoatMouseClicked
 
     private void btnBanHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseEntered
@@ -468,10 +411,6 @@ public class ViewNhanVien extends javax.swing.JFrame {
     private void btnKhachHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseEntered
         btnKhachHang.setBackground(new Color(50, 159, 200));
     }//GEN-LAST:event_btnKhachHangMouseEntered
-
-    private void btnThongKeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseEntered
-        btnThongKe.setBackground(new Color(50, 159, 200));
-    }//GEN-LAST:event_btnThongKeMouseEntered
 
     private void btnThoatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseEntered
         btnThoat.setBackground(new Color(50, 159, 200));
@@ -489,17 +428,25 @@ public class ViewNhanVien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnKhachHangMouseExited
 
-    private void btnThongKeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseExited
-        if (b7 == 0) {
-            btnThongKe.setBackground(new Color(0, 0, 0, 0));
-        }
-    }//GEN-LAST:event_btnThongKeMouseExited
-
     private void btnThoatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseExited
         if (b8 == 0) {
             btnThoat.setBackground(new Color(0, 0, 0, 0));
         }
     }//GEN-LAST:event_btnThoatMouseExited
+
+    private void btnChiTietNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNVActionPerformed
+        // TODO add your handling code here:
+        NhanVien nv = TenTKNV.tenNV;
+        DetailChiTietNV detailChiTietNV = new DetailChiTietNV(this, true, nv);
+        detailChiTietNV.setVisible(true);
+    }//GEN-LAST:event_btnChiTietNVActionPerformed
+
+    private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
+        // TODO add your handling code here:
+        ViewDoiMatKhau2 dmk = new ViewDoiMatKhau2();
+        dmk.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnDoiMKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -545,12 +492,11 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBanHang;
+    private javax.swing.JButton btnChiTietNV;
     private javax.swing.JButton btnDoiMK;
     private javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnThoat;
-    private javax.swing.JButton btnThongKe;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JPanel panelBanHang;
