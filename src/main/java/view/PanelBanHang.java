@@ -192,7 +192,7 @@ public class PanelBanHang extends javax.swing.JPanel {
         btnXoa = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
-        txtTimKiemSanPham17 = new javax.swing.JTextField();
+        txtTimKiemSanPham = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbSanPham = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -355,7 +355,7 @@ public class PanelBanHang extends javax.swing.JPanel {
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addComponent(jLabel42)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTimKiemSanPham17, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTimKiemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane4))
                 .addContainerGap())
@@ -365,7 +365,7 @@ public class PanelBanHang extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTimKiemSanPham17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTimKiemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                 .addContainerGap())
@@ -465,15 +465,15 @@ public class PanelBanHang extends javax.swing.JPanel {
         txtTienCK.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtTienCK.setForeground(new java.awt.Color(51, 51, 51));
         txtTienCK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
+        txtTienCK.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtTienCKCaretUpdate(evt);
+            }
+        });
 
         txtTienTraLai.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtTienTraLai.setForeground(new java.awt.Color(51, 51, 51));
         txtTienTraLai.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
-        txtTienTraLai.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtTienTraLaiMouseClicked(evt);
-            }
-        });
 
         btnThanhToan.setBackground(new java.awt.Color(41, 183, 212));
         btnThanhToan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -749,14 +749,6 @@ public class PanelBanHang extends javax.swing.JPanel {
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
-    private void txtTienTraLaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTienTraLaiMouseClicked
-        // TODO add your handling code here:
-        double tienKhachDua = Double.valueOf(txtTienKhachDua.getText());
-        double tienCK = Double.valueOf(txtTienCK.getText());
-        double tienThua = (tienKhachDua + tienCK) - tongTien(listHoaDonChiTiet);
-        txtTienTraLai.setText(String.valueOf(tienThua));
-    }//GEN-LAST:event_txtTienTraLaiMouseClicked
-
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
         String ma = txtMaKH.getText();
@@ -778,6 +770,14 @@ public class PanelBanHang extends javax.swing.JPanel {
         listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void txtTienCKCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienCKCaretUpdate
+        // TODO add your handling code here:
+        double tienKhachDua = Double.valueOf(txtTienKhachDua.getText());
+        double tienCK = Double.valueOf(txtTienCK.getText());
+        double tienThua = (tienKhachDua + tienCK) - tongTien(listHoaDonChiTiet);
+        txtTienTraLai.setText(String.valueOf(tienThua));
+    }//GEN-LAST:event_txtTienCKCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -819,7 +819,7 @@ public class PanelBanHang extends javax.swing.JPanel {
     private javax.swing.JTextField txtTienCK;
     private javax.swing.JTextField txtTienKhachDua;
     private javax.swing.JTextField txtTienTraLai;
-    private javax.swing.JTextField txtTimKiemSanPham17;
+    private javax.swing.JTextField txtTimKiemSanPham;
     private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
 }

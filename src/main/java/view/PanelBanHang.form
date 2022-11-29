@@ -259,7 +259,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtTimKiemSanPham17" min="-2" pref="278" max="-2" attributes="0"/>
+                          <Component id="txtTimKiemSanPham" min="-2" pref="278" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
@@ -273,7 +273,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel42" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="txtTimKiemSanPham17" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTimKiemSanPham" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane4" pref="248" max="32767" attributes="0"/>
@@ -291,7 +291,7 @@
             <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTimKiemSanPham17">
+        <Component class="javax.swing.JTextField" name="txtTimKiemSanPham">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane4">
           <AuxValues>
@@ -720,6 +720,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtTienCKCaretUpdate"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTienTraLai">
           <Properties>
@@ -737,9 +740,6 @@
               </Border>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTienTraLaiMouseClicked"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnThanhToan">
           <Properties>

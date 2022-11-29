@@ -17,8 +17,6 @@ view\PanelNhanVien$2.class
 view\ViewQuanLy$7.class
 service\impl\HoaDonChiTietSeviceImpl.class
 view\ViewQuanLy.class
-view\ViewHoaDonDayDu.class
-view\NewJFrame$1.class
 view\PanelThongKe$5.class
 view\ViewDangNhap$6.class
 view\PanelBanHang$4.class
@@ -39,13 +37,11 @@ domainmodel\SerialDaBan.class
 service\KhachHangService.class
 view\ViewQuenMatKhau$5.class
 repository\Repository.class
-application\Application.class
 view\ViewQuanLy$18.class
 view\PanelSanPham$3.class
 service\HoaDonChiTietService.class
 view\ViewQuanLy$5.class
 view\PanelHoaDon$4.class
-view\NewJFrame.class
 view\ViewDoiMatKhau2$1.class
 view\PanelNhanVien$7.class
 view\ViewQuanLy$11.class
@@ -69,7 +65,6 @@ view\PanelSanPham$4.class
 view\ViewQuanLy$12.class
 service\NhanVienService.class
 service\ThongKeService.class
-view\PanelHoaDon$5.class
 view\DetailChiTietNV.class
 view\ViewQuanLy$13.class
 view\PanelKhachHang.class
@@ -102,7 +97,6 @@ view\ViewQuanLy$10.class
 view\PanelKhachHang$3.class
 domainmodel\SanPham.class
 view\ViewDoiMatKhau2$2.class
-view\ViewHoaDonDayDu$1.class
 repository\impl\ThongKeRepository.class
 view\ViewQuenMatKhau$3.class
 custommodel\ViewHoaDonReponse.class
@@ -137,7 +131,6 @@ repository\impl\QuenMatKhauRepository.class
 view\ViewDoiMatKhauMoi$1.class
 repository\impl\HoaDonChiTietRepository.class
 view\ViewDoiMatKhau2.class
-view\ViewHoaDonDayDu$2.class
 view\ViewNhanVien.class
 utility\HibernateUtil.class
 custommodel\HoaDonResponse.class
