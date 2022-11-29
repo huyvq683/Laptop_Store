@@ -25,6 +25,36 @@ public class ThongKeServiceImpl implements ThongKeService {
     }
 
     @Override
+    public List<ThongKeDoanhThuRespone> getAllDoanhThuMonth(int thang, int nam) {
+        return res.getAllDoanhThuMonth(thang, nam);
+    }
+
+    @Override
+    public List<ThongKeDoanhThuRespone> getAllDoanhThuYear(int nam) {
+        return res.getAllDoanhThuYear(nam);
+    }
+
+    @Override
+    public String getDoanhThuDay(String day) {
+        return res.getDoanhThuDay(day);
+    }
+
+    @Override
+    public String getDoanhThuYear(int nam) {
+        return res.getDoanhThuYear(nam);
+    }
+
+    @Override
+    public String getDoanhThuMonth(int thang, int nam) {
+        return res.getDoanhThuMonth(thang, nam);
+    }
+
+    @Override
+    public Integer namBatDauDoanhThu() {
+        return res.namBatDauDoanhThu();
+    }
+
+    @Override
     public List<ThongKeSanPhamRespone> getAllSanPham(Date date) {
         return res.getAllSanPham(date);
     }
@@ -47,21 +77,6 @@ public class ThongKeServiceImpl implements ThongKeService {
     @Override
     public Integer namBatDau() {
         return res.namBatDau();
-    }
-
-    @Override
-    public String getDoanhThu() {
-        return res.getDoanhThu();
-    }
-
-    @Override
-    public List<ThongKeDoanhThuRespone> getAllDoanhThuSortTang(Date n) {
-        return res.getAllDoanhThuSortTang(n);
-    }
-
-    @Override
-    public List<ThongKeDoanhThuRespone> getAllDoanhThuSortGiam(Date n) {
-        return res.getAllDoanhThuSortGiam(n);
     }
 
 }

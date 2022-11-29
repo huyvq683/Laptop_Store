@@ -17,10 +17,21 @@ public interface ThongKeService {
 
     List<ThongKeDoanhThuRespone> getAllDoanhThu(Date date);
 
-    List<ThongKeDoanhThuRespone> getAllDoanhThuSortTang(Date n);
+    List<ThongKeDoanhThuRespone> getAllDoanhThuMonth(int thang, int nam);
 
-    List<ThongKeDoanhThuRespone> getAllDoanhThuSortGiam(Date n);
+    List<ThongKeDoanhThuRespone> getAllDoanhThuYear(int nam);
 
+    String getDoanhThuDay(String day);
+
+    String getDoanhThuYear(int nam);
+
+    String getDoanhThuMonth(int thang, int nam);
+
+    Integer namBatDauDoanhThu();
+
+//    List<ThongKeDoanhThuRespone> getAllDoanhThuSortTang(Date n);
+//
+//    List<ThongKeDoanhThuRespone> getAllDoanhThuSortGiam(Date n);
     List<ThongKeSanPhamRespone> getAllSanPham(Date date);
 
     List<ThongKeSanPhamRespone> getAllSanPhamMonth(int thang, int nam);
@@ -31,6 +42,4 @@ public interface ThongKeService {
 
     Integer namBatDau();
 
-    String getDoanhThu();
-    
 }

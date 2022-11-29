@@ -37,13 +37,33 @@ public class ThongKeRepository {
         return getAllDoanhThu;
     }
 
-    public List<ThongKeDoanhThuRespone> getAllDoanhThuSortTang(Date n) {
+    public List<ThongKeDoanhThuRespone> getAllDoanhThuMonth(int thang, int nam) {
         List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
                     + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang=1 AND hd.createdDate =:date ORDER BY hd.tongTien ASC");
-            query.setParameter("date", n);
+                    + " WHERE hd.tinhTrang = 1 AND Month(hd.createdDate) =:mot AND Year(hd.createdDate) =:yea ORDER BY hd.ma ASC");
+            query.setParameter("mot", thang);
+            query.setParameter("yea", nam);
+            getAllDoanhThu = query.getResultList();
+        } catch (Exception e) {
+            // e.printStackTrace(System.out);
+        }
+        return getAllDoanhThu;
+    }
+    public static void main(String[] args) {
+        List<ThongKeDoanhThuRespone> li = new ThongKeRepository().getAllDoanhThuYear(2022);
+        for (ThongKeDoanhThuRespone x : li) {
+            System.out.println(x);
+        }
+    }
+    public List<ThongKeDoanhThuRespone> getAllDoanhThuYear(int nam) {
+        List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
+        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
+                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
+                    + " WHERE hd.tinhTrang = 1 AND YEAR(hd.createdDate) =:yea ORDER BY hd.ma ASC");
+            query.setParameter("yea", nam);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
             // e.printStackTrace(System.out);
@@ -51,26 +71,80 @@ public class ThongKeRepository {
         return getAllDoanhThu;
     }
 
-    public List<ThongKeDoanhThuRespone> getAllDoanhThuSortGiam(Date n) {
-        List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
+    public int namBatDauDoanhThu() {
+        String date = null;
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
-                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang=1 AND hd.createdDate =:date ORDER BY hd.tongTien DESC");
-            query.setParameter("date", n);
-            getAllDoanhThu = query.getResultList();
+            NativeQuery query = session.createNativeQuery("SELECT Min(Year(hd.createdDate)) FROM HoaDon hd");
+            date = query.getSingleResult().toString();
+            return Integer.parseInt(date);
         } catch (Exception e) {
             // e.printStackTrace(System.out);
         }
-        return getAllDoanhThu;
+        return 0;
     }
 
-    public String getDoanhThu() {
+//    public List<ThongKeDoanhThuRespone> getAllDoanhThuSortTang(Date n) {
+//        List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
+//        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
+//            Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
+//                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
+//                    + " WHERE hd.tinhTrang=1 AND hd.createdDate =:date ORDER BY hd.tongTien ASC");
+//            query.setParameter("date", n);
+//            getAllDoanhThu = query.getResultList();
+//        } catch (Exception e) {
+//            // e.printStackTrace(System.out);
+//        }
+//        return getAllDoanhThu;
+//    }
+//
+//    public List<ThongKeDoanhThuRespone> getAllDoanhThuSortGiam(Date n) {
+//        List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
+//        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
+//            Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
+//                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
+//                    + " WHERE hd.tinhTrang=1 AND hd.createdDate =:date ORDER BY hd.tongTien DESC");
+//            query.setParameter("date", n);
+//            getAllDoanhThu = query.getResultList();
+//        } catch (Exception e) {
+//            // e.printStackTrace(System.out);
+//        }
+//        return getAllDoanhThu;
+//    }
+    public String getDoanhThuDay(String ngay) {
         String tong = null;
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             NativeQuery query = session.createNativeQuery("SELECT SUM(hd.tongTien) FROM HoaDon hd"
                     + " WHERE hd.tinhTrang= 1 AND hd.createdDate =:date");
             query.setParameter("date", dateFor.format(new Date()));
+            tong = query.getSingleResult().toString();
+            return tong;
+        } catch (Exception e) {
+            //e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public String getDoanhThuMonth(int thang, int nam) {
+        String tong = null;
+        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
+            NativeQuery query = session.createNativeQuery("SELECT SUM(hd.tongTien) FROM HoaDon hd"
+                    + " WHERE hd.tinhTrang= 1 AND ((Month(hd.createdDate) =:mot AND Year(hd.createdDate) =: yea))");
+            query.setParameter("mot", thang);
+            query.setParameter("yea", nam);
+            tong = query.getSingleResult().toString();
+            return tong;
+        } catch (Exception e) {
+            //e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public String getDoanhThuYear(int nam) {
+        String tong = null;
+        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
+            NativeQuery query = session.createNativeQuery("SELECT SUM(hd.tongTien) FROM HoaDon hd"
+                    + " WHERE hd.tinhTrang= 1 AND Year(hd.createdDate) =:date");
+            query.setParameter("date", nam);
             tong = query.getSingleResult().toString();
             return tong;
         } catch (Exception e) {
