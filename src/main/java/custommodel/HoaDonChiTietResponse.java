@@ -41,7 +41,7 @@ public class HoaDonChiTietResponse {
         return (long) (soluong * gia.doubleValue());
     }
 
-    public Object[] toDataRow(int stt) {
-        return new Object[]{stt, ma, ten, gia, soluong, thanhTien()};
+    public Object[] toDataRow() {
+        return new Object[]{ ma, ten, gia, soluong, thanhTien()};
     }
 }

@@ -4,12 +4,9 @@
  */
 package service;
 
-import custommodel.ViewHoaDonReponse;
-import java.util.Date;
 import custommodel.HoaDonResponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
-import java.util.List;
 import java.util.UUID;
 import java.util.List;
 
@@ -19,21 +16,21 @@ import java.util.List;
  */
 public interface HoaDonService {
 
-    List<ViewHoaDonReponse> getByOne(int tt);
+    List<HoaDonResponse> getByOne(int tt);
 
     String update(HoaDon hd);
 
-    List<ViewHoaDonReponse> getAll();
+    List<HoaDonResponse> getAll();
 
-    ViewHoaDonReponse getOneByMa(String ma);
+    HoaDonResponse getOneByMa(String ma);
 
     HoaDon getByMa(String ma);
 
-    List<ViewHoaDonReponse> getByNV(String ma);
+    List<HoaDonResponse> getByNV(String ma);
 
-    List<ViewHoaDonReponse> getByMaKH(String ma);
+    List<HoaDonResponse> getByMaKH(String ma);
 
-    List<ViewHoaDonReponse> getByNgayTao(String ma);
+    List<HoaDonResponse> getByNgayTao(String ma);
 
     List<HoaDon> get_All();
     

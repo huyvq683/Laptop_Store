@@ -15,7 +15,7 @@ import java.util.UUID;
  */
 public interface HoaDonChiTietService {
 
-    List<HoaDonChiTietResponse> getAll(UUID id);
+    List<HoaDonChiTietResponse> getAll(String ma);
 
     void add(HoaDonChiTiet hoaDonChiTiet);
 

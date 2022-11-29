@@ -6,6 +6,8 @@ package domainmodel;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -89,4 +91,9 @@ public class HoaDon implements Serializable {
         }
     }
 
+    private String ngayTao() {
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
+        String ngayTaoConvert = dateFormat.format(this.ngayTao);
+        return ngayTaoConvert;
+    }
 }

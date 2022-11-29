@@ -20,8 +20,8 @@ public class HoaDonChiTietSeviceImpl implements HoaDonChiTietService {
     private HoaDonChiTietRepository hoaDonChiTietRepository = new HoaDonChiTietRepository();
 
     @Override
-    public List<HoaDonChiTietResponse> getAll(UUID id) {
-        return hoaDonChiTietRepository.getAll(id);
+    public List<HoaDonChiTietResponse> getAll(String ma) {
+        return hoaDonChiTietRepository.getAll(ma);
     }
 
     @Override
