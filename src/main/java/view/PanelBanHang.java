@@ -391,11 +391,6 @@ public class PanelBanHang extends javax.swing.JPanel {
         txtMaKH.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtMaKH.setForeground(new java.awt.Color(51, 51, 51));
         txtMaKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
-        txtMaKH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaKHActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -722,6 +717,8 @@ public class PanelBanHang extends javax.swing.JPanel {
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
+        String ma = txtMaKH.getText();
+        KhachHang khachHang = khachHangService.getMa(ma);
         int row = tbHoaDon.getSelectedRow();
         HoaDonResponse hd = listHoaDon.get(row);
         HoaDon hoaDon = new HoaDon();
@@ -735,6 +732,7 @@ public class PanelBanHang extends javax.swing.JPanel {
         hoaDon.setTienThua(new BigDecimal(txtTienTraLai.getText()));
         hoaDon.setTongTien(new BigDecimal(txtTongTien.getText()));
         hoaDon.setTinhTrang(1);
+        hoaDon.setIdKH(khachHang);
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon));
         listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
         showDataHoaDonTable(listHoaDon);            
@@ -747,11 +745,6 @@ public class PanelBanHang extends javax.swing.JPanel {
         double tienThua = (tienKhachDua + tienCK) - tongTien(listHoaDonChiTiet);
         txtTienTraLai.setText(String.valueOf(tienThua));
     }//GEN-LAST:event_txtTienTraLaiMouseClicked
-
-    private void txtMaKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaKHActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtMaKHActionPerformed
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
