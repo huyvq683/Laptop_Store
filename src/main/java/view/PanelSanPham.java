@@ -58,7 +58,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         modelSP.setRowCount(0);
         int stt = 1;
         for (SanPham x : listss) {
-            modelSP.addRow(new Object[]{stt,x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getAlstModifiedDate())});
+            modelSP.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getAlstModifiedDate())});
             stt++;
         }
     }
@@ -663,15 +663,15 @@ public class PanelSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMaSPActionPerformed
 
     private void txtTimKiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTimKiemCaretUpdate
-//        String search = txtTimKiem.getText();
-//        if (search.isEmpty()) {
-//            showDataTable(listSanPham);
-//        } else {
-//            listSanPham = service.search(search);
-//            showDataTable(listSanPham);
-//        }
-//            listSanPham = service.search(txtTimKiem.getText());
-//            showDataTable(listSanPham);
+        String search = txtTimKiem.getText();
+        if (search.isEmpty()) {
+            showDataTable(listSanPham);
+        } else {
+            listSanPham = service.search(search);
+            showDataTable(listSanPham);
+        }
+        listSanPham = service.search(txtTimKiem.getText());
+        showDataTable(listSanPham);
     }//GEN-LAST:event_txtTimKiemCaretUpdate
 
 

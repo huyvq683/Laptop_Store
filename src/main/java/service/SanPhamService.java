@@ -27,7 +27,9 @@ public interface SanPhamService {
     String deleteSanPham(UUID id);
 
     String validate(SanPham sp);
-    
+
     String validateSP(SanPham spham);
+
+    List<SanPham> search(String seatchKey);
 
 }
