@@ -147,12 +147,12 @@ public class PanelBanHang extends javax.swing.JPanel {
         hoaDonChiTietService.add(hoaDonChiTiet);
         showDataTableGioHang(hoaDonResponse.getId());
         
-        SerialDaBan serialDaBan = new SerialDaBan();
-        serialDaBan.setIdHDCT(hoaDonChiTiet);
-        serialDaBan.setMa(serial);
-        serialDaBan.setCreatedDate(new Date());
-        serialDaBan.setAlstModifiedDate(new Date());
-        serialDaBanService.add(serialDaBan);
+//        SerialDaBan serialDaBan = new SerialDaBan();
+//        serialDaBan.setIdHDCT(hoaDonChiTiet);
+//        serialDaBan.setMa(serial);
+//        serialDaBan.setCreatedDate(new Date());
+//        serialDaBan.setAlstModifiedDate(new Date());
+//        serialDaBanService.add(serialDaBan);
     }
 
     private void fillThanhToan() {

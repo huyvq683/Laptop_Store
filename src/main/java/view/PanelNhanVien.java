@@ -71,6 +71,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         list = nhanVienServiceImpl.getAll();
         showData(list);
         initWebcam();
+        radioDaNghi.setEnabled(false);
     }
 
     /**
@@ -598,6 +599,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
     private void tbNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhanVienMouseClicked
         // TODO add your handling code here:
+        radioDaNghi.setEnabled(true);
         if (txtSearch.getText().isEmpty()) {
             int row = tbNhanVien.getSelectedRow();
             NhanVien nv = list.get(row);
