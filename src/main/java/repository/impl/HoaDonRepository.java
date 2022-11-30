@@ -76,7 +76,7 @@ public class HoaDonRepository {
         String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id"
                 + " WHERE h.ma = :ma";
-        Query query = session.createQuery(sql, ViewHoaDonReponse.class);
+        Query query = session.createQuery(sql, HoaDonResponse.class);
         query.setParameter("ma", ma);
         HoaDonResponse hoaDonResponse = (HoaDonResponse) query.getSingleResult();
         return hoaDonResponse;
@@ -86,7 +86,7 @@ public class HoaDonRepository {
         String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id"
                 + " WHERE n.ma = :ma";
-        Query query = session.createQuery(sql, ViewHoaDonReponse.class);
+        Query query = session.createQuery(sql, HoaDonResponse.class);
         query.setParameter("ma", ma);
         List<HoaDonResponse> list = query.getResultList();
         return list;
@@ -96,7 +96,7 @@ public class HoaDonRepository {
         String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, k.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN KhachHang k ON h.idKH = k.id "
                 + " WHERE k.ma = :ma";
-        Query query = session.createQuery(sql, ViewHoaDonReponse.class);
+        Query query = session.createQuery(sql, HoaDonResponse.class);
         query.setParameter("ma", ma);
         List<HoaDonResponse> list = query.getResultList();
         return list;
@@ -106,7 +106,7 @@ public class HoaDonRepository {
         String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id"
                 + " WHERE h.ngayTao = :ma";
-        Query query = session.createQuery(sql, ViewHoaDonReponse.class);
+        Query query = session.createQuery(sql, HoaDonResponse.class);
         query.setParameter("ngayTao", ma);
         List<HoaDonResponse> list = query.getResultList();
         return list;
