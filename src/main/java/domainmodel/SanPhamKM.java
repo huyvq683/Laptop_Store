@@ -28,7 +28,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "SanPhamKM")
+@Table(name = "SanPhamKhuyenMai")
 public class SanPhamKM implements Serializable {
 
     @Id

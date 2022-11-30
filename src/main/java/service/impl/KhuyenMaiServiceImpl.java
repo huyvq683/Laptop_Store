@@ -30,7 +30,7 @@ public class KhuyenMaiServiceImpl {
     }
 
     public String insertOrUpdateKhuyenMai(KhuyenMai km) {
-        Matcher checkGiaTri = Pattern.compile("^[0-9]$").matcher(km.getGiaTriKM());
+        Matcher checkGiaTri = Pattern.compile("\\d+").matcher(km.getGiaTriKM());
         if (kiemTraTrong(km.getTenKM()) || kiemTraTrong(km.getGiaTriKM()) || km.getNgayBD() == null || km.getNgayKT() == null) {
             return "Nhập đầy đủ dữ liệu";
         }

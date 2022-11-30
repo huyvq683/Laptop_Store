@@ -189,8 +189,10 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
         tblSanPham = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1254, 850));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setText("Tên khuyến mại");
@@ -309,6 +311,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
                 .addContainerGap(242, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tblKhuyenMai.setModel(new javax.swing.table.DefaultTableModel(
