@@ -30,13 +30,13 @@ public class HoaDonRepository {
     public List<HoaDonResponse> getByOne(int tt) {
         String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id"
-                + " JOIN KhachHang k ON h.idKH = k.id"
                 + " WHERE h.tinhTrang = :tinhTrang";
         Query query = session.createQuery(sql, HoaDonResponse.class);
         query.setParameter("tinhTrang", tt);
         List<HoaDonResponse> list = query.getResultList();
         return list;
     }
+
     public HoaDon getOne(String ma) {
         String sql = fromTable + " Where ma = :ma ";
         javax.persistence.Query query = session.createQuery(sql, HoaDon.class);
@@ -45,10 +45,8 @@ public class HoaDonRepository {
         return category;
     }
 
-   
     public List<HoaDonResponse> getAll() {
         String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
-                + " JOIN KhachHang k ON h.idKH = k.id "
                 + " JOIN NhanVien n ON h.idNV = n.id";
         Query<HoaDonResponse> query = session.createQuery(sql);
         return query.list();
