@@ -514,7 +514,12 @@ public class ViewQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnkhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhuyenMaiActionPerformed
-        // TODO add your handling code here:
+        panelBanHang.removeAll();
+        PanelKhuyenMai km = new PanelKhuyenMai();
+        panelBanHang.add(km);
+        panelBanHang.setLayout(new FlowLayout());
+        this.pack();
+        km.setVisible(true);
     }//GEN-LAST:event_btnkhuyenMaiActionPerformed
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed

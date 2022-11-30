@@ -37,17 +37,17 @@ public class SanPhamKM implements Serializable {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "IdChiTietSP")
-    private ChiTietSP idCTSP;
-    
+    @JoinColumn(name = "IdSanPham")
+    private SanPham idSanPham;
+
     @ManyToOne
     @JoinColumn(name = "IdKhuyenMai")
-    private ChiTietSP idKhuyenMai;
+    private KhuyenMai idKhuyenMai;
 
     @Column(name = "CreatedDate")
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
     private Date alstModifiedDate;
-    
+
 }
