@@ -72,47 +72,43 @@ public class HoaDonRepository {
         return null;
     }
 
-    public ViewHoaDonReponse getOneByMa(String ma) {
-        String sql = "SELECT new custommodel.ViewHoaDonReponse(h.ma , n.ma , k.ma , h.ngayTao , h.tongTien , h.tinhTrang) From HoaDon h"
-                + " JOIN KhachHang k ON h.idKH = k.id "
+    public HoaDonResponse getOneByMa(String ma) {
+        String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id"
                 + " WHERE h.ma = :ma";
         Query query = session.createQuery(sql, ViewHoaDonReponse.class);
         query.setParameter("ma", ma);
-        ViewHoaDonReponse viewHoaDonReponse = (ViewHoaDonReponse) query.getSingleResult();
-        return viewHoaDonReponse;
+        HoaDonResponse hoaDonResponse = (HoaDonResponse) query.getSingleResult();
+        return hoaDonResponse;
     }
 
-    public List<ViewHoaDonReponse> getByNV(String ma) {
-        String sql = "SELECT new custommodel.ViewHoaDonReponse(h.ma , n.ma , k.ma , h.ngayTao , h.tongTien , h.tinhTrang) From HoaDon h"
-                + " JOIN KhachHang k ON h.idKH = k.id "
+    public List<HoaDonResponse> getByNV(String ma) {
+        String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id"
                 + " WHERE n.ma = :ma";
         Query query = session.createQuery(sql, ViewHoaDonReponse.class);
         query.setParameter("ma", ma);
-        List<ViewHoaDonReponse> list = query.getResultList();
+        List<HoaDonResponse> list = query.getResultList();
         return list;
     }
 
-    public List<ViewHoaDonReponse> getByMaKH(String ma) {
-        String sql = "SELECT new custommodel.ViewHoaDonReponse(h.ma , n.ma , k.ma , h.ngayTao , h.tongTien , h.tinhTrang) From HoaDon h"
+    public List<HoaDonResponse> getByMaKH(String ma) {
+        String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, k.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN KhachHang k ON h.idKH = k.id "
-                + " JOIN NhanVien n ON h.idNV = n.id"
                 + " WHERE k.ma = :ma";
         Query query = session.createQuery(sql, ViewHoaDonReponse.class);
         query.setParameter("ma", ma);
-        List<ViewHoaDonReponse> list = query.getResultList();
+        List<HoaDonResponse> list = query.getResultList();
         return list;
     }
 
-    public List<ViewHoaDonReponse> getByNgayTao(String ma) {
-        String sql = "SELECT new custommodel.ViewHoaDonReponse(h.ma , n.ma , k.ma , h.ngayTao , h.tongTien , h.tinhTrang) From HoaDon h"
-                + " JOIN KhachHang k ON h.idKH = k.id "
+    public List<HoaDonResponse> getByNgayTao(String ma) {
+        String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id"
                 + " WHERE h.ngayTao = :ma";
         Query query = session.createQuery(sql, ViewHoaDonReponse.class);
         query.setParameter("ngayTao", ma);
-        List<ViewHoaDonReponse> list = query.getResultList();
+        List<HoaDonResponse> list = query.getResultList();
         return list;
     }
 

@@ -40,22 +40,22 @@ public class HoaDonServiceImpl implements HoaDonService {
     }
 
     @Override
-    public ViewHoaDonReponse getOneByMa(String ma) {
+    public HoaDonResponse getOneByMa(String ma) {
         return hoaDonRepository.getOneByMa(ma);
     }
 
     @Override
-    public List<ViewHoaDonReponse> getByNV(String ma) {
+    public List<HoaDonResponse> getByNV(String ma) {
         return hoaDonRepository.getByNV(ma);
     }
 
     @Override
-    public List<ViewHoaDonReponse> getByMaKH(String ma) {
+    public List<HoaDonResponse> getByMaKH(String ma) {
         return hoaDonRepository.getByMaKH(ma);
     }
 
     @Override
-    public List<ViewHoaDonReponse> getByNgayTao(String ma) {
+    public List<HoaDonResponse> getByNgayTao(String ma) {
         return hoaDonRepository.getByNgayTao(ma);
     }
 

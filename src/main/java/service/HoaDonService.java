@@ -23,15 +23,15 @@ public interface HoaDonService {
 
     List<HoaDonResponse> getAll();
 
-    ViewHoaDonReponse getOneByMa(String ma);
+    HoaDonResponse getOneByMa(String ma);
 
     HoaDon getByMa(String ma);
 
-    List<ViewHoaDonReponse> getByNV(String ma);
+    List<HoaDonResponse> getByNV(String ma);
 
-    List<ViewHoaDonReponse> getByMaKH(String ma);
+    List<HoaDonResponse> getByMaKH(String ma);
 
-    List<ViewHoaDonReponse> getByNgayTao(String ma);
+    List<HoaDonResponse> getByNgayTao(String ma);
 
     List<HoaDon> get_All();
 
