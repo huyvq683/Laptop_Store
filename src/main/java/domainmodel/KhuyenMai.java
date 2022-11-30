@@ -43,7 +43,7 @@ public class KhuyenMai implements Serializable{
     private String tenKM;
     
     @Column(name = "LoaiKhuyenMai")
-    private String loaiKM;
+    private int loaiKM;
     
     @Column(name = "GiaTriKM")
     private String giaTriKM;

@@ -12,6 +12,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import service.impl.NhanVienServiceImpl;
 
@@ -22,7 +23,9 @@ import service.impl.NhanVienServiceImpl;
 public class ViewDoiMatKhau2 extends javax.swing.JFrame {
 
     private NhanVienServiceImpl nhanVienServiceImpl = new NhanVienServiceImpl();
-
+    private int checkMkc = 0;
+    private int checkMkm = 0;
+    private int checkXn = 0;
     /**
      * Creates new form DangNhap
      */
@@ -52,6 +55,9 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
         txtMatKhauMoi = new javax.swing.JPasswordField();
         txtMatKhauCu = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
+        lblMkc = new javax.swing.JLabel();
+        lblMkm = new javax.swing.JLabel();
+        lblXnMkm = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đổi mật khẩu");
@@ -97,43 +103,78 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 102, 102));
         jLabel7.setText("Mật khẩu cũ");
 
+        lblMkc.setIcon(new ImageIcon("src/main/img/mkHide.png"));
+        lblMkc.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblMkc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMkcMouseClicked(evt);
+            }
+        });
+
+        lblMkm.setIcon(new ImageIcon("src/main/img/mkHide.png"));
+        lblMkm.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblMkm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMkmMouseClicked(evt);
+            }
+        });
+
+        lblXnMkm.setIcon(new ImageIcon("src/main/img/mkHide.png"));
+        lblXnMkm.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblXnMkm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblXnMkmMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 70, Short.MAX_VALUE)
+                .addGap(0, 86, Short.MAX_VALUE)
                 .addComponent(btnDoiMatKhau)
                 .addGap(18, 18, 18)
                 .addComponent(btnHuyBo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtMatKhauCu, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                    .addComponent(txtMatKhauCu)
                     .addComponent(jLabel7)
-                    .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                    .addComponent(txtMatKhauMoi)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(txtNhapLaiMatKhauMoi, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE))
+                    .addComponent(txtNhapLaiMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMkc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMkm, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblXnMkm, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatKhauCu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtMatKhauCu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMkc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMkm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNhapLaiMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtNhapLaiMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblXnMkm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDoiMatKhau)
                     .addComponent(btnHuyBo))
@@ -185,6 +226,42 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
+
+    private void lblMkcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMkcMouseClicked
+        if (checkMkc == 0) {
+            txtMatKhauCu.setEchoChar('*');
+            lblMkc.setIcon(new ImageIcon("src/main/img/mkHide.png"));
+            checkMkc = 1;
+        } else {
+            txtMatKhauCu.setEchoChar((char) 0);
+            lblMkc.setIcon(new ImageIcon("src/main/img/mkView.png"));
+            checkMkc = 0;
+        }
+    }//GEN-LAST:event_lblMkcMouseClicked
+
+    private void lblMkmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMkmMouseClicked
+        if (checkMkm == 0) {
+            txtMatKhauMoi.setEchoChar('*');
+            lblMkm.setIcon(new ImageIcon("src/main/img/mkHide.png"));
+            checkMkm = 1;
+        } else {
+            txtMatKhauMoi.setEchoChar((char) 0);
+            lblMkm.setIcon(new ImageIcon("src/main/img/mkView.png"));
+            checkMkm = 0;
+        }
+    }//GEN-LAST:event_lblMkmMouseClicked
+
+    private void lblXnMkmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblXnMkmMouseClicked
+        if (checkXn == 0) {
+            txtNhapLaiMatKhauMoi.setEchoChar('*');
+            lblXnMkm.setIcon(new ImageIcon("src/main/img/mkHide.png"));
+            checkXn = 1;
+        } else {
+            txtNhapLaiMatKhauMoi.setEchoChar((char) 0);
+            lblXnMkm.setIcon(new ImageIcon("src/main/img/mkView.png"));
+            checkXn = 0;
+        }
+    }//GEN-LAST:event_lblXnMkmMouseClicked
 
     public String getMd5(String input) {
         try {
@@ -755,6 +832,9 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblMkc;
+    private javax.swing.JLabel lblMkm;
+    private javax.swing.JLabel lblXnMkm;
     private javax.swing.JPasswordField txtMatKhauCu;
     private javax.swing.JPasswordField txtMatKhauMoi;
     private javax.swing.JPasswordField txtNhapLaiMatKhauMoi;

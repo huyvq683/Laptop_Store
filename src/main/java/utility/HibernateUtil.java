@@ -4,8 +4,10 @@ import domainmodel.ChiTietSP;
 import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
 import domainmodel.KhachHang;
+import domainmodel.KhuyenMai;
 import domainmodel.NhanVien;
 import domainmodel.SanPham;
+import domainmodel.SanPhamKM;
 import domainmodel.SerialDaBan;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
@@ -37,6 +39,8 @@ public class HibernateUtil {
         conf.addAnnotatedClass(ChiTietSP.class);
         conf.addAnnotatedClass(HoaDonChiTiet.class);
         conf.addAnnotatedClass(SerialDaBan.class);
+        conf.addAnnotatedClass(SanPhamKM.class);
+        conf.addAnnotatedClass(KhuyenMai.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

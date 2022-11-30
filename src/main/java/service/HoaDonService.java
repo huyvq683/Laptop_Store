@@ -5,11 +5,9 @@
 package service;
 
 import custommodel.ViewHoaDonReponse;
-import java.util.Date;
 import custommodel.HoaDonResponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
-import java.util.List;
 import java.util.UUID;
 import java.util.List;
 
@@ -43,13 +41,10 @@ public interface HoaDonService {
 
     int genMaHD();
 
-    String updateTrangThai(HoaDon hoaDon, UUID id);
+    String updateTrangThai(HoaDon hoaDon);
 
     String updateTrangThaiHuy(HoaDon hoaDon, UUID id);
 
     HoaDon getByIdHoaDon(UUID id);
-//
-//    NhanVien getMaNV(String ma);
-//
-//    KhachHang getMaKH(String ma);
+
 }

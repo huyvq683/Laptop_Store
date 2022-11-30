@@ -7,6 +7,7 @@ package service;
 
 import custommodel.ChiTietSPResponse;
 import domainmodel.ChiTietSP;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,6 +37,8 @@ public interface ChiTietSPService {
 
     ChiTietSP getBySerialChiTietSP(String serial);
     
-    void updateTinhTrangSP(ChiTietSP chiTietSP, UUID id);
+    void updateTinhTrangSP(ChiTietSP chiTietSP);
+    
+    void updateTTSPDangBan(BigDecimal gia);
     
 }
