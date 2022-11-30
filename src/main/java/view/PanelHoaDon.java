@@ -37,7 +37,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
     public PanelHoaDon() {
         initComponents();
         model = (DefaultTableModel) tbaBang.getModel();
-        
+
     }
 
     public void showResult(List<HoaDonResponse> list) {
@@ -492,17 +492,29 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
     public void getKieuSearch() {
         if (cbbKieu.getSelectedIndex() == 1) {
-            list.removeAll(list);
-            list.add(hoaDonService.getOneByMa(txtSearch.getText()));
-            showResult(list);
+            if (hoaDonService.getOneByMa(txtSearch.getText()) != null) {
+                list.removeAll(list);
+                list.add(hoaDonService.getOneByMa(txtSearch.getText()));
+                showResult(list);
+            } else {
+                JOptionPane.showMessageDialog(this, "Sai Kiểu Dữ Liệu");
+            }
         } else if (cbbKieu.getSelectedIndex() == 2) {
-            list.removeAll(list);
-            list = hoaDonService.getByNV(txtSearch.getText());
-            showResult(list);
+            if (hoaDonService.getByNV(txtSearch.getText()) != null) {
+                list.removeAll(list);
+                list = hoaDonService.getByNV(txtSearch.getText());
+                showResult(list);
+            } else {
+                JOptionPane.showMessageDialog(this, "Sai Kiểu Dữ Liệu");
+            }
         } else if (cbbKieu.getSelectedIndex() == 3) {
-            list.removeAll(list);
-            list = hoaDonService.getByMaKH(txtSearch.getText());
-            showResult(list);
+            if (hoaDonService.getByMaKH(txtSearch.getText()) != null) {
+                list.removeAll(list);
+                list = hoaDonService.getByMaKH(txtSearch.getText());
+                showResult(list);
+            } else {
+                JOptionPane.showMessageDialog(this, "Sai Kiểu Dữ Liệu");
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Chọn Kiểu Dữ Liệu Muốn Tìm");
         }
