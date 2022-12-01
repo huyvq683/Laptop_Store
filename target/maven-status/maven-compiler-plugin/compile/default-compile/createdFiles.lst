@@ -28,6 +28,7 @@ view\ViewQuanLy$14.class
 view\PanelThongKe.class
 view\PanelThongKe$11.class
 view\ViewNhanVien$1.class
+view\PanelThongKe$17.class
 view\PanelThongKe$8.class
 view\ViewQuanLy$17.class
 view\ViewQuanLy$1.class
@@ -52,6 +53,7 @@ view\PanelHoaDon$4.class
 view\ViewDoiMatKhau2$1.class
 view\PanelNhanVien$7.class
 view\ViewQuanLy$11.class
+.netbeans_automatic_build
 service\SanPhamService.class
 view\PanelBanHang$5.class
 view\PanelKhachHang$1.class
@@ -71,6 +73,7 @@ view\ViewQuanLy$6.class
 repository\impl\SanPhamRepository.class
 domainmodel\NhanVien.class
 view\PanelSanPham$4.class
+view\PanelThongKe$19.class
 view\ViewQuanLy$12.class
 service\NhanVienService.class
 service\ThongKeService.class
@@ -81,6 +84,7 @@ view\PanelKhachHang.class
 custommodel\ThongKeSanPhamRespone.class
 service\impl\QuenMatKhauServiceImpl.class
 view\PanelThongKe$1.class
+view\PanelThongKe$15.class
 repository\impl\ChiTietSPRepository.class
 view\PanelThongKe$4.class
 view\ViewDangNhap$2.class
@@ -94,6 +98,7 @@ view\PanelHoaDon.class
 view\ViewDangNhap$5.class
 view\PanelThongKe$7.class
 view\ViewNhanVien$2.class
+view\PanelThongKe$18.class
 view\ViewDoiMatKhauMoi$3.class
 view\PanelNhanVien$6.class
 view\PanelSanPham$6.class
@@ -102,9 +107,11 @@ domainmodel\KhuyenMai.class
 custommodel\HoaDonChiTietResponse.class
 view\ViewQuenMatKhau$6.class
 view\ViewQuanLy$8.class
+custommodel\ThongKeBieuDoSP.class
 view\PanelHoaDon$3.class
 view\ViewNhanVien$8.class
 view\ViewQuanLy$10.class
+custommodel\ThongKeBieuDoHD.class
 view\PanelKhachHang$3.class
 domainmodel\SanPham.class
 view\ViewDoiMatKhau2$2.class
@@ -125,6 +132,7 @@ view\PanelBanHang$2.class
 view\ViewQuenMatKhau$1.class
 service\QuenMatKhauService.class
 view\PanelKhachHang$4.class
+view\PanelThongKe$20.class
 domainmodel\KhachHang.class
 view\PanelSanPham.class
 view\ViewQuenMatKhau$2.class
@@ -144,6 +152,7 @@ view\ViewDangNhap$1.class
 repository\impl\QuenMatKhauRepository.class
 view\ViewDoiMatKhauMoi$1.class
 repository\impl\HoaDonChiTietRepository.class
+view\PanelThongKe$16.class
 view\ViewDoiMatKhau2.class
 view\ViewHoaDonDayDu$2.class
 view\ViewNhanVien.class

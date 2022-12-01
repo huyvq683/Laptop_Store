@@ -6,6 +6,7 @@ package custommodel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import java.io.BufferedInputStream;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -34,7 +35,8 @@ public class ThongKeDoanhThuRespone {
     private BigDecimal tienCK;
     private BigDecimal tongTien;
 
-    private String dinhDangTienVN(BigDecimal tien) {
+
+    public String dinhDangTienVN(BigDecimal tien) {
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         return currencyVN.format(tien);
@@ -43,4 +45,5 @@ public class ThongKeDoanhThuRespone {
     public Object[] toDataRow() {
         return new Object[]{maHD, maNV, tenNV, hinhThuc == 0 ? "Tiền mặt" : hinhThuc == 1 ? "Chuyển khoản" : "Cả tiền mặt và chuyển khoản", dinhDangTienVN(tienKhachTra), dinhDangTienVN(tienCK), dinhDangTienVN(tongTien)};
     }
+
 }

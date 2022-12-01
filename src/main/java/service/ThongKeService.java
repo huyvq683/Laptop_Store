@@ -4,8 +4,6 @@ package service;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-import custommodel.ThongKeBieuDoHD;
-import custommodel.ThongKeBieuDoSP;
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.util.Date;
@@ -20,11 +18,15 @@ public interface ThongKeService {
 
     List<ThongKeDoanhThuRespone> getAllDoanhThu(Date date);
 
+    List<ThongKeDoanhThuRespone> getAllDoanhThuKhoangNgay(Date n, Date kt);
+
     List<ThongKeDoanhThuRespone> getAllDoanhThuMonth(int thang, int nam);
 
     List<ThongKeDoanhThuRespone> getAllDoanhThuYear(int nam);
 
     String getDoanhThuDay(Date ngay);
+
+    String getDoanhThuKhoangNgay(Date bd, Date kt);
 
     String getDoanhThuYear(int nam);
 
@@ -33,6 +35,8 @@ public interface ThongKeService {
     Integer namBatDauDoanhThu();
 
     List<ThongKeSanPhamRespone> getAllSanPham(Date date);
+
+    List<ThongKeSanPhamRespone> getAllSanPhamKhoangNgay(Date bd, Date kt);
 
     List<ThongKeSanPhamRespone> getAllSanPhamMonth(int thang, int nam);
 

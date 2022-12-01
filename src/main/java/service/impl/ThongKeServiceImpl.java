@@ -11,11 +11,8 @@ import custommodel.ThongKeSanPhamRespone;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.math.BigDecimal;
-import java.text.NumberFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -71,6 +68,11 @@ public class ThongKeServiceImpl implements ThongKeService {
     @Override
     public List<ThongKeSanPhamRespone> getAllSanPham(Date date) {
         return res.getAllSanPham(date);
+    }
+
+    @Override
+    public List<ThongKeSanPhamRespone> getAllSanPhamKhoangNgay(Date bd, Date kt) {
+        return res.getAllSanPhamKhoangNgay(bd, kt);
     }
 
     @Override
@@ -150,6 +152,16 @@ public class ThongKeServiceImpl implements ThongKeService {
         jpnItem.validate();
         jpnItem.setBackground(Color.MAGENTA);
         jpnItem.repaint();
+    }
+
+    @Override
+    public List<ThongKeDoanhThuRespone> getAllDoanhThuKhoangNgay(Date n, Date kt) {
+        return res.getAllDoanhThuKhoangNgay(n, kt);
+    }
+
+    @Override
+    public String getDoanhThuKhoangNgay(Date bd, Date kt) {
+        return res.getDoanhThuKhoangDay(bd, kt);
     }
 
 }
