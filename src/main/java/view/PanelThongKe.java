@@ -56,7 +56,6 @@ public class PanelThongKe extends javax.swing.JPanel {
     private NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
     // tạo ra năm hiện tại để lọc sản phẩm theo năm
     private int nam = 2022;
-    private int  a = 1;
 
     public PanelThongKe() throws ParseException {
         initComponents();
@@ -101,6 +100,7 @@ public class PanelThongKe extends javax.swing.JPanel {
 
     public void importE() {
         try {
+
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet spreadsheet = workbook.createSheet("Doanh thu");
 
@@ -131,7 +131,6 @@ public class PanelThongKe extends javax.swing.JPanel {
             cell = row.createCell(7, CellType.STRING);
             cell.setCellValue("Tổng tiền");
             if (cbbLoaiDoanhThu.getSelectedIndex() == 0) {
-                // showDataDoanhThu(dateFor.format(getDate(txtStartTKDT.getDateStringOrEmptyString())));
                 listDT = serviceThongKe.getAllDoanhThu(dateFor.parse(dateFor.format(getDate(txtStartTKDT.getDateStringOrEmptyString()))));
             } else if (cbbLoaiDoanhThu.getSelectedIndex() == 1) {
                 listDT = serviceThongKe.getAllDoanhThuKhoangNgay(dateFor.parse(dateFor.format(getDate(txtStartTKDT.getDateStringOrEmptyString()))),
@@ -139,7 +138,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             } else if (cbbLoaiDoanhThu.getSelectedIndex() == 2) {
                 listDT = serviceThongKe.getAllDoanhThuMonth((int) cbbThangDoanhThu.getSelectedItem(), nam);
             } else {
-                listDT = serviceThongKe.getAllDoanhThuYear((int) cbbThangNam.getSelectedItem());
+                listDT = serviceThongKe.getAllDoanhThuYear((int) cbbThangDoanhThu.getSelectedItem());
             }
             for (int i = 0; i < listDT.size(); i++) {
                 ThongKeDoanhThuRespone tk = listDT.get(i);
@@ -154,13 +153,12 @@ public class PanelThongKe extends javax.swing.JPanel {
                 row.createCell(6).setCellValue(tk.dinhDangTienVN(tk.getTienCK()));
                 row.createCell(7).setCellValue(tk.dinhDangTienVN(tk.getTongTien()));
             }
-            int a = 1;
-            File filee = new File("D:/DoanhThu.xlxx");
-            FileOutputStream out = new FileOutputStream(filee);
-                workbook.write(out);
+            FileOutputStream out = new FileOutputStream(new File("D:/tkdt.xlsx"));
+            workbook.write(out);
             out.close();
+            JOptionPane.showMessageDialog(this, "Import thành công");
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Import thất bại");
         }
     }
 
@@ -1268,7 +1266,11 @@ public class PanelThongKe extends javax.swing.JPanel {
     }//GEN-LAST:event_cbbLoaiDoanhThuItemStateChanged
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
-        importE();
+        if (listDT.size() > 0) {
+            importE();
+        } else {
+            JOptionPane.showMessageDialog(this, "Vui lòng lọc trước để import");
+        }
     }//GEN-LAST:event_btnImportActionPerformed
     private void loadThangBieuDo() {
         dcbmThangBieuDo = new DefaultComboBoxModel();
