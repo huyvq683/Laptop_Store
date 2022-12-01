@@ -4,10 +4,24 @@ package service.impl;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import custommodel.ThongKeBieuDoHD;
+import custommodel.ThongKeBieuDoSP;
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import repository.impl.ThongKeRepository;
 import service.ThongKeService;
 
@@ -65,6 +79,11 @@ public class ThongKeServiceImpl implements ThongKeService {
     }
 
     @Override
+    public Long spKinhDoanhAll() {
+        return res.spKinhDoanhAll();
+    }
+
+    @Override
     public List<ThongKeSanPhamRespone> getAllSanPhamMonth(int thang, int nam) {
         return res.getAllSanPhamMonth(thang, nam);
     }
@@ -77,6 +96,60 @@ public class ThongKeServiceImpl implements ThongKeService {
     @Override
     public Integer namBatDau() {
         return res.namBatDau();
+    }
+
+    @Override
+    public void getBieuDoDTMonth(int thang, int nam, JPanel jpnItem) {
+        List<ThongKeBieuDoHD> listItem = res.getBieuDoDTMonth(thang, nam);
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        if (listItem != null) {
+            for (ThongKeBieuDoHD item : listItem) {
+                dataset.addValue(item.getTongTien(), "Tổng tiền", item.getCreatedDate().toString().substring(0, 10));
+            }
+        }
+
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Biểu đồ thống kê số lượng doanh thu".toUpperCase(),
+                "Thời gian", "Doanh thu",
+                dataset, PlotOrientation.VERTICAL.VERTICAL, false, true, false);
+
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 578));
+
+        jpnItem.removeAll();
+        jpnItem.setLayout(new CardLayout());
+        jpnItem.add(chartPanel);
+        jpnItem.validate();
+        jpnItem.repaint();
+    }
+
+    @Override
+    public void getBieuDoSPMonth(int thang, int nam, JPanel jpnItem) {
+        List<ThongKeBieuDoSP> listItem = res.getBieuDoSPMonth(thang, nam);
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        if (listItem != null) {
+            for (ThongKeBieuDoSP item : listItem) {
+                dataset.addValue(Integer.parseInt(Long.toString(item.getSoLuong())), "Số lượng", item.getCreatedDate().toString().substring(0, 10));
+            }
+        }
+
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Biểu đồ thống kê số lượng sản phẩm đã bán ra".toUpperCase(),
+                "Thời gian", "Số lượng",
+                dataset, PlotOrientation.VERTICAL.VERTICAL, false, true, false);
+
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 578));
+
+        jpnItem.removeAll();
+        jpnItem.setLayout(new CardLayout());
+        jpnItem.add(chartPanel);
+        jpnItem.validate();
+        jpnItem.setBackground(Color.MAGENTA);
+        jpnItem.repaint();
     }
 
 }

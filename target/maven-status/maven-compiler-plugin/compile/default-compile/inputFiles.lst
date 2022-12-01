@@ -3,6 +3,7 @@ D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\ja
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\ChiTietSPService.java
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\impl\HoaDonChiTietSeviceImpl.java
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\view\ViewMenu.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\custommodel\ThongKeBieuDoSP.java
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\repository\impl\HoaDonChiTietRepository.java
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\utility\HibernateUtil.java
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\view\PanelHoaDon.java
@@ -46,6 +47,7 @@ D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\ja
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\domainmodel\HoaDonChiTiet.java
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\view\ViewQuenMatKhau.java
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\repository\impl\SanPhamRepository.java
+D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\custommodel\ThongKeBieuDoHD.java
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\custommodel\ThongKeSanPhamRespone.java
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\repository\Repository.java
 D:\FPOLYK17\FALL2022\Block2\1.PRO1041_IT17322\QuanLyCuaHangBanLaptop\src\main\java\service\SanPhamService.java
