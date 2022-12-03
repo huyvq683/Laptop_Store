@@ -31,7 +31,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ChiTietSp")
+@Table(name = "ChiTietSP")
 public class ChiTietSP implements Serializable {
 
     @Id

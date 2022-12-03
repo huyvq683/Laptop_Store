@@ -37,8 +37,8 @@ public class SanPhamKM implements Serializable {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "IdSanPham")
-    private SanPham idSanPham;
+    @JoinColumn(name = "IdChiTietSanPham")
+    private ChiTietSP idChiTietSP;
 
     @ManyToOne
     @JoinColumn(name = "IdKhuyenMai")
