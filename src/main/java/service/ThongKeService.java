@@ -8,6 +8,7 @@ import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,11 +18,15 @@ public interface ThongKeService {
 
     List<ThongKeDoanhThuRespone> getAllDoanhThu(Date date);
 
+    List<ThongKeDoanhThuRespone> getAllDoanhThuKhoangNgay(Date n, Date kt);
+
     List<ThongKeDoanhThuRespone> getAllDoanhThuMonth(int thang, int nam);
 
     List<ThongKeDoanhThuRespone> getAllDoanhThuYear(int nam);
 
     String getDoanhThuDay(Date ngay);
+
+    String getDoanhThuKhoangNgay(Date bd, Date kt);
 
     String getDoanhThuYear(int nam);
 
@@ -29,10 +34,9 @@ public interface ThongKeService {
 
     Integer namBatDauDoanhThu();
 
-//    List<ThongKeDoanhThuRespone> getAllDoanhThuSortTang(Date n);
-//
-//    List<ThongKeDoanhThuRespone> getAllDoanhThuSortGiam(Date n);
     List<ThongKeSanPhamRespone> getAllSanPham(Date date);
+
+    List<ThongKeSanPhamRespone> getAllSanPhamKhoangNgay(Date bd, Date kt);
 
     List<ThongKeSanPhamRespone> getAllSanPhamMonth(int thang, int nam);
 
@@ -40,6 +44,11 @@ public interface ThongKeService {
 
     Long spKinhDoanh(int t);
 
+    Long spKinhDoanhAll();
+
     Integer namBatDau();
 
+    void getBieuDoDTMonth(int thang, int nam, JPanel panelHienThi);
+
+    void getBieuDoSPMonth(int thang, int nam, JPanel panelHienThi);
 }
