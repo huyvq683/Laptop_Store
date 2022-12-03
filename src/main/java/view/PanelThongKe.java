@@ -994,6 +994,18 @@ public class PanelThongKe extends javax.swing.JPanel {
         jTabbedPane1.addTab("Biểu đồ", jToolBar1);
 
         btnExport.setText("Export(Excel)");
+        btnExport.setBackground(new java.awt.Color(41, 183, 212));
+        btnExport.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnExport.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnExportMouseMoved(evt);
+            }
+        });
+        btnExport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExportMouseExited(evt);
+            }
+        });
         btnExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExportActionPerformed(evt);
@@ -1003,9 +1015,11 @@ public class PanelThongKe extends javax.swing.JPanel {
         buttonGroup1.add(radioSP);
         radioSP.setSelected(true);
         radioSP.setText("Sản phẩm");
+        radioSP.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         buttonGroup1.add(radioHD);
         radioHD.setText("Hóa đơn");
+        radioHD.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1058,7 +1072,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1407,6 +1421,16 @@ public class PanelThongKe extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnExportActionPerformed
+
+    private void btnExportMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExportMouseMoved
+        btnExport.setBackground(new Color(33, 70, 131));
+        btnExport.setForeground(new Color(255, 255, 255));
+    }//GEN-LAST:event_btnExportMouseMoved
+
+    private void btnExportMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExportMouseExited
+        btnExport.setBackground(new Color(41, 183, 212));
+        btnExport.setForeground(Color.BLACK);
+    }//GEN-LAST:event_btnExportMouseExited
     private void loadThangBieuDo() {
         dcbmThangBieuDo = new DefaultComboBoxModel();
         for (int i = 1; i <= Integer.parseInt(dateFor.format(new Date()).substring(3, 5)); i++) {
