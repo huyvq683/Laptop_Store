@@ -1,9 +1,11 @@
 package repository.impl;
 
 import custommodel.KhachHangReponse;
+import custommodel.KhachHangRespone;
 import domainmodel.KhachHang;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -29,6 +31,20 @@ public class KhachHangRepository {
         }
         return null;
     }
+    
+        public List<KhachHangRespone> getHD(UUID id) {
+        List<KhachHangRespone> lists = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("SELECT new custommodel.KhachHangRespone "
+                    + "(c.idHoaDon.idKH.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.idHoaDon.ngayTao, c.donGia) "
+                    + "FROM HoaDonChiTiet c WHERE c.idHoaDon.idKH.id = :id ");
+            query.setParameter("id", id);
+            lists = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return lists;
+    }
 
     public KhachHang getMa(String ma) {
         try ( Session session = HibernateUtil.getFACTORY().openSession();) {
@@ -40,7 +56,18 @@ public class KhachHangRepository {
         } catch (Exception e) {
             return null;
         }
-
+    }
+    
+    public KhachHang getSdt(String sdt) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession();) {
+            String sql = fromTable + " WHERE sdt = :sdt";
+            Query query = session.createQuery(sql);
+            query.setParameter("sdt", sdt);
+            KhachHang kh = (KhachHang) query.getSingleResult();
+            return kh;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public KhachHang getEmail(String email) {

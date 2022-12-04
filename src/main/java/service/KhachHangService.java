@@ -5,8 +5,10 @@
 package service;
 
 import custommodel.KhachHangReponse;
+import custommodel.KhachHangRespone;
 import domainmodel.KhachHang;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -17,8 +19,12 @@ public interface KhachHangService<T> {
     List<T> getAll();
 
     List<T> searchBySDT(List<T> list, String sdt);
+    
+    List<KhachHangRespone> getHD(UUID id);
 
     KhachHang getMa(String ma);
+    
+    KhachHang getSdt(String sdt);
 
     KhachHang getEmail(String email);
 

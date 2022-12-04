@@ -15,6 +15,12 @@ import java.util.UUID;
  * @author Đức Hiệu
  */
 public interface ChiTietSPService {
+    
+    String add(ChiTietSP ctsp);
+    
+    String validate(ChiTietSP ctsp);
+    
+    String update(ChiTietSP ctsp , UUID id);
 
     List<ChiTietSP> getAllChiTietSP();
 
@@ -27,6 +33,7 @@ public interface ChiTietSPService {
     List<ChiTietSP> seatch(String ram);
 
     String checkInt(String gia);
+    
 
     List<ChiTietSPResponse> getAll();
 

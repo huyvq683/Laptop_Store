@@ -57,6 +57,46 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
+    public List<ChiTietSP> getOneGia(String gia1, String gia2) {
+        return repository.getOneGia(gia1, gia2);
+    }
+
+    @Override
+    public String add(ChiTietSP ctsp) {
+        if (validate(ctsp) != null) {
+            return validate(ctsp);
+        } else {
+            Boolean add = repository.add(ctsp);
+            if (add) {
+                return "Thêm thành công";
+            } else {
+                return "Thêm không thành công";
+            }
+        }
+
+    }
+
+    @Override
+    public String update(ChiTietSP ctsp, UUID id) {
+        Boolean update = repository.upDate(ctsp, id);
+        if (update) {
+            return "Sửa thành công";
+        } else {
+            return "Sửa không thành công";
+        }
+    }
+
+    @Override
+    public String validate(ChiTietSP ctsp) {
+        if (ctsp.getSerial().isEmpty()) {
+            return "Serial trống";
+        }
+        if (getOne(ctsp.getSerial()) != null) {
+            return "Serial đã tốn tại";
+        }
+        return null;
+    }
+    @Override
     public List<ChiTietSPResponse> getAll() {
         return repository.getAll();
     }
@@ -64,11 +104,6 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     @Override
     public ChiTietSP getBySerialChiTietSP(String serial) {
         return repository.getBySerialChiTietSP(serial);
-    }
-
-    @Override
-    public List<ChiTietSP> getOneGia(String gia1, String gia2) {
-        return repository.getOneGia(gia1, gia2);
     }
 
     @Override
@@ -90,5 +125,4 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     public void updateTinhTrang(ChiTietSP chiTietSP) {
         repository.updateTinhTrang(chiTietSP);
     }
-    
 }

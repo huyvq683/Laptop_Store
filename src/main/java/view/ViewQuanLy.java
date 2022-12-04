@@ -259,13 +259,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
+        btnkhuyenMai.setBackground(new java.awt.Color(0, 0, 0));
+        btnkhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btnkhuyenMai.setForeground(new java.awt.Color(255, 255, 255));
         btnkhuyenMai.setIcon(new ImageIcon("src/main/img/sale.png"));
         btnkhuyenMai.setText("Khuyến mãi");
         btnkhuyenMai.setAlignmentY(0.0F);
-        btnkhuyenMai.setBackground(new java.awt.Color(0, 0, 0));
         btnkhuyenMai.setBorder(null);
-        btnkhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        btnkhuyenMai.setForeground(new java.awt.Color(255, 255, 255));
         btnkhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnkhuyenMaiMouseClicked(evt);
@@ -455,12 +455,12 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
         // TODO add your handling code here:
-//        panelBanHang.removeAll();
-//        PanelSanPham panelSanPham = new PanelSanPham();
-//        panelBanHang.add(panelSanPham);
-//        panelBanHang.setLayout(new FlowLayout());
-//        this.pack();
-//        panelSanPham.setVisible(true);
+        panelBanHang.removeAll();
+        PanelSanPham panelSanPham = new PanelSanPham();
+        panelBanHang.add(panelSanPham);
+        panelBanHang.setLayout(new FlowLayout());
+        this.pack();
+        panelSanPham.setVisible(true);
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed

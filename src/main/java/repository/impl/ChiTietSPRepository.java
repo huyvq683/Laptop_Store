@@ -54,9 +54,15 @@ public class ChiTietSPRepository {
             ChiTietSP ctsp = (ChiTietSP) query.getSingleResult();
             return ctsp;
         } catch (Exception e) {
-//            e.printStackTrace(System.out);
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        List<ChiTietSP> ct = new ChiTietSPRepository().getOneGia("100", "500");
+        for (ChiTietSP x : ct) {
+            System.out.println(x.toString());
+        }
     }
 
     public Boolean add(ChiTietSP ctsp) {
@@ -67,7 +73,30 @@ public class ChiTietSPRepository {
             transantion.commit();
             return true;
         } catch (Exception e) {
-//            e.printStackTrace(System.out);
+            return false;
+        }
+    }
+
+    public Boolean upDate(ChiTietSP ctsp, UUID id) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            ChiTietSP ctSP = session.get(ChiTietSP.class, id);
+            ctSP.setId(id);
+            ctSP.setIdCard(ctsp.getIdCard());
+            ctSP.setIdCPU(ctsp.getIdCPU());
+            ctSP.setCreatedDate(ctsp.getCreatedDate());
+            ctSP.setGia(ctsp.getGia());
+            ctSP.setIdHang(ctsp.getIdHang());
+            ctSP.setLastModifiedDate(ctsp.getLastModifiedDate());
+            ctSP.setIdRam(ctsp.getIdRam());
+            ctSP.setSerial(ctsp.getSerial());
+            ctSP.setIdSanPham(ctsp.getIdSanPham());
+            session.update(ctSP);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
             return false;
         }
     }

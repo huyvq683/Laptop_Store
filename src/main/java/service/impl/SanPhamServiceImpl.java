@@ -63,9 +63,9 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Override
     public String validate(SanPham sp) {
-        if (sp.getMa().trim().isBlank()) {
-            return "Mã trống";
-        }
+//        if (sp.getMa().trim().isBlank()) {
+//            return "Mã trống";
+//        }
         if (sp.getTen().trim().isBlank()) {
             return "Tên trống";
         }

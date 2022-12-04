@@ -32,6 +32,11 @@ public class NhanVienServiceImpl implements NhanVienService {
     public List<NhanVien> getAll() {
         return nhanVienRepository.getAll();
     }
+    
+    @Override
+    public List<NhanVien> getAllPage(int row) {
+        return nhanVienRepository.getAllPage(row);
+    }
 
     private String convertDate(Date ngaySinh) {
         String date;

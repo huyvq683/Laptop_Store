@@ -790,9 +790,9 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         txtTienCK.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtTienCK.setForeground(new java.awt.Color(51, 51, 51));
         txtTienCK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
-        txtTienCK.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtTienCKCaretUpdate(evt);
+        txtTienCK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtTienCKMouseExited(evt);
             }
         });
 
@@ -1057,8 +1057,8 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
-        String ma = txtSDT.getText();
-        KhachHang khachHang = khachHangService.getMa(ma);
+        String sdt = txtSDT.getText();
+        KhachHang khachHang = khachHangService.getSdt(sdt);
         int row = tbHoaDon.getSelectedRow();
         HoaDonResponse hd = listHoaDon.get(row);
         HoaDon hoaDon = new HoaDon();
@@ -1088,14 +1088,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnHuyActionPerformed
 
-    private void txtTienCKCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienCKCaretUpdate
-        // TODO add your handling code here:
-        double tienKhachDua = Double.valueOf(txtTienKhachDua.getText());
-        double tienCK = Double.valueOf(txtTienCK.getText());
-        double tienThua = (tienKhachDua + tienCK) - tongTien(listHoaDonChiTiet);
-        txtTienTraLai.setText(String.valueOf(tienThua));
-    }//GEN-LAST:event_txtTienCKCaretUpdate
-
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
         ViewKhachHang.setVisible(true);
@@ -1121,6 +1113,14 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void txtTienCKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTienCKMouseExited
+        // TODO add your handling code here:
+        double tienKhachDua = Double.valueOf(txtTienKhachDua.getText());
+        double tienCK = Double.valueOf(txtTienCK.getText());
+        double tienThua = (tienKhachDua + tienCK) - tongTien(listHoaDonChiTiet);
+        txtTienTraLai.setText(String.valueOf(tienThua));
+    }//GEN-LAST:event_txtTienCKMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

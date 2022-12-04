@@ -1127,7 +1127,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtTienCKCaretUpdate"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTienCKMouseExited"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTienTraLai">
