@@ -30,9 +30,9 @@ public interface ChiTietSPService {
 
     List<ChiTietSPResponse> getAll();
 
-    List<ChiTietSPResponse> getlist();
-
     ChiTietSP getBySerialChiTietSP(String serial);
+    
+    List<ChiTietSPResponse> getAllCTSP(String cPU, String card, BigDecimal gia, String hang, String oCung, String ram);
 
     void updateTinhTrangSP(ChiTietSP chiTietSP, UUID id);
 

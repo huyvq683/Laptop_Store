@@ -5,6 +5,7 @@ D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\utility\HibernateUtil.j
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\QuenMatKhauServiceImpl.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\SerialDaBanService.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\ThongKeRepository.java
+D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\Hang.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\QuenMatKhauRepository.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\KhuyenMaiServiceImpl.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewQuenMatKhau.java
@@ -15,6 +16,7 @@ D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\ChiTietSPServic
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewDoiMatKhau2.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\SanPham.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelKhachHang.java
+D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\CPU.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelThongKe.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\SerialDaBanServiceImpl.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\ThongKeServiceImpl.java
@@ -29,7 +31,9 @@ D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\HoaDonChiT
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\SanPhamRepository.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\SerialDaBanRepository.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\KhachHangService.java
+D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\OCung.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\KhachHang.java
+D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\Ram.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ChiTietSPResponse.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ThongKeSanPhamRespone.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\ChiTietSPRepository.java
@@ -47,6 +51,7 @@ D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\NhanVie
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\KhuyenMai.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelBanHang.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelHoaDon.java
+D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\CardMH.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\ThongKeService.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\KhuyenMaiRepository.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\TenTKNV.java
@@ -54,13 +59,11 @@ D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelNhanVien.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewNhanVien.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\HoaDonService.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\KhachHangRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\DetailSerial.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ThongKeBieuDoSP.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelKhuyenMai.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\HoaDonResponse.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewDangNhap.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewDoiMatKhauMoi.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\NhanVienServiceImpl.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelSanPham.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\ChiTietSPServiceImql.java
 D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\SanPhamServiceImpl.java

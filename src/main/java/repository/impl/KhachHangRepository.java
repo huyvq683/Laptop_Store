@@ -1,6 +1,8 @@
 package repository.impl;
 
+import custommodel.KhachHangReponse;
 import domainmodel.KhachHang;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -35,8 +37,7 @@ public class KhachHangRepository {
             query.setParameter("ma", ma);
             KhachHang kh = (KhachHang) query.getSingleResult();
             return kh;
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
 
@@ -76,4 +77,14 @@ public class KhachHangRepository {
         return false;
     }
 
+    public List<KhachHangReponse> getListKH() {
+        List<KhachHangReponse> lists = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession();) {
+            Query query = session.createQuery("SELECT new custommodel.KhachHangReponse (k.id, k.ma, k.hoTen, k.sdt) FROM KhachHang k");
+            lists = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return lists;
+    }
 }

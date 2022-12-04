@@ -4,6 +4,7 @@
  */
 package service;
 
+import custommodel.KhachHangReponse;
 import domainmodel.KhachHang;
 import java.util.List;
 
@@ -24,4 +25,7 @@ public interface KhachHangService<T> {
     String add(T t);
 
     String delete(T t);
+
+    List<KhachHangReponse> getListKH();
+    
 }

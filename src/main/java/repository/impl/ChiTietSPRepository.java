@@ -59,13 +59,6 @@ public class ChiTietSPRepository {
         return null;
     }
 
-    public static void main(String[] args) {
-        List<ChiTietSP> ct = new ChiTietSPRepository().getOneGia("100", "500");
-        for (ChiTietSP x : ct) {
-            System.out.println(x.toString());
-        }
-    }
-
     public Boolean add(ChiTietSP ctsp) {
         Transaction transantion = null;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -119,13 +112,20 @@ public class ChiTietSPRepository {
         }
         return lists;
     }
-
-    public List<ChiTietSPResponse> getList() {
+    
+    public List<ChiTietSPResponse> getAllCTSP() {
         List<ChiTietSPResponse> lists = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            org.hibernate.query.Query query = session.createQuery("SELECT new custommodel.ChiTietSPResponse "
-                    + "(ct.id, ct.serial) "
-                    + "FROM ChiTietSP ct WHERE ct.tinhTrang = 0");
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            org.hibernate.query.Query query = session.createQuery("SELECT new custommodel.ChiTietSPResponse (ct.id, ct.idSanPham.ma, ct.idSanPham.ten, ct.idCPU.ten, ct.idRam.ten, ct.idCard.ten, ct.idOCung.ten, ct.idHang.ten, ct.tinhTrang, ct.gia, ct.serial) FROM ChiTietSP ct ");
+//                    + "WHERE ct.idCPU.ten = :cPU AND ct.idCard.ten = :card "
+//                    + "AND ct.gia = :gia AND ct.idHang.ten = :hang AND ct.idRam.ten = :ram "
+//                    + "AND ct.idOCung.ten = :oCung AND ct.tinhTrang = 0");
+//            query.setParameter("cPU", cPU);
+//            query.setParameter("card", card);
+//            query.setParameter("gia", gia);
+//            query.setParameter("hang", hang);
+//            query.setParameter("ram", ram);
+//            query.setParameter("oCung", oCung);
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -191,5 +191,8 @@ public class ChiTietSPRepository {
         }
         return check;
     }
-
+    public static void main(String[] args) {
+        List<ChiTietSPResponse>lists = new ChiTietSPRepository().getAllCTSP();
+        System.out.println(lists);
+    }
 }

@@ -4,6 +4,7 @@
  */
 package service.impl;
 
+import custommodel.KhachHangReponse;
 import domainmodel.KhachHang;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,5 +78,11 @@ public class KhachHangServiceImpl implements KhachHangService<KhachHang> {
             }
         }
         return listSearch;
+    }
+
+    @Override
+    public List<KhachHangReponse> getListKH() {
+        return repository.getListKH();
+    
     }
 }

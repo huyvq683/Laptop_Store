@@ -32,7 +32,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ChiTietSp")
+@Table(name = "ChiTietSP")
 @ToString
 public class ChiTietSP implements Serializable {
 
@@ -54,19 +54,19 @@ public class ChiTietSP implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "IdHang")
-    private Hang idhang;
+    private Hang idHang;
 
     @ManyToOne
     @JoinColumn(name = "IdRam")
-    private Ram idram;
+    private Ram idRam;
 
     @ManyToOne
     @JoinColumn(name = "IdCardMH")
-    private CardMH idcard;
+    private CardMH idCard;
 
     @ManyToOne
     @JoinColumn(name = "IdOCung")
-    private OCung idoCung;
+    private OCung idOCung;
 
     @Column(name = "Gia")
     private BigDecimal gia;
@@ -89,4 +89,5 @@ public class ChiTietSP implements Serializable {
         DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
         return date.format(x);
     }
+    
 }

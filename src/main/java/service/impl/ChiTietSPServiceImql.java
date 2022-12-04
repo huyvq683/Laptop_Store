@@ -72,11 +72,6 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public List<ChiTietSPResponse> getlist() {
-        return repository.getList();
-    }
-
-    @Override
     public List<ChiTietSP> getOneGia(String gia1, String gia2) {
         return repository.getOneGia(gia1, gia2);
     }
@@ -89,6 +84,11 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     @Override
     public void updateTTSPDangBan(BigDecimal gia) {
         repository.updateTTSPDangBan(gia);
+    }
+
+    @Override
+    public List<ChiTietSPResponse> getAllCTSP(String cPU, String card, BigDecimal gia, String hang, String oCung, String ram) {
+        return repository.getAllCTSP(cPU, card, gia, hang, oCung, ram);
     }
     
 }

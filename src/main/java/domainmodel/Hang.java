@@ -26,7 +26,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "CardMH")
+@Table(name = "Hang")
 public class Hang implements Serializable {
 
     @Id

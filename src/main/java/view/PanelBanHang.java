@@ -7,12 +7,11 @@ package view;
 import custommodel.ChiTietSPResponse;
 import custommodel.HoaDonChiTietResponse;
 import custommodel.HoaDonResponse;
+import custommodel.KhachHangReponse;
 import domainmodel.ChiTietSP;
 import domainmodel.HoaDon;
-import domainmodel.HoaDonChiTiet;
 import domainmodel.KhachHang;
 import domainmodel.NhanVien;
-import domainmodel.SerialDaBan;
 import domainmodel.TenTKNV;
 import java.math.BigDecimal;
 import java.text.DateFormat;
@@ -55,6 +54,9 @@ public class PanelBanHang extends javax.swing.JPanel {
     private NhanVienService nhanVienService = new NhanVienServiceImpl();
     private KhachHangService khachHangService = new KhachHangServiceImpl();
     private SerialDaBanService serialDaBanService = new SerialDaBanServiceImpl();
+    private DefaultTableModel dtm = new DefaultTableModel();
+    private List<KhachHangReponse> listKH = khachHangService.getListKH();
+    private DefaultTableModel dtmSerial = new DefaultTableModel();
     private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     /**
@@ -71,9 +73,12 @@ public class PanelBanHang extends javax.swing.JPanel {
         tbSanPham.setModel(dtmSanPham);
         String[] header = {"STT", "Mã", "Tên", "CPU", "Ram", "Card", "Ổ cứng", "Hãng", "Gia", "Số lượng"};
         dtmSanPham.setColumnIdentifiers(header);
+        dtmSerial = (DefaultTableModel) tbSerial.getModel();
         showDataHoaDonTable(listHoaDon);
         showDataTableSanPham(listChiTietSP);
         enabled();
+        dtm = (DefaultTableModel) tbHienThi.getModel();
+        showDataTable(listKH);
     }
 
     private void enabled() {
@@ -86,7 +91,6 @@ public class PanelBanHang extends javax.swing.JPanel {
         txtTienTraLai.setEditable(false);
     }
 
-    
     private void showDataHoaDonTable(List<HoaDonResponse> lists) {
         dtmHoaDon.setRowCount(0);
         int stt = 0;
@@ -115,6 +119,16 @@ public class PanelBanHang extends javax.swing.JPanel {
         }
     }
 
+    private void showDataTable(List<KhachHangReponse> lists) {
+        dtm.setRowCount(0);
+        lists.forEach(s -> dtm.addRow(s.toDataRow()));
+    }
+
+    private void showDataTableCTSP(List<ChiTietSPResponse> lists) {
+        dtmSerial.setRowCount(0);
+        lists.forEach(s -> dtmSerial.addRow(s.toDataRowSerial()));
+    }
+
     private HoaDonChiTietResponse getData() {
         int rowSP = tbSanPham.getSelectedRow();
         ChiTietSPResponse chiTietSPResponse = listChiTietSP.get(rowSP);
@@ -129,25 +143,40 @@ public class PanelBanHang extends javax.swing.JPanel {
         return hoaDonChiTietResponse;
     }
 
-    private void addHoaDonCT() {
-        HoaDonChiTietResponse hoaDonChiTietResponse = getData();
-        int rowHD = tbHoaDon.getSelectedRow();
-        HoaDonResponse hoaDonResponse = listHoaDon.get(rowHD);
-        HoaDon idHoaDon = hoaDonService.getByIdHoaDon(hoaDonResponse.getId());
-        String serial = JOptionPane.showInputDialog("Nhập số serial: ");
-        ChiTietSP idChiTietSP = chiTietSPService.getBySerialChiTietSP(serial);
-        idChiTietSP.setTinhTrang(1);
-        chiTietSPService.updateTinhTrangSP(idChiTietSP);
-        listChiTietSP = chiTietSPService.getAll();
-        showDataTableSanPham(listChiTietSP);
-        HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-        hoaDonChiTiet.setIdCTSP(idChiTietSP);
-        hoaDonChiTiet.setIdHoaDon(idHoaDon);
-        hoaDonChiTiet.setTenSP(hoaDonChiTietResponse.getTen());
-        hoaDonChiTiet.setDonGia(hoaDonChiTietResponse.getGia());
-        hoaDonChiTietService.add(hoaDonChiTiet);
-        showDataTableGioHang(hoaDonResponse.getId());
+    private void chonSP() {
+        int rowSP = tbSanPham.getSelectedRow();
+        ChiTietSPResponse chiTietSPResponse = listChiTietSP.get(rowSP);
         
+        String cPU = chiTietSPResponse.getCPU();
+        String hang = chiTietSPResponse.getHang();
+        String ram = chiTietSPResponse.getRam();
+        String card = chiTietSPResponse.getCard();
+        String oCung = chiTietSPResponse.getOCung();
+        BigDecimal gia = chiTietSPResponse.getGia();
+        
+        listChiTietSP = chiTietSPService.getAllCTSP(cPU, card, gia, hang, oCung, ram);
+//        showDataTableCTSP(listChiTietSP);
+        ViewSerial.setVisible(true);
+        ViewSerial.setLocationRelativeTo(null);
+    }
+
+    private void addHoaDonCT() {
+//        HoaDonChiTietResponse hoaDonChiTietResponse = getData();
+//        int rowHD = tbHoaDon.getSelectedRow();
+//        HoaDonResponse hoaDonResponse = listHoaDon.get(rowHD);
+//        HoaDon idHoaDon = hoaDonService.getByIdHoaDon(hoaDonResponse.getId());
+//        List<String> listSeral = new ArrayList<>();
+//        for (int i = 0; i < tbSerial.getRowCount(); i++) {
+//            Boolean t = (Boolean) tbSerial.getValueAt(i, 0);
+//            if (t == true) {
+//                listSeral.add(tbSerial.getValueAt(i, 3) + "");
+//            }
+//        }
+//        hoaDonChiTietService.add(listSeral, idHoaDon);
+//        showDataTableGioHang(hoaDonResponse.getId());
+        
+
+//        showDataTableGioHang(hoaDonResponse.getId());
 //        SerialDaBan serialDaBan = new SerialDaBan();
 //        serialDaBan.setIdHDCT(hoaDonChiTiet);
 //        serialDaBan.setMa(serial);
@@ -174,6 +203,13 @@ public class PanelBanHang extends javax.swing.JPanel {
         return tongTien;
     }
 
+    public void fillThongTinKH() {
+        int row = tbHienThi.getSelectedRow();
+        KhachHangReponse kh = listKH.get(row);
+        txtSDT.setText(kh.getSdt());
+        txtTenKH.setText(kh.getTen());
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,6 +219,17 @@ public class PanelBanHang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ViewKhachHang = new javax.swing.JFrame();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbHienThi = new javax.swing.JTable();
+        btnXacNhan1 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        ViewSerial = new javax.swing.JFrame();
+        jPanel7 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tbSerial = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHoaDon = new javax.swing.JTable();
@@ -200,7 +247,7 @@ public class PanelBanHang extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnXacNhan = new javax.swing.JButton();
-        txtMaKH = new javax.swing.JTextField();
+        txtSDT = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtTenKH = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -225,6 +272,152 @@ public class PanelBanHang extends javax.swing.JPanel {
         txtGiamGia = new javax.swing.JTextField();
         txtNgayTao = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
+
+        ViewKhachHang.setMinimumSize(new java.awt.Dimension(563, 350));
+        ViewKhachHang.setSize(new java.awt.Dimension(563, 350));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setMaximumSize(new java.awt.Dimension(563, 328));
+        jPanel6.setMinimumSize(new java.awt.Dimension(563, 328));
+
+        tbHienThi.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã", "Tên", "SĐT"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tbHienThi);
+
+        btnXacNhan1.setText("Xác nhận");
+        btnXacNhan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacNhan1ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setText("Danh sách khách hàng");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnXacNhan1)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addGap(185, 185, 185)
+                            .addComponent(jLabel12))
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnXacNhan1)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout ViewKhachHangLayout = new javax.swing.GroupLayout(ViewKhachHang.getContentPane());
+        ViewKhachHang.getContentPane().setLayout(ViewKhachHangLayout);
+        ViewKhachHangLayout.setHorizontalGroup(
+            ViewKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        ViewKhachHangLayout.setVerticalGroup(
+            ViewKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        ViewSerial.setMinimumSize(new java.awt.Dimension(607, 290));
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton1.setText("Chọn");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        tbSerial.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", "Mã", "Tên", "Serial"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tbSerial);
+        if (tbSerial.getColumnModel().getColumnCount() > 0) {
+            tbSerial.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tbSerial.getColumnModel().getColumn(0).setMaxWidth(20);
+        }
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout ViewSerialLayout = new javax.swing.GroupLayout(ViewSerial.getContentPane());
+        ViewSerial.getContentPane().setLayout(ViewSerialLayout);
+        ViewSerialLayout.setHorizontalGroup(
+            ViewSerialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        ViewSerialLayout.setVerticalGroup(
+            ViewSerialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1310, 850));
@@ -393,9 +586,9 @@ public class PanelBanHang extends javax.swing.JPanel {
             }
         });
 
-        txtMaKH.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtMaKH.setForeground(new java.awt.Color(51, 51, 51));
-        txtMaKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
+        txtSDT.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtSDT.setForeground(new java.awt.Color(51, 51, 51));
+        txtSDT.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("Tên KH:");
@@ -410,14 +603,13 @@ public class PanelBanHang extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
+                    .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMaKH)
+                    .addComponent(txtSDT)
                     .addComponent(txtTenKH))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -431,7 +623,7 @@ public class PanelBanHang extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -721,8 +913,7 @@ public class PanelBanHang extends javax.swing.JPanel {
         if (tbHoaDon.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Chọn hóa đơn");
         } else {
-            addHoaDonCT();
-            fillThanhToan();
+            chonSP();
         }
     }//GEN-LAST:event_tbSanPhamMouseClicked
 
@@ -749,9 +940,8 @@ public class PanelBanHang extends javax.swing.JPanel {
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
-        String ma = txtMaKH.getText();
+        String ma = txtSDT.getText();
         KhachHang khachHang = khachHangService.getMa(ma);
-        System.out.println(khachHang.getId());
         int row = tbHoaDon.getSelectedRow();
         HoaDonResponse hd = listHoaDon.get(row);
         HoaDon hoaDon = new HoaDon();
@@ -771,18 +961,6 @@ public class PanelBanHang extends javax.swing.JPanel {
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
-    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
-        // TODO add your handling code here:
-        String ma = txtMaKH.getText();
-        KhachHang khachHang = khachHangService.getMa(ma);
-        if(khachHang == null){
-            JOptionPane.showMessageDialog(this, "Khác hàng chưa có thông tin");
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Successed");
-        }
-    }//GEN-LAST:event_btnXacNhanActionPerformed
-
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         // TODO add your handling code here:
         int row = tbHoaDon.getSelectedRow();
@@ -801,18 +979,45 @@ public class PanelBanHang extends javax.swing.JPanel {
         txtTienTraLai.setText(String.valueOf(tienThua));
     }//GEN-LAST:event_txtTienCKCaretUpdate
 
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        // TODO add your handling code here:
+        ViewKhachHang.setVisible(true);
+        ViewKhachHang.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void btnXacNhan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhan1ActionPerformed
+        // TODO add your handling code here:
+        int row = tbHienThi.getSelectedRow();
+        KhachHangReponse khr = listKH.get(row);
+        txtSDT.setText(khr.getSdt());
+        txtTenKH.setText(khr.getTen());
+        ViewKhachHang.dispose();
+    }//GEN-LAST:event_btnXacNhan1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        addHoaDonCT();
+        fillThanhToan();
+        ViewSerial.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame ViewKhachHang;
+    private javax.swing.JFrame ViewSerial;
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnTaoHD;
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnXacNhan;
+    private javax.swing.JButton btnXacNhan1;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnlamMoi;
     private javax.swing.JComboBox<String> cbbHinhThuc;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -828,16 +1033,22 @@ public class PanelBanHang extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable tbGioHang;
+    private javax.swing.JTable tbHienThi;
     private javax.swing.JTable tbHoaDon;
     private javax.swing.JTable tbSanPham;
+    private javax.swing.JTable tbSerial;
     private javax.swing.JTextField txtGiamGia;
     private javax.swing.JTextField txtMaHD;
-    private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtNgayTao;
+    private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTenKH;
     private javax.swing.JTextField txtTenNV;
     private javax.swing.JTextField txtTienCK;

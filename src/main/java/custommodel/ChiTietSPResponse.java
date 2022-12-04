@@ -47,12 +47,25 @@ public class ChiTietSPResponse {
         this.soLuong = soLuong;
     }
 
-    public ChiTietSPResponse(UUID id, String serial) {
+    public ChiTietSPResponse(UUID id, String ma, String ten, String cPU, String ram, String card, String oCung, String hang, int tinhTrang, BigDecimal gia, String serial) {
         this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.cPU = cPU;
+        this.ram = ram;
+        this.card = card;
+        this.oCung = oCung;
+        this.hang = hang;
+        this.tinhTrang = tinhTrang;
+        this.gia = gia;
         this.serial = serial;
     }
 
     public Object[] toDataRow(int stt) {
         return new Object[]{stt, ma, ten, cPU, ram, card, oCung, hang, gia, soLuong};
+    }
+
+    public Object[] toDataRowSerial() {
+        return new Object[]{false, ma, ten, serial};
     }
 }
