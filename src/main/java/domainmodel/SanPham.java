@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
@@ -29,6 +30,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "SanPham")
+@ToString
 public class SanPham implements Serializable {
 
     @Id
@@ -41,7 +43,7 @@ public class SanPham implements Serializable {
 
     @Column(name = "Ten")
     private String ten;
-
+    
     @Column(name = "CreatedDate")
     private Date createdDate;
 
@@ -55,6 +57,7 @@ public class SanPham implements Serializable {
         this.alstModifiedDate = alstModifiedDate;
     }
 
+
     public String conVert(Date x) {
         DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         return format.format(x);
@@ -63,7 +66,7 @@ public class SanPham implements Serializable {
     public SanPham(UUID id) {
         this.id = id;
     }
-    
+
     public SanPham(String ma, String ten) {
         this.ma = ma;
         this.ten = ten;

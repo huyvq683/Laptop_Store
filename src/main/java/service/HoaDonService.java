@@ -4,7 +4,6 @@
  */
 package service;
 
-import custommodel.ViewHoaDonReponse;
 import custommodel.HoaDonResponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
@@ -17,21 +16,15 @@ import java.util.List;
  */
 public interface HoaDonService {
 
+    List<HoaDonResponse> search(String searchKey);
+
     List<HoaDonResponse> getByOne(int tt);
 
     String update(HoaDon hd);
 
     List<HoaDonResponse> getAll();
 
-    ViewHoaDonReponse getOneByMa(String ma);
-
     HoaDon getByMa(String ma);
-
-    List<ViewHoaDonReponse> getByNV(String ma);
-
-    List<ViewHoaDonReponse> getByMaKH(String ma);
-
-    List<ViewHoaDonReponse> getByNgayTao(String ma);
 
     List<HoaDon> get_All();
 

@@ -50,6 +50,32 @@ public class KhuyenMaiRepository {
         return list;
     }
 
+    public boolean kiemTraKM(SanPhamViewKMResponse spvkmr, KhuyenMai km) {
+        List<ChiTietSP> list = new ArrayList<>();
+        try {
+            Session sess = HibernateUtil.getFACTORY().openSession();
+            Query q = sess.createQuery("FROM ChiTietSP s WHERE s.idSanPham.ma = :maSP AND s.idSanPham.ten = :tenSP AND s.cPU = :cpu AND s.hang = :hang AND s.ram = :ram AND s.card = :card AND s.oCung = :oCung AND s.gia = :gia AND s.id IN (SELECT spkm.idChiTietSP.id FROM SanPhamKM spkm WHERE spkm.idKhuyenMai.ma = :maKM)");
+            q.setParameter("maKM", km.getMa());
+            q.setParameter("maSP", spvkmr.getMa());
+            q.setParameter("tenSP", spvkmr.getTen());
+            q.setParameter("cpu", spvkmr.getCpu());
+            q.setParameter("hang", spvkmr.getHang());
+            q.setParameter("ram", spvkmr.getRam());
+            q.setParameter("card", spvkmr.getCard());
+            q.setParameter("oCung", spvkmr.getOCung());
+            q.setParameter("gia", spvkmr.getGia());
+            list = q.getResultList();
+            sess.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (list.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public int genMaHD() {
         String maHD = "";
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -78,13 +104,26 @@ public class KhuyenMaiRepository {
         return list;
     }
 
-    public List<SanPhamViewKMResponse> getAllSanPhamKhuyenMai() {
+    public List<SanPhamViewKMResponse> getAllSanPhamConLai(KhuyenMai km) {
         List<SanPhamViewKMResponse> list = new ArrayList<>();
         try {
             Session sess = HibernateUtil.getFACTORY().openSession();
-//            Query q = sess.createQuery("SELECT new custommodel.SanPhamViewKMResponse (sp.ma, sp.ten, s.cPU, s.hang, s.ram, s.card, s.oCung, s.gia, COUNT(s.idSanPham)) FROM ChiTietSP s JOIN SanPham sp ON s.idSanPham = sp.id JOIN SanPhamKM km ON km.idSP = sp.id WHERE km.id = '34A888E1-F68E-1145-880C-E3E97127EA80' GROUP BY sp.ma, sp.ten, s.cPU, s.hang, s.ram, s.card, s.oCung, s.gia");
-//            q.setParameter("idKM", km.getId());
-            Query q = sess.createQuery("SELECT new custommodel.SanPhamViewKMResponse (sp.ma, sp.ten, ctsp.cPU, ctsp.hang, ctsp.ram, ctsp.card, ctsp.oCung, ctsp.gia, COUNT(ctsp.idSanPham)) FROM SanPhamKM spkm JOIN SanPham sp ON spkm.idSanPham = sp.id JOIN ChiTietSP ctsp ON ctsp.idSanPham = sp.id WHERE spkm.idKhuyenMai.id = 'idSanPham' GROUP BY sp.ma, sp.ten, ctsp.cPU, ctsp.hang, ctsp.ram, ctsp.card, ctsp.oCung, ctsp.gia");
+            Query q = sess.createQuery("SELECT new custommodel.SanPhamViewKMResponse (s.idSanPham.ma, s.idSanPham.ten, s.cPU, s.hang, s.ram, s.card, s.oCung, s.gia, COUNT(s.idSanPham)) FROM ChiTietSP s WHERE s.tinhTrang = 0 AND s.id NOT IN(SELECT spkm.idChiTietSP.id FROM SanPhamKM spkm WHERE spkm.idKhuyenMai.ma = :maKM) GROUP BY s.idSanPham.ma, s.idSanPham.ten, s.cPU, s.hang, s.ram, s.card, s.oCung, s.gia");
+            q.setParameter("maKM", km.getMa());
+            list = q.getResultList();
+            sess.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<SanPhamViewKMResponse> getAllSanPhamKhuyenMai(KhuyenMai km) {
+        List<SanPhamViewKMResponse> list = new ArrayList<>();
+        try {
+            Session sess = HibernateUtil.getFACTORY().openSession();
+            Query q = sess.createQuery("SELECT new custommodel.SanPhamViewKMResponse (s.idSanPham.ma, s.idSanPham.ten, s.cPU, s.hang, s.ram, s.card, s.oCung, s.gia, COUNT(s.idSanPham)) FROM ChiTietSP s WHERE s.tinhTrang = 0 AND s.id IN(SELECT spkm.idChiTietSP FROM SanPhamKM spkm WHERE spkm.idKhuyenMai.ma = :maKM) GROUP BY s.idSanPham.ma, s.idSanPham.ten, s.cPU, s.hang, s.ram, s.card, s.oCung, s.gia");
+            q.setParameter("maKM", km.getMa());
             list = q.getResultList();
             sess.close();
         } catch (Exception e) {
@@ -107,16 +146,37 @@ public class KhuyenMaiRepository {
         return sp;
     }
 
-    public void deleteSanPhamKhuyenMaiByMa(String maKM) {
+    public void deleteSanPhamKhuyenMaiByMa(List<SanPhamViewKMResponse> listMaSP, KhuyenMai km) {
+        List<ChiTietSP> listCTSP = new ArrayList<>();
+        List<ChiTietSP> listCTSPFake = new ArrayList<>();
         try {
             Session sess = HibernateUtil.getFACTORY().openSession();
-            Query q = sess.createQuery("FROM SanPhamKM s WHERE s.idKhuyenMai.ma = :maKM");
-            q.setParameter("maKM", maKM);
-            List<SanPhamKM> list = q.getResultList();
-            for (SanPhamKM sanPhamKM : list) {
-                sess.getTransaction().begin();
-                sess.delete(sanPhamKM);
-                sess.getTransaction().commit();
+            for (SanPhamViewKMResponse spvkmr : listMaSP) {
+                Query q = sess.createQuery("FROM ChiTietSP s WHERE s.idSanPham.ma = :maSP AND s.idSanPham.ten = :tenSP AND s.cPU = :cpu AND s.hang = :hang AND s.ram = :ram AND s.card = :card AND s.oCung = :oCung AND s.gia = :gia AND s.id IN(SELECT spkm.idChiTietSP.id FROM SanPhamKM spkm WHERE spkm.idKhuyenMai.ma = :maKM)");
+                q.setParameter("maKM", km.getMa());
+                q.setParameter("maSP", spvkmr.getMa());
+                q.setParameter("tenSP", spvkmr.getTen());
+                q.setParameter("cpu", spvkmr.getCpu());
+                q.setParameter("hang", spvkmr.getHang());
+                q.setParameter("ram", spvkmr.getRam());
+                q.setParameter("card", spvkmr.getCard());
+                q.setParameter("oCung", spvkmr.getOCung());
+                q.setParameter("gia", spvkmr.getGia());
+                listCTSPFake = q.getResultList();
+                for (ChiTietSP chiTietSP : listCTSPFake) {
+                    listCTSP.add(chiTietSP);
+                }
+            }
+            for (ChiTietSP chiTietSP : listCTSP) {
+                Query q1 = sess.createQuery("FROM SanPhamKM spkm WHERE spkm.idChiTietSP.id = :idCTSP AND spkm.idKhuyenMai.ma = :maKM");
+                q1.setParameter("idCTSP", chiTietSP.getId());
+                q1.setParameter("maKM", km.getMa());
+                List<SanPhamKM> listspkm = q1.getResultList();
+                for (SanPhamKM spkm : listspkm) {
+                    sess.getTransaction().begin();
+                    sess.delete(spkm);
+                    sess.getTransaction().commit();
+                }
             }
             sess.close();
         } catch (Exception e) {
@@ -124,44 +184,36 @@ public class KhuyenMaiRepository {
         }
     }
 
-    public List<ChiTietSP> getChiTietSanPhamByIdSanPham(SanPham sp) {
-        List<ChiTietSP> list = new ArrayList<>();
+    public void insertSanPhamKhuyenMai(List<SanPhamViewKMResponse> listMaSP, KhuyenMai km) {
+        List<ChiTietSP> listCTSP = new ArrayList<>();
         try {
             Session sess = HibernateUtil.getFACTORY().openSession();
-            Query q = sess.createQuery("FROM ChiTietSP WHERE idSanPham = 'idSanPham'");
-            System.out.println(sp.getId());
-//            q.setParameter("idSP", sp.getId());
-            list = q.getResultList();
-            sess.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    public void insertSanPhamKhuyenMai(List<String> listMaSP, KhuyenMai km) {
-        deleteSanPhamKhuyenMaiByMa(km.getMa());
-        try {
-            Session sess = HibernateUtil.getFACTORY().openSession();
-            for (String ma : listMaSP) {
-                SanPham sp = getSanPhamByMa(ma);
-                SanPhamKM spkm = new SanPhamKM();
-                spkm.setIdKhuyenMai(km);
-                spkm.setIdSanPham(sp);
-                spkm.setCreatedDate(new Date());
-                spkm.setAlstModifiedDate(new Date());
-                sess.getTransaction().begin();
-                sess.save(spkm);
-                sess.getTransaction().commit();
+            for (SanPhamViewKMResponse spvkmr : listMaSP) {
+                Query q = sess.createQuery("FROM ChiTietSP s WHERE s.idSanPham.ma = :maSP AND s.idSanPham.ten = :tenSP AND s.cPU = :cpu AND s.hang = :hang AND s.ram = :ram AND s.card = :card AND s.oCung = :oCung AND s.gia = :gia AND s.id NOT IN(SELECT spkm.idChiTietSP.id FROM SanPhamKM spkm WHERE spkm.idKhuyenMai.ma = :maKM)");
+                q.setParameter("maKM", km.getMa());
+                q.setParameter("maSP", spvkmr.getMa());
+                q.setParameter("tenSP", spvkmr.getTen());
+                q.setParameter("cpu", spvkmr.getCpu());
+                q.setParameter("hang", spvkmr.getHang());
+                q.setParameter("ram", spvkmr.getRam());
+                q.setParameter("card", spvkmr.getCard());
+                q.setParameter("oCung", spvkmr.getOCung());
+                q.setParameter("gia", spvkmr.getGia());
+                listCTSP = q.getResultList();
+                for (ChiTietSP chiTietSP : listCTSP) {
+                    SanPhamKM spkm = new SanPhamKM();
+                    spkm.setIdKhuyenMai(km);
+                    spkm.setIdChiTietSP(chiTietSP);
+                    spkm.setCreatedDate(new Date());
+                    spkm.setAlstModifiedDate(new Date());
+                    sess.getTransaction().begin();
+                    sess.save(spkm);
+                    sess.getTransaction().commit();
+                }
             }
             sess.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-//        new KhuyenMaiRepository().deleteSanPhamKhuyenMaiByMa("2");
-        new KhuyenMaiRepository().getAllSanPhamKhuyenMai().forEach(c -> System.out.println(c.getMa()));
     }
 }

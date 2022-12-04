@@ -65,8 +65,8 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public ChiTietSP getOne(String serial) {
-        return repository.getOne(serial);
+    public ChiTietSP getOne(String seriall) {
+        return repository.getOne(seriall);
     }
 
     @Override
@@ -75,6 +75,12 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     public String validate(ChiTietSP ctsp) {
+        if (ctsp.getIdSanPham().getTen().isEmpty()) {
+            return "Mã trống";
+        }
+        if (ctsp.getIdSanPham().getTen().isEmpty()) {
+            return "Tên trống";
+        }
         if (ctsp.getSerial().trim().isBlank()) {
             return "Serial trống";
         }
@@ -120,15 +126,25 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public void updateTinhTrangSP(ChiTietSP chiTietSP) {
-        repository.updateTinhTrangSP(chiTietSP);
+    public void updateTinhTrangSP(ChiTietSP chiTietSP, UUID id) {
+        repository.updateTinhTrangSP(chiTietSP, id);
     }
 
     @Override
     public List<ChiTietSPResponse> getlist() {
         return repository.getList();
     }
-    
+
+    @Override
+    public List<ChiTietSP> getOneGia(String gia1, String gia2) {
+        return repository.getOneGia(gia1, gia2);
+    }
+
+    @Override
+    public void updateTinhTrangSP(ChiTietSP chiTietSP) {
+         repository.updateTinhTrangSP(chiTietSP);
+    }
+
     @Override
     public void updateTTSPDangBan(BigDecimal gia) {
         repository.updateTTSPDangBan(gia);

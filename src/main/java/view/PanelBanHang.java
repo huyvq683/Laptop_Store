@@ -86,6 +86,7 @@ public class PanelBanHang extends javax.swing.JPanel {
         txtTienTraLai.setEditable(false);
     }
 
+    
     private void showDataHoaDonTable(List<HoaDonResponse> lists) {
         dtmHoaDon.setRowCount(0);
         int stt = 0;

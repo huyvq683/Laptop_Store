@@ -5,6 +5,7 @@
 package domainmodel;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -46,7 +47,7 @@ public class KhuyenMai implements Serializable{
     private int loaiKM;
     
     @Column(name = "GiaTriKM")
-    private String giaTriKM;
+    private BigDecimal giaTriKM;
     
     @Column(name = "NgayBatDau")
     private Date ngayBD;

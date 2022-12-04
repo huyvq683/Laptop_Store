@@ -21,6 +21,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
@@ -32,6 +33,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ChiTietSp")
+@ToString
 public class ChiTietSP implements Serializable {
 
     @Id
@@ -63,7 +65,10 @@ public class ChiTietSP implements Serializable {
 
     @Column(name = "Gia")
     private BigDecimal gia;
-    
+
+    @Column(name = "Anh")
+    private String anh;
+
     @Column(name = "TinhTrang")
     private int tinhTrang;
 
@@ -72,8 +77,25 @@ public class ChiTietSP implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
+//
+//    
+//    public ChiTietSP(UUID id, SanPham idSanPham, String serial, String cPU, String hang, String ram, String card, String oCung, BigDecimal gia, String anh, int tinhTrang, Date createdDate, Date lastModifiedDate) {
+//        this.id = id;
+//        this.idSanPham = idSanPham;
+//        this.serial = serial;
+//        this.cPU = cPU;
+//        this.hang = hang;
+//        this.ram = ram;
+//        this.card = card;
+//        this.oCung = oCung;
+//        this.gia = gia;
+//        this.anh = anh;
+//        this.tinhTrang = tinhTrang;
+//        this.createdDate = createdDate;
+//        this.lastModifiedDate = lastModifiedDate;
+//    }
 
-    public ChiTietSP(SanPham idSanPham, String serial, String cPU, String hang, String ram, String card, String oCung, BigDecimal gia, Date createdDate, Date lastModifiedDate) {
+    public ChiTietSP(SanPham idSanPham, String serial, String cPU, String hang, String ram, String card, String oCung, BigDecimal gia, String anh, int tinhTrang, Date createdDate, Date lastModifiedDate) {
         this.idSanPham = idSanPham;
         this.serial = serial;
         this.cPU = cPU;
@@ -82,14 +104,16 @@ public class ChiTietSP implements Serializable {
         this.card = card;
         this.oCung = oCung;
         this.gia = gia;
+        this.anh = anh;
+        this.tinhTrang = tinhTrang;
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public ChiTietSP(UUID id) {
+    public ChiTietSP(UUID id, String serial) {
         this.id = id;
+        this.serial = serial;
     }
-
     public String conVert(Date x) {
         DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
         return date.format(x);

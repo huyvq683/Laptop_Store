@@ -498,7 +498,10 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         NhanVien nhanVien = getData();
-        JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien) + "\nHệ thống đang tiến hành gửi Email \nVui lòng nhấn OK và đợi trong giây lát...");
+        JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
+        if(nhanVienServiceImpl.addOrUpdate(nhanVien).equalsIgnoreCase("Thành công")){
+            JOptionPane.showMessageDialog(this, "Hệ thống đang tiến hành gửi Email \nVui lòng nhấn OK và đợi trong giây lát...");
+        }
         list = nhanVienServiceImpl.getAll();
         showData(list);
         String email = nhanVien.getEmail();
