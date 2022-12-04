@@ -80,7 +80,7 @@ public class ChiTietSP implements Serializable {
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
 
-    public ChiTietSP(UUID id, String serial) {
+ public ChiTietSP(UUID id, String serial) {
         this.id = id;
         this.serial = serial;
     }
@@ -88,6 +88,20 @@ public class ChiTietSP implements Serializable {
     public String conVert(Date x) {
         DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
         return date.format(x);
+    }
+
+    public ChiTietSP(SanPham idSanPham, String serial, CPU idCPU, Hang idHang, Ram idRam, CardMH idCard, OCung idOCung, BigDecimal gia, int tinhTrang, Date createdDate, Date lastModifiedDate) {
+        this.idSanPham = idSanPham;
+        this.serial = serial;
+        this.idCPU = idCPU;
+        this.idHang = idHang;
+        this.idRam = idRam;
+        this.idCard = idCard;
+        this.idOCung = idOCung;
+        this.gia = gia;
+        this.tinhTrang = tinhTrang;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
     
 }

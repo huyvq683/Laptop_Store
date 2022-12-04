@@ -54,9 +54,15 @@ public class ChiTietSPRepository {
             ChiTietSP ctsp = (ChiTietSP) query.getSingleResult();
             return ctsp;
         } catch (Exception e) {
-//            e.printStackTrace(System.out);
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        List<ChiTietSP> ct = new ChiTietSPRepository().getOneGia("100", "500");
+        for (ChiTietSP x : ct) {
+            System.out.println(x.toString());
+        }
     }
 
     public Boolean add(ChiTietSP ctsp) {
@@ -67,7 +73,30 @@ public class ChiTietSPRepository {
             transantion.commit();
             return true;
         } catch (Exception e) {
-//            e.printStackTrace(System.out);
+            return false;
+        }
+    }
+
+    public Boolean upDate(ChiTietSP ctsp, UUID id) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            ChiTietSP ctSP = session.get(ChiTietSP.class, id);
+            ctSP.setId(id);
+            ctSP.setIdCard(ctsp.getIdCard());
+            ctSP.setIdCPU(ctsp.getIdCPU());
+            ctSP.setCreatedDate(ctsp.getCreatedDate());
+            ctSP.setGia(ctsp.getGia());
+            ctSP.setIdHang(ctsp.getIdHang());
+            ctSP.setLastModifiedDate(ctsp.getLastModifiedDate());
+            ctSP.setIdRam(ctsp.getIdRam());
+            ctSP.setSerial(ctsp.getSerial());
+            ctSP.setIdSanPham(ctsp.getIdSanPham());
+            session.update(ctSP);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
             return false;
         }
     }
@@ -89,7 +118,7 @@ public class ChiTietSPRepository {
     public List<ChiTietSP> search(String searchKey) {
         List<ChiTietSP> listCTSP = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From ChiTietSP WHERE Serial like concat (:searchKey,'%') OR CPU like concat (:searchKey,'%') OR Hang like concat (:searchKey,'%') OR Ram like concat (:searchKey,'%') OR CardMH like concat (:searchKey,'%') OR OCung like concat (:searchKey,'%') OR Gia like concat (:searchKey,'%') OR IdSanPham like concat (:searchKey,'%')");
+            Query query = session.createQuery("From ChiTietSP WHERE Serial like concat (:searchKey,'%') OR IdCPU like concat (:searchKey,'%') OR IdSanPham like concat (:searchKey,'%') OR IdRam like concat (:searchKey,'%') OR IdCardMH like concat (:searchKey,'%') OR IdOCung like concat (:searchKey,'%') OR Gia like concat (:searchKey,'%') OR IdHang like concat (:searchKey,'%')");
             query.setParameter("searchKey", searchKey);
             listCTSP = query.getResultList();
             return listCTSP;
@@ -191,8 +220,5 @@ public class ChiTietSPRepository {
         }
         return check;
     }
-//    public static void main(String[] args) {
-//        List<ChiTietSPResponse>lists = new ChiTietSPRepository().getAllCTSP();
-//        System.out.println(lists);
-//    }
+
 }

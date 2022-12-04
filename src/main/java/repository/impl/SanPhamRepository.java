@@ -31,18 +31,18 @@ public class SanPhamRepository {
     }
 
     public SanPham getOneSP(String ma) {
-        String sql = " FROM SanPham WHERE Ma = :ma ";
+        String sql = " FROM SanPham WHERE Ten = :ten ";
         Session session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery(sql, SanPham.class);
-        query.setParameter("ma", ma);
+        query.setParameter("ten", ma);
         SanPham sanPham = (SanPham) query.getSingleResult();
         return sanPham;
     }
 
     public SanPham getOne(String maSP) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery(" SELECT new SanPham (s.id , s.ma) FROM SanPham s WHERE Ma =:ma ", SanPham.class);
-            query.setParameter("ma", maSP);
+            Query query = session.createQuery(" SELECT new SanPham (s.id , s.ten) FROM SanPham s WHERE Ten =:ten ", SanPham.class);
+            query.setParameter("ten", maSP);
             SanPham sp = (SanPham) query.getSingleResult();
             return sp;
         } catch (Exception e) {

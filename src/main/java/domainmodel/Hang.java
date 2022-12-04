@@ -5,6 +5,8 @@
 package domainmodel;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -45,4 +47,26 @@ public class Hang implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date alstModifiedDate;
+
+    public String conVert(Date x) {
+        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        return format.format(x);
+    }
+
+    public Hang(String ma, String ten, Date createdDate, Date alstModifiedDate) {
+        this.ma = ma;
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.alstModifiedDate = alstModifiedDate;
+    }
+
+    public Hang(String ma, String ten) {
+        this.ma = ma;
+        this.ten = ten;
+    }
+
+    public Hang(UUID id) {
+        this.id = id;
+    }
+
 }

@@ -56,8 +56,7 @@ public class SanPham implements Serializable {
         this.createdDate = createdDate;
         this.alstModifiedDate = alstModifiedDate;
     }
-
-
+    
     public String conVert(Date x) {
         DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         return format.format(x);
@@ -71,5 +70,4 @@ public class SanPham implements Serializable {
         this.ma = ma;
         this.ten = ten;
     }
-
 }
