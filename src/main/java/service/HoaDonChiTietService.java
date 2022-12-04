@@ -5,6 +5,7 @@
 package service;
 
 import custommodel.HoaDonChiTietResponse;
+import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
 import java.util.List;
 import java.util.UUID;
@@ -19,8 +20,10 @@ public interface HoaDonChiTietService {
 
     List<HoaDonChiTietResponse> getAll(UUID id);
 
-    void add(HoaDonChiTiet hoaDonChiTiet);
+    void add(List<String> listSerial, HoaDon hd);
 
     void delete(UUID id);
+    
+    void addOne(HoaDonChiTiet hoaDonChiTiet);
 
 }

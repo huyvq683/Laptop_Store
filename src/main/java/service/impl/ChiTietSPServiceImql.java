@@ -67,18 +67,13 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public void updateTinhTrangSP(ChiTietSP chiTietSP, UUID id) {
-        repository.updateTinhTrangSP(chiTietSP, id);
-    }
-
-    @Override
     public List<ChiTietSP> getOneGia(String gia1, String gia2) {
         return repository.getOneGia(gia1, gia2);
     }
 
     @Override
-    public void updateTinhTrangSP(ChiTietSP chiTietSP) {
-         repository.updateTinhTrangSP(chiTietSP);
+    public void updateTinhTrangSP(List<String> listSerial) {
+         repository.updateTinhTrangSP(listSerial);
     }
 
     @Override
@@ -87,8 +82,13 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public List<ChiTietSPResponse> getAllCTSP(String cPU, String card, BigDecimal gia, String hang, String oCung, String ram) {
-        return repository.getAllCTSP(cPU, card, gia, hang, oCung, ram);
+    public List<ChiTietSPResponse> getAllCTSP(String ma, String ten, String cPU, String card, BigDecimal gia, String hang, String oCung, String ram) {
+        return repository.getAllCTSP(ma, ten, cPU, card, gia, hang, oCung, ram);
+    }
+
+    @Override
+    public void updateTinhTrang(ChiTietSP chiTietSP) {
+        repository.updateTinhTrang(chiTietSP);
     }
     
 }

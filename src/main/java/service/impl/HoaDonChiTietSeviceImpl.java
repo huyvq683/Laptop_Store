@@ -5,6 +5,7 @@
 package service.impl;
 
 import custommodel.HoaDonChiTietResponse;
+import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
 import java.util.List;
 import java.util.UUID;
@@ -30,13 +31,18 @@ public class HoaDonChiTietSeviceImpl implements HoaDonChiTietService {
     }
 
     @Override
-    public void add(HoaDonChiTiet hoaDonChiTiet) {
-        hoaDonChiTietRepository.add(hoaDonChiTiet);
+    public void add(List<String> listSerial, HoaDon hd) {
+        hoaDonChiTietRepository.add(listSerial, hd);
     }
 
     @Override
     public void delete(UUID id) {
         hoaDonChiTietRepository.delete(id);
+    }
+
+    @Override
+    public void addOne(HoaDonChiTiet hoaDonChiTiet) {
+        hoaDonChiTietRepository.addOne(hoaDonChiTiet);
     }
 
 }

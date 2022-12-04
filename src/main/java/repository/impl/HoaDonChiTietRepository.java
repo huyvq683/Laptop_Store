@@ -5,6 +5,8 @@
 package repository.impl;
 
 import custommodel.HoaDonChiTietResponse;
+import domainmodel.ChiTietSP;
+import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +86,39 @@ public class HoaDonChiTietRepository {
         return check;
     }
 
-    public Boolean add(HoaDonChiTiet hoaDonChiTiet) {
+    public ChiTietSP getCTSPBySerial(String serial) {
+        ChiTietSP ctsp = null;
+        try {
+            Session sess = HibernateUtil.getFACTORY().openSession();
+            Query q = sess.createQuery("FROM ChiTietSP WHERE serial = :serial1");
+            q.setParameter("serial1", serial);
+            ctsp = (ChiTietSP) q.getSingleResult();
+            sess.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ctsp;
+    }
+
+    public Boolean add(List<String> listSerial, HoaDon hd) {
+        Transaction tran = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            tran = session.beginTransaction();
+            for (String serial : listSerial) {
+                HoaDonChiTiet hdct = new HoaDonChiTiet();
+                ChiTietSP ctsp = getCTSPBySerial(serial);
+                hdct.setIdHoaDon(hd);
+                hdct.setIdCTSP(ctsp);
+                hdct.setDonGia(ctsp.getGia());
+                session.save(hdct);
+            }
+            tran.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+    public Boolean addOne(HoaDonChiTiet hoaDonChiTiet) {
         boolean check = false;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Transaction transaction = session.beginTransaction();

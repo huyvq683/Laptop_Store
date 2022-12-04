@@ -72,58 +72,6 @@ public class HoaDonRepository {
         return null;
     }
 
-//    public HoaDonResponse getOneByMa(String ma) {
-//        try {
-//            String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
-//                    + " JOIN NhanVien n ON h.idNV = n.id"
-//                    + " WHERE h.ma = :ma";
-//            Query query = session.createQuery(sql, HoaDonResponse.class);
-//            query.setParameter("ma", ma);
-//            HoaDonResponse hoaDonResponse = (HoaDonResponse) query.getSingleResult();
-//            return hoaDonResponse;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-//
-//    public List<HoaDonResponse> getByNV(String ma) {
-//        try {
-//            String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
-//                    + " JOIN NhanVien n ON h.idNV = n.id"
-//                    + " WHERE n.ma = :ma";
-//            Query query = session.createQuery(sql, HoaDonResponse.class);
-//            query.setParameter("ma", ma);
-//            List<HoaDonResponse> list = query.getResultList();
-//            return list;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-//
-//    public List<HoaDonResponse> getByMaKH(String ma) {
-//        try {
-//            String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
-//                    + " JOIN NhanVien n ON h.idNV = n.id"
-//                    + " JOIN KhachHang k ON h.idKH = k.id"
-//                    + " WHERE k.ma = :ma";
-//            Query query = session.createQuery(sql, HoaDonResponse.class);
-//            query.setParameter("ma", ma);
-//            List<HoaDonResponse> list = query.getResultList();
-//            return list;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-//
-//    public List<HoaDonResponse> getByNgayTao(String ma) {
-//        String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
-//                + " JOIN NhanVien n ON h.idNV = n.id"
-//                + " WHERE h.ngayTao = :ma";
-//        Query query = session.createQuery(sql, HoaDonResponse.class);
-//        query.setParameter("ngayTao", ma);
-//        List<HoaDonResponse> list = query.getResultList();
-//        return list;
-//    }
     public List<HoaDonResponse> search(String searchKey) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String sql = "Select new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
