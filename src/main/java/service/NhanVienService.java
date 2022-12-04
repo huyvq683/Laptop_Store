@@ -12,6 +12,8 @@ import java.util.List;
  * @author FPT
  */
 public interface NhanVienService {
+    
+    List<NhanVien> getAllPage(int row);
 
     NhanVien getOne(String email);
 
