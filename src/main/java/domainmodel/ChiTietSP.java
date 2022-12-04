@@ -48,26 +48,28 @@ public class ChiTietSP implements Serializable {
     @Column(name = "Serial")
     private String serial;
 
-    @Column(name = "CPU")
-    private String cPU;
+    @ManyToOne
+    @JoinColumn(name = "IdCPU")
+    private CPU idCPU;
 
-    @Column(name = "Hang")
-    private String hang;
+    @ManyToOne
+    @JoinColumn(name = "IdHang")
+    private Hang idhang;
 
-    @Column(name = "Ram")
-    private String ram;
+    @ManyToOne
+    @JoinColumn(name = "IdRam")
+    private Ram idram;
 
-    @Column(name = "CardMH")
-    private String card;
+    @ManyToOne
+    @JoinColumn(name = "IdCardMH")
+    private CardMH idcard;
 
-    @Column(name = "OCung")
-    private String oCung;
+    @ManyToOne
+    @JoinColumn(name = "IdOCung")
+    private OCung idoCung;
 
     @Column(name = "Gia")
     private BigDecimal gia;
-
-    @Column(name = "Anh")
-    private String anh;
 
     @Column(name = "TinhTrang")
     private int tinhTrang;
@@ -77,43 +79,12 @@ public class ChiTietSP implements Serializable {
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
-//
-//    
-//    public ChiTietSP(UUID id, SanPham idSanPham, String serial, String cPU, String hang, String ram, String card, String oCung, BigDecimal gia, String anh, int tinhTrang, Date createdDate, Date lastModifiedDate) {
-//        this.id = id;
-//        this.idSanPham = idSanPham;
-//        this.serial = serial;
-//        this.cPU = cPU;
-//        this.hang = hang;
-//        this.ram = ram;
-//        this.card = card;
-//        this.oCung = oCung;
-//        this.gia = gia;
-//        this.anh = anh;
-//        this.tinhTrang = tinhTrang;
-//        this.createdDate = createdDate;
-//        this.lastModifiedDate = lastModifiedDate;
-//    }
-
-    public ChiTietSP(SanPham idSanPham, String serial, String cPU, String hang, String ram, String card, String oCung, BigDecimal gia, String anh, int tinhTrang, Date createdDate, Date lastModifiedDate) {
-        this.idSanPham = idSanPham;
-        this.serial = serial;
-        this.cPU = cPU;
-        this.hang = hang;
-        this.ram = ram;
-        this.card = card;
-        this.oCung = oCung;
-        this.gia = gia;
-        this.anh = anh;
-        this.tinhTrang = tinhTrang;
-        this.createdDate = createdDate;
-        this.lastModifiedDate = lastModifiedDate;
-    }
 
     public ChiTietSP(UUID id, String serial) {
         this.id = id;
         this.serial = serial;
     }
+
     public String conVert(Date x) {
         DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
         return date.format(x);

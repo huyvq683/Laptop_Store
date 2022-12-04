@@ -20,10 +20,6 @@ public interface ChiTietSPService {
 
     List<ChiTietSP> getOneGia(String gia1, String gia2);
 
-    String add(ChiTietSP ctsp);
-
-    String update(ChiTietSP ctsp, UUID id);
-
     String delete(ChiTietSP ctsp, UUID id);
 
     ChiTietSP getOne(String serial);

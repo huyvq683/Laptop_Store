@@ -27,34 +27,6 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public String add(ChiTietSP ctsp) {
-        if (validate(ctsp) != null) {
-            return validate(ctsp);
-        } else {
-            boolean add = repository.add(ctsp);
-            if (add) {
-                return "Thêm thành công";
-            } else {
-                return "Thêm không thành công";
-            }
-        }
-    }
-
-    @Override
-    public String update(ChiTietSP ctsp, UUID id) {
-        if (ctsp.getSerial().isEmpty()) {
-            return "Serial chống";
-        } else {
-            boolean update = repository.upDate(ctsp, id);
-            if (update) {
-                return "Sửa thành công";
-            } else {
-                return "Sửa không thành công";
-            }
-        }
-    }
-
-    @Override
     public String delete(ChiTietSP ctsp, UUID id) {
         boolean delete = repository.delete(ctsp, id);
         if (delete) {
@@ -72,37 +44,6 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     @Override
     public List<ChiTietSP> seatch(String seatch) {
         return repository.search(seatch);
-    }
-
-    public String validate(ChiTietSP ctsp) {
-        if (ctsp.getIdSanPham().getTen().isEmpty()) {
-            return "Mã trống";
-        }
-        if (ctsp.getIdSanPham().getTen().isEmpty()) {
-            return "Tên trống";
-        }
-        if (ctsp.getSerial().trim().isBlank()) {
-            return "Serial trống";
-        }
-        if (ctsp.getCPU().trim().isBlank()) {
-            return "CPU trống";
-        }
-        if (ctsp.getHang().trim().isBlank()) {
-            return "Hãng trống";
-        }
-        if (ctsp.getRam().trim().isBlank()) {
-            return "Ram trống";
-        }
-        if (ctsp.getCard().trim().isBlank()) {
-            return "Card trống";
-        }
-        if (ctsp.getOCung().trim().isBlank()) {
-            return "Ổ Cứng trống";
-        }
-        if (getOne(ctsp.getSerial()) != null) {
-            return "Serial trùng";
-        }
-        return null;
     }
 
     public String checkInt(String gia) {

@@ -4,10 +4,45 @@
  */
 package domainmodel;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
  *
  * @author FPT
  */
-public class Hang {
-    
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "CardMH")
+public class Hang implements Serializable {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "Id")
+    private UUID id;
+
+    @Column(name = "Ma")
+    private String ma;
+
+    @Column(name = "Ten")
+    private String ten;
+
+    @Column(name = "CreatedDate")
+    private Date createdDate;
+
+    @Column(name = "LastModifiedDate")
+    private Date alstModifiedDate;
 }
