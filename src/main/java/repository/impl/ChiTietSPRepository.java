@@ -113,19 +113,19 @@ public class ChiTietSPRepository {
         return lists;
     }
     
-    public List<ChiTietSPResponse> getAllCTSP() {
+    public List<ChiTietSPResponse> getAllCTSP(String cPU, String card, BigDecimal gia, String hang, String oCung, String ram) {
         List<ChiTietSPResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            org.hibernate.query.Query query = session.createQuery("SELECT new custommodel.ChiTietSPResponse (ct.id, ct.idSanPham.ma, ct.idSanPham.ten, ct.idCPU.ten, ct.idRam.ten, ct.idCard.ten, ct.idOCung.ten, ct.idHang.ten, ct.tinhTrang, ct.gia, ct.serial) FROM ChiTietSP ct ");
-//                    + "WHERE ct.idCPU.ten = :cPU AND ct.idCard.ten = :card "
-//                    + "AND ct.gia = :gia AND ct.idHang.ten = :hang AND ct.idRam.ten = :ram "
-//                    + "AND ct.idOCung.ten = :oCung AND ct.tinhTrang = 0");
-//            query.setParameter("cPU", cPU);
-//            query.setParameter("card", card);
-//            query.setParameter("gia", gia);
-//            query.setParameter("hang", hang);
-//            query.setParameter("ram", ram);
-//            query.setParameter("oCung", oCung);
+            org.hibernate.query.Query query = session.createQuery("SELECT new custommodel.ChiTietSPResponse (ct.id, ct.idSanPham.ma, ct.idSanPham.ten, ct.idCPU.ten, ct.idRam.ten, ct.idCard.ten, ct.idOCung.ten, ct.idHang.ten, ct.tinhTrang, ct.gia, ct.serial) FROM ChiTietSP ct "
+                    + "WHERE ct.idCPU.ten = :cPU AND ct.idCard.ten = :card "
+                    + "AND ct.gia = :gia AND ct.idHang.ten = :hang AND ct.idRam.ten = :ram "
+                    + "AND ct.idOCung.ten = :oCung AND ct.tinhTrang = 0");
+            query.setParameter("cPU", cPU);
+            query.setParameter("card", card);
+            query.setParameter("gia", gia);
+            query.setParameter("hang", hang);
+            query.setParameter("ram", ram);
+            query.setParameter("oCung", oCung);
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -191,8 +191,8 @@ public class ChiTietSPRepository {
         }
         return check;
     }
-    public static void main(String[] args) {
-        List<ChiTietSPResponse>lists = new ChiTietSPRepository().getAllCTSP();
-        System.out.println(lists);
-    }
+//    public static void main(String[] args) {
+//        List<ChiTietSPResponse>lists = new ChiTietSPRepository().getAllCTSP();
+//        System.out.println(lists);
+//    }
 }

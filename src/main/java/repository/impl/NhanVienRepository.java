@@ -8,6 +8,7 @@ import domainmodel.NhanVien;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import service.NhanVienService;
 import utility.HibernateUtil;
@@ -19,8 +20,22 @@ import utility.HibernateUtil;
 public class NhanVienRepository {
 
     private String fromTable = "FROM NhanVien";
+    private String fromTableNV = "SELECT * FROM NhanVien";
 
     private Session session = HibernateUtil.getFACTORY().openSession();
+    
+    public List<NhanVien> getAllPage(int row) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            String sql = fromTableNV+" ORDER BY Ma OFFSET :row ROW FETCH NEXT 10 ROWS ONLY";
+            NativeQuery query = session.createNativeQuery(sql, NhanVien.class);
+            query.setParameter("row", row);
+            List<NhanVien> list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
 
     public NhanVien getOne(String email) {
         NhanVien nhanVien = null;
