@@ -14,6 +14,7 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import domainmodel.Common;
 import domainmodel.NhanVien;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -1074,6 +1075,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         Dimension size = WebcamResolution.QVGA.getSize();
         webcam = Webcam.getWebcams().get(0); //0 is default webcam
         webcam.setViewSize(size);
+        Common.webcam = webcam;
         System.out.println("aaaaaa");
         panel = new WebcamPanel(webcam);
         panel.setPreferredSize(size);
