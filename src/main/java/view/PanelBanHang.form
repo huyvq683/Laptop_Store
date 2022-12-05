@@ -251,9 +251,6 @@
     </Container>
     <Container class="javax.swing.JFrame" name="ViewHDCT">
       <Properties>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[592, 270]"/>
-        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[592, 270]"/>
         </Property>
