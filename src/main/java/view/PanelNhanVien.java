@@ -125,7 +125,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         jPanel1 = new javax.swing.JPanel();
         panelWebcam = new javax.swing.JPanel();
         qrCode = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         pnDanhSachNV = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tbNhanVien = new javax.swing.JTable();
@@ -153,6 +152,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
         buttonGroup1.add(radioNam);
         radioNam.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        radioNam.setSelected(true);
         radioNam.setText("Nam");
 
         buttonGroup1.add(radioNu);
@@ -192,6 +192,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
         buttonGroup2.add(radioNhanVien);
         radioNhanVien.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        radioNhanVien.setSelected(true);
         radioNhanVien.setText("Nhân Viên");
 
         btnThem.setBackground(new java.awt.Color(41, 183, 212));
@@ -225,6 +226,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
         buttonGroup3.add(radioDangLamViec);
         radioDangLamViec.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        radioDangLamViec.setSelected(true);
         radioDangLamViec.setText("Đang làm việc");
 
         btnNew.setBackground(new java.awt.Color(41, 183, 212));
@@ -264,8 +266,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         qrCode.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         qrCode.setIcon(new ImageIcon("src/main/img/scan.png"));
         qrCode.setText("QR Code scan");
-
-        jLabel1.setText("         (Đóng webcam trước khi chuyển tab)");
 
         javax.swing.GroupLayout pnThongTinNVLayout = new javax.swing.GroupLayout(pnThongTinNV);
         pnThongTinNV.setLayout(pnThongTinNVLayout);
@@ -331,13 +331,11 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnThongTinNVLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnThongTinNVLayout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(qrCode)))
-                .addGap(247, 247, 247))
+                .addGap(279, 279, 279))
         );
         pnThongTinNVLayout.setVerticalGroup(
             pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,13 +387,11 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                                     .addComponent(radioDangLamViec)
                                     .addComponent(radioDaNghi))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -1102,7 +1098,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
