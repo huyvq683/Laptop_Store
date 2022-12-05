@@ -444,6 +444,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelBanHang pbh = new PanelBanHang();
         panelBanHang.add(pbh);
