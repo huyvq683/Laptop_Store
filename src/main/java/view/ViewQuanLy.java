@@ -5,6 +5,7 @@
 package view;
 
 import domainmodel.Common;
+import entity.CheckCapBacKH;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -34,6 +35,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
      */
     public ViewQuanLy() {
         initComponents();
+        CheckCapBacKH.dailyCheckingRankCustomer();
         designImg();
         designMenu();
         btnBanHang.setBackground(new Color(50, 159, 200));

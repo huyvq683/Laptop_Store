@@ -44,13 +44,11 @@ view\PanelHoaDon$4.class
 repository\impl\RamRepository.class
 view\ViewDoiMatKhau2$1.class
 view\PanelNhanVien$7.class
-.netbeans_automatic_build
 view\ViewCard$2.class
 view\PanelBanHang$5.class
 view\PanelSanPham$17.class
 view\PanelBanHang$11.class
 view\ViewQuenMatKhau$4.class
-domainmodel\TenTKNV.class
 domainmodel\Ram.class
 repository\impl\HoaDonRepository.class
 view\PanelNhanVien$1.class
@@ -63,12 +61,10 @@ view\PanelThongKe$19.class
 service\NhanVienService.class
 view\ViewSP.class
 view\PanelHoaDon$5.class
-view\DetailChiTietNV.class
 service\impl\KhuyenMaiServiceImpl.class
 view\PanelKhachHang.class
 view\PanelBanHang$12.class
 repository\impl\ChiTietSPRepository.class
-view\PanelNhanVien$14.class
 repository\impl\HangRepository.class
 view\PanelBanHang$15.class
 view\ViewSP$5.class
@@ -154,7 +150,6 @@ view\ViewQuanLy$7.class
 service\impl\HoaDonChiTietSeviceImpl.class
 service\impl\OCungServiceImql.class
 view\ViewQuanLy.class
-view\PanelNhanVien$13.class
 view\PanelHoaDon$7.class
 view\PanelSanPham$15.class
 view\ViewDangNhap$3.class
