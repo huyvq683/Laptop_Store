@@ -5,10 +5,12 @@
 package service;
 
 import custommodel.HoaDonResponse;
+import custommodel.ViewExcelReponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
 import java.util.UUID;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -18,10 +20,16 @@ public interface HoaDonService {
 
     List<HoaDonResponse> search(String searchKey);
 
+    void exportExcel(JTable table);
+
+    List<ViewExcelReponse> getOne(int tt);
+
+    List<ViewExcelReponse> getAllExcel();
+
     List<HoaDonResponse> getByOne(int tt);
 
     String update(HoaDon hd);
-    
+
     List<HoaDonResponse> getAllPage(int row);
 
     List<HoaDonResponse> getAll();

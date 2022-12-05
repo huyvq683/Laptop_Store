@@ -6,6 +6,7 @@ package repository.impl;
 
 import custommodel.ViewHoaDonReponse;
 import custommodel.HoaDonResponse;
+import custommodel.ViewExcelReponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
 import java.util.ArrayList;
@@ -37,6 +38,18 @@ public class HoaDonRepository {
         return list;
     }
 
+    public List<ViewExcelReponse> getOne(int tt) {
+        String sql = "SELECT new custommodel.ViewExcelReponse(h.ma , n.ma , n.hoTen , k.ma , k.hoTen , k.sdt , hd.tenSP , hd.donGia , h.hinhThuc , h.tienKhachTra , h.tienCK , h.tienThua , h.tongTien , h.ngayTao , h.tinhTrang From HoaDon h"
+                + "               JOIN NhanVien n ON h.idNV = n.id"
+                + "			   Join KhachHang k On k.id = h.idKH"
+                + "			   Join HoaDonChiTiet hd On hd.idHoaDon = h.id"
+                + "                WHERE h.tinhTrang = :tinhTrang";
+        Query query = session.createQuery(sql, ViewExcelReponse.class);
+        query.setParameter("tinhTrang", tt);
+        List<ViewExcelReponse> list = query.getResultList();
+        return list;
+    }
+
     public List<HoaDonResponse> getAllPage(int row) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
@@ -63,6 +76,15 @@ public class HoaDonRepository {
         String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id";
         Query<HoaDonResponse> query = session.createQuery(sql);
+        return query.list();
+    }
+
+    public List<ViewExcelReponse> getAllExcel() {
+        String sql = "SELECT new custommodel.ViewExcelReponse(h.ma , n.ma , n.hoTen , k.ma , k.hoTen , k.sdt , hd.tenSP , hd.donGia , h.hinhThuc , h.tienKhachTra , h.tienCK , h.tienThua , h.tongTien , h.ngayTao , h.tinhTrang) From HoaDon h"
+                + " JOIN NhanVien n ON h.idNV = n.id"
+                + "			   Join KhachHang k On k.id = h.idKH"
+                + "			   Join HoaDonChiTiet hd On hd.idHoaDon = h.id";
+        Query<ViewExcelReponse> query = session.createQuery(sql);
         return query.list();
     }
 

@@ -6,6 +6,7 @@ package view;
 
 import custommodel.HoaDonChiTietResponse;
 import custommodel.HoaDonResponse;
+import custommodel.ViewExcelReponse;
 import domainmodel.Common;
 import domainmodel.HoaDon;
 import java.util.ArrayList;
@@ -29,39 +30,49 @@ public class PanelHoaDon extends javax.swing.JPanel {
      */
     private DefaultTableModel model;
     private DefaultTableModel model1;
+    private DefaultTableModel model2;
+
     private List<HoaDonResponse> list = new ArrayList<>();
-    private List<HoaDonResponse> listHD = new ArrayList<>();
+    private List<ViewExcelReponse> listExcel = new ArrayList<>();
     private List<HoaDonChiTietResponse> listHoaChiTietResponses = new ArrayList<>();
     private HoaDonService hoaDonService = new HoaDonServiceImpl();
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietSeviceImpl();
-    
+
     public PanelHoaDon() {
         initComponents();
         model = (DefaultTableModel) tbaBang.getModel();
+        model2 = (DefaultTableModel) tbaExcel.getModel();
         rbnTT.setSelected(true);
         list = hoaDonService.getAll();
         showResult(list);
     }
-    
+
     public void showResult(List<HoaDonResponse> list) {
         model.setRowCount(0);
         for (HoaDonResponse hd : list) {
             model.addRow(hd.toDataRow1());
         }
     }
-    
+
+    public void showResultExcel(List<ViewExcelReponse> list) {
+        model2.setRowCount(0);
+        for (ViewExcelReponse hd : list) {
+            model2.addRow(hd.toDataRow());
+        }
+    }
+
     public void getListHDCT() {
         model1 = (DefaultTableModel) tbaBang1.getModel();
         listHoaChiTietResponses = hoaDonChiTietService.get_All(lblMa.getText());
     }
-    
+
     public void showResultHDCT(List<HoaDonChiTietResponse> list) {
         model1.setRowCount(0);
         for (HoaDonChiTietResponse hdct : list) {
             model1.addRow(hdct.toDataRow1());
         }
     }
-    
+
     public HoaDon getThongTinHoaDon() {
         return hoaDonService.getByMa(lblMa.getText());
     }
@@ -106,9 +117,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lblKD = new javax.swing.JTextField();
         lblCK = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
+        btnThem1 = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbaBang1 = new javax.swing.JTable();
-        btnThem1 = new javax.swing.JButton();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbaExcel = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -215,8 +230,8 @@ public class PanelHoaDon extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbnTT)
                             .addComponent(rbnDa)
-                            .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rbnHuy))
+                            .addComponent(rbnHuy)
+                            .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -389,6 +404,16 @@ public class PanelHoaDon extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hóa Đơn Chi Tiết", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
+        btnThem1.setBackground(new java.awt.Color(41, 183, 212));
+        btnThem1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnThem1.setIcon(new ImageIcon("src/main/img/addNV.png"));
+        btnThem1.setText("Xuất Excel");
+        btnThem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThem1ActionPerformed(evt);
+            }
+        });
+
         tbaBang1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -402,31 +427,42 @@ public class PanelHoaDon extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tbaBang1);
 
-        btnThem1.setBackground(new java.awt.Color(41, 183, 212));
-        btnThem1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnThem1.setIcon(new ImageIcon("src/main/img/addNV.png"));
-        btnThem1.setText("Xuất Excel");
-        btnThem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThem1ActionPerformed(evt);
+        jTabbedPane1.addTab("Chi Tiết Hóa Đơn", jScrollPane2);
+
+        tbaExcel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Mã Hóa Đơn", "Nhân Viên", "Khách Hàng", "Tên Sản Phẩm", "Đơn Giá", "Hình Thức", "Tiền Khách Trả", "Tiền Khách CK", "Tiền Thừa", "Tổng Tiền", "Ngày Tạo", "Tình Trạng"
             }
-        });
+        ));
+        jScrollPane3.setViewportView(tbaExcel);
+
+        jTabbedPane2.addTab("", jScrollPane3);
+
+        jTabbedPane1.addTab("Bảng Excel Hóa Đơn", jTabbedPane2);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnThem1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(btnThem1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 460, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThem1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -447,13 +483,11 @@ public class PanelHoaDon extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,15 +512,15 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lblMaNV.setText(tbaBang.getModel().getValueAt(index, 2).toString());
         lblTGT.setText(tbaBang.getModel().getValueAt(index, 1).toString());
         lblTT.setText(tbaBang.getModel().getValueAt(index, 3).toString());
+        listHoaChiTietResponses.removeAll(listHoaChiTietResponses);
         if (!lblMa.getText().isBlank()) {
             HoaDon hd = getThongTinHoaDon();
             lblTenKh.setText(hd.getIdKH().getHoTen());
             lblLTT.setText(hd.getHinhThuc1());
             lblTongTien.setText(hd.getTongTien().toString());
-            lblKD.setText(hd.getTienKhacTra().toString());
+            lblKD.setText(hd.getTienKhachTra().toString());
             lblCK.setText(hd.getTienCK().toString());
         }
-        listHoaChiTietResponses.removeAll(listHoaChiTietResponses);
         getListHDCT();
         showResultHDCT(listHoaChiTietResponses);
     }//GEN-LAST:event_tbaBangMouseClicked
@@ -519,13 +553,18 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
     private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
         // TODO add your handling code here:
+        hoaDonService.exportExcel(tbaExcel);
     }//GEN-LAST:event_btnThem1ActionPerformed
     int page = 0;
     private void rbnTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnTTActionPerformed
         // TODO add your handling code here:
+        listExcel.removeAll(listExcel);
+        listExcel = hoaDonService.getAllExcel();
+        showResultExcel(listExcel);
         list.removeAll(list);
         list = hoaDonService.getAll();
         showResult(list);
+
     }//GEN-LAST:event_rbnTTActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -565,6 +604,9 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField lblCK;
     private javax.swing.JTextField lblKD;
     private javax.swing.JTextField lblLTT;
@@ -580,6 +622,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbnTT;
     private javax.swing.JTable tbaBang;
     private javax.swing.JTable tbaBang1;
+    private javax.swing.JTable tbaExcel;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

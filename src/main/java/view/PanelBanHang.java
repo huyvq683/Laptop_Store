@@ -1057,7 +1057,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         hoaDon.setNgayTao(hd.getNgayTao());
         hoaDon.setIdNV(Common.tenNV);
         hoaDon.setHinhThuc((int) cbbHinhThuc.getSelectedIndex());
-        hoaDon.setTienKhacTra(new BigDecimal(txtTienKhachDua.getText()));
+        hoaDon.setTienKhachTra(new BigDecimal(txtTienKhachDua.getText()));
         hoaDon.setTienCK(new BigDecimal(txtTienCK.getText()));
         hoaDon.setTienThua(new BigDecimal(txtTienTraLai.getText()));
         hoaDon.setTongTien(new BigDecimal(txtTongTien.getText()));
