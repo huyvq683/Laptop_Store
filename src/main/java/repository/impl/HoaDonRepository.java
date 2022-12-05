@@ -40,7 +40,7 @@ public class HoaDonRepository {
     public List<HoaDonResponse> getAllPage(int row) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
-                    + " JOIN NhanVien n ON h.idNV = n.id" + " ORDER BY h.ma OFFSET :row ROW FETCH NEXT 10 ROWS ONLY";
+                    + " JOIN NhanVien n ON h.idNV = n.id" + " ORDER BY h.ma OFFSET :row ROW FETCH NEXT 5 ROWS ONLY";
             NativeQuery query = session.createNativeQuery(sql, HoaDonResponse.class);
             query.setParameter("row", row);
             List<HoaDonResponse> list = query.getResultList();
@@ -51,8 +51,6 @@ public class HoaDonRepository {
         return null;
     }
 
-    
-    
     public HoaDon getOne(String ma) {
         String sql = fromTable + " Where ma = :ma ";
         javax.persistence.Query query = session.createQuery(sql, HoaDon.class);

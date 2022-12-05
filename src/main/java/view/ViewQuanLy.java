@@ -4,8 +4,7 @@
  */
 package view;
 
-import domainmodel.NhanVien;
-import domainmodel.TenTKNV;
+import domainmodel.Common;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -455,6 +454,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelSanPham panelSanPham = new PanelSanPham();
         panelBanHang.add(panelSanPham);
@@ -465,6 +465,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelNhanVien pnv = new PanelNhanVien();
         panelBanHang.add(pnv);
@@ -475,6 +476,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelHoaDon panelHoaDon = new PanelHoaDon();
         panelBanHang.add(panelHoaDon);
@@ -484,6 +486,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnkhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhuyenMaiActionPerformed
+       Common.webcam.close();
         panelBanHang.removeAll();
         PanelKhuyenMai km = new PanelKhuyenMai();
         panelBanHang.add(km);
@@ -494,6 +497,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelKhachHang pkh = new PanelKhachHang();
         panelBanHang.add(pkh);
@@ -503,6 +507,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        Common.webcam.close();
         try {
             panelBanHang.removeAll();
             PanelThongKe panelTK = new PanelThongKe();

@@ -23,7 +23,7 @@ import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
 import domainmodel.KhachHang;
 import domainmodel.NhanVien;
-import domainmodel.TenTKNV;
+import domainmodel.Common;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.math.BigDecimal;
@@ -60,7 +60,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
     
     private DefaultTableModel dtmHoaDon = new DefaultTableModel();
     private HoaDonService hoaDonService = new HoaDonServiceImpl();
-    private List<HoaDonResponse> listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
+    private List<HoaDonResponse> listHoaDon = hoaDonService.getAll(Common.tenNV);
     private DefaultTableModel dtmGioHang = new DefaultTableModel();
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietSeviceImpl();
     private List<HoaDonChiTietResponse> listHoaDonChiTiet = new ArrayList<>();
@@ -231,6 +231,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         Dimension size = WebcamResolution.QVGA.getSize();
         webcam = Webcam.getWebcams().get(0); //0 is default webcam
         webcam.setViewSize(size);
+        Common.webcam = webcam;
         panel = new WebcamPanel(webcam);
         panel.setPreferredSize(size);
         panel.setFPSDisplayed(true);
@@ -268,7 +269,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHoaDon = new javax.swing.JTable();
         btnTaoHD = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbGioHang = new javax.swing.JTable();
@@ -574,13 +574,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             }
         });
 
-        jButton1.setText("Đóng");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -589,13 +582,8 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnTaoHD, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(31, 31, 31))))
+                .addComponent(btnTaoHD, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -604,8 +592,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(btnTaoHD, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
@@ -1033,11 +1020,11 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         int maHD = hoaDonService.genMaHD();
         hoaDon.setMa("HD" + maHD);
         hoaDon.setNgayTao((new Date()));
-        NhanVien nhanVien = nhanVienService.getOne(TenTKNV.tenNV.getEmail());
+        NhanVien nhanVien = nhanVienService.getOne(Common.tenNV.getEmail());
         hoaDon.setIdNV(nhanVien);
         hoaDon.setTinhTrang(0);
         JOptionPane.showMessageDialog(this, hoaDonService.add(hoaDon));
-        listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
+        listHoaDon = hoaDonService.getAll(Common.tenNV);
         showDataHoaDonTable(listHoaDon);
         tbHoaDon.setRowSelectionInterval(0, 0);
     }//GEN-LAST:event_btnTaoHDActionPerformed
@@ -1086,7 +1073,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         hoaDon.setId(hd.getId());
         hoaDon.setMa(hd.getMa());
         hoaDon.setNgayTao(hd.getNgayTao());
-        hoaDon.setIdNV(TenTKNV.tenNV);
+        hoaDon.setIdNV(Common.tenNV);
         hoaDon.setHinhThuc((int) cbbHinhThuc.getSelectedIndex());
         hoaDon.setTienKhacTra(new BigDecimal(txtTienKhachDua.getText()));
         hoaDon.setTienCK(new BigDecimal(txtTienCK.getText()));
@@ -1095,7 +1082,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         hoaDon.setTinhTrang(1);
         hoaDon.setIdKH(khachHang);
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon));
-        listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
+        listHoaDon = hoaDonService.getAll(Common.tenNV);
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
@@ -1105,7 +1092,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         HoaDonResponse hoaDonResponse = listHoaDon.get(row);
         HoaDon hoaDon = new HoaDon();
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThaiHuy(hoaDon, hoaDonResponse.getId()));
-        listHoaDon = hoaDonService.getAll(TenTKNV.tenNV);
+        listHoaDon = hoaDonService.getAll(Common.tenNV);
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnHuyActionPerformed
 
@@ -1154,11 +1141,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         // TODO add your handling code here:
     }//GEN-LAST:event_btnXoaTatCaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        webcam.close();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame ViewHDCT;
@@ -1175,7 +1157,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
     private javax.swing.JButton btnXoaTatCa;
     private javax.swing.JButton btnlamMoi;
     private javax.swing.JComboBox<String> cbbHinhThuc;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

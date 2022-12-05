@@ -21,7 +21,7 @@ public interface HoaDonService {
     List<HoaDonResponse> getByOne(int tt);
 
     String update(HoaDon hd);
-
+    
     List<HoaDonResponse> getAllPage(int row);
 
     List<HoaDonResponse> getAll();

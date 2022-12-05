@@ -4,10 +4,14 @@
  */
 package domainmodel;
 
+import com.github.sarxos.webcam.Webcam;
+
 /**
  *
  * @author FPT
  */
-public class TenTKNV {
+public class Common {
     public static NhanVien tenNV;
+    
+    public static Webcam webcam;
 }

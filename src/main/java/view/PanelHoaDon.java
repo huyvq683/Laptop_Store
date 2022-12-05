@@ -7,13 +7,10 @@ package view;
 import custommodel.HoaDonChiTietResponse;
 import custommodel.HoaDonResponse;
 import domainmodel.HoaDon;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.jfree.chart.plot.Pannable;
 import service.HoaDonChiTietService;
 import service.HoaDonService;
 import service.impl.HoaDonChiTietSeviceImpl;
@@ -39,8 +36,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
     public PanelHoaDon() {
         initComponents();
         model = (DefaultTableModel) tbaBang.getModel();
-        listHD = hoaDonService.getAllPage(0);
-        showResult(listHD);
     }
 
     public void showResult(List<HoaDonResponse> list) {
@@ -80,7 +75,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbaBang = new javax.swing.JTable();
         rbnCho = new javax.swing.JRadioButton();
-        rbnTT = new javax.swing.JRadioButton();
         rbnDa = new javax.swing.JRadioButton();
         txtSearch = new javax.swing.JTextField();
         btnThem1 = new javax.swing.JButton();
@@ -88,6 +82,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         btnPrevious = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
+        rbnTT = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -145,16 +140,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
         rbnCho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbnChoActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(rbnTT);
-        rbnTT.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        rbnTT.setSelected(true);
-        rbnTT.setText("Tất Cả");
-        rbnTT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbnTTActionPerformed(evt);
             }
         });
 
@@ -228,34 +213,49 @@ public class PanelHoaDon extends javax.swing.JPanel {
             }
         });
 
+        buttonGroup1.add(rbnTT);
+        rbnTT.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        rbnTT.setText("Tất Cả");
+        rbnTT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbnTTActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbnDa)
+                            .addComponent(jScrollPane1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 38, Short.MAX_VALUE)
+                                .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbnTT)
                             .addComponent(rbnCho))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnThem1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 38, Short.MAX_VALUE)
-                        .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)))
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rbnDa)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,13 +523,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
         showResult(list);
     }//GEN-LAST:event_rbnChoActionPerformed
 
-    private void rbnTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnTTActionPerformed
-        // TODO add your handling code here:
-        list.removeAll(list);
-        list = hoaDonService.getAll();
-        showResult(list);
-    }//GEN-LAST:event_rbnTTActionPerformed
-
     private void rbnDaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnDaActionPerformed
         // TODO add your handling code here:
         list.removeAll(list);
@@ -580,6 +573,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
         listHD = hoaDonService.getAllPage(list.size() - 10);
         showResult(listHD);
     }//GEN-LAST:event_btnLastActionPerformed
+
+    private void rbnTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnTTActionPerformed
+        // TODO add your handling code here:
+        list.removeAll(list);
+        list = hoaDonService.getAll();
+        showResult(list);
+    }//GEN-LAST:event_rbnTTActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;

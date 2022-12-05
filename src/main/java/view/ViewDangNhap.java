@@ -5,7 +5,7 @@
 package view;
 
 import domainmodel.NhanVien;
-import domainmodel.TenTKNV;
+import domainmodel.Common;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -62,7 +62,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
 
     public NhanVien getOne() {
         NhanVien nv = nhanVienService.getOne(txtTaiKhoan.getText());
-        TenTKNV.tenNV = nv;
+        Common.tenNV = nv;
         return nv;
     }
 

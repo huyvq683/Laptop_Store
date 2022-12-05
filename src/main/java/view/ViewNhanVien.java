@@ -5,7 +5,7 @@
 package view;
 
 import domainmodel.NhanVien;
-import domainmodel.TenTKNV;
+import domainmodel.Common;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -435,9 +435,9 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
     private void btnChiTietNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNVActionPerformed
         // TODO add your handling code here:
-        NhanVien nv = TenTKNV.tenNV;
-        DetailChiTietNV detailChiTietNV = new DetailChiTietNV(this, true, nv);
-        detailChiTietNV.setVisible(true);
+//        NhanVien nv = Common.tenNV;
+//        DetailChiTietNV detailChiTietNV = new DetailChiTietNV(this, true, nv);
+//        detailChiTietNV.setVisible(true);
     }//GEN-LAST:event_btnChiTietNVActionPerformed
 
     private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
