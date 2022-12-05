@@ -34,7 +34,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private List<HoaDonChiTietResponse> listHoaChiTietResponses = new ArrayList<>();
     private HoaDonService hoaDonService = new HoaDonServiceImpl();
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietSeviceImpl();
-
+    
     public PanelHoaDon() {
         initComponents();
         model = (DefaultTableModel) tbaBang.getModel();
@@ -42,26 +42,26 @@ public class PanelHoaDon extends javax.swing.JPanel {
         list = hoaDonService.getAll();
         showResult(list);
     }
-
+    
     public void showResult(List<HoaDonResponse> list) {
         model.setRowCount(0);
         for (HoaDonResponse hd : list) {
             model.addRow(hd.toDataRow1());
         }
     }
-
+    
     public void getListHDCT() {
         model1 = (DefaultTableModel) tbaBang1.getModel();
         listHoaChiTietResponses = hoaDonChiTietService.get_All(lblMa.getText());
     }
-
+    
     public void showResultHDCT(List<HoaDonChiTietResponse> list) {
         model1.setRowCount(0);
         for (HoaDonChiTietResponse hdct : list) {
             model1.addRow(hdct.toDataRow1());
         }
     }
-
+    
     public HoaDon getThongTinHoaDon() {
         return hoaDonService.getByMa(lblMa.getText());
     }
@@ -85,6 +85,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         rbnTT = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         btnHuy = new javax.swing.JButton();
+        rbnHuy = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -186,6 +187,15 @@ public class PanelHoaDon extends javax.swing.JPanel {
             }
         });
 
+        buttonGroup1.add(rbnHuy);
+        rbnHuy.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        rbnHuy.setText("Hủy");
+        rbnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbnHuyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -205,8 +215,9 @@ public class PanelHoaDon extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbnTT)
                             .addComponent(rbnDa)
-                            .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 493, Short.MAX_VALUE))))
+                            .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbnHuy))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +235,9 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbnDa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rbnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -434,12 +447,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -524,6 +538,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
         showResult(list);
     }//GEN-LAST:event_btnHuyActionPerformed
 
+    private void rbnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnHuyActionPerformed
+        // TODO add your handling code here:
+        list.removeAll(list);
+        list = hoaDonService.getByOne(2);
+        showResult(list);
+    }//GEN-LAST:event_rbnHuyActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnThem1;
@@ -555,6 +576,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private javax.swing.JTextField lblTongTien;
     private javax.swing.JRadioButton rbnCho;
     private javax.swing.JRadioButton rbnDa;
+    private javax.swing.JRadioButton rbnHuy;
     private javax.swing.JRadioButton rbnTT;
     private javax.swing.JTable tbaBang;
     private javax.swing.JTable tbaBang1;
