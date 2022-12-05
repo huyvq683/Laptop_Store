@@ -6,10 +6,12 @@ package view;
 
 import custommodel.HoaDonChiTietResponse;
 import custommodel.HoaDonResponse;
+import domainmodel.Common;
 import domainmodel.HoaDon;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import service.HoaDonChiTietService;
 import service.HoaDonService;
@@ -80,12 +82,9 @@ public class PanelHoaDon extends javax.swing.JPanel {
         rbnCho = new javax.swing.JRadioButton();
         rbnDa = new javax.swing.JRadioButton();
         txtSearch = new javax.swing.JTextField();
-        btnFirst = new javax.swing.JButton();
-        btnPrevious = new javax.swing.JButton();
-        btnNext = new javax.swing.JButton();
-        btnLast = new javax.swing.JButton();
         rbnTT = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
+        btnHuy = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -163,50 +162,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
             }
         });
 
-        btnFirst.setBackground(new java.awt.Color(41, 183, 212));
-        btnFirst.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnFirst.setForeground(new java.awt.Color(255, 255, 255));
-        btnFirst.setIcon(new ImageIcon("src/main/img/first.png"));
-        btnFirst.setText("First");
-        btnFirst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFirstActionPerformed(evt);
-            }
-        });
-
-        btnPrevious.setBackground(new java.awt.Color(41, 183, 212));
-        btnPrevious.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnPrevious.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrevious.setIcon(new ImageIcon("src/main/img/pre.png"));
-        btnPrevious.setText("Previous");
-        btnPrevious.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPreviousActionPerformed(evt);
-            }
-        });
-
-        btnNext.setBackground(new java.awt.Color(41, 183, 212));
-        btnNext.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setIcon(new ImageIcon("src/main/img/next.png"));
-        btnNext.setText("Next");
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
-            }
-        });
-
-        btnLast.setBackground(new java.awt.Color(41, 183, 212));
-        btnLast.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnLast.setForeground(new java.awt.Color(255, 255, 255));
-        btnLast.setIcon(new ImageIcon("src/main/img/last.png"));
-        btnLast.setText("Last");
-        btnLast.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLastActionPerformed(evt);
-            }
-        });
-
         buttonGroup1.add(rbnTT);
         rbnTT.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         rbnTT.setText("Tất Cả");
@@ -220,6 +175,17 @@ public class PanelHoaDon extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Search");
 
+        btnHuy.setBackground(new java.awt.Color(41, 183, 212));
+        btnHuy.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnHuy.setIcon(new ImageIcon("src/main/img/huy.png"));
+        btnHuy.setText("Hủy hóa đơn");
+        btnHuy.setPreferredSize(new java.awt.Dimension(110, 25));
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -228,27 +194,19 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addComponent(rbnTT)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(rbnCho)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(48, 48, 48)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(rbnDa)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbnTT)
+                            .addComponent(rbnDa)
+                            .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 493, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,12 +226,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -341,9 +294,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel9)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -419,7 +370,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 158, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -439,10 +390,9 @@ public class PanelHoaDon extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tbaBang1);
 
         btnThem1.setBackground(new java.awt.Color(41, 183, 212));
-        btnThem1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnThem1.setForeground(new java.awt.Color(255, 255, 255));
+        btnThem1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnThem1.setIcon(new ImageIcon("src/main/img/addNV.png"));
-        btnThem1.setText("Export");
+        btnThem1.setText("Xuất Excel");
         btnThem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThem1ActionPerformed(evt);
@@ -466,7 +416,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThem1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addGap(0, 0, 0))
         );
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -484,27 +434,26 @@ public class PanelHoaDon extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(921, 921, 921))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -557,35 +506,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThem1ActionPerformed
-
-    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
-        listHD = hoaDonService.getAllPage(0);
-        showResult(listHD);
-    }//GEN-LAST:event_btnFirstActionPerformed
     int page = 0;
-    private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
-        page = page - 10;
-        if (page < 0) {
-            page = list.size() - 10;
-        }
-        listHD = hoaDonService.getAllPage(page);
-        showResult(listHD);
-    }//GEN-LAST:event_btnPreviousActionPerformed
-
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        page = page + 10;
-        if (page > list.size()) {
-            page = 0;
-        }
-        listHD = hoaDonService.getAllPage(page);
-        showResult(listHD);
-    }//GEN-LAST:event_btnNextActionPerformed
-
-    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
-        listHD = hoaDonService.getAllPage(list.size() - 10);
-        showResult(listHD);
-    }//GEN-LAST:event_btnLastActionPerformed
-
     private void rbnTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnTTActionPerformed
         // TODO add your handling code here:
         list.removeAll(list);
@@ -593,11 +514,18 @@ public class PanelHoaDon extends javax.swing.JPanel {
         showResult(list);
     }//GEN-LAST:event_rbnTTActionPerformed
 
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        // TODO add your handling code here:
+        int row = tbaBang.getSelectedRow();
+        HoaDonResponse hoaDonResponse = list.get(row);
+        HoaDon hoaDon = new HoaDon();
+        JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThaiHuy(hoaDon, hoaDonResponse.getId()));
+        list = hoaDonService.getAll(Common.tenNV);
+        showResult(list);
+    }//GEN-LAST:event_btnHuyActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFirst;
-    private javax.swing.JButton btnLast;
-    private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnPrevious;
+    private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnThem1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;

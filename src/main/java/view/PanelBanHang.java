@@ -301,7 +301,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         txtTienCK = new javax.swing.JTextField();
         txtTienTraLai = new javax.swing.JTextField();
         btnThanhToan = new javax.swing.JButton();
-        btnHuy = new javax.swing.JButton();
         btnlamMoi = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         txtGiamGia = new javax.swing.JTextField();
@@ -455,7 +454,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        ViewHDCT.setMaximumSize(new java.awt.Dimension(592, 290));
         ViewHDCT.setMinimumSize(new java.awt.Dimension(592, 290));
         ViewHDCT.setSize(new java.awt.Dimension(592, 290));
 
@@ -822,17 +820,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             }
         });
 
-        btnHuy.setBackground(new java.awt.Color(41, 183, 212));
-        btnHuy.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnHuy.setIcon(new ImageIcon("src/main/img/huy.png"));
-        btnHuy.setText("Hủy hóa đơn");
-        btnHuy.setPreferredSize(new java.awt.Dimension(110, 25));
-        btnHuy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHuyActionPerformed(evt);
-            }
-        });
-
         btnlamMoi.setBackground(new java.awt.Color(41, 183, 212));
         btnlamMoi.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnlamMoi.setIcon(new ImageIcon("src/main/img/lamMoi.png"));
@@ -897,18 +884,15 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                             .addComponent(txtGiamGia, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtNgayTao, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnlamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(16, 16, 16))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGap(44, 44, 44)
+                    .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(58, 58, 58))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(157, 157, 157)
+                    .addComponent(btnlamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(16, 16, 16)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -952,9 +936,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                     .addComponent(jLabel10)
                     .addComponent(txtTienTraLai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnlamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnlamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1086,16 +1068,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
-    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
-        // TODO add your handling code here:
-        int row = tbHoaDon.getSelectedRow();
-        HoaDonResponse hoaDonResponse = listHoaDon.get(row);
-        HoaDon hoaDon = new HoaDon();
-        JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThaiHuy(hoaDon, hoaDonResponse.getId()));
-        listHoaDon = hoaDonService.getAll(Common.tenNV);
-        showDataHoaDonTable(listHoaDon);
-    }//GEN-LAST:event_btnHuyActionPerformed
-
     private void btnChonKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKHActionPerformed
         // TODO add your handling code here:
         ViewKhachHang.setVisible(true);
@@ -1148,7 +1120,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
     private javax.swing.JFrame ViewSerial;
     private javax.swing.JButton btnChon;
     private javax.swing.JButton btnChonKH;
-    private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnTaoHD;
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnXacNhan;
