@@ -22,6 +22,8 @@ public interface HoaDonService {
 
     String update(HoaDon hd);
 
+    List<HoaDonResponse> getAllPage(int row);
+
     List<HoaDonResponse> getAll();
 
     HoaDon getByMa(String ma);

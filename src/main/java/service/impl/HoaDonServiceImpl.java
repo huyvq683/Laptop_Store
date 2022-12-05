@@ -99,4 +99,9 @@ public class HoaDonServiceImpl implements HoaDonService {
         return hoaDonRepository.search(searchKey);
     }
 
+    @Override
+    public List<HoaDonResponse> getAllPage(int row) {
+        return hoaDonRepository.getAllPage(row);
+    }
+
 }
