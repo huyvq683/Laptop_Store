@@ -8,16 +8,13 @@ import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.awt.Color;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -1339,6 +1336,18 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnLocBieuDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocBieuDoActionPerformed
         if (cbbLoaiBieuDo.getSelectedIndex() == 0) {
             serviceThongKe.getBieuDoSPMonth((int) cbbBieuDoChonThang.getSelectedItem(), nam, panelHienBieuDo);
+            Calendar cal = Calendar.getInstance();
+            Date date = cal.getTime();
+
+            // hiển thị thời gian hiện tại
+            System.out.println("Thời gian hiện tại là " + date);
+
+            // tìm và hiển thị ngày đầu tháng và ngày cuối tháng của tháng hiện tại
+            // trong năm 2017
+            int ngayDauThang = cal.getActualMinimum(Calendar.DATE);
+            System.out.println("Ngày đầu của tháng hiện tại trong năm  = " + ngayDauThang);
+            int ngayCuoiThang = cal.getMaximum(Calendar.DATE);
+            System.out.println("Ngày cuoois của tháng hiện tại trong năm  = " + ngayCuoiThang);
         } else {
             serviceThongKe.getBieuDoDTMonth((int) cbbBieuDoChonThang.getSelectedItem(), nam, panelHienBieuDo);
         }

@@ -11,6 +11,9 @@ import custommodel.ThongKeSanPhamRespone;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JPanel;
@@ -130,13 +133,12 @@ public class ThongKeServiceImpl implements ThongKeService {
     @Override
     public void getBieuDoSPMonth(int thang, int nam, JPanel jpnItem) {
         List<ThongKeBieuDoSP> listItem = res.getBieuDoSPMonth(thang, nam);
-
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        if (listItem != null) {
-            for (ThongKeBieuDoSP item : listItem) {
-                dataset.addValue(Integer.parseInt(Long.toString(item.getSoLuong())), "Số lượng", item.getCreatedDate().toString().substring(0, 10));
+       // if (listItem != null) {
+            for (ThongKeBieuDoSP t : listItem) {
+                dataset.addValue(Integer.parseInt(String.valueOf(t.getSoLuong())), "Số lượng", t.getCreatedDate().toString().substring(0, 10));
             }
-        }
+       // }
 
         JFreeChart barChart = ChartFactory.createBarChart(
                 "Biểu đồ thống kê số lượng sản phẩm đã bán ra".toUpperCase(),
@@ -144,13 +146,20 @@ public class ThongKeServiceImpl implements ThongKeService {
                 dataset, PlotOrientation.VERTICAL.VERTICAL, false, true, false);
 
         ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 578));
+
+        chartPanel.setPreferredSize(
+                new Dimension(jpnItem.getWidth(), 578));
 
         jpnItem.removeAll();
-        jpnItem.setLayout(new CardLayout());
+
+        jpnItem.setLayout(
+                new CardLayout());
         jpnItem.add(chartPanel);
+
         jpnItem.validate();
+
         jpnItem.setBackground(Color.MAGENTA);
+
         jpnItem.repaint();
     }
 
