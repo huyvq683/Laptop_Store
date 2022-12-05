@@ -45,4 +45,9 @@ public class HoaDonChiTietSeviceImpl implements HoaDonChiTietService {
         hoaDonChiTietRepository.addOne(hoaDonChiTiet);
     }
 
+    @Override
+    public List<HoaDonChiTietResponse> getList(UUID id) {
+        return hoaDonChiTietRepository.getList(id);
+    }
+
 }

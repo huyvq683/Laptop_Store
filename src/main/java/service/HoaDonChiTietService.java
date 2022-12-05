@@ -19,6 +19,8 @@ public interface HoaDonChiTietService {
     List<HoaDonChiTietResponse> get_All(String ma);
 
     List<HoaDonChiTietResponse> getAll(UUID id);
+    
+    List<HoaDonChiTietResponse> getList(UUID id);
 
     void add(List<String> listSerial, HoaDon hd);
 

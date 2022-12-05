@@ -37,12 +37,25 @@ public class HoaDonChiTietResponse {
         this.soluong = soluong;
     }
 
+    public HoaDonChiTietResponse(UUID id, UUID idCTSP, UUID idHD, String ma, String ten, BigDecimal gia) {
+        this.id = id;
+        this.idCTSP = idCTSP;
+        this.idHD = idHD;
+        this.ma = ma;
+        this.ten = ten;
+        this.gia = gia;
+    }
+
     public long thanhTien() {
         return (long) (soluong * gia.doubleValue());
     }
 
     public Object[] toDataRow(int stt) {
         return new Object[]{stt, ma, ten, gia, soluong, thanhTien()};
+    }
+    
+    public Object[] toDataRowHDCT() {
+        return new Object[]{false, ma, ten, gia};
     }
 
     public Object[] toDataRow1() {

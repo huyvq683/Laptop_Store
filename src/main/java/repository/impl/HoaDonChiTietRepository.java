@@ -36,6 +36,21 @@ public class HoaDonChiTietRepository {
         }
         return lists;
     }
+    
+    public List<HoaDonChiTietResponse> getList(UUID id) {
+        List<HoaDonChiTietResponse> lists = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse "
+                    + "(c.id, c.idCTSP.id, c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.donGia) "
+                    + "FROM HoaDonChiTiet c WHERE c.idHoaDon.id = :id ");
+            query.setParameter("id", id);
+            lists = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return lists;
+    }
+    
 //lười dùng id quá :)))
 
     public List<HoaDonChiTietResponse> get_All(String ma) {
@@ -53,23 +68,6 @@ public class HoaDonChiTietRepository {
         return lists;
     }
 
-//    public Boolean delete(UUID id) {
-//        boolean check = false;
-//        List<HoaDonChiTietResponse> lists = new ArrayList<>();
-//        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-//            Transaction transaction = session.beginTransaction();
-//            for (HoaDonChiTietResponse hdctr : lists) {
-//                HoaDonChiTiet hoaDonChiTiet = session.get(HoaDonChiTiet.class, id);
-//                hoaDonChiTiet.setId(hdctr.getId());
-//                session.delete(hoaDonChiTiet);
-//            }
-//            transaction.commit();
-//            check = true;
-//        } catch (Exception e) {
-//            e.printStackTrace(System.out);
-//        }
-//        return check;
-//    }
     public Boolean delete(UUID id) {
         boolean check = false;
 
