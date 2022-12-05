@@ -46,6 +46,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private DefaultComboBoxModel dcbmThangNam;// bên sản phẩm
     private DefaultComboBoxModel dcbmThangNamDoanhThu; // bên doanh thu
     private DefaultComboBoxModel dcbmThangBieuDo;
+    private DefaultComboBoxModel dcbmNamBieuDo;
     private ThongKeService serviceThongKe = new ThongKeServiceImpl();
     private List<ThongKeSanPhamRespone> listSP = new ArrayList<>();
     private List<ThongKeDoanhThuRespone> listDT = new ArrayList<>();
@@ -57,6 +58,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
     // tạo ra năm hiện tại để lọc sản phẩm theo năm
     private int nam = 2022;
+    private int thaang;
 
     public PanelThongKe() throws ParseException {
         initComponents();
@@ -68,9 +70,11 @@ public class PanelThongKe extends javax.swing.JPanel {
         tbSanPham.setModel(dtmSP);
         // tạo date, hiển thị và tắt 
         nam = Integer.valueOf(dateFor.format(date).substring(6, 10));
+        thaang = Integer.valueOf(dateFor.format(date).substring(3, 5));
         showDataSP(dateFor.format(date));
         showDataDoanhThu(dateFor.format(date));
         start();
+        // serviceThongKe.getAllDoanhThuYearDB(1, nam, panelHienBieuDo);
     }
 
     // setup các lb và cbb
@@ -97,6 +101,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         txtEndTKDT.setVisible(false);
         //
         loadThangBieuDo();
+
     }
 
     public void exPortHoaDon() {
@@ -397,10 +402,12 @@ public class PanelThongKe extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         cbbLoaiBieuDo = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
+        lbChonBD = new javax.swing.JLabel();
         cbbBieuDoChonThang = new javax.swing.JComboBox<>();
         btnLocBieuDo = new javax.swing.JButton();
         btnBoLocBieuDo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        cbbLoaiThoiGianBD = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         btnExport = new javax.swing.JButton();
         radioSP = new javax.swing.JRadioButton();
@@ -867,12 +874,14 @@ public class PanelThongKe extends javax.swing.JPanel {
 
         jToolBar1.setRollover(true);
 
+        jPanel7.setPreferredSize(new java.awt.Dimension(1235, 690));
+
         javax.swing.GroupLayout panelHienBieuDoLayout = new javax.swing.GroupLayout(panelHienBieuDo);
         panelHienBieuDo.setLayout(panelHienBieuDoLayout);
         panelHienBieuDoLayout.setHorizontalGroup(
             panelHienBieuDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHienBieuDoLayout.createSequentialGroup()
-                .addContainerGap(1067, Short.MAX_VALUE)
+                .addContainerGap(1048, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(91, 91, 91))
         );
@@ -881,7 +890,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             .addGroup(panelHienBieuDoLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel5)
-                .addContainerGap(531, Short.MAX_VALUE))
+                .addContainerGap(452, Short.MAX_VALUE))
         );
 
         jLabel9.setText("Biểu đồ :");
@@ -890,8 +899,8 @@ public class PanelThongKe extends javax.swing.JPanel {
         cbbLoaiBieuDo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Số lượng sản phẩm", "Doanh thu" }));
         cbbLoaiBieuDo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        jLabel10.setText("Chọn tháng :");
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lbChonBD.setText("Chọn tháng :");
+        lbChonBD.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         cbbBieuDoChonThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbbBieuDoChonThang.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -936,15 +945,23 @@ public class PanelThongKe extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel3.setText("Loại thời gian :");
+
+        cbbLoaiThoiGianBD.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cbbLoaiThoiGianBD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng", "Năm" }));
+        cbbLoaiThoiGianBD.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbLoaiThoiGianBDItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(panelHienBieuDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -953,36 +970,41 @@ public class PanelThongKe extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbbLoaiBieuDo, 0, 199, Short.MAX_VALUE))
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbChonBD, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbbBieuDoChonThang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(67, 67, 67)
-                        .addComponent(btnLocBieuDo)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnBoLocBieuDo)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                        .addGap(74, 74, 74)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLocBieuDo))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBoLocBieuDo)
+                            .addComponent(cbbLoaiThoiGianBD, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(panelHienBieuDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLocBieuDo)
-                            .addComponent(btnBoLocBieuDo)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbbLoaiBieuDo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(cbbBieuDoChonThang, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbbLoaiBieuDo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(cbbLoaiThoiGianBD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbbBieuDoChonThang, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbChonBD)
+                    .addComponent(btnBoLocBieuDo)
+                    .addComponent(btnLocBieuDo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelHienBieuDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         jToolBar1.add(jPanel7);
@@ -1053,7 +1075,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(691, 691, 691)
+                        .addGap(638, 638, 638)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1251, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1270,6 +1292,8 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnLocSPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLocSPMouseExited
         btnLocSP.setBackground(new Color(41, 183, 212));
         btnLocSP.setForeground(Color.BLACK);
+        serviceThongKe.getAllDoanhThuYearDB(1, nam, panelHienBieuDo);
+
     }//GEN-LAST:event_btnLocSPMouseExited
 
     private void btnLocSPMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLocSPMouseMoved
@@ -1334,22 +1358,18 @@ public class PanelThongKe extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLocBieuDoMouseExited
 
     private void btnLocBieuDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocBieuDoActionPerformed
-        if (cbbLoaiBieuDo.getSelectedIndex() == 0) {
-            serviceThongKe.getBieuDoSPMonth((int) cbbBieuDoChonThang.getSelectedItem(), nam, panelHienBieuDo);
-            Calendar cal = Calendar.getInstance();
-            Date date = cal.getTime();
-
-            // hiển thị thời gian hiện tại
-            System.out.println("Thời gian hiện tại là " + date);
-
-            // tìm và hiển thị ngày đầu tháng và ngày cuối tháng của tháng hiện tại
-            // trong năm 2017
-            int ngayDauThang = cal.getActualMinimum(Calendar.DATE);
-            System.out.println("Ngày đầu của tháng hiện tại trong năm  = " + ngayDauThang);
-            int ngayCuoiThang = cal.getMaximum(Calendar.DATE);
-            System.out.println("Ngày cuoois của tháng hiện tại trong năm  = " + ngayCuoiThang);
-        } else {
-            serviceThongKe.getBieuDoDTMonth((int) cbbBieuDoChonThang.getSelectedItem(), nam, panelHienBieuDo);
+        if (cbbLoaiBieuDo.getSelectedIndex() == 0) {//0 la sp
+            if (cbbLoaiThoiGianBD.getSelectedIndex() == 0) {
+                serviceThongKe.getAllSanPhamMonthDB(1, (int) cbbBieuDoChonThang.getSelectedItem(), nam, panelHienBieuDo);
+            } else {
+                serviceThongKe.getAllSanPhamYearDB( 1, (int) cbbBieuDoChonThang.getSelectedItem(), panelHienBieuDo);
+            }
+        } else {//1 la hd
+            if (cbbLoaiThoiGianBD.getSelectedIndex() == 0) {
+                serviceThongKe.getAllDoanhThuMonthDB(1, (int) cbbBieuDoChonThang.getSelectedItem(), nam, panelHienBieuDo);
+            } else {
+                serviceThongKe.getAllDoanhThuYearDB(1, (int) cbbBieuDoChonThang.getSelectedItem(), panelHienBieuDo);
+            }
         }
     }//GEN-LAST:event_btnLocBieuDoActionPerformed
 
@@ -1364,7 +1384,11 @@ public class PanelThongKe extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBoLocBieuDoMouseExited
 
     private void btnBoLocBieuDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoLocBieuDoActionPerformed
-        serviceThongKe.getBieuDoSPMonth(Integer.parseInt(dateFor.format(new Date()).substring(3, 5)), nam, panelHienBieuDo);
+         cbbLoaiBieuDo.setSelectedIndex(1);
+         cbbLoaiThoiGian.setSelectedIndex(1);
+        serviceThongKe.getAllDoanhThuYearDB(1, nam, panelHienBieuDo);  
+        cbbBieuDoChonThang.setSelectedItem(String.valueOf(nam));
+       
     }//GEN-LAST:event_btnBoLocBieuDoActionPerformed
 
     private void cbbLoaiDoanhThuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiDoanhThuItemStateChanged
@@ -1438,7 +1462,27 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnExportMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExportMouseExited
         btnExport.setBackground(new Color(41, 183, 212));
         btnExport.setForeground(Color.BLACK);
+
     }//GEN-LAST:event_btnExportMouseExited
+
+    private void cbbLoaiThoiGianBDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiThoiGianBDItemStateChanged
+        if (cbbLoaiThoiGianBD.getSelectedIndex() == 0) {
+            dcbmThangBieuDo = new DefaultComboBoxModel();
+            lbChonBD.setText("Chọn tháng :");
+            for (int i = 1; i <= Integer.parseInt(dateFor.format(new Date()).substring(3, 5)); i++) {
+                dcbmThangBieuDo.addElement(i);
+            }
+            cbbBieuDoChonThang.setModel(dcbmThangBieuDo);
+        } else {
+            dcbmThangBieuDo = new DefaultComboBoxModel();
+            lbChonBD.setText("Chọn năm :");
+            int nam = Integer.parseInt(dateFor.format(new Date()).substring(6, 10));
+            for (int i = 2020; i <= nam; i++) {
+                dcbmThangBieuDo.addElement(i);
+            }
+            cbbBieuDoChonThang.setModel(dcbmThangBieuDo);
+        }
+    }//GEN-LAST:event_cbbLoaiThoiGianBDItemStateChanged
     private void loadThangBieuDo() {
         dcbmThangBieuDo = new DefaultComboBoxModel();
         for (int i = 1; i <= Integer.parseInt(dateFor.format(new Date()).substring(3, 5)); i++) {
@@ -1462,12 +1506,13 @@ public class PanelThongKe extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbbLoaiBieuDo;
     private javax.swing.JComboBox<String> cbbLoaiDoanhThu;
     private javax.swing.JComboBox<String> cbbLoaiThoiGian;
+    private javax.swing.JComboBox<String> cbbLoaiThoiGianBD;
     private javax.swing.JComboBox<String> cbbThangDoanhThu;
     private javax.swing.JComboBox<String> cbbThangNam;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1485,6 +1530,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lbChonBD;
     private javax.swing.JLabel lbChonNgayBDDT;
     private javax.swing.JLabel lbChonNgayBatDauSP;
     private javax.swing.JLabel lbChonNgayKTDT;

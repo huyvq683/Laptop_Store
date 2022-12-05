@@ -6,6 +6,7 @@ package service;
  */
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JPanel;
@@ -48,7 +49,12 @@ public interface ThongKeService {
 
     Integer namBatDau();
 
-    void getBieuDoDTMonth(int thang, int nam, JPanel panelHienThi);
+    void getAllSanPhamYearDB(int thang, int nam, JPanel panelHienThi);
 
-    void getBieuDoSPMonth(int thang, int nam, JPanel panelHienThi);
+    void getAllDoanhThuYearDB(int thang, int nam, JPanel panelHienThi);
+
+    void getAllSanPhamMonthDB(int ngay, int thang, int nam, JPanel panelHienThi);
+
+    void getAllDoanhThuMonthDB(int ngay, int thang, int nam, JPanel panelHienThi);
+
 }

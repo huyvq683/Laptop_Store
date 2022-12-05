@@ -4,16 +4,11 @@ package service.impl;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import custommodel.ThongKeBieuDoHD;
-import custommodel.ThongKeBieuDoSP;
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JPanel;
@@ -104,21 +99,48 @@ public class ThongKeServiceImpl implements ThongKeService {
     }
 
     @Override
-    public void getBieuDoDTMonth(int thang, int nam, JPanel jpnItem) {
-        List<ThongKeBieuDoHD> listItem = res.getBieuDoDTMonth(thang, nam);
+    public List<ThongKeDoanhThuRespone> getAllDoanhThuKhoangNgay(Date n, Date kt) {
+        return res.getAllDoanhThuKhoangNgay(n, kt);
+    }
 
+    @Override
+    public String getDoanhThuKhoangNgay(Date bd, Date kt) {
+        return res.getDoanhThuKhoangDay(bd, kt);
+    }
+
+    @Override
+    public void getAllSanPhamMonthDB(int ngay, int thang, int nam, JPanel jpnItem) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-        if (listItem != null) {
-            for (ThongKeBieuDoHD item : listItem) {
-                dataset.addValue(item.getTongTien(), "Tổng tiền", item.getCreatedDate().toString().substring(0, 10));
-            }
+        for (int i = 1; i <= 31; i++) {
+            dataset.addValue(new Integer(res.getAllSanPhamMonthDB(i, thang, nam)), "Doanh số", i + "");
         }
-
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Biểu đồ thống kê số lượng doanh thu".toUpperCase(),
+                "Biểu đồ thống kê số lượng sản phẩm đã bán ra tháng " + thang + " năm " + nam + "".toUpperCase(),
+                "Thời gian", "Số lượng",
+                dataset, PlotOrientation.VERTICAL, false, false, false);
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(
+                new Dimension(jpnItem.getWidth(), 578));
+        jpnItem.removeAll();
+        jpnItem.setLayout(
+                new CardLayout());
+        jpnItem.add(chartPanel);
+        jpnItem.validate();
+        jpnItem.setBackground(Color.MAGENTA);
+        jpnItem.repaint();
+    }
+
+    @Override
+    public void getAllDoanhThuMonthDB(int ngay, int thang, int nam, JPanel jpnItem) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 1; i <= 31; i++) {
+            dataset.addValue(new Double(res.getAllDoanhThuMonthDB(i, thang, nam)), "Doanh số", i + "");
+        }
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Biểu đồ thống kê số lượng doanh thu tháng " + thang + " năm " + nam + "".toUpperCase(),
                 "Thời gian", "Doanh thu",
-                dataset, PlotOrientation.VERTICAL.VERTICAL, false, true, false);
+                dataset, PlotOrientation.VERTICAL,
+                 false, false, false);
 
         ChartPanel chartPanel = new ChartPanel(barChart);
         chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 578));
@@ -131,46 +153,45 @@ public class ThongKeServiceImpl implements ThongKeService {
     }
 
     @Override
-    public void getBieuDoSPMonth(int thang, int nam, JPanel jpnItem) {
-        List<ThongKeBieuDoSP> listItem = res.getBieuDoSPMonth(thang, nam);
+    public void getAllSanPhamYearDB(int thang, int nam, JPanel jpnItem) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-       // if (listItem != null) {
-            for (ThongKeBieuDoSP t : listItem) {
-                dataset.addValue(Integer.parseInt(String.valueOf(t.getSoLuong())), "Số lượng", t.getCreatedDate().toString().substring(0, 10));
-            }
-       // }
-
+        for (int i = 1; i <= 12; i++) {
+            dataset.addValue(new Integer(res.getAllSanPhamYearDB(i, nam)), "Doanh số", i + "");
+        }
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Biểu đồ thống kê số lượng sản phẩm đã bán ra".toUpperCase(),
+                "Biểu đồ thống kê số lượng sản phẩm đã bán ra  năm " + nam + " ".toUpperCase(),
                 "Thời gian", "Số lượng",
-                dataset, PlotOrientation.VERTICAL.VERTICAL, false, true, false);
-
+                dataset, PlotOrientation.VERTICAL, false, false, false);
         ChartPanel chartPanel = new ChartPanel(barChart);
-
         chartPanel.setPreferredSize(
                 new Dimension(jpnItem.getWidth(), 578));
-
         jpnItem.removeAll();
-
         jpnItem.setLayout(
                 new CardLayout());
         jpnItem.add(chartPanel);
-
         jpnItem.validate();
-
         jpnItem.setBackground(Color.MAGENTA);
-
         jpnItem.repaint();
     }
 
     @Override
-    public List<ThongKeDoanhThuRespone> getAllDoanhThuKhoangNgay(Date n, Date kt) {
-        return res.getAllDoanhThuKhoangNgay(n, kt);
-    }
+    public void getAllDoanhThuYearDB(int thang, int nam, JPanel jpnItem) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 1; i <= 12; i++) {
+            dataset.addValue(new Double(res.getAllDoanhThuYearDB(i, nam)), "Doanh số", i + "");
+        }
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Biểu đồ thống kê số lượng doanh thu năm " + nam + "".toUpperCase(),
+                "Thời gian", "Doanh thu",
+                dataset, PlotOrientation.VERTICAL, false, false, false);
 
-    @Override
-    public String getDoanhThuKhoangNgay(Date bd, Date kt) {
-        return res.getDoanhThuKhoangDay(bd, kt);
-    }
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 578));
 
+        jpnItem.removeAll();
+        jpnItem.setLayout(new CardLayout());
+        jpnItem.add(chartPanel);
+        jpnItem.validate();
+        jpnItem.repaint();
+    }
 }
