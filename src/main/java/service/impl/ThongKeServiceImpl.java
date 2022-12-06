@@ -2,6 +2,8 @@ package service.impl;
 
 
 
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -139,7 +141,7 @@ public class ThongKeServiceImpl implements ThongKeService {
             dataset.addValue(new Double(res.getAllDoanhThuMonthDB(i, thang, nam)), "Doanh số", i + "");
         }
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Biểu đồ thống kê số lượng doanh thu tháng " + thang + " năm " + nam + "".toUpperCase(),
+                "Biểu đồ thống kê doanh thu tháng " + thang + " năm " + nam + "".toUpperCase(),
                 "Thời gian", "Doanh thu",
                 dataset, PlotOrientation.VERTICAL,
                  false, false, false);
@@ -183,7 +185,7 @@ public class ThongKeServiceImpl implements ThongKeService {
             dataset.addValue(new Double(res.getAllDoanhThuYearDB(i, nam)), "Doanh số", i + "");
         }
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Biểu đồ thống kê số lượng doanh thu năm " + nam + "".toUpperCase(),
+                "Biểu đồ thống kê doanh thu năm " + nam + "".toUpperCase(),
                 "Thời gian", "Doanh thu",
                 dataset, PlotOrientation.VERTICAL, false, false, false);
 
