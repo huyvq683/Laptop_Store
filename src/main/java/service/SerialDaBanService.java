@@ -4,6 +4,7 @@
  */
 package service;
 
+import domainmodel.ChiTietSP;
 import domainmodel.HoaDonChiTiet;
 import java.util.List;
 import java.util.UUID;
@@ -19,5 +20,7 @@ public interface SerialDaBanService {
     HoaDonChiTiet getByIdHDCT(UUID id);
     
     void delete(UUID id);
+    
+    ChiTietSP getIdCtspBySerial(String serial);
     
 }

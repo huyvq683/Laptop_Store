@@ -4,6 +4,7 @@
  */
 package service.impl;
 
+import domainmodel.ChiTietSP;
 import domainmodel.HoaDonChiTiet;
 import java.util.List;
 import java.util.UUID;
@@ -30,7 +31,12 @@ public class SerialDaBanServiceImpl implements SerialDaBanService {
 
     @Override
     public HoaDonChiTiet getByIdHDCT(UUID id) {
-        return serialDaBanRepository.getByIdHoaDonCT(id);
+        return serialDaBanRepository.getHDCTByIdCTSP(id);
+    }
+
+    @Override
+    public ChiTietSP getIdCtspBySerial(String serial) {
+        return serialDaBanRepository.getCTSPBySerial(serial);
     }
 
 }

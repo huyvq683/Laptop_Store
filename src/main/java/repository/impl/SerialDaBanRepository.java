@@ -27,6 +27,7 @@ public class SerialDaBanRepository {
             for (String serial : lists) {
                 SerialDaBan sdb = new SerialDaBan();
                 ChiTietSP ctsp = getCTSPBySerial(serial);
+                
                 sdb.setIdHDCT(hdct);
                 sdb.setMa(ctsp.getSerial());
                 session.save(sdb);
@@ -38,7 +39,7 @@ public class SerialDaBanRepository {
         return true;
     }
     
-    public HoaDonChiTiet getByIdHoaDonCT(UUID id){
+    public HoaDonChiTiet getHDCTByIdCTSP(UUID id){
         HoaDonChiTiet hoaDonChiTiet = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT n "
