@@ -35,7 +35,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
      */
     public ViewQuanLy() {
         initComponents();
-//        CheckCapBacKH.dailyCheckingRankCustomer();
+        CheckCapBacKH.dailyCheckingRankCustomer();
         designImg();
         designMenu();
         btnBanHang.setBackground(new Color(50, 159, 200));

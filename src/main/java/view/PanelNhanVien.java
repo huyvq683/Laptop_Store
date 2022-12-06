@@ -605,18 +605,14 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         NhanVien nhanVien = getData();
         JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
+        SendEmail.send(nhanVien.getEmail());
         list = nhanVienServiceImpl.getAll();
         listNV = nhanVienServiceImpl.getAllPage(0);
         showData(listNV);
-        String email = nhanVien.getEmail();
-        if (nhanVienServiceImpl.addOrUpdate(nhanVien).equalsIgnoreCase("Thành công")) {
-            SendEmail.send(email);
-            System.out.println("Done");
-        }
     }//GEN-LAST:event_btnThemActionPerformed
     private NhanVien getData() {
         NhanVien nhanVien = new NhanVien();
-        nhanVien.setMa("NV0" + (list.size() + 1));
+        nhanVien.setMa("NV" + (list.size() + 1));
         nhanVien.setHoTen(txtTen.getText());
         if (radioNam.isSelected()) {
             nhanVien.setGioiTinh(true);
