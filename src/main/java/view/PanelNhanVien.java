@@ -4,6 +4,7 @@
  */
 package view;
 
+import entity.SendEmail;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -603,18 +604,19 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         NhanVien nhanVien = getData();
+        NhanVien nv = nhanVienServiceImpl.getOne(nhanVien.getEmail());
+        if (nv != null) {
+            JOptionPane.showMessageDialog(this, "Nhân viên mang email "+nhanVien.getEmail()+" đã tồn tại!!");
+        }
         JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
+        SendEmail.send(nhanVien.getEmail());
         list = nhanVienServiceImpl.getAll();
         listNV = nhanVienServiceImpl.getAllPage(0);
         showData(listNV);
-        String email = nhanVien.getEmail();
-        if (nhanVienServiceImpl.addOrUpdate(nhanVien).equalsIgnoreCase("Thành công")) {
-            new SendEmail().send(email);
-        }
     }//GEN-LAST:event_btnThemActionPerformed
     private NhanVien getData() {
         NhanVien nhanVien = new NhanVien();
-        nhanVien.setMa("NV0" + (list.size() + 1));
+        nhanVien.setMa("NV" + (list.size() + 1));
         nhanVien.setHoTen(txtTen.getText());
         if (radioNam.isSelected()) {
             nhanVien.setGioiTinh(true);
@@ -686,6 +688,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 nhanVien.setChucVu(1);
             }
             nhanVien.setLastModifiedDate(new Date());
+            nhanVien.setCreatedDate(nhanVien.getCreatedDate());
             JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
             list = nhanVienServiceImpl.getAll();
             listNV = nhanVienServiceImpl.getAllPage(0);
@@ -772,6 +775,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         txtEmail.setText("");
         radioNhanVien.setSelected(true);
         radioDangLamViec.setSelected(true);
+        radioDaNghi.setEnabled(false);
+        tbNhanVien.clearSelection();
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
@@ -788,6 +793,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 String name = file.getPath();
                 System.out.println(name);
                 List<NhanVien> listIm = importExcel(name);
+                listIm.forEach(s->System.out.println(s.toString()));
                 int i = 0;
                 do {
                     for (NhanVien nhanVien : listIm) {
@@ -809,19 +815,19 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 //                        }
                         if (nhanVien.getEmail().isEmpty()) {
                             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
-                            listIm.clear();
-                            return;
+                            listIm.remove(nhanVien);
                         }
                         if (!convertDate(nhanVien.getNgaySinh()).matches("^([0-2][0-9]|(3)[0-1])(\\-)(((0)[0-9])|((1)[0-2]))(\\-)\\d{4}$")) {
                             JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày sinh theo định dạng dd-mm-yyyy");
-                            listIm.clear();
+                            listIm.remove(nhanVien);
                         }
                         if (!nhanVien.getEmail().matches("\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b")) {
                             JOptionPane.showMessageDialog(this, "Vui lòng nhập email đúng định dạng!!");
-                            listIm.clear();
+                            listIm.remove(nhanVien);
                         }
                         if (list.size() < 1) {
                             nhanVienServiceImpl.addOrUpdate(nhanVien);
+                            SendEmail.send(nhanVien.getEmail());
                             i += listIm.size();
                         } else {
                             if (nhanVienServiceImpl.getOne(nhanVien.getEmail()) != null) {
@@ -830,7 +836,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                                 return;
                             } else {
                                 nhanVienServiceImpl.addOrUpdate(nhanVien);
-                                new SendEmail().send(nhanVien.getEmail());
+                                SendEmail.send(nhanVien.getEmail());
                                 i += listIm.size();
                             }
                         }

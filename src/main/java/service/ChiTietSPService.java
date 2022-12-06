@@ -45,6 +45,4 @@ public interface ChiTietSPService {
     
     void updateTinhTrang(ChiTietSP chiTietSP);
 
-    void updateTTSPDangBan(BigDecimal gia);
-
 }

@@ -123,7 +123,7 @@ public class KhachHangRepository {
     public List<KhachHangReponse> getListKH() {
         List<KhachHangReponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession();) {
-            Query query = session.createQuery("SELECT new custommodel.KhachHangReponse (k.id, k.ma, k.hoTen, k.sdt) FROM KhachHang k");
+            Query query = session.createQuery("SELECT new custommodel.KhachHangReponse (k.id, k.ma, k.hoTen, k.sdt, k.capBac) FROM KhachHang k");
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);

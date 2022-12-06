@@ -130,7 +130,9 @@ public class HoaDonRepository {
             Query query = session.createQuery("SELECT new custommodel.HoaDonResponse"
                     + "(h.id, h.ma, h.ngayTao, nv.hoTen, h.tinhTrang) "
                     + "FROM HoaDon h LEFT JOIN NhanVien nv "
-                    + "on h.idNV = nv.id WHERE nv.id = :id ORDER BY h.ma DESC");
+                    + "on h.idNV = nv.id WHERE nv.id = :id  "
+                    + "GROUP BY h.id, h.ma, h.ngayTao, nv.hoTen, h.tinhTrang "
+                    + "ORDER BY MAX(CONVERT(INT, SUBSTRING(h.ma, 3, 10))) DESC");
             query.setParameter("id", nhanVien.getId());
             lists = query.getResultList();
         } catch (Exception e) {

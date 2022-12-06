@@ -135,6 +135,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
 
         txtTaiKhoan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtTaiKhoan.setForeground(new java.awt.Color(51, 51, 51));
+        txtTaiKhoan.setText("hungpvph25929@fpt.edu.vn");
         txtTaiKhoan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -143,6 +144,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
 
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtMatKhau.setForeground(new java.awt.Color(51, 51, 51));
+        txtMatKhau.setText("123456");
         txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N

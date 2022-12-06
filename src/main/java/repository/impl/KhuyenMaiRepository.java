@@ -9,6 +9,7 @@ import domainmodel.ChiTietSP;
 import domainmodel.KhuyenMai;
 import domainmodel.SanPham;
 import domainmodel.SanPhamKM;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -191,6 +192,14 @@ public class KhuyenMaiRepository {
                     SanPhamKM spkm = new SanPhamKM();
                     spkm.setIdKhuyenMai(km);
                     spkm.setIdChiTietSP(chiTietSP);
+                    spkm.setDonGia(chiTietSP.getGia());
+                    BigDecimal tienConLai = new BigDecimal(0);
+                    if (km.getLoaiKM() == 0) {
+                        tienConLai = chiTietSP.getGia().subtract(chiTietSP.getGia().multiply(km.getGiaTriKM()).divide(new BigDecimal(100)));
+                    } else {
+                        tienConLai = chiTietSP.getGia().subtract(km.getGiaTriKM());
+                    }
+                    spkm.setTienConLai(tienConLai);
                     spkm.setCreatedDate(new Date());
                     spkm.setAlstModifiedDate(new Date());
                     sess.getTransaction().begin();

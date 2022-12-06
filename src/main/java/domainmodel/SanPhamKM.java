@@ -5,6 +5,7 @@
 package domainmodel;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -43,6 +44,12 @@ public class SanPhamKM implements Serializable {
     @ManyToOne
     @JoinColumn(name = "IdKhuyenMai")
     private KhuyenMai idKhuyenMai;
+    
+    @Column(name = "DonGia")
+    private BigDecimal donGia;
+    
+    @Column(name = "TienConLai")
+    private BigDecimal tienConLai;
 
     @Column(name = "CreatedDate")
     private Date createdDate;
