@@ -47,9 +47,9 @@ public class ViewQuanLy extends javax.swing.JFrame {
         this.pack();
         pbh.setVisible(true);
         NhanVien nv = Common.tenNV;
-        lblMa.setText(nv.getHoTen());
-        lblTen.setText(nv.getMa());
-        lblChucVu.setText(chucVu());
+//        lblMa.setText(nv.getHoTen());
+//        lblTen.setText(nv.getMa());
+//        lblChucVu.setText(chucVu());
     }
 
     private Image scaleImage(Image image, int w, int h) {

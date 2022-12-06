@@ -17,10 +17,8 @@ public interface SerialDaBanService {
 
     void add(List<String> lists, HoaDonChiTiet hdct);
     
-    HoaDonChiTiet getByIdHDCT(UUID id);
+//    HoaDonChiTiet getByIdHDCT(UUID id);
     
     void delete(UUID id);
-    
-    ChiTietSP getIdCtspBySerial(String serial);
     
 }

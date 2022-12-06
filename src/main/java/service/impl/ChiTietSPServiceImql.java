@@ -112,11 +112,6 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public void updateTTSPDangBan(BigDecimal gia) {
-        repository.updateTTSPDangBan(gia);
-    }
-
-    @Override
     public List<ChiTietSPResponse> getAllCTSP(String ma, String ten, String cPU, String card, BigDecimal gia, String hang, String oCung, String ram) {
         return repository.getAllCTSP(ma, ten, cPU, card, gia, hang, oCung, ram);
     }
@@ -125,4 +120,5 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     public void updateTinhTrang(ChiTietSP chiTietSP) {
         repository.updateTinhTrang(chiTietSP);
     }
+
 }

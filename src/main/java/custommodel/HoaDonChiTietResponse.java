@@ -26,16 +26,21 @@ public class HoaDonChiTietResponse {
     private UUID idHD;
     private String ma;
     private String ten;
+    private BigDecimal tienKM;
     private BigDecimal gia;
     private long soluong;
 
-    public HoaDonChiTietResponse(UUID idHD, String ma, String ten, BigDecimal gia, long soluong) {
+    public HoaDonChiTietResponse(UUID idCTSP, UUID idHD, String ma, String ten, BigDecimal tienKM, BigDecimal gia, long soluong) {
+        this.idCTSP = idCTSP;
         this.idHD = idHD;
         this.ma = ma;
         this.ten = ten;
+        this.tienKM = tienKM;
         this.gia = gia;
         this.soluong = soluong;
     }
+
+    
 
     public HoaDonChiTietResponse(UUID id, UUID idCTSP, UUID idHD, String ma, String ten, BigDecimal gia) {
         this.id = id;
@@ -51,7 +56,7 @@ public class HoaDonChiTietResponse {
     }
 
     public Object[] toDataRow(int stt) {
-        return new Object[]{stt, ma, ten, gia, soluong, thanhTien()};
+        return new Object[]{stt, ma, ten, gia, soluong, tienKM, thanhTien()};
     }
     
     public Object[] toDataRowHDCT() {

@@ -29,14 +29,10 @@ public class SerialDaBanServiceImpl implements SerialDaBanService {
         serialDaBanRepository.delete(id);
     }
 
-    @Override
-    public HoaDonChiTiet getByIdHDCT(UUID id) {
-        return serialDaBanRepository.getHDCTByIdCTSP(id);
-    }
+//    @Override
+//    public HoaDonChiTiet getByIdHDCT(UUID id) {
+//        return serialDaBanRepository.getHDCTByIdCTSP(id);
+//    }
 
-    @Override
-    public ChiTietSP getIdCtspBySerial(String serial) {
-        return serialDaBanRepository.getCTSPBySerial(serial);
-    }
 
 }

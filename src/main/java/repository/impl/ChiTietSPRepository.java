@@ -6,6 +6,7 @@ package repository.impl;
 
 import custommodel.ChiTietSPResponse;
 import domainmodel.ChiTietSP;
+import domainmodel.KhuyenMai;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -240,21 +241,39 @@ public class ChiTietSPRepository {
         }
         return check;
     }
-
-    public Boolean updateTTSPDangBan(BigDecimal gia) {
-        boolean check = false;
-
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Transaction transaction = session.beginTransaction();
-            Query query = session.createQuery("UPDATE ChiTietSP SET TinhTrang = 0 WHERE Gia = :gia");
-            query.setParameter("gia", gia);
-            query.executeUpdate();
-            transaction.commit();
-            check = true;
+    
+    public KhuyenMai getKMByIdCTSP(ChiTietSP chiTietSP){
+        KhuyenMai khuyenMai = null;
+        try(Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("FROM khuyenMai km WHERE km.id = (SELECT SP.idKhuyenMai FROM SanPhamKM SP SP.idChiTietSP = :idChiTietSP)");
+            query.setParameter("idChiTietSP",chiTietSP.getId());
         } catch (Exception e) {
-            e.printStackTrace(System.out);
+            e.printStackTrace();
         }
-        return check;
+        return khuyenMai;
+    }
+    
+    public BigDecimal tienKM(List<String>listSerial){
+        BigDecimal tongTien = new BigDecimal(0);
+        BigDecimal tien = new BigDecimal(0);
+        try(Session session = HibernateUtil.getFACTORY().openSession()){
+            for (String serial : listSerial) {
+                ChiTietSP chiTietSP = getBySerialChiTietSP(serial);
+                KhuyenMai khuyenMai = getKMByIdCTSP(chiTietSP);
+                if(khuyenMai.getLoaiKM() == 0){
+                    tien = chiTietSP.getGia().multiply(khuyenMai.getGiaTriKM().divide(new BigDecimal(100)));
+                    tongTien = tongTien.add(tien);
+                }
+                else{
+                    tien = chiTietSP.getGia().subtract(khuyenMai.getGiaTriKM());
+                    tongTien = tongTien.add(tien);
+                }
+            }
+            
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        return tongTien;
     }
 
 }

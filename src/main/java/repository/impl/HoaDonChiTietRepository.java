@@ -8,6 +8,7 @@ import custommodel.HoaDonChiTietResponse;
 import domainmodel.ChiTietSP;
 import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
+import domainmodel.KhuyenMai;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -26,9 +27,9 @@ public class HoaDonChiTietRepository {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse "
-                    + "(c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.donGia, COUNT(c.idCTSP.idSanPham)) "
+                    + "(c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
                     + "FROM HoaDonChiTiet c WHERE c.idHoaDon.id = :id "
-                    + "GROUP BY c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.donGia");
+                    + "GROUP BY c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
             query.setParameter("id", id);
             lists = query.getResultList();
         } catch (Exception e) {
@@ -36,7 +37,7 @@ public class HoaDonChiTietRepository {
         }
         return lists;
     }
-    
+
     public List<HoaDonChiTietResponse> getList(UUID id) {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -50,9 +51,8 @@ public class HoaDonChiTietRepository {
         }
         return lists;
     }
-    
-//lười dùng id quá :)))
 
+//lười dùng id quá :)))
     public List<HoaDonChiTietResponse> get_All(String ma) {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -84,6 +84,17 @@ public class HoaDonChiTietRepository {
         return check;
     }
 
+    public KhuyenMai getKMByIdCTSP(ChiTietSP chiTietSP) {
+        KhuyenMai khuyenMai = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            javax.persistence.Query query = session.createQuery("FROM khuyenMai km WHERE km.id = (SELECT SP.idKhuyenMai FROM SanPhamKM SP SP.idChiTietSP = :idChiTietSP)");
+            query.setParameter("idChiTietSP", chiTietSP.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return khuyenMai;
+    }
+
     public ChiTietSP getCTSPBySerial(String serial) {
         ChiTietSP ctsp = null;
         try {
@@ -107,6 +118,7 @@ public class HoaDonChiTietRepository {
                 ChiTietSP ctsp = getCTSPBySerial(serial);
                 hdct.setIdHoaDon(hd);
                 hdct.setIdCTSP(ctsp);
+                hdct.setTenSP(ctsp.getIdSanPham().getTen());
                 hdct.setDonGia(ctsp.getGia());
                 session.save(hdct);
             }
@@ -116,6 +128,7 @@ public class HoaDonChiTietRepository {
         }
         return true;
     }
+
     public Boolean addOne(HoaDonChiTiet hoaDonChiTiet) {
         boolean check = false;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {

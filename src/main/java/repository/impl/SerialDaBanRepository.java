@@ -39,18 +39,18 @@ public class SerialDaBanRepository {
         return true;
     }
     
-    public HoaDonChiTiet getHDCTByIdCTSP(UUID id){
-        HoaDonChiTiet hoaDonChiTiet = null;
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("SELECT n "
-                    + "FROM HoaDonChiTiet n WHERE n.idCTSP.id = :id");
-            query.setParameter("id", id);
-            hoaDonChiTiet = (HoaDonChiTiet) query.getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        }
-        return hoaDonChiTiet;
-    }
+//    public HoaDonChiTiet getHDCTByIdCTSP(UUID id){
+//        HoaDonChiTiet hoaDonChiTiet = null;
+//        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+//            Query query = session.createQuery("SELECT n "
+//                    + "FROM HoaDonChiTiet n WHERE n.idCTSP.id = :id");
+//            query.setParameter("id", id);
+//            hoaDonChiTiet = (HoaDonChiTiet) query.getSingleResult();
+//        } catch (Exception e) {
+//            e.printStackTrace(System.out);
+//        }
+//        return hoaDonChiTiet;
+//    }
 
     public ChiTietSP getCTSPBySerial(String serial) {
         ChiTietSP ctsp = null;
