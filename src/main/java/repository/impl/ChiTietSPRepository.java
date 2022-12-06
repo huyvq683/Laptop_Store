@@ -5,7 +5,13 @@
 package repository.impl;
 
 import custommodel.ChiTietSPResponse;
+import domainmodel.CPU;
+import domainmodel.CardMH;
 import domainmodel.ChiTietSP;
+import domainmodel.Hang;
+import domainmodel.OCung;
+import domainmodel.Ram;
+import domainmodel.SanPham;
 import domainmodel.KhuyenMai;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -24,8 +30,8 @@ public class ChiTietSPRepository {
 
     public List<ChiTietSP> getAllChiTietSP() {
         List<ChiTietSP> listCTSP = new ArrayList<>();
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From ChiTietSP");
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("From ChiTietSP ORDER BY createdDate DESC");
             listCTSP = query.getResultList();
         } catch (Exception e) {
         }
@@ -60,7 +66,7 @@ public class ChiTietSPRepository {
     }
 
     public static void main(String[] args) {
-        List<ChiTietSP> ct = new ChiTietSPRepository().getOneGia("100", "500");
+        List<ChiTietSP> ct = (List<ChiTietSP>) new ChiTietSPRepository().searchSP("LapTop1");
         for (ChiTietSP x : ct) {
             System.out.println(x.toString());
         }
@@ -127,6 +133,133 @@ public class ChiTietSPRepository {
         }
         return null;
     }
+    public List<ChiTietSP> searchCPU(String searchKey) {
+        List<ChiTietSP> listCTSP = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            org.hibernate.query.Query query = session.createQuery("SELECT c FROM ChiTietSP c WHERE c.idCPU.ten = :cpu");
+            query.setParameter("cpu", searchKey);
+            listCTSP = query.getResultList();
+            return listCTSP;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<ChiTietSP> searchSP(String searchKey) {
+        List<ChiTietSP> listCTSP = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            org.hibernate.query.Query query = session.createQuery("SELECT c FROM ChiTietSP c WHERE c.idSanPham.ten = :sanPham");
+            query.setParameter("sanPham", searchKey);
+            listCTSP = query.getResultList();
+            return listCTSP;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<ChiTietSP> searchHang(String searchKey) {
+        List<ChiTietSP> listCTSP = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            org.hibernate.query.Query query = session.createQuery("SELECT c FROM ChiTietSP c WHERE c.idHang.ten = :hang");
+            query.setParameter("hang", searchKey);
+            listCTSP = query.getResultList();
+            return listCTSP;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<ChiTietSP> searchRam(String searchKey) {
+        List<ChiTietSP> listCTSP = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            org.hibernate.query.Query query = session.createQuery("SELECT c FROM ChiTietSP c WHERE c.idRam.ten = :ram");
+            query.setParameter("ram", searchKey);
+            listCTSP = query.getResultList();
+            return listCTSP;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<ChiTietSP> searchCard(String searchKey) {
+        List<ChiTietSP> listCTSP = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            org.hibernate.query.Query query = session.createQuery("SELECT c FROM ChiTietSP c WHERE c.idCard.ten = :card");
+            query.setParameter("card", searchKey);
+            listCTSP = query.getResultList();
+            return listCTSP;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<ChiTietSP> searchOCung(String searchKey) {
+        List<ChiTietSP> listCTSP = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            org.hibernate.query.Query query = session.createQuery("SELECT c FROM ChiTietSP c WHERE c.idOCung.ten = :oCung");
+            query.setParameter("oCung", searchKey);
+            listCTSP = query.getResultList();
+            return listCTSP;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public SanPham findTenSP(String ten) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery(" SELECT new SanPham (s.id,s.ten) FROM SanPham s WHERE Ten =:ten ", SanPham.class);
+            query.setParameter("ten", ten);
+            SanPham sp = (SanPham) query.getSingleResult();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public CPU findTenCPU(String ten) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery(" SELECT new CPU (s.id , s.ten) FROM CPU s WHERE Ten =:ten ", CPU.class);
+            query.setParameter("ten", ten);
+            CPU sp = (CPU) query.getSingleResult();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public CardMH findTenCard(String ten) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery(" SELECT new CardMH (s.id , s.ten) FROM CardMH s WHERE Ten =:ten ", CPU.class);
+            query.setParameter("ten", ten);
+            CardMH sp = (CardMH) query.getSingleResult();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public Hang findTenHang(String ten) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery(" SELECT new Hang (s.id , s.ten) FROM Hang s WHERE Ten =:ten ", CPU.class);
+            query.setParameter("ten", ten);
+            Hang sp = (Hang) query.getSingleResult();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public Ram findTenRam(String ten) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery(" SELECT new Ram (s.id , s.ten) FROM Ram s WHERE Ten =:ten ", CPU.class);
+            query.setParameter("ten", ten);
+            Ram sp = (Ram) query.getSingleResult();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public OCung findTenOCung(String ten) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery(" SELECT new OCung (s.id , s.ten) FROM OCung s WHERE Ten =:ten ", CPU.class);
+            query.setParameter("ten", ten);
+            OCung sp = (OCung) query.getSingleResult();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
 
     public List<ChiTietSPResponse> getAll() {
         List<ChiTietSPResponse> lists = new ArrayList<>();
@@ -142,6 +275,7 @@ public class ChiTietSPRepository {
         }
         return lists;
     }
+
 
     public List<ChiTietSPResponse> getAllCTSP(String ma, String ten, String cPU, String card, BigDecimal gia, String hang, String oCung, String ram) {
         List<ChiTietSPResponse> lists = new ArrayList<>();

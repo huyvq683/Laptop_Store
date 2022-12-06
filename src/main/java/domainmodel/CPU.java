@@ -67,5 +67,11 @@ public class CPU implements Serializable{
     public CPU(UUID id) {
         this.id = id;
     }
+
+    public CPU(UUID id, String ten) {
+        this.id = id;
+        this.ten = ten;
+    }
+    
         
 }

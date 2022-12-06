@@ -69,4 +69,9 @@ public class Ram implements Serializable {
         this.id = id;
     }
 
+    public Ram(UUID id, String ten) {
+        this.id = id;
+        this.ten = ten;
+    }
+
 }

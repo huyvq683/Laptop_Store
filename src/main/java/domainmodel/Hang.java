@@ -69,4 +69,9 @@ public class Hang implements Serializable {
         this.id = id;
     }
 
+    public Hang(UUID id, String ten) {
+        this.id = id;
+        this.ten = ten;
+    }
+
 }

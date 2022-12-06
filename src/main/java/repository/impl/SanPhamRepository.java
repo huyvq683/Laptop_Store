@@ -46,15 +46,9 @@ public class SanPhamRepository {
             SanPham sp = (SanPham) query.getSingleResult();
             return sp;
         } catch (Exception e) {
-//            e.printStackTrace(System.out);
         }
         return null;
     }
-
-//    public static void main(String[] args) {
-//        List<SanPham> lists = new SanPhamRepository().getAllSanPham();
-//        lists.forEach(s -> System.out.println(s.toString()));
-//    }
 
     public Boolean addSanPham(SanPham sp) {
         Transaction tran = null;
@@ -64,7 +58,6 @@ public class SanPhamRepository {
             tran.commit();
             return true;
         } catch (Exception e) {
-            e.printStackTrace(System.out);
         }
         return false;
     }
@@ -114,11 +107,11 @@ public class SanPhamRepository {
         }
         return null;
     }
-    public static void main(String[] args) {
-        List<SanPham> list = new SanPhamRepository().search("SP1");
-        for (SanPham x : list) {
-            System.out.println(x.toString());
-        }
-    }
+//    public static void main(String[] args) {
+//        SanPham list = new SanPhamRepository().getOne("LapTop");
+//        for (SanPham x : list) {
+//            System.out.println(x.toString());
+//        }
+//    }
 //    From SanPham WHERE Ma like concat (:searchKey,'%')"
 }
