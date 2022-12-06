@@ -223,8 +223,6 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
                 dn.setVisible(true);
             }
         }
-
-
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
     private void lblMkcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMkcMouseClicked

@@ -2,7 +2,6 @@ package view;
 
 import custommodel.KhachHangRespone;
 import domainmodel.KhachHang;
-import java.awt.Color;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;

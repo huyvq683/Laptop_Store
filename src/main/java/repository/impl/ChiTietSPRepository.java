@@ -241,39 +241,5 @@ public class ChiTietSPRepository {
         }
         return check;
     }
-    
-    public KhuyenMai getKMByIdCTSP(ChiTietSP chiTietSP){
-        KhuyenMai khuyenMai = null;
-        try(Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("FROM khuyenMai km WHERE km.id = (SELECT SP.idKhuyenMai FROM SanPhamKM SP SP.idChiTietSP = :idChiTietSP)");
-            query.setParameter("idChiTietSP",chiTietSP.getId());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return khuyenMai;
-    }
-    
-    public BigDecimal tienKM(List<String>listSerial){
-        BigDecimal tongTien = new BigDecimal(0);
-        BigDecimal tien = new BigDecimal(0);
-        try(Session session = HibernateUtil.getFACTORY().openSession()){
-            for (String serial : listSerial) {
-                ChiTietSP chiTietSP = getBySerialChiTietSP(serial);
-                KhuyenMai khuyenMai = getKMByIdCTSP(chiTietSP);
-                if(khuyenMai.getLoaiKM() == 0){
-                    tien = chiTietSP.getGia().multiply(khuyenMai.getGiaTriKM().divide(new BigDecimal(100)));
-                    tongTien = tongTien.add(tien);
-                }
-                else{
-                    tien = chiTietSP.getGia().subtract(khuyenMai.getGiaTriKM());
-                    tongTien = tongTien.add(tien);
-                }
-            }
-            
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-        return tongTien;
-    }
 
 }

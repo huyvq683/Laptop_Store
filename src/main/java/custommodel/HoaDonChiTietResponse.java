@@ -40,8 +40,6 @@ public class HoaDonChiTietResponse {
         this.soluong = soluong;
     }
 
-    
-
     public HoaDonChiTietResponse(UUID id, UUID idCTSP, UUID idHD, String ma, String ten, BigDecimal gia) {
         this.id = id;
         this.idCTSP = idCTSP;

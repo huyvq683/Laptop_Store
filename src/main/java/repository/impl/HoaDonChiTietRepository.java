@@ -9,11 +9,13 @@ import domainmodel.ChiTietSP;
 import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
 import domainmodel.KhuyenMai;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import utility.HibernateUtil;
 
@@ -27,9 +29,9 @@ public class HoaDonChiTietRepository {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse "
-                    + "(c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
+                    + "(c.idHoaDon.id, c.idCTSP.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
                     + "FROM HoaDonChiTiet c WHERE c.idHoaDon.id = :id "
-                    + "GROUP BY c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
+                    + "GROUP BY c.idHoaDon.id, c.idCTSP.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
             query.setParameter("id", id);
             lists = query.getResultList();
         } catch (Exception e) {
@@ -84,17 +86,6 @@ public class HoaDonChiTietRepository {
         return check;
     }
 
-    public KhuyenMai getKMByIdCTSP(ChiTietSP chiTietSP) {
-        KhuyenMai khuyenMai = null;
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            javax.persistence.Query query = session.createQuery("FROM khuyenMai km WHERE km.id = (SELECT SP.idKhuyenMai FROM SanPhamKM SP SP.idChiTietSP = :idChiTietSP)");
-            query.setParameter("idChiTietSP", chiTietSP.getId());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return khuyenMai;
-    }
-
     public ChiTietSP getCTSPBySerial(String serial) {
         ChiTietSP ctsp = null;
         try {
@@ -109,8 +100,21 @@ public class HoaDonChiTietRepository {
         return ctsp;
     }
 
+    public KhuyenMai getKmByIdCTSP(UUID id) {
+        KhuyenMai khuyenMai = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("FROM KhuyenMai WHERE id = (SELECT idKhuyenMai FROM SanPhamKM WHERE idChiTietSP = :idChiTietSP)");
+            query.setParameter("idChiTietSP", id);
+            khuyenMai = (KhuyenMai) query.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return khuyenMai;
+    }
+
     public Boolean add(List<String> listSerial, HoaDon hd) {
         Transaction tran = null;
+         BigDecimal tienKM = new BigDecimal(0);
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             tran = session.beginTransaction();
             for (String serial : listSerial) {
@@ -119,6 +123,7 @@ public class HoaDonChiTietRepository {
                 hdct.setIdHoaDon(hd);
                 hdct.setIdCTSP(ctsp);
                 hdct.setTenSP(ctsp.getIdSanPham().getTen());
+//                hdct.setTienKM(tienKM);
                 hdct.setDonGia(ctsp.getGia());
                 session.save(hdct);
             }
