@@ -7,6 +7,7 @@ package service.impl;
 import custommodel.KhachHangReponse;
 import custommodel.KhachHangRespone;
 import domainmodel.KhachHang;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -85,11 +86,21 @@ public class KhachHangServiceImpl implements KhachHangService<KhachHang> {
     @Override
     public List<KhachHangReponse> getListKH() {
         return repository.getListKH();
-    
+
     }
 
     @Override
     public List<KhachHangRespone> getHD(UUID id) {
         return repository.getHD(id);
+    }
+
+    @Override
+    public KhachHang getSdt(String sdt) {
+        return repository.getSdt(sdt);
+    }
+
+    @Override
+    public BigDecimal getTongTienByIDHD(UUID id) {
+        return repository.getTongTienByIDHD(id);
     }
 }

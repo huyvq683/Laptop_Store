@@ -6,6 +6,7 @@ package repository.impl;
 
 import custommodel.ViewHoaDonReponse;
 import custommodel.HoaDonResponse;
+import custommodel.ViewExcelReponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
 import java.util.ArrayList;
@@ -37,6 +38,32 @@ public class HoaDonRepository {
         return list;
     }
 
+    public List<ViewExcelReponse> getOne(int tt) {
+        String sql = "SELECT new custommodel.ViewExcelReponse(h.ma , n.ma , n.hoTen , k.ma , k.hoTen , k.sdt , hd.tenSP , hd.donGia , h.hinhThuc , h.tienKhachTra , h.tienCK , h.tienThua , h.tongTien , h.ngayTao , h.tinhTrang From HoaDon h"
+                + "               JOIN NhanVien n ON h.idNV = n.id"
+                + "			   Join KhachHang k On k.id = h.idKH"
+                + "			   Join HoaDonChiTiet hd On hd.idHoaDon = h.id"
+                + "                WHERE h.tinhTrang = :tinhTrang";
+        Query query = session.createQuery(sql, ViewExcelReponse.class);
+        query.setParameter("tinhTrang", tt);
+        List<ViewExcelReponse> list = query.getResultList();
+        return list;
+    }
+
+    public List<HoaDonResponse> getAllPage(int row) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
+                    + " JOIN NhanVien n ON h.idNV = n.id" + " ORDER BY h.ma OFFSET :row ROW FETCH NEXT 5 ROWS ONLY";
+            NativeQuery query = session.createNativeQuery(sql, HoaDonResponse.class);
+            query.setParameter("row", row);
+            List<HoaDonResponse> list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
     public HoaDon getOne(String ma) {
         String sql = fromTable + " Where ma = :ma ";
         javax.persistence.Query query = session.createQuery(sql, HoaDon.class);
@@ -49,6 +76,15 @@ public class HoaDonRepository {
         String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
                 + " JOIN NhanVien n ON h.idNV = n.id";
         Query<HoaDonResponse> query = session.createQuery(sql);
+        return query.list();
+    }
+
+    public List<ViewExcelReponse> getAllExcel() {
+        String sql = "SELECT new custommodel.ViewExcelReponse(h.ma , n.ma , n.hoTen , k.ma , k.hoTen , k.sdt , hd.tenSP , hd.donGia , h.hinhThuc , h.tienKhachTra , h.tienCK , h.tienThua , h.tongTien , h.ngayTao , h.tinhTrang) From HoaDon h"
+                + " JOIN NhanVien n ON h.idNV = n.id"
+                + "			   Join KhachHang k On k.id = h.idKH"
+                + "			   Join HoaDonChiTiet hd On hd.idHoaDon = h.id";
+        Query<ViewExcelReponse> query = session.createQuery(sql);
         return query.list();
     }
 
@@ -72,58 +108,6 @@ public class HoaDonRepository {
         return null;
     }
 
-//    public HoaDonResponse getOneByMa(String ma) {
-//        try {
-//            String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
-//                    + " JOIN NhanVien n ON h.idNV = n.id"
-//                    + " WHERE h.ma = :ma";
-//            Query query = session.createQuery(sql, HoaDonResponse.class);
-//            query.setParameter("ma", ma);
-//            HoaDonResponse hoaDonResponse = (HoaDonResponse) query.getSingleResult();
-//            return hoaDonResponse;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-//
-//    public List<HoaDonResponse> getByNV(String ma) {
-//        try {
-//            String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
-//                    + " JOIN NhanVien n ON h.idNV = n.id"
-//                    + " WHERE n.ma = :ma";
-//            Query query = session.createQuery(sql, HoaDonResponse.class);
-//            query.setParameter("ma", ma);
-//            List<HoaDonResponse> list = query.getResultList();
-//            return list;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-//
-//    public List<HoaDonResponse> getByMaKH(String ma) {
-//        try {
-//            String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
-//                    + " JOIN NhanVien n ON h.idNV = n.id"
-//                    + " JOIN KhachHang k ON h.idKH = k.id"
-//                    + " WHERE k.ma = :ma";
-//            Query query = session.createQuery(sql, HoaDonResponse.class);
-//            query.setParameter("ma", ma);
-//            List<HoaDonResponse> list = query.getResultList();
-//            return list;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-//
-//    public List<HoaDonResponse> getByNgayTao(String ma) {
-//        String sql = "SELECT new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
-//                + " JOIN NhanVien n ON h.idNV = n.id"
-//                + " WHERE h.ngayTao = :ma";
-//        Query query = session.createQuery(sql, HoaDonResponse.class);
-//        query.setParameter("ngayTao", ma);
-//        List<HoaDonResponse> list = query.getResultList();
-//        return list;
-//    }
     public List<HoaDonResponse> search(String searchKey) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String sql = "Select new custommodel.HoaDonResponse(h.id , h.ma , h.ngayTao, n.hoTen  , h.tinhTrang) From HoaDon h"
@@ -146,7 +130,9 @@ public class HoaDonRepository {
             Query query = session.createQuery("SELECT new custommodel.HoaDonResponse"
                     + "(h.id, h.ma, h.ngayTao, nv.hoTen, h.tinhTrang) "
                     + "FROM HoaDon h LEFT JOIN NhanVien nv "
-                    + "on h.idNV = nv.id WHERE nv.id = :id ORDER BY h.ma DESC");
+                    + "on h.idNV = nv.id WHERE nv.id = :id  "
+                    + "GROUP BY h.id, h.ma, h.ngayTao, nv.hoTen, h.tinhTrang "
+                    + "ORDER BY MAX(CONVERT(INT, SUBSTRING(h.ma, 3, 10))) DESC");
             query.setParameter("id", nhanVien.getId());
             lists = query.getResultList();
         } catch (Exception e) {

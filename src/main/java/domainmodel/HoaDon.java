@@ -54,7 +54,7 @@ public class HoaDon implements Serializable {
     private Date ngayTao;
 
     @Column(name = "TienKhachTra")
-    private BigDecimal tienKhacTra;
+    private BigDecimal tienKhachTra;
 
     @Column(name = "TienCK")
     private BigDecimal tienCK;

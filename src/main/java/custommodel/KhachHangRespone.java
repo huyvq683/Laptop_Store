@@ -28,6 +28,7 @@ public class KhachHangRespone {
     private String maSP;
     private String tenSP;
     private Date ngayMua;
+    private long soLuong;
     private BigDecimal donGia;
 
     private String ngayTao() {
@@ -36,9 +37,17 @@ public class KhachHangRespone {
         return ngayTaoConvert;
     }
 
+    public KhachHangRespone(BigDecimal donGia) {
+        this.donGia = donGia;
+    }
+
+    public long thanhTien() {
+        return (long) (soLuong * donGia.doubleValue());
+    }
+
     public Object[] toDataRow() {
         return new Object[]{
-            maSP, tenSP, ngayTao(), donGia
+            maSP, tenSP, ngayTao(), soLuong, thanhTien()
         };
     }
 }

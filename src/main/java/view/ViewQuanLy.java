@@ -4,8 +4,9 @@
  */
 package view;
 
+import domainmodel.Common;
 import domainmodel.NhanVien;
-import domainmodel.TenTKNV;
+import entity.CheckCapBacKH;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -37,6 +38,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         initComponents();
         designImg();
         designMenu();
+//        CheckCapBacKH.dailyCheckingRankCustomer();
         btnBanHang.setBackground(new Color(50, 159, 200));
         panelBanHang.removeAll();
         PanelBanHang pbh = new PanelBanHang();
@@ -44,6 +46,10 @@ public class ViewQuanLy extends javax.swing.JFrame {
         panelBanHang.setLayout(new FlowLayout());
         this.pack();
         pbh.setVisible(true);
+        NhanVien nv = Common.tenNV;
+        lblMa.setText(nv.getHoTen());
+        lblTen.setText(nv.getMa());
+        lblChucVu.setText(chucVu());
     }
 
     private Image scaleImage(Image image, int w, int h) {
@@ -52,12 +58,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
     }
 
     private void designImg() {
-        ImageIcon originalIcon = new ImageIcon("src/main/img/logo.png");
-        int width = 200;
-        int height = 157;
-        Image scaled = scaleImage(originalIcon.getImage(), width, height);
-        ImageIcon scaledIcon = new ImageIcon(scaled);
-        lblLogo.setIcon(scaledIcon);
 
         ImageIcon thoat = new ImageIcon("src/main/img/thoat.png");
         int widthThoat = 55;
@@ -126,7 +126,16 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnThongKe.setBackground(new Color(0, 0, 0, 0));
         btnThoat.setBackground(new Color(0, 0, 0, 0));
     }
-
+    private String chucVu(){
+        NhanVien nv = Common.tenNV;
+        String chucVu = "";
+        if(nv.getChucVu() == 0){
+            return chucVu = "Quản lý";
+        }
+        else{
+            return chucVu = "Nhân viên";
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,7 +147,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         view2 = new view.ViewMenu();
-        lblLogo = new javax.swing.JLabel();
         btnSanPham = new javax.swing.JButton();
         btnBanHang = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
@@ -147,17 +155,24 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnKhachHang = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblDoiMK = new javax.swing.JLabel();
+        lblMa = new javax.swing.JLabel();
+        lblTen = new javax.swing.JLabel();
+        lblChucVu = new javax.swing.JLabel();
         panelBanHang = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1535, 850));
         setMinimumSize(new java.awt.Dimension(1535, 850));
-        setPreferredSize(new java.awt.Dimension(1535, 850));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblLogo.setIcon(new ImageIcon("src/main/img/logo.png"));
+        view2.setPreferredSize(new java.awt.Dimension(240, 723));
 
         btnSanPham.setBackground(new java.awt.Color(0, 0, 0));
         btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -355,6 +370,38 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setText("Thông tin nhân viên");
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel2.setText("Tên nhân viên:");
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel3.setText("Mã nhân viên:");
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel4.setText("Chúc vụ:");
+
+        lblDoiMK.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDoiMK.setText("Đổi mật khẩu");
+        lblDoiMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDoiMKMouseClicked(evt);
+            }
+        });
+
+        lblMa.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblMa.setText("Mã nhân viên:");
+        lblMa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+
+        lblTen.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblTen.setText("Mã nhân viên:");
+        lblTen.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+
+        lblChucVu.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblChucVu.setText("Mã nhân viên:");
+        lblChucVu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout view2Layout = new javax.swing.GroupLayout(view2);
         view2.setLayout(view2Layout);
         view2Layout.setHorizontalGroup(
@@ -363,21 +410,50 @@ public class ViewQuanLy extends javax.swing.JFrame {
             .addComponent(btnBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnkhuyenMai, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+            .addComponent(btnkhuyenMai, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
             .addComponent(btnKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(view2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(view2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(view2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4)
+                                    .addComponent(lblMa, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTen, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(view2Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(lblDoiMK)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         view2Layout.setVerticalGroup(
             view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(view2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, view2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel3)
+                .addGap(0, 0, 0)
+                .addComponent(lblMa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(0, 0, 0)
+                .addComponent(lblTen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addGap(3, 3, 3)
+                .addComponent(lblChucVu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDoiMK)
+                .addGap(66, 66, 66)
                 .addComponent(btnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -404,7 +480,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(view2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(view2, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
         );
 
         panelBanHang.setBackground(new java.awt.Color(255, 255, 255));
@@ -431,7 +507,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(panelBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 1289, Short.MAX_VALUE))
+                .addComponent(panelBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 1295, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,6 +521,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelBanHang pbh = new PanelBanHang();
         panelBanHang.add(pbh);
@@ -455,6 +532,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelSanPham panelSanPham = new PanelSanPham();
         panelBanHang.add(panelSanPham);
@@ -465,6 +543,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelNhanVien pnv = new PanelNhanVien();
         panelBanHang.add(pnv);
@@ -475,6 +554,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelHoaDon panelHoaDon = new PanelHoaDon();
         panelBanHang.add(panelHoaDon);
@@ -484,6 +564,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnkhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhuyenMaiActionPerformed
+       Common.webcam.close();
         panelBanHang.removeAll();
         PanelKhuyenMai km = new PanelKhuyenMai();
         panelBanHang.add(km);
@@ -494,6 +575,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelKhachHang pkh = new PanelKhachHang();
         panelBanHang.add(pkh);
@@ -503,6 +585,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        Common.webcam.close();
         try {
             panelBanHang.removeAll();
             PanelThongKe panelTK = new PanelThongKe();
@@ -745,6 +828,14 @@ public class ViewQuanLy extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnThoatMouseExited
 
+    private void lblDoiMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMKMouseClicked
+        // TODO add your handling code here:
+        Common.webcam.close();
+        ViewDoiMatKhau2 dmk = new ViewDoiMatKhau2();
+        dmk.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_lblDoiMKMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -804,8 +895,15 @@ public class ViewQuanLy extends javax.swing.JFrame {
     private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnThongKe;
     private javax.swing.JButton btnkhuyenMai;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblChucVu;
+    private javax.swing.JLabel lblDoiMK;
+    private javax.swing.JLabel lblMa;
+    private javax.swing.JLabel lblTen;
     private javax.swing.JPanel panelBanHang;
     private view.ViewMenu view2;
     // End of variables declaration//GEN-END:variables

@@ -107,23 +107,18 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     }
 
     @Override
-    public void updateTinhTrangSP(ChiTietSP chiTietSP, UUID id) {
-        repository.updateTinhTrangSP(chiTietSP, id);
-    }
-
-
-    @Override
-    public void updateTinhTrangSP(ChiTietSP chiTietSP) {
-         repository.updateTinhTrangSP(chiTietSP);
+    public void updateTinhTrangSP(List<String> listSerial) {
+         repository.updateTinhTrangSP(listSerial);
     }
 
     @Override
-    public void updateTTSPDangBan(BigDecimal gia) {
-        repository.updateTTSPDangBan(gia);
+    public List<ChiTietSPResponse> getAllCTSP(String ma, String ten, String cPU, String card, BigDecimal gia, String hang, String oCung, String ram) {
+        return repository.getAllCTSP(ma, ten, cPU, card, gia, hang, oCung, ram);
     }
 
     @Override
-    public List<ChiTietSPResponse> getAllCTSP(String cPU, String card, BigDecimal gia, String hang, String oCung, String ram) {
-        return repository.getAllCTSP(cPU, card, gia, hang, oCung, ram);
+    public void updateTinhTrang(ChiTietSP chiTietSP) {
+        repository.updateTinhTrang(chiTietSP);
     }
+
 }

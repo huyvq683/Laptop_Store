@@ -24,8 +24,9 @@ public class KhachHangReponse {
     private String ma;
     private String ten;
     private String sdt;
+    private int capBac;
 
     public Object[] toDataRow() {
-        return new Object[]{ma, ten, sdt};
+        return new Object[]{ma, ten, sdt, capBac};
     }
 }

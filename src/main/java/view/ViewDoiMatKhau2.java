@@ -6,7 +6,7 @@
 package view;
 
 import domainmodel.NhanVien;
-import domainmodel.TenTKNV;
+import domainmodel.Common;
 import java.awt.Color;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -194,7 +194,7 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
         } else if (!txtNhapLaiMatKhauMoi.getText().equals(txtMatKhauMoi.getText())) {
             JOptionPane.showMessageDialog(this, "Mật khẩu mới và xác nhận mật khẩu mới phải giống nhau");
         } else {
-            NhanVien nv = nhanVienServiceImpl.getOne(TenTKNV.tenNV.getEmail());
+            NhanVien nv = nhanVienServiceImpl.getOne(Common.tenNV.getEmail());
             if (nv == null) {
                 JOptionPane.showMessageDialog(this, "Email không tồn tại");
             } else if (!getMd5(txtMatKhauCu.getText()).equals(nv.getMatKhau())) {
@@ -218,13 +218,11 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
                 this.dispose();
                 JOptionPane.showMessageDialog(this, "Vui lòng đăng nhập lại!");
                 ViewQuanLy ql = new ViewQuanLy();
-                ql.setVisible(false);
+                ql.dispose();
                 ViewDangNhap dn = new ViewDangNhap();
                 dn.setVisible(true);
             }
         }
-
-
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
     private void lblMkcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMkcMouseClicked

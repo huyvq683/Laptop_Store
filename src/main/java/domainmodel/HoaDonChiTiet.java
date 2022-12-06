@@ -48,6 +48,9 @@ public class HoaDonChiTiet implements Serializable {
     @Column(name = "TenSP")
     private String tenSP;
     
+    @Column(name = "TienKM")
+    private BigDecimal tienKM;
+    
     @Column(name = "DonGia")
     private BigDecimal donGia;
     

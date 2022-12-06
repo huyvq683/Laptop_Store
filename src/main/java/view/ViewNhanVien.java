@@ -5,7 +5,7 @@
 package view;
 
 import domainmodel.NhanVien;
-import domainmodel.TenTKNV;
+import domainmodel.Common;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -270,7 +270,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
                 .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
                 .addComponent(btnChiTietNV, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -435,9 +435,9 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
     private void btnChiTietNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNVActionPerformed
         // TODO add your handling code here:
-        NhanVien nv = TenTKNV.tenNV;
-        DetailChiTietNV detailChiTietNV = new DetailChiTietNV(this, true, nv);
-        detailChiTietNV.setVisible(true);
+//        NhanVien nv = Common.tenNV;
+//        DetailChiTietNV detailChiTietNV = new DetailChiTietNV(this, true, nv);
+//        detailChiTietNV.setVisible(true);
     }//GEN-LAST:event_btnChiTietNVActionPerformed
 
     private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed

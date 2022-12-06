@@ -33,17 +33,16 @@ public interface ChiTietSPService {
     List<ChiTietSP> seatch(String ram);
 
     String checkInt(String gia);
+    
 
     List<ChiTietSPResponse> getAll();
 
     ChiTietSP getBySerialChiTietSP(String serial);
     
-    List<ChiTietSPResponse> getAllCTSP(String cPU, String card, BigDecimal gia, String hang, String oCung, String ram);
+    List<ChiTietSPResponse> getAllCTSP(String ma, String ten, String cPU, String card, BigDecimal gia, String hang, String oCung, String ram);
 
-    void updateTinhTrangSP(ChiTietSP chiTietSP, UUID id);
-
-    void updateTinhTrangSP(ChiTietSP chiTietSP);
-
-    void updateTTSPDangBan(BigDecimal gia);
+    void updateTinhTrangSP(List<String> listSerial);
+    
+    void updateTinhTrang(ChiTietSP chiTietSP);
 
 }

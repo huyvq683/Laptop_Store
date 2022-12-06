@@ -26,7 +26,7 @@ public class NhanVienRepository {
     
     public List<NhanVien> getAllPage(int row) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            String sql = fromTableNV+" ORDER BY Ma OFFSET :row ROW FETCH NEXT 10 ROWS ONLY";
+            String sql = fromTableNV +" ORDER BY LastModifiedDate DESC OFFSET :row ROW FETCH NEXT 10 ROWS ONLY";
             NativeQuery query = session.createNativeQuery(sql, NhanVien.class);
             query.setParameter("row", row);
             List<NhanVien> list = query.getResultList();
