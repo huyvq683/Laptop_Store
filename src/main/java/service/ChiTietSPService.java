@@ -44,5 +44,7 @@ public interface ChiTietSPService {
     void updateTinhTrangSP(List<String> listSerial);
     
     void updateTinhTrang(ChiTietSP chiTietSP);
+    
+    void updateTinhTrangChuaBan(List<String> listSerial);
 
 }

@@ -38,7 +38,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         initComponents();
         designImg();
         designMenu();
-//        CheckCapBacKH.dailyCheckingRankCustomer();
+        CheckCapBacKH.dailyCheckingRankCustomer();
         btnBanHang.setBackground(new Color(50, 159, 200));
         panelBanHang.removeAll();
         PanelBanHang pbh = new PanelBanHang();
@@ -47,8 +47,8 @@ public class ViewQuanLy extends javax.swing.JFrame {
         this.pack();
         pbh.setVisible(true);
         NhanVien nv = Common.tenNV;
-        lblMa.setText(nv.getHoTen());
-        lblTen.setText(nv.getMa());
+        lblMa.setText(nv.getMa());
+        lblTen.setText(nv.getHoTen());
         lblChucVu.setText(chucVu());
     }
 

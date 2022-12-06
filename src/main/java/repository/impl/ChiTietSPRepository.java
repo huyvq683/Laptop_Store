@@ -241,5 +241,23 @@ public class ChiTietSPRepository {
         }
         return check;
     }
+    
+    public boolean updateTinhTrangChuaBan(List<String> listSerial) {
+        boolean check = true;
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            for (String serial : listSerial) {
+                ChiTietSP chiTietSP = getBySerialChiTietSP(serial);
+                chiTietSP.setTinhTrang(0);
+                session.update(listSerial);
+            } 
+            transaction.commit();
+            check = true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check;
+    }
 
 }

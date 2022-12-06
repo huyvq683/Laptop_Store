@@ -9,6 +9,7 @@ import domainmodel.ChiTietSP;
 import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
 import domainmodel.KhuyenMai;
+import domainmodel.SanPhamKM;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class HoaDonChiTietRepository {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse "
-                    + "(c.id, c.idCTSP.id, c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.donGia) "
+                    + "(c.id, c.idCTSP.id, c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.donGia, c.idCTSP.serial) "
                     + "FROM HoaDonChiTiet c WHERE c.idHoaDon.id = :id ");
             query.setParameter("id", id);
             lists = query.getResultList();
@@ -100,16 +101,15 @@ public class HoaDonChiTietRepository {
         return ctsp;
     }
 
-    public KhuyenMai getKmByIdCTSP(UUID id) {
-        KhuyenMai khuyenMai = null;
+    public SanPhamKM getSanPhamKM(UUID id) {
+        SanPhamKM sanPhamKM = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("FROM KhuyenMai WHERE id = (SELECT idKhuyenMai FROM SanPhamKM WHERE idChiTietSP = :idChiTietSP)");
+            Query query = session.createQuery("FROM SanPhamKM WHERE idChiTietSP.id = :idChiTietSP");
             query.setParameter("idChiTietSP", id);
-            khuyenMai = (KhuyenMai) query.getSingleResult();
+            sanPhamKM = (SanPhamKM) query.getSingleResult();
         } catch (Exception e) {
-            e.printStackTrace();
         }
-        return khuyenMai;
+        return sanPhamKM;
     }
 
     public Boolean add(List<String> listSerial, HoaDon hd) {
@@ -120,10 +120,14 @@ public class HoaDonChiTietRepository {
             for (String serial : listSerial) {
                 HoaDonChiTiet hdct = new HoaDonChiTiet();
                 ChiTietSP ctsp = getCTSPBySerial(serial);
+                SanPhamKM sanPhamKM = getSanPhamKM(ctsp.getId());
+                if(sanPhamKM != null){
+                    tienKM = sanPhamKM.getDonGia().subtract(sanPhamKM.getTienConLai());
+                }
                 hdct.setIdHoaDon(hd);
                 hdct.setIdCTSP(ctsp);
                 hdct.setTenSP(ctsp.getIdSanPham().getTen());
-//                hdct.setTienKM(tienKM);
+                hdct.setTienKM(tienKM);
                 hdct.setDonGia(ctsp.getGia());
                 session.save(hdct);
             }
