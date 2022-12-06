@@ -19,7 +19,6 @@ import domainmodel.SanPham;
 import domainmodel.SanPhamKM;
 import domainmodel.SerialDaBan;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
