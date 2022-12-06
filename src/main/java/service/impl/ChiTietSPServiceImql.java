@@ -63,16 +63,16 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
 
     @Override
     public String add(ChiTietSP ctsp) {
-        if (validate(ctsp) != null) {
-            return validate(ctsp);
-        } else {
+//        if (validate(ctsp) != null) {
+//            return validate(ctsp);
+//        } else {
             Boolean add = repository.add(ctsp);
             if (add) {
                 return "Thêm thành công";
             } else {
                 return "Thêm không thành công";
             }
-        }
+//        }
 
     }
 

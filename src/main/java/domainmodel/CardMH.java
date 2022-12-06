@@ -63,6 +63,11 @@ public class CardMH implements Serializable {
         this.ma = ma;
         this.ten = ten;
     }
+
+    public CardMH(UUID id, String ten) {
+        this.id = id;
+        this.ten = ten;
+    }
     
 
     public String conVert(Date x) {
