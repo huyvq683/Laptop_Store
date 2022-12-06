@@ -169,7 +169,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1535, 850));
         setMinimumSize(new java.awt.Dimension(1535, 850));
-        setPreferredSize(new java.awt.Dimension(1535, 850));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -522,6 +521,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
         // TODO add your handling code here:
+        Common.webcam.close();
         panelBanHang.removeAll();
         PanelBanHang pbh = new PanelBanHang();
         panelBanHang.add(pbh);
@@ -830,6 +830,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     private void lblDoiMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMKMouseClicked
         // TODO add your handling code here:
+        Common.webcam.close();
         ViewDoiMatKhau2 dmk = new ViewDoiMatKhau2();
         dmk.setVisible(true);
         this.setVisible(false);
