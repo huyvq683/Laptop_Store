@@ -42,6 +42,7 @@ view\ViewNhanVien$4.class
 domainmodel\SerialDaBan.class
 service\KhachHangService.class
 view\PanelThongKe$6.class
+view\PanelThongKe$23.class
 view\ViewQuenMatKhau$5.class
 view\PanelThongKe$13.class
 repository\Repository.class
@@ -76,6 +77,7 @@ view\PanelThongKe$19.class
 view\ViewQuanLy$12.class
 service\NhanVienService.class
 service\ThongKeService.class
+view\PanelThongKe$24.class
 view\PanelHoaDon$5.class
 view\DetailChiTietNV.class
 view\ViewQuanLy$13.class
@@ -104,6 +106,7 @@ view\PanelSanPham$6.class
 view\ViewNhanVien$5.class
 domainmodel\KhuyenMai.class
 custommodel\HoaDonChiTietResponse.class
+view\PanelThongKe$22.class
 view\ViewQuenMatKhau$6.class
 view\ViewQuanLy$8.class
 custommodel\ThongKeBieuDoSP.class
@@ -159,6 +162,7 @@ utility\HibernateUtil.class
 view\PanelThongKe$9.class
 custommodel\HoaDonResponse.class
 domainmodel\ChiTietSP.class
+view\PanelThongKe$21.class
 service\impl\HoaDonServiceImpl.class
 view\PanelHoaDon$2.class
 view\PanelThongKe$3.class
