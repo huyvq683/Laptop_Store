@@ -47,6 +47,10 @@ public class NhanVienServiceImpl implements NhanVienService {
 
     @Override
     public String addOrUpdate(NhanVien nhanVien) {
+        NhanVien nv = nhanVienRepository.getOne(nhanVien.getEmail());
+        if (nv != null) {
+            return "Nhân viên mang email "+nhanVien.getEmail()+" đã tồn tại!!";
+        }
         if (nhanVien.getMa().isEmpty()) {
             return "Vui lòng nhập mã!!";
         } else if (nhanVien.getHoTen().isEmpty()) {

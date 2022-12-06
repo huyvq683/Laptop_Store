@@ -51,15 +51,31 @@ public class KhachHang implements Serializable {
     @Column(name = "Email")
     private String email;
 
+    @Column(name = "CapBac")
+    private int capBac;
+
     @Column(name = "CreatedDate")
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
 
+    public String capBac() {
+        if (capBac == 0) {
+            return "Đồng";
+        } else if (capBac == 1) {
+            return "Bạc";
+        } else if (capBac == 2) {
+            return "Vàng";
+        } else if (capBac == 3) {
+            return "Kim Cương";
+        }
+        return null;
+    }
+
     public Object[] toDataRow() {
         return new Object[]{
-            ma, hoTen, sdt, email, diaChi
+            ma, hoTen, sdt, email, diaChi, capBac()
         };
     }
 }

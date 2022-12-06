@@ -175,7 +175,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         
         List<ChiTietSPResponse>lists = new ArrayList<>();
         lists = chiTietSPService.getAllCTSP(ma, ten, cPU, card, gia, hang, oCung, ram);
-        JOptionPane.showMessageDialog(this, listChiTietSP.size());
         showDataTableCTSP(lists);
         
         ViewSerial.setVisible(true);
@@ -1009,6 +1008,8 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         NhanVien nhanVien = nhanVienService.getOne(Common.tenNV.getEmail());
         hoaDon.setIdNV(nhanVien);
         hoaDon.setTinhTrang(0);
+        hoaDon.setCreatedDate(new Date());
+        hoaDon.setLastModifiedDate(new Date());
         JOptionPane.showMessageDialog(this, hoaDonService.add(hoaDon));
         listHoaDon = hoaDonService.getAll(Common.tenNV);
         showDataHoaDonTable(listHoaDon);
@@ -1061,7 +1062,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         hoaDon.setNgayTao(hd.getNgayTao());
         hoaDon.setIdNV(Common.tenNV);
         hoaDon.setHinhThuc((int) cbbHinhThuc.getSelectedIndex());
-        hoaDon.setTienKhacTra(new BigDecimal(txtTienKhachDua.getText()));
+        hoaDon.setTienKhachTra(new BigDecimal(txtTienKhachDua.getText()));
         hoaDon.setTienCK(new BigDecimal(txtTienCK.getText()));
         hoaDon.setTienThua(new BigDecimal(txtTienTraLai.getText()));
         hoaDon.setTongTien(new BigDecimal(txtTongTien.getText()));

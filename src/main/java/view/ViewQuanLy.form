@@ -100,14 +100,9 @@
                                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblMa" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
-                                                  <Component id="lblTen" min="-2" pref="189" max="-2" attributes="0"/>
-                                                  <Component id="lblChucVu" min="-2" pref="189" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <Component id="lblMa" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
+                                          <Component id="lblTen" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
+                                          <Component id="lblChucVu" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -136,9 +131,9 @@
                       <Component id="lblTen" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Component id="lblChucVu" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblDoiMK" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       <Component id="btnBanHang" min="-2" pref="50" max="-2" attributes="0"/>
