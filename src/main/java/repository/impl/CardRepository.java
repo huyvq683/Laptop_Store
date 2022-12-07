@@ -22,8 +22,8 @@ public class CardRepository {
     public List<CardMH> getAll() {
         List<CardMH> lists = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From CardMH");
-            lists = query.getResultList();
+            Query query = session.createQuery("From CardMH ORDER BY Ma DESC");
+            lists = query.getResultList(); 
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }

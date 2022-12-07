@@ -21,7 +21,7 @@ public class OCungRepository {
         public List<OCung> getAll() {
         List<OCung> lists = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From OCung");
+            Query query = session.createQuery("From OCung ORDER BY Ma DESC");
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);

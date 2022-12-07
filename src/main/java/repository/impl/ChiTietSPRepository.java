@@ -30,7 +30,7 @@ public class ChiTietSPRepository {
     public List<ChiTietSP> getAllChiTietSP() {
         List<ChiTietSP> listCTSP = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From ChiTietSP ORDER BY createdDate DESC");
+            Query query = session.createQuery("From ChiTietSP ORDER BY MaCTSP DESC");
             listCTSP = query.getResultList();
         } catch (Exception e) {
         }
@@ -39,7 +39,7 @@ public class ChiTietSPRepository {
 
     public List<ChiTietSP> getOneGia(String gia1, String gia2) {
         List<ChiTietSP> listctsp = new ArrayList<>();
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery(" FROM ChiTietSP  WHERE Gia BETWEEN :gia1 AND :gia2");
             query.setParameter("gia1", gia1);
             query.setParameter("gia2", gia2);
@@ -54,7 +54,7 @@ public class ChiTietSPRepository {
     private Session session = HibernateUtil.getFACTORY().openSession();
 
     public ChiTietSP getOne(String seriall) {
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery(" SELECT new ChiTietSP (ct.id , ct.serial) FROM ChiTietSP ct WHERE Serial = :serial ");
             query.setParameter("serial", seriall);
             ChiTietSP ctsp = (ChiTietSP) query.getSingleResult();
@@ -65,7 +65,7 @@ public class ChiTietSPRepository {
     }
 
     public static void main(String[] args) {
-        List<ChiTietSP> ct = (List<ChiTietSP>) new ChiTietSPRepository().searchSP("LapTop1");
+        List<ChiTietSP> ct = (List<ChiTietSP>) new ChiTietSPRepository().getAllChiTietSP();
         for (ChiTietSP x : ct) {
             System.out.println(x.toString());
         }
@@ -73,7 +73,7 @@ public class ChiTietSPRepository {
 
     public Boolean add(ChiTietSP ctsp) {
         Transaction transantion = null;
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transantion = session.beginTransaction();
             session.save(ctsp);
             transantion.commit();
@@ -109,7 +109,7 @@ public class ChiTietSPRepository {
 
     public Boolean delete(ChiTietSP ctsp, UUID id) {
         Transaction transaction = null;
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             ChiTietSP ctSP = session.get(ChiTietSP.class, id);
             session.delete(ctSP);
@@ -123,8 +123,8 @@ public class ChiTietSPRepository {
 
     public List<ChiTietSP> search(String searchKey) {
         List<ChiTietSP> listCTSP = new ArrayList<>();
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From ChiTietSP WHERE Serial like concat (:searchKey,'%') OR CPU like concat (:searchKey,'%') OR Hang like concat (:searchKey,'%') OR Ram like concat (:searchKey,'%') OR CardMH like concat (:searchKey,'%') OR OCung like concat (:searchKey,'%') OR Gia like concat (:searchKey,'%') OR IdSanPham like concat (:searchKey,'%')");
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("From ChiTietSP WHERE Serial like concat (:searchKey,'%') OR IdCPU like concat (:searchKey,'%') OR IdSanPham like concat (:searchKey,'%') OR IdRam like concat (:searchKey,'%') OR IdCardMH like concat (:searchKey,'%') OR IdOCung like concat (:searchKey,'%') OR Gia like concat (:searchKey,'%') OR IdHang like concat (:searchKey,'%')");
             query.setParameter("searchKey", searchKey);
             listCTSP = query.getResultList();
             return listCTSP;
@@ -221,7 +221,7 @@ public class ChiTietSPRepository {
     }
     public CardMH findTenCard(String ten) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery(" SELECT new CardMH (s.id , s.ten) FROM CardMH s WHERE Ten =:ten ", CPU.class);
+            Query query = session.createQuery(" SELECT new CardMH (s.id , s.ten) FROM CardMH s WHERE Ten =:ten ", CardMH.class);
             query.setParameter("ten", ten);
             CardMH sp = (CardMH) query.getSingleResult();
             return sp;
@@ -231,7 +231,7 @@ public class ChiTietSPRepository {
     }
     public Hang findTenHang(String ten) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery(" SELECT new Hang (s.id , s.ten) FROM Hang s WHERE Ten =:ten ", CPU.class);
+            Query query = session.createQuery(" SELECT new Hang (s.id , s.ten) FROM Hang s WHERE Ten =:ten ", Hang.class);
             query.setParameter("ten", ten);
             Hang sp = (Hang) query.getSingleResult();
             return sp;
@@ -241,7 +241,7 @@ public class ChiTietSPRepository {
     }
     public Ram findTenRam(String ten) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery(" SELECT new Ram (s.id , s.ten) FROM Ram s WHERE Ten =:ten ", CPU.class);
+            Query query = session.createQuery(" SELECT new Ram (s.id , s.ten) FROM Ram s WHERE Ten =:ten ", Ram.class);
             query.setParameter("ten", ten);
             Ram sp = (Ram) query.getSingleResult();
             return sp;
@@ -251,9 +251,19 @@ public class ChiTietSPRepository {
     }
     public OCung findTenOCung(String ten) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery(" SELECT new OCung (s.id , s.ten) FROM OCung s WHERE Ten =:ten ", CPU.class);
+            Query query = session.createQuery(" SELECT new OCung (s.id , s.ten) FROM OCung s WHERE Ten =:ten ", OCung.class);
             query.setParameter("ten", ten);
             OCung sp = (OCung) query.getSingleResult();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public ChiTietSP findSerial(String soSerial) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery(" SELECT new ChiTietSP (s.id ,s.serial) FROM ChiTietSP s WHERE Serial =:serial ", ChiTietSP.class);
+            query.setParameter("serial", soSerial);
+            ChiTietSP sp = (ChiTietSP) query.getSingleResult();
             return sp;
         } catch (Exception e) {
         }
@@ -392,5 +402,7 @@ public class ChiTietSPRepository {
         }
         return check;
     }
+
+
 
 }

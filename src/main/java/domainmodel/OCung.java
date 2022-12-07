@@ -65,13 +65,13 @@ public class OCung implements Serializable {
         this.ten = ten;
     }
 
-    public OCung(UUID id) {
-        this.id = id;
-    }
-
     public OCung(UUID id, String ten) {
         this.id = id;
         this.ten = ten;
+    }
+
+    public OCung(UUID id) {
+        this.id = id;
     }
         
 }
