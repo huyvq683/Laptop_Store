@@ -360,29 +360,29 @@ public class PanelKhachHang extends javax.swing.JPanel {
     private void tbKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKhachHangMouseClicked
         // Click
         fillData(tbKhachHang.getSelectedRow());
-        int x;
+        BigDecimal x;
         int row = tbKhachHang.getSelectedRow();
         KhachHang kh = listKH.get(row);
         BigDecimal tienKhachMua = (BigDecimal) new KhachHangServiceImpl().getTongTienByIDHD(kh.getId());
         if (tienKhachMua != null) {
             if (kh.getCapBac() == 0) {
-                x = tienKhachMua.intValue() / 15000000 * 100;
-                proCapBac.setValue(x);
+                x = (tienKhachMua.divide(new BigDecimal(30000000))).multiply(new BigDecimal(100));
+                proCapBac.setValue(x.intValue());
                 lblCapBac.setText("");
                 lblCapBac.setIcon(new ImageIcon(""));
             } else if (kh.getCapBac() == 1) {
-                x = tienKhachMua.intValue() / 30000000 * 100;
-                proCapBac.setValue(x);
+                x = (tienKhachMua.divide(new BigDecimal(60000000))).multiply(new BigDecimal(100));
+                proCapBac.setValue(x.intValue());
                 lblCapBac.setText("Đồng");
                 lblCapBac.setIcon(new ImageIcon("src/main/img/dong.png"));
             } else if (kh.getCapBac() == 2) {
-                x = tienKhachMua.intValue() / 50000000 * 100;
-                proCapBac.setValue(x);
+                x = (tienKhachMua.divide(new BigDecimal(90000000))).multiply(new BigDecimal(100));
+                proCapBac.setValue(x.intValue());
                 lblCapBac.setText("Bạc");
                 lblCapBac.setIcon(new ImageIcon("src/main/img/bac.png"));
             } else if (kh.getCapBac() == 3) {
-                x = tienKhachMua.intValue() / 100000000 * 100;
-                proCapBac.setValue(x);
+                x = (tienKhachMua.divide(new BigDecimal(120000000))).multiply(new BigDecimal(100));
+                proCapBac.setValue(x.intValue());
                 lblCapBac.setText("Vàng");
                 lblCapBac.setIcon(new ImageIcon("src/main/img/vang.png"));
             } else {
