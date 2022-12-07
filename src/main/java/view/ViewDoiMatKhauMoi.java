@@ -90,6 +90,7 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đổi mật khẩu");
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(406, 278));
         setResizable(false);
 
@@ -243,8 +244,6 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
                     .addComponent(btnQuayLai))
                 .addGap(26, 26, 26))
         );
-
-        getAccessibleContext().setAccessibleName("Đổi mật khẩu");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
