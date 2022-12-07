@@ -27,5 +27,7 @@ public interface HoaDonChiTietService {
     void delete(UUID id);
     
     void addOne(HoaDonChiTiet hoaDonChiTiet);
+    
+    void deleteHDCT(List<String> listSerial);
 
 }

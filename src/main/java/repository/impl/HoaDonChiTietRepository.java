@@ -8,7 +8,6 @@ import custommodel.HoaDonChiTietResponse;
 import domainmodel.ChiTietSP;
 import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
-import domainmodel.KhuyenMai;
 import domainmodel.SanPhamKM;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import java.util.List;
 import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import utility.HibernateUtil;
 
@@ -114,14 +112,14 @@ public class HoaDonChiTietRepository {
 
     public Boolean add(List<String> listSerial, HoaDon hd) {
         Transaction tran = null;
-         BigDecimal tienKM = new BigDecimal(0);
+        BigDecimal tienKM = new BigDecimal(0);
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             tran = session.beginTransaction();
             for (String serial : listSerial) {
                 HoaDonChiTiet hdct = new HoaDonChiTiet();
                 ChiTietSP ctsp = getCTSPBySerial(serial);
                 SanPhamKM sanPhamKM = getSanPhamKM(ctsp.getId());
-                if(sanPhamKM != null){
+                if (sanPhamKM != null) {
                     tienKM = sanPhamKM.getDonGia().subtract(sanPhamKM.getTienConLai());
                 }
                 hdct.setIdHoaDon(hd);
@@ -149,5 +147,43 @@ public class HoaDonChiTietRepository {
             e.printStackTrace(System.out);
         }
         return check;
+    }
+
+    public HoaDonChiTiet getHDCTByIdChiTietSP(UUID id) {
+        HoaDonChiTiet hoaDonChiTiet = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("FROM HoaDonChiTiet WHERE idCTSP.id = :id");
+            query.setParameter("id", id);
+            hoaDonChiTiet = (HoaDonChiTiet) query.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return hoaDonChiTiet;
+    }
+
+    public boolean deleteHDCT(List<String> listSerial) {
+        boolean check = true;
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            for (String serial : listSerial) {
+                ChiTietSP chiTietSP = getCTSPBySerial(serial);
+                HoaDonChiTiet hoaDonChiTiet = getHDCTByIdChiTietSP(chiTietSP.getId());
+                session.delete(hoaDonChiTiet);
+            }
+            transaction.commit();
+            check = true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check;
+    }
+    
+    public static void main(String[] args) {
+        List<String>listSerial = new ArrayList<>();
+        listSerial.add("579123");
+        listSerial.add("135789");   
+        boolean delete = new HoaDonChiTietRepository().deleteHDCT(listSerial);
+        System.out.println(delete);
     }
 }

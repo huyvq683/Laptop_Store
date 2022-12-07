@@ -12,7 +12,6 @@ import domainmodel.Hang;
 import domainmodel.OCung;
 import domainmodel.Ram;
 import domainmodel.SanPham;
-import domainmodel.KhuyenMai;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -384,7 +383,7 @@ public class ChiTietSPRepository {
             for (String serial : listSerial) {
                 ChiTietSP chiTietSP = getBySerialChiTietSP(serial);
                 chiTietSP.setTinhTrang(0);
-                session.update(listSerial);
+                session.update(chiTietSP);
             } 
             transaction.commit();
             check = true;
