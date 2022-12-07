@@ -6,6 +6,7 @@ package view;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+import com.raven.chart.ModelChart;
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.awt.Color;
@@ -76,6 +77,17 @@ public class PanelThongKe extends javax.swing.JPanel {
         showDataSP(dateFor.format(date));
         showDataDoanhThu(dateFor.format(date));
         start();
+//        getContentPane().setBackground(new Color(250, 250, 250));
+        chart.addLegend("Income", new Color(245, 189, 135));
+        chart.addLegend("Expense", new Color(135, 189, 245));
+        chart.addLegend("Profit", new Color(189, 135, 245));
+        chart.addLegend("Cost", new Color(139, 229, 222));
+        chart.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
+        chart.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
+        chart.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
+        chart.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
+        chart.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
+        chart.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
         // serviceThongKe.getAllDoanhThuYearDB(1, nam, panelHienBieuDo);
     }
 
@@ -405,6 +417,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         panelHienBieuDo = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        chart = new com.raven.chart.Chart();
         jLabel9 = new javax.swing.JLabel();
         lbChonBD = new javax.swing.JLabel();
         cbbBieuDoChonThang = new javax.swing.JComboBox<>();
@@ -946,6 +959,11 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap(1048, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(91, 91, 91))
+            .addGroup(panelHienBieuDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHienBieuDoLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(chart, javax.swing.GroupLayout.DEFAULT_SIZE, 1127, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         panelHienBieuDoLayout.setVerticalGroup(
             panelHienBieuDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -953,6 +971,11 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel5)
                 .addContainerGap(452, Short.MAX_VALUE))
+            .addGroup(panelHienBieuDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelHienBieuDoLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(chart, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         jLabel9.setText("Biểu đồ doanh thu");
@@ -1498,6 +1521,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbbLoaiThoiGianBD;
     private javax.swing.JComboBox<String> cbbThangDoanhThu;
     private javax.swing.JComboBox<String> cbbThangNam;
+    private com.raven.chart.Chart chart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

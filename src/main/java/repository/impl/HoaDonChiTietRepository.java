@@ -28,9 +28,9 @@ public class HoaDonChiTietRepository {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse "
-                    + "(c.idHoaDon.id, c.idCTSP.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
+                    + "(c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
                     + "FROM HoaDonChiTiet c WHERE c.idHoaDon.id = :id "
-                    + "GROUP BY c.idHoaDon.id, c.idCTSP.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
+                    + "GROUP BY c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
             query.setParameter("id", id);
             lists = query.getResultList();
         } catch (Exception e) {
@@ -178,12 +178,5 @@ public class HoaDonChiTietRepository {
         }
         return check;
     }
-    
-    public static void main(String[] args) {
-        List<String>listSerial = new ArrayList<>();
-        listSerial.add("579123");
-        listSerial.add("135789");   
-        boolean delete = new HoaDonChiTietRepository().deleteHDCT(listSerial);
-        System.out.println(delete);
-    }
+
 }

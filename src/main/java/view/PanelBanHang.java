@@ -1097,8 +1097,9 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
-//        String sdt = txtSDT.getText();
-//        KhachHang khachHang = khachHangService.getIdKhachHang(sdt);
+        int rowKH = tbHienThi.getSelectedRow();
+        KhachHangReponse kh = listKH.get(rowKH);
+        KhachHang khachHang = khachHangService.getIdKhachHang(kh.getId());
         int row = tbHoaDon.getSelectedRow();
         HoaDonResponse hd = listHoaDon.get(row);
         HoaDon hoaDon = new HoaDon();
@@ -1112,7 +1113,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         hoaDon.setTienThua(new BigDecimal(txtTienTraLai.getText()));
         hoaDon.setTongTien(new BigDecimal(txtTongTien.getText()));
         hoaDon.setTinhTrang(1);
-//        hoaDon.setIdKH(khachHang);
+        hoaDon.setIdKH(khachHang);
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon));
         listHoaDon = hoaDonService.getAll(Common.tenNV);
         showDataHoaDonTable(listHoaDon);
@@ -1182,7 +1183,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
         hoaDonChiTietService.deleteHDCT(listSeral);
         showDataTableHDCT(hoaDonResponse.getId());
-        
+
         showDataTableGioHang(hoaDonResponse.getId());
 
         chiTietSPService.updateTinhTrangChuaBan(listSeral);
@@ -1202,23 +1203,21 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
     private void cbChonTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChonTatCaActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < tbSerial.getRowCount(); i++) {
-            if(cbChonTatCa.isSelected()){
+            if (cbChonTatCa.isSelected()) {
                 tbSerial.setValueAt(true, i, 0);
-            }
-            else{
+            } else {
                 tbSerial.setValueAt(false, i, 0);
             }
-            
+
         }
     }//GEN-LAST:event_cbChonTatCaActionPerformed
 
     private void cbXoaHetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbXoaHetActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < tbHDCT.getRowCount(); i++) {
-            if(cbXoaHet.isSelected()){
+            if (cbXoaHet.isSelected()) {
                 tbHDCT.setValueAt(true, i, 0);
-            }
-            else{
+            } else {
                 tbHDCT.setValueAt(false, i, 0);
             }
         }
@@ -1330,13 +1329,9 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                     chiTietSPService.updateTinhTrang(chiTietSP);
                     listChiTietSP = chiTietSPService.getAll();
                     showDataTableSanPham(listChiTietSP);
-                    HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-                    hoaDonChiTiet.setIdCTSP(chiTietSP);
-                    hoaDonChiTiet.setIdHoaDon(idHoaDon);
-                    hoaDonChiTiet.setTenSP(chiTietSP.getIdSanPham().getTen());
-                    hoaDonChiTiet.setTienKM(new BigDecimal(0));
-                    hoaDonChiTiet.setDonGia(chiTietSP.getGia());
-                    hoaDonChiTietService.addOne(hoaDonChiTiet);
+                    List<String> listSeral = new ArrayList<>();
+                    listSeral.add(serial);
+                    hoaDonChiTietService.add(listSeral, idHoaDon);
                     showDataTableGioHang(hoaDonResponse.getId());
                 } catch (Exception e) {
                 }
