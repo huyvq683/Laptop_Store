@@ -20,13 +20,14 @@ import utility.HibernateUtil;
 public class NhanVienRepository {
 
     private String fromTable = "FROM NhanVien";
-    private String fromTableNV = "SELECT * FROM NhanVien";
 
     private Session session = HibernateUtil.getFACTORY().openSession();
     
     public List<NhanVien> getAllPage(int row) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            String sql = fromTableNV +" ORDER BY LastModifiedDate DESC OFFSET :row ROW FETCH NEXT 10 ROWS ONLY";
+            String sql = "SELECT nv.id, nv.ma, nv.hoTen, nv.gioiTinh, nv.ngaySinh, nv.diaChi, nv.sdt, nv.email, nv.chucVu, nv.matKhau, nv.trangThai, nv.createdDate, nv.lastModifiedDate "
+                    + " FROM NhanVien nv GROUP BY nv.id, nv.ma, nv.hoTen, nv.gioiTinh, nv.ngaySinh, nv.diaChi, nv.sdt, nv.email, nv.chucVu, nv.matKhau, nv.trangThai, nv.createdDate, nv.lastModifiedDate "
+                    + " ORDER BY MAX(CONVERT(INT, SUBSTRING(ma, 3, 10))) DESC OFFSET :row ROW FETCH NEXT 10 ROWS ONLY";
             NativeQuery query = session.createNativeQuery(sql, NhanVien.class);
             query.setParameter("row", row);
             List<NhanVien> list = query.getResultList();
@@ -35,6 +36,10 @@ public class NhanVienRepository {
             e.printStackTrace(System.out);
         }
         return null;
+    }
+    public static void main(String[] args) {
+        List<NhanVien> list = new NhanVienRepository().getAllPage(0);
+        System.out.println(list);
     }
 
     public NhanVien getOne(String email) {
