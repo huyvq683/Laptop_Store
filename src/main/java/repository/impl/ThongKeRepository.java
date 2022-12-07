@@ -315,7 +315,7 @@ public class ThongKeRepository {
         String tong = null;
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             NativeQuery query = session.createNativeQuery("SELECT SUM(hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang= 1 AND (day(sr.createdDate) =:daa AND Month(hd.createdDate) =:aaa AND Year(hd.createdDate) =:bbb)");
+                    + " WHERE hd.tinhTrang= 1 AND (day(hd.createdDate) =:daa AND Month(hd.createdDate) =:aaa AND Year(hd.createdDate) =:bbb)");
             query.setParameter("daa", ngay);
             query.setParameter("aaa", thang);
             query.setParameter("bbb", nam);
