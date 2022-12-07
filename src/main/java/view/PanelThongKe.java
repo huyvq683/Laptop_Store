@@ -16,7 +16,6 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -1123,7 +1122,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                         if (listDT.size() > 0) {
                             JOptionPane.showMessageDialog(this, "Lọc thành công");
                         } else {
-                            JOptionPane.showMessageDialog(this, "Không có sản phẩm nào");
+                            JOptionPane.showMessageDialog(this, "Không có hóa đơn nào");
 
                         }
                     } catch (ParseException ex) {

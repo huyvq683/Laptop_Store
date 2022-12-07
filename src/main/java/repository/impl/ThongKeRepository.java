@@ -1,7 +1,5 @@
 package repository.impl;
 
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -34,20 +32,25 @@ public class ThongKeRepository {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
                     + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
                     + " WHERE hd.tinhTrang = 1 AND hd.createdDate =:date ORDER BY hd.ma ASC");
-            query.setParameter("date", n);
+            query.setParameter("date", "2022/12/7");
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
             // e.printStackTrace(System.out);
         }
         return getAllDoanhThu;
     }
-
+    public static void main(String[] args) {
+        List<ThongKeDoanhThuRespone>li = new ThongKeRepository().getAllDoanhThu(new Date());
+        for (ThongKeDoanhThuRespone x : li) {
+            System.out.println(x);
+        }
+    }
     public List<ThongKeDoanhThuRespone> getAllDoanhThuKhoangNgay(Date n, Date kt) {
         List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
                     + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang = 1 AND hd.createdDate >=:date AND hd.createdDate <=: kt ORDER BY hd.ma ASC");
+                    + " WHERE hd.tinhTrang = 1 AND (hd.createdDate >=:date AND hd.createdDate <=: kt) ORDER BY hd.ma ASC");
             query.setParameter("date", n);
             query.setParameter("kt", kt);
             getAllDoanhThu = query.getResultList();
@@ -62,7 +65,7 @@ public class ThongKeRepository {
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
                     + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang = 1 AND Day(hd.createdDate) =:ab Month(hd.createdDate) =:mot AND Year(hd.createdDate) =:yea ORDER BY hd.ma ASC");
+                    + " WHERE hd.tinhTrang = 1 AND (Day(hd.createdDate) =:ab Month(hd.createdDate) =:mot AND Year(hd.createdDate) =:yea) ORDER BY hd.ma ASC");
             query.setParameter("ab", ngay);
             query.setParameter("mot", thang);
             query.setParameter("yea", nam);
@@ -78,7 +81,7 @@ public class ThongKeRepository {
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
                     + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang = 1 AND Month(hd.createdDate) =:mot AND Year(hd.createdDate) =:yea ORDER BY hd.ma ASC");
+                    + " WHERE hd.tinhTrang = 1 AND (Month(hd.createdDate) =:mot AND Year(hd.createdDate) =:yea) ORDER BY hd.ma ASC");
             query.setParameter("mot", thang);
             query.setParameter("yea", nam);
             getAllDoanhThu = query.getResultList();
@@ -281,44 +284,28 @@ public class ThongKeRepository {
         return 0;
     }
 
-// bieu do
-    public List<ThongKeBieuDoHD> getBieuDoDTMonth(int thang, int nam) {
-        List<ThongKeBieuDoHD> getAllDoanhThu = new ArrayList<>();
-        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("SELECT new custommodel.ThongKeBieuDoHD"
-                    + "(hd.createdDate , SUM(hd.tongTien)) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang = 1 AND Month(hd.createdDate) =:mot AND Year(hd.createdDate) =:yea GROUP BY hd.createdDate");
-            query.setParameter("mot", thang);
-            query.setParameter("yea", nam);
-            getAllDoanhThu = query.getResultList();
-        } catch (Exception e) {
-            // e.printStackTrace(System.out);
-        }
-        return getAllDoanhThu;
-    }
-
-    public List<ThongKeBieuDoSP> getBieuDoSPMonth(int thang, int nam) {
-        List<ThongKeBieuDoSP> getAllSanPham = new ArrayList<>();
-        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("SELECT new custommodel.ThongKeBieuDoSP "
-                    + "	(ctsp.createdDate, COUNT(*) as SoLuong) FROM ChiTietSP ctsp"
-                    + " WHERE ctsp.tinhTrang = 1 AND Month(ctsp.createdDate) =:mot AND Year(ctsp.createdDate) =:yea GROUP BY ctsp.createdDate");
-            query.setParameter("mot", thang);
-            query.setParameter("yea", nam);
-            getAllSanPham = query.getResultList();
-        } catch (Exception e) {
-            // e.printStackTrace(System.out);
-        }
-        return getAllSanPham;
-    }
 //biểu đồ tháng doanhthu
-
     public String getAllDoanhThuMonthDB(int ngay, int thang, int nam) {
         String tong = null;
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             NativeQuery query = session.createNativeQuery("SELECT SUM(hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang= 1 AND (day(hd.createdDate) =:daa AND Month(hd.createdDate) =:aaa AND Year(hd.createdDate) =:bbb)");
+                    + " WHERE hd.tinhTrang= 1 AND (day(hd.createdDate) =:daa AND Month(hd.createdDate) =:aaa AND Year(hd.createdDate) =:bbb) GROUP BY hd.createdDate");
             query.setParameter("daa", ngay);
+            query.setParameter("aaa", thang);
+            query.setParameter("bbb", nam);
+            tong = query.getSingleResult().toString();
+            return tong;
+        } catch (Exception e) {
+            //e.printStackTrace(System.out);
+        }
+        return "0";
+    }
+
+    public String getAllDoanhThuYearDB(int thang, int nam) {
+        String tong = null;
+        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
+            NativeQuery query = session.createNativeQuery("SELECT SUM(hd.tongTien) FROM HoaDon hd"
+                    + " WHERE hd.tinhTrang= 1 AND ( Month(hd.createdDate) =:aaa AND Year(hd.createdDate) =:bbb) GROUP BY hd.createdDate");
             query.setParameter("aaa", thang);
             query.setParameter("bbb", nam);
             tong = query.getSingleResult().toString();
@@ -333,7 +320,8 @@ public class ThongKeRepository {
         String tong = null;
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             NativeQuery query = session.createNativeQuery("SELECT COUNT(*) FROM ChiTietSP ctsp"
-                    + " WHERE ctsp.tinhTrang = 1 AND Day(ctsp.createdDate) =:daa AND Month(ctsp.createdDate) =:mot AND Year(ctsp.createdDate) =:yea GROUP BY ctsp.createdDate");
+                    + " WHERE ctsp.tinhTrang = 1 AND Day(ctsp.createdDate) =:daa AND Month(ctsp.createdDate) =:mot AND Year(ctsp.createdDate) =:yea "
+                    + " GROUP BY ctsp.createdDate");
             query.setParameter("daa", ngay);
             query.setParameter("mot", thang);
             query.setParameter("yea", nam);
@@ -344,26 +332,13 @@ public class ThongKeRepository {
         }
         return "0";
     }
-    public String getAllDoanhThuYearDB(int thang, int nam) {
-        String tong = null;
-        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
-            NativeQuery query = session.createNativeQuery("SELECT SUM(hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang= 1 AND ( Month(hd.createdDate) =:aaa AND Year(hd.createdDate) =:bbb)");
-            query.setParameter("aaa", thang);
-            query.setParameter("bbb", nam);
-            tong = query.getSingleResult().toString();
-            return tong;
-        } catch (Exception e) {
-            //e.printStackTrace(System.out);
-        }
-        return "0";
-    }
 
     public String getAllSanPhamYearDB(int thang, int nam) {
         String tong = null;
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             NativeQuery query = session.createNativeQuery("SELECT COUNT(*) FROM ChiTietSP ctsp"
-                    + " WHERE ctsp.tinhTrang = 1 AND Month(ctsp.createdDate) =:mot AND Year(ctsp.createdDate) =:yea GROUP BY ctsp.createdDate");
+                    + " WHERE ctsp.tinhTrang = 1 AND (Month(ctsp.createdDate) =:mot AND Year(ctsp.createdDate) =:yea) "
+                    + " GROUP BY ctsp.createdDate");
             query.setParameter("mot", thang);
             query.setParameter("yea", nam);
             tong = query.getSingleResult().toString();
