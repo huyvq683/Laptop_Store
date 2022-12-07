@@ -32,6 +32,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -47,6 +48,7 @@ import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -137,6 +139,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnPrevious = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
+        btnDowloadTemplate = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1300, 850));
@@ -508,6 +511,17 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             }
         });
 
+        btnDowloadTemplate.setBackground(new java.awt.Color(41, 183, 212));
+        btnDowloadTemplate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnDowloadTemplate.setForeground(new java.awt.Color(255, 255, 255));
+        btnDowloadTemplate.setIcon(new ImageIcon("src/main/img/download.png"));
+        btnDowloadTemplate.setToolTipText("Tải template mẫu");
+        btnDowloadTemplate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDowloadTemplateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnDanhSachNVLayout = new javax.swing.GroupLayout(pnDanhSachNV);
         pnDanhSachNV.setLayout(pnDanhSachNVLayout);
         pnDanhSachNVLayout.setHorizontalGroup(
@@ -521,6 +535,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDowloadTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -534,7 +550,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(358, Short.MAX_VALUE))
         );
         pnDanhSachNVLayout.setVerticalGroup(
             pnDanhSachNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -546,7 +562,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnDanhSachNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDowloadTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -947,6 +964,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         listNV = nhanVienServiceImpl.getAllPage(0);
+        page = 0;
         showData(listNV);
     }//GEN-LAST:event_btnFirstActionPerformed
 
@@ -969,9 +987,57 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
-        listNV = nhanVienServiceImpl.getAllPage(list.size() - 10);
+        page = list.size() - (list.size() % 10);
+        listNV = nhanVienServiceImpl.getAllPage(page);
         showData(listNV);
     }//GEN-LAST:event_btnLastActionPerformed
+
+    private void btnDowloadTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDowloadTemplateActionPerformed
+        // TODO add your handling code here:
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet spreadsheet = workbook.createSheet("NhanVien");
+
+            XSSFRow row = null;
+            Cell cell = null;
+
+            Font headerFont = workbook.createFont();
+            headerFont.setBold(true);
+            headerFont.setFontHeightInPoints((short) 10);
+            headerFont.setColor(IndexedColors.RED.getIndex());
+            CellStyle headerCellStyle = workbook.createCellStyle();
+            headerCellStyle.setFont(headerFont);
+
+            row = spreadsheet.createRow((short) 0);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("Tên");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Giới tính");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("Ngày sinh");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Địa chỉ");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(4, CellType.STRING);
+            cell.setCellValue("Số ĐT");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(5, CellType.STRING);
+            cell.setCellValue("Email");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(6, CellType.STRING);
+            cell.setCellValue("Chức vụ");
+            cell.setCellStyle(headerCellStyle);
+            FileOutputStream out = new FileOutputStream(new File("D:/ImportNhanVien.xlsx"));
+            workbook.write(out);
+            out.close();
+            JOptionPane.showMessageDialog(this, "Template mẫu được lưu tại ổ D");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Tải thất bại");
+        }
+    }//GEN-LAST:event_btnDowloadTemplateActionPerformed
     private String convertDate(Date ngaySinh) {
         String date;
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -1020,24 +1086,18 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         List<NhanVien> listNVien = new ArrayList<>();
         try {
             FileInputStream file = new FileInputStream(new File(fileName));
-            // Khởi tạo workbook cho tệp xlsx 
-            XSSFWorkbook workbook = new XSSFWorkbook(file);
-            // Lấy worksheet đầu tiên trong workbook
+            Workbook workbook = new XSSFWorkbook(file);
             Sheet worksheet = workbook.getSheetAt(0);
-            // Duyệt qua từng row
-            for (Row row : worksheet) {
-//                if (row.getRowNum() == 0) {
-//                    continue;
-//                }
-//                if (row.getCell(0).getCellType() == CellType.STRING){
-//                    continue;
-//                }
+            Iterator<Row> iterator = worksheet.iterator();
+            Row firstRow = iterator.next();
+            while (iterator.hasNext()) {
+                Row currentRow = iterator.next();
                 listNV = nhanVienServiceImpl.getAll();
                 NhanVien nhanVien = new NhanVien();
-                nhanVien.setMa("NV0" + ((listNV.size() + 1) + (listNVien.size())));
-                nhanVien.setHoTen(String.valueOf(getCellValue(row.getCell(0))).trim());
+                nhanVien.setMa("NV" + ((listNV.size() + 1) + (listNVien.size())));
+                nhanVien.setHoTen(String.valueOf(getCellValue(currentRow.getCell(0))).trim());
                 boolean gioiTinh;
-                if (String.valueOf(getCellValue(row.getCell(1))).trim().equalsIgnoreCase("Nam")) {
+                if (String.valueOf(getCellValue(currentRow.getCell(1))).trim().equalsIgnoreCase("Nam")) {
                     gioiTinh = true;
                 } else {
                     gioiTinh = false;
@@ -1045,25 +1105,21 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 nhanVien.setGioiTinh(gioiTinh);
                 SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
                 try {
-                    Date date = convertToDate.parse(String.valueOf(getCellValue(row.getCell(2))).trim());
+                    Date date = convertToDate.parse(String.valueOf(getCellValue(currentRow.getCell(2))).trim());
                     nhanVien.setNgaySinh(date);
                 } catch (Exception e) {
                     e.printStackTrace(System.out);
                 }
-                nhanVien.setDiaChi(String.valueOf(getCellValue(row.getCell(3))).trim());
-                nhanVien.setSdt(String.valueOf(getCellValue(row.getCell(4))).trim());
-                nhanVien.setEmail(String.valueOf(getCellValue(row.getCell(5))).trim());
-                if (String.valueOf(getCellValue(row.getCell(6))).trim().equalsIgnoreCase("Quản lý")) {
+                nhanVien.setDiaChi(String.valueOf(getCellValue(currentRow.getCell(3))).trim());
+                nhanVien.setSdt(String.valueOf(getCellValue(currentRow.getCell(4))).trim());
+                nhanVien.setEmail(String.valueOf(getCellValue(currentRow.getCell(5))).trim());
+                if (String.valueOf(getCellValue(currentRow.getCell(6))).trim().equalsIgnoreCase("Quản lý")) {
                     nhanVien.setChucVu(0);
                 } else {
                     nhanVien.setChucVu(1);
                 }
                 nhanVien.setMatKhau(getMd5("123456"));
-                if (String.valueOf(getCellValue(row.getCell(7))).trim().equalsIgnoreCase("Đang làm việc")) {
-                    nhanVien.setTrangThai(0);
-                } else {
-                    nhanVien.setTrangThai(1);
-                }
+                nhanVien.setTrangThai(0);
                 nhanVien.setCreatedDate(new Date());
                 nhanVien.setLastModifiedDate(new Date());
                 listNVien.add(nhanVien);
@@ -1094,6 +1150,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDowloadTemplate;
     private javax.swing.JButton btnExport;
     private javax.swing.JButton btnFirst;
     private javax.swing.JButton btnImport;
