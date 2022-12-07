@@ -4,11 +4,8 @@ package repository.impl;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import custommodel.ThongKeBieuDoHD;
-import custommodel.ThongKeBieuDoSP;
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
-import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,7 +32,6 @@ public class ThongKeRepository {
             query.setParameter("date", n);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return getAllDoanhThu;
     }
@@ -50,7 +46,6 @@ public class ThongKeRepository {
             query.setParameter("kt", kt);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return getAllDoanhThu;
     }
@@ -66,7 +61,6 @@ public class ThongKeRepository {
             query.setParameter("yea", nam);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return getAllDoanhThu;
     }
@@ -81,7 +75,6 @@ public class ThongKeRepository {
             query.setParameter("yea", nam);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return getAllDoanhThu;
     }
@@ -95,7 +88,6 @@ public class ThongKeRepository {
             query.setParameter("yea", nam);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return getAllDoanhThu;
     }
@@ -107,7 +99,6 @@ public class ThongKeRepository {
             date = query.getSingleResult().toString();
             return Integer.parseInt(date);
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return 0;
     }
@@ -121,7 +112,6 @@ public class ThongKeRepository {
             tong = query.getSingleResult().toString();
             return tong;
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
         }
         return null;
     }
@@ -136,7 +126,6 @@ public class ThongKeRepository {
             tong = query.getSingleResult().toString();
             return tong;
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
         }
         return null;
     }
@@ -151,7 +140,6 @@ public class ThongKeRepository {
             tong = query.getSingleResult().toString();
 
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
         }
         return tong;
     }
@@ -165,7 +153,6 @@ public class ThongKeRepository {
             tong = query.getSingleResult().toString();
             return tong;
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
         }
         return null;
     }
@@ -183,7 +170,6 @@ public class ThongKeRepository {
             query.setParameter("aaa", n);
             getAllSanPham = query.getResultList();
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
         }
         return getAllSanPham;
     }
@@ -202,7 +188,6 @@ public class ThongKeRepository {
             query.setParameter("bbb", kt);
             getAllSanPham = query.getResultList();
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
         }
         return getAllSanPham;
     }
@@ -221,7 +206,6 @@ public class ThongKeRepository {
             query.setParameter("yea", nam);
             getAllSanPham = query.getResultList();
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return getAllSanPham;
     }
@@ -239,7 +223,6 @@ public class ThongKeRepository {
             query.setParameter("ye", n);
             getAllSanPham = query.getResultList();
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return getAllSanPham;
     }
@@ -251,7 +234,6 @@ public class ThongKeRepository {
             query.setParameter("tt", t);
             count = query.getSingleResult().toString();
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return Long.valueOf(count);
     }
@@ -262,7 +244,6 @@ public class ThongKeRepository {
             NativeQuery query = session.createNativeQuery("SELECT count(*) From ChiTietSP sp");
             count = query.getSingleResult().toString();
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return Long.valueOf(count);
     }
@@ -274,7 +255,6 @@ public class ThongKeRepository {
             date = query.getSingleResult().toString();
             return Integer.parseInt(date);
         } catch (Exception e) {
-            // e.printStackTrace(System.out);
         }
         return 0;
     }
@@ -291,7 +271,6 @@ public class ThongKeRepository {
             tong = query.getSingleResult().toString();
             return tong;
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
         }
         return "0";
     }
@@ -306,7 +285,6 @@ public class ThongKeRepository {
             tong = query.getSingleResult().toString();
             return tong;
         } catch (Exception e) {
-            //e.printStackTrace(System.out);
         }
         return "0";
     }
