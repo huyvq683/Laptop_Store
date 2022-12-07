@@ -219,8 +219,10 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Vui lòng đăng nhập lại!");
                 ViewQuanLy ql = new ViewQuanLy();
                 ql.dispose();
+                Common.webcam.close();
                 ViewDangNhap dn = new ViewDangNhap();
                 dn.setVisible(true);
+                
             }
         }
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
