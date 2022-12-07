@@ -432,6 +432,15 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             }
         });
         jScrollPane7.setViewportView(tbNhanVien);
+        if (tbNhanVien.getColumnModel().getColumnCount() > 0) {
+            tbNhanVien.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tbNhanVien.getColumnModel().getColumn(2).setPreferredWidth(30);
+            tbNhanVien.getColumnModel().getColumn(3).setPreferredWidth(30);
+            tbNhanVien.getColumnModel().getColumn(4).setPreferredWidth(30);
+            tbNhanVien.getColumnModel().getColumn(5).setPreferredWidth(120);
+            tbNhanVien.getColumnModel().getColumn(6).setPreferredWidth(80);
+            tbNhanVien.getColumnModel().getColumn(7).setPreferredWidth(40);
+        }
 
         jLabel54.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel54.setIcon(new ImageIcon("src/main/img/searchNV.png"));
@@ -971,7 +980,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
         page = page - 10;
         if (page < 0) {
-            page = list.size() - 10;
+            page = list.size() - (list.size() % 10);
         }
         listNV = nhanVienServiceImpl.getAllPage(page);
         showData(listNV);
@@ -1201,7 +1210,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             try {
                 Thread.sleep(2500);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
 
             Result result = null;

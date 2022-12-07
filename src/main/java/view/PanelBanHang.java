@@ -1297,7 +1297,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             try {
                 Thread.sleep(2500);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
 
             Result result = null;
