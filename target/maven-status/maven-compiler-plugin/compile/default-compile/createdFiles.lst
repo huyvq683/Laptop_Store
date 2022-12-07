@@ -202,7 +202,6 @@ view\ViewNhanVien$4.class
 service\KhachHangService.class
 view\PanelThongKe$23.class
 repository\Repository.class
-application\Application.class
 view\PanelSanPham$21.class
 view\ViewQuanLy$18.class
 custommodel\SanPhamViewKMResponse.class

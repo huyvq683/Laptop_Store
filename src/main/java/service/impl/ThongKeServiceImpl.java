@@ -115,11 +115,13 @@ public class ThongKeServiceImpl implements ThongKeService {
             for (int i = 1; i <= 31; i++) {
                 dataset.addValue(new Integer(res.getAllSanPhamMonthDB(i, thang, nam)), "Doanh số", i + "");
             }
-        } else if (thang == 2) {
+        }
+        if (thang == 2) {
             for (int i = 1; i <= 28; i++) {
                 dataset.addValue(new Integer(res.getAllSanPhamMonthDB(i, thang, nam)), "Doanh số", i + "");
             }
-        } else {
+        }
+        if (thang == 4 || thang == 6 || thang == 9 || thang == 11) {
             for (int i = 1; i <= 30; i++) {
                 dataset.addValue(new Integer(res.getAllSanPhamMonthDB(i, thang, nam)), "Doanh số", i + "");
             }
@@ -147,12 +149,14 @@ public class ThongKeServiceImpl implements ThongKeService {
             for (int i = 1; i <= 31; i++) {
                 dataset.addValue(new Double(res.getAllDoanhThuMonthDB(i, thang, nam)), "Doanh số", i + "");
             }
-        } else if (thang == 2) {
+        }
+        if (thang == 2) {
             for (int i = 1; i <= 28; i++) {
                 dataset.addValue(new Double(res.getAllDoanhThuMonthDB(i, thang, nam)), "Doanh số", i + "");
             }
-        } else {
-            for (int i = 1; i <= 3; i++) {
+        }
+        if (thang == 4 || thang == 6 || thang == 9 || thang == 11) {
+            for (int i = 1; i <= 30; i++) {
                 dataset.addValue(new Double(res.getAllDoanhThuMonthDB(i, thang, nam)), "Doanh số", i + "");
             }
         }
