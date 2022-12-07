@@ -24,7 +24,9 @@ public interface HoaDonService {
 
     List<ViewExcelReponse> getOne(int tt);
 
-    List<ViewExcelReponse> getAllExcel();
+    public List<ViewExcelReponse> getListExcel(int tt);
+
+    List<ViewExcelReponse> getAllExcel ();
 
     List<HoaDonResponse> getByOne(int tt);
 
