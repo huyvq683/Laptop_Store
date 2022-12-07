@@ -1110,8 +1110,8 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
-        String sdt = txtSDT.getText();
-        KhachHang khachHang = khachHangService.getSdt(sdt);
+//        String sdt = txtSDT.getText();
+//        KhachHang khachHang = khachHangService.getIdKhachHang(sdt);
         int row = tbHoaDon.getSelectedRow();
         HoaDonResponse hd = listHoaDon.get(row);
         HoaDon hoaDon = new HoaDon();
@@ -1125,7 +1125,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         hoaDon.setTienThua(new BigDecimal(txtTienTraLai.getText()));
         hoaDon.setTongTien(new BigDecimal(txtTongTien.getText()));
         hoaDon.setTinhTrang(1);
-        hoaDon.setIdKH(khachHang);
+//        hoaDon.setIdKH(khachHang);
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon));
         listHoaDon = hoaDonService.getAll(Common.tenNV);
         showDataHoaDonTable(listHoaDon);

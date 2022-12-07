@@ -25,7 +25,7 @@ public interface KhachHangService<T> {
 
     KhachHang getMa(String ma);
 
-    KhachHang getIdKhachHang(String sdt);
+    KhachHang getIdKhachHang(UUID id);
 
     KhachHang getEmail(String email);
 
