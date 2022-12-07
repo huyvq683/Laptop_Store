@@ -31,7 +31,7 @@ public class ThongKeRepository {
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
                     + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang = 1 AND hd.createdDate = '2022/12/7' ORDER BY hd.ma ASC");
+                    + " WHERE hd.tinhTrang = 1 AND hd.createdDate =:date ORDER BY hd.ma ASC");
             query.setParameter("date", n);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
@@ -70,7 +70,6 @@ public class ThongKeRepository {
         }
         return getAllDoanhThu;
     }
-
     public List<ThongKeDoanhThuRespone> getAllDoanhThuMonth(int thang, int nam) {
         List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {

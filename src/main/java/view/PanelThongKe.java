@@ -72,8 +72,8 @@ public class PanelThongKe extends javax.swing.JPanel {
         // tạo date, hiển thị và tắt 
         nam = Integer.valueOf(dateFor.format(date).substring(6, 10));
         thaang = Integer.valueOf(dateFor.format(date).substring(3, 5));
-        showDataSP(dateFor.format(date));
-        showDataDoanhThu(dateFor.format(date));
+//        showDataSP(dateFor.format(date));
+//        showDataDoanhThu(dateFor.format(date));
         start();
         // serviceThongKe.getAllDoanhThuYearDB(1, nam, panelHienBieuDo);
     }
@@ -101,7 +101,6 @@ public class PanelThongKe extends javax.swing.JPanel {
         cbbThangDoanhThu.setVisible(false);
         txtEndTKDT.setVisible(false);
         //
-        loadThangBieuDo();
 
     }
 
@@ -1484,14 +1483,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             cbbBieuDoChonThang.setModel(dcbmThangBieuDo);
         }
     }//GEN-LAST:event_cbbLoaiThoiGianBDItemStateChanged
-    private void loadThangBieuDo() {
-        dcbmThangBieuDo = new DefaultComboBoxModel();
-        for (int i = 1; i <= Integer.parseInt(dateFor.format(new Date()).substring(3, 5)); i++) {
-            dcbmThangBieuDo.addElement(i);
-        }
-        cbbBieuDoChonThang.setModel(dcbmThangBieuDo);
 
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
