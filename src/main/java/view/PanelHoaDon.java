@@ -118,12 +118,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lblCK = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btnThem1 = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tbaBang1 = new javax.swing.JTable();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tbaExcel = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -414,52 +408,18 @@ public class PanelHoaDon extends javax.swing.JPanel {
             }
         });
 
-        tbaBang1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Mã", "Tên SP", "Số Lượng", "Đơn Giá", "Thành Tiền"
-            }
-        ));
-        jScrollPane2.setViewportView(tbaBang1);
-
-        jTabbedPane1.addTab("Chi Tiết Hóa Đơn", jScrollPane2);
-
-        tbaExcel.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Mã Hóa Đơn", "Nhân Viên", "Khách Hàng", "Tên Sản Phẩm", "Đơn Giá", "Hình Thức", "Tiền Khách Trả", "Tiền Khách CK", "Tiền Thừa", "Tổng Tiền", "Ngày Tạo", "Tình Trạng"
-            }
-        ));
-        jScrollPane3.setViewportView(tbaExcel);
-
-        jTabbedPane2.addTab("", jScrollPane3);
-
-        jTabbedPane1.addTab("Bảng Excel Hóa Đơn", jTabbedPane2);
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(btnThem1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                .addGap(0, 420, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                .addGap(12, 12, 12)
+                .addContainerGap(325, Short.MAX_VALUE)
                 .addComponent(btnThem1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -599,10 +559,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField lblCK;
     private javax.swing.JTextField lblKD;
     private javax.swing.JTextField lblLTT;
@@ -617,8 +573,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbnHuy;
     private javax.swing.JRadioButton rbnTT;
     private javax.swing.JTable tbaBang;
-    private javax.swing.JTable tbaBang1;
-    private javax.swing.JTable tbaExcel;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
