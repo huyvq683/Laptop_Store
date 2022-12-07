@@ -24,7 +24,6 @@ import domainmodel.HoaDonChiTiet;
 import domainmodel.KhachHang;
 import domainmodel.NhanVien;
 import domainmodel.Common;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.math.BigDecimal;
@@ -207,7 +206,8 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         txtMaHD.setText(hoaDonResponse.getMa());
         txtTenNV.setText(hoaDonResponse.getTenNhanVien());
         txtNgayTao.setText(dateFormat.format(hoaDonResponse.getNgayTao()));
-        txtTongTien.setText(String.valueOf(tongTien(listHoaDonChiTiet)));
+        txtGiamGia.setText(String.valueOf(tienGiamGia(listHoaDonChiTiet)));
+        txtTongTien.setText(String.valueOf(tongTien(listHoaDonChiTiet) - tienGiamGia(listHoaDonChiTiet)));
         btnThanhToan.setEnabled(true);
     }
 
@@ -217,6 +217,14 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             tongTien += hoaDonChiTietResponse.thanhTien();
         }
         return tongTien;
+    }
+
+    private long tienGiamGia(List<HoaDonChiTietResponse> list) {
+        long tienGiamGia = 0;
+        for (HoaDonChiTietResponse hoaDonChiTietResponse : list) {
+            tienGiamGia += hoaDonChiTietResponse.getTienKM().longValue();
+        }
+        return tienGiamGia;
     }
 
     public void fillThongTinKH() {
@@ -269,6 +277,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         jScrollPane6 = new javax.swing.JScrollPane();
         tbHDCT = new javax.swing.JTable();
         btnXoaTatCa = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHoaDon = new javax.swing.JTable();
@@ -314,8 +323,11 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         panelQR = new javax.swing.JPanel();
         panelWebcam = new javax.swing.JPanel();
 
-        ViewKhachHang.setMinimumSize(new java.awt.Dimension(563, 350));
-        ViewKhachHang.setSize(new java.awt.Dimension(563, 350));
+        ViewKhachHang.setMaximumSize(new java.awt.Dimension(563, 370));
+        ViewKhachHang.setMinimumSize(new java.awt.Dimension(563, 370));
+        ViewKhachHang.setPreferredSize(new java.awt.Dimension(563, 370));
+        ViewKhachHang.setResizable(false);
+        ViewKhachHang.setSize(new java.awt.Dimension(563, 370));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setMaximumSize(new java.awt.Dimension(563, 328));
@@ -531,30 +543,41 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             }
         });
 
+        jCheckBox1.setText("Chọn tất cả");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(37, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(btnXoaTatCa)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnXoa))
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
+                            .addComponent(btnXoaTatCa)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnXoa))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jCheckBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXoa)
-                    .addComponent(btnXoaTatCa))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addComponent(btnXoaTatCa)
+                    .addComponent(btnXoa))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout ViewHDCTLayout = new javax.swing.GroupLayout(ViewHDCT.getContentPane());
@@ -565,7 +588,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         );
         ViewHDCTLayout.setVerticalGroup(
             ViewHDCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -610,7 +633,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btnTaoHD, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -633,11 +656,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                 "STT", "Mã Sản Phẩm", "Tên Sản Phẩm", "Đơn Giá"
             }
         ));
-        tbGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbGioHangMouseClicked(evt);
-            }
-        });
         jScrollPane3.setViewportView(tbGioHang);
 
         btnXoaAll.setBackground(new java.awt.Color(41, 183, 212));
@@ -930,13 +948,12 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnlamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(88, 88, 88))))
+                .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(btnlamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1165,32 +1182,39 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-//        List<String> listSeral = new ArrayList<>();
-//        for (int i = 0; i < tbSerial.getRowCount(); i++) {
-//            Boolean t = (Boolean) tbSerial.getValueAt(i, 0);
-//            if (t == true) {
-//                listSeral.add(tbSerial.getValueAt(i, 3) + "");
-//            }
-//        }
+        List<String> listSeral = new ArrayList<>();
+        for (int i = 0; i < tbSerial.getRowCount(); i++) {
+            Boolean t = (Boolean) tbSerial.getValueAt(i, 0);
+            if (t == true) {
+                listSeral.add(tbSerial.getValueAt(i, 3) + "");
+            }
+        }
+        chiTietSPService.updateTinhTrangChuaBan(listSeral);
+        listChiTietSP = chiTietSPService.getAll();
+        showDataTableSanPham(listChiTietSP);
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void txtTienCKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTienCKMouseExited
         // TODO add your handling code here:
         double tienKhachDua = Double.valueOf(txtTienKhachDua.getText());
         double tienCK = Double.valueOf(txtTienCK.getText());
-        double tienThua = (tienKhachDua + tienCK ) - tongTien(listHoaDonChiTiet);
+        double tienThua = (tienKhachDua + tienCK) - tongTien(listHoaDonChiTiet);
         txtTienTraLai.setText(String.valueOf(tienThua));
     }//GEN-LAST:event_txtTienCKMouseExited
 
     private void btnXoaTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTatCaActionPerformed
         // TODO add your handling code here:
+        List<String> listSeral = new ArrayList<>();
+        for (int i = 0; i < tbSerial.getRowCount(); i++) {
+            Boolean t = (Boolean) tbSerial.getValueAt(i, 0);
+            if (t == true) {
+                listSeral.add(tbSerial.getValueAt(i, 3) + "");
+            }
+        }
+        chiTietSPService.updateTinhTrangChuaBan(listSeral);
+        listChiTietSP = chiTietSPService.getAll();
+        showDataTableSanPham(listChiTietSP);
     }//GEN-LAST:event_btnXoaTatCaActionPerformed
-
-    private void tbGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGioHangMouseClicked
-        // TODO add your handling code here:
-        ViewHDCT.setVisible(true);
-        ViewHDCT.setLocationRelativeTo(null);
-    }//GEN-LAST:event_tbGioHangMouseClicked
 
     private void cbChonTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChonTatCaActionPerformed
         // TODO add your handling code here:
@@ -1198,6 +1222,13 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             tbSerial.setValueAt(true, i, 0);
         }
     }//GEN-LAST:event_cbChonTatCaActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < tbSerial.getRowCount(); i++) {
+            tbSerial.setValueAt(true, i, 0);
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1215,6 +1246,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
     private javax.swing.JButton btnlamMoi;
     private javax.swing.JCheckBox cbChonTatCa;
     private javax.swing.JComboBox<String> cbbHinhThuc;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -66,6 +66,12 @@ public class SanPham implements Serializable {
         this.id = id;
     }
 
+    public SanPham(UUID id, String ten) {
+        this.id = id;
+        this.ten = ten;
+    }
+
+    
     public SanPham(String ma, String ten) {
         this.ma = ma;
         this.ten = ten;

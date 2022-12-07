@@ -63,16 +63,16 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
 
     @Override
     public String add(ChiTietSP ctsp) {
-        if (validate(ctsp) != null) {
-            return validate(ctsp);
-        } else {
+//        if (validate(ctsp) != null) {
+//            return validate(ctsp);
+//        } else {
             Boolean add = repository.add(ctsp);
             if (add) {
                 return "Thêm thành công";
             } else {
                 return "Thêm không thành công";
             }
-        }
+//        }
 
     }
 
@@ -96,6 +96,7 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
         }
         return null;
     }
+
     @Override
     public List<ChiTietSPResponse> getAll() {
         return repository.getAll();
@@ -108,7 +109,7 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
 
     @Override
     public void updateTinhTrangSP(List<String> listSerial) {
-         repository.updateTinhTrangSP(listSerial);
+        repository.updateTinhTrangSP(listSerial);
     }
 
     @Override
@@ -121,4 +122,8 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
         repository.updateTinhTrang(chiTietSP);
     }
 
+    @Override
+    public void updateTinhTrangChuaBan(List<String> listSerial) {
+        repository.updateTinhTrangChuaBan(listSerial);
+    }
 }

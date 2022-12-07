@@ -547,6 +547,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         insertKhuyenMai();
+        tblKhuyenMai.setRowSelectionInterval(0, 0);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked

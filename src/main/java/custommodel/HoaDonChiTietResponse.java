@@ -28,6 +28,7 @@ public class HoaDonChiTietResponse {
     private String ten;
     private BigDecimal tienKM;
     private BigDecimal gia;
+    private String serial;
     private long soluong;
 
     public HoaDonChiTietResponse(UUID idCTSP, UUID idHD, String ma, String ten, BigDecimal tienKM, BigDecimal gia, long soluong) {
@@ -49,6 +50,16 @@ public class HoaDonChiTietResponse {
         this.gia = gia;
     }
 
+    public HoaDonChiTietResponse(UUID id, UUID idCTSP, UUID idHD, String ma, String ten, BigDecimal gia, String serial) {
+        this.id = id;
+        this.idCTSP = idCTSP;
+        this.idHD = idHD;
+        this.ma = ma;
+        this.ten = ten;
+        this.gia = gia;
+        this.serial = serial;
+    }
+
     public long thanhTien() {
         return (long) (soluong * gia.doubleValue());
     }
@@ -58,7 +69,7 @@ public class HoaDonChiTietResponse {
     }
     
     public Object[] toDataRowHDCT() {
-        return new Object[]{false, ma, ten, gia};
+        return new Object[]{false, ma, ten, gia, serial};
     }
 
     public Object[] toDataRow1() {
