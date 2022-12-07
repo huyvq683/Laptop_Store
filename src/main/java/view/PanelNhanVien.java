@@ -606,13 +606,15 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         NhanVien nhanVien = getData();
         NhanVien nv = nhanVienServiceImpl.getOne(nhanVien.getEmail());
         if (nv != null) {
-            JOptionPane.showMessageDialog(this, "Nhân viên mang email "+nhanVien.getEmail()+" đã tồn tại!!");
+            JOptionPane.showMessageDialog(this, "Nhân viên mang email " + nhanVien.getEmail() + " đã tồn tại!!");
+        } else {
+            JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
+            SendEmail.send(nhanVien.getEmail());
+            list = nhanVienServiceImpl.getAll();
+            listNV = nhanVienServiceImpl.getAllPage(0);
+            showData(listNV);
         }
-        JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
-        SendEmail.send(nhanVien.getEmail());
-        list = nhanVienServiceImpl.getAll();
-        listNV = nhanVienServiceImpl.getAllPage(0);
-        showData(listNV);
+
     }//GEN-LAST:event_btnThemActionPerformed
     private NhanVien getData() {
         NhanVien nhanVien = new NhanVien();
@@ -793,7 +795,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 String name = file.getPath();
                 System.out.println(name);
                 List<NhanVien> listIm = importExcel(name);
-                listIm.forEach(s->System.out.println(s.toString()));
+                listIm.forEach(s -> System.out.println(s.toString()));
                 int i = 0;
                 do {
                     for (NhanVien nhanVien : listIm) {
@@ -950,7 +952,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
         page = page - 10;
-        if(page < 0){
+        if (page < 0) {
             page = list.size() - 10;
         }
         listNV = nhanVienServiceImpl.getAllPage(page);
@@ -959,7 +961,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         page = page + 10;
-        if(page > list.size()){
+        if (page > list.size()) {
             page = 0;
         }
         listNV = nhanVienServiceImpl.getAllPage(page);
@@ -976,7 +978,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         date = dateFormat.format(ngaySinh);
         return date;
     }
-    
+
     private void showData(List<NhanVien> list) {
         dtm.setRowCount(0);
         for (NhanVien nhanVien : list) {
@@ -1013,7 +1015,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         panelWebcam.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 235, 150));
         executor.execute(this);
     }
-    
+
     private List<NhanVien> importExcel(String fileName) throws IOException {
         List<NhanVien> listNVien = new ArrayList<>();
         try {

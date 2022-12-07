@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import utility.HibernateUtil;
 
 /**
@@ -23,14 +24,17 @@ public class KhachHangRepository {
     private Session session = HibernateUtil.getFACTORY().openSession();
 
     public List<KhachHang> getAll() {
+        List<KhachHang> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession();) {
-            Query query = session.createQuery(fromTable);
-            List<KhachHang> list = query.getResultList();
-            return list;
+            NativeQuery query = session.createNativeQuery("SELECT kh.id, kh.ma, kh.hoTen, kh.diaChi, kh.sdt, kh.email, kh.capBac, kh.createdDate, kh.lastModifiedDate"
+                    + " FROM KhachHang kh"
+                    + " GROUP BY kh.id, kh.ma, kh.hoTen, kh.diaChi, kh.sdt, kh.email, kh.capBac, kh.createdDate, kh.lastModifiedDate"
+                    + " ORDER BY MAX(CONVERT(INT, SUBSTRING(ma, 3, 10))) DESC", KhachHang.class);
+            lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return null;
+        return lists;
     }
 
     public List<KhachHangRespone> getHD(UUID id) {
@@ -74,11 +78,11 @@ public class KhachHangRepository {
         }
     }
 
-    public KhachHang getSdt(String sdt) {
+    public KhachHang getIdKhachHang(UUID id) {
         try ( Session session = HibernateUtil.getFACTORY().openSession();) {
-            String sql = fromTable + " WHERE sdt = :sdt";
+            String sql = fromTable + " WHERE id = :id";
             Query query = session.createQuery(sql);
-            query.setParameter("sdt", sdt);
+            query.setParameter("id", id);
             KhachHang kh = (KhachHang) query.getSingleResult();
             return kh;
         } catch (Exception e) {

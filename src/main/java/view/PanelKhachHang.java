@@ -33,7 +33,6 @@ public class PanelKhachHang extends javax.swing.JPanel {
     public void fillData(int i) {
         // fill txt
         KhachHang kh = listKH.get(i);
-        txtMa.setText(kh.getMa());
         txtHoTenKH.setText(kh.getHoTen());
         txtSDT.setText(kh.getSdt());
         txtEmail.setText(kh.getEmail());
@@ -60,7 +59,7 @@ public class PanelKhachHang extends javax.swing.JPanel {
 
     public KhachHang getData() {
         KhachHang kh = new KhachHang();
-        kh.setMa(txtMa.getText());
+        kh.setMa("KH0" + (listKH.size() + 1));
         kh.setHoTen(txtHoTenKH.getText());
         kh.setSdt(txtSDT.getText());
         kh.setEmail(txtEmail.getText());
@@ -89,8 +88,6 @@ public class PanelKhachHang extends javax.swing.JPanel {
         txtHoTenKH = new javax.swing.JTextField();
         txtSDT = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        txtMa = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -157,7 +154,7 @@ public class PanelKhachHang extends javax.swing.JPanel {
                     .addComponent(jLabel34)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -187,12 +184,6 @@ public class PanelKhachHang extends javax.swing.JPanel {
 
         jLabel36.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel36.setText("Số điện thoại");
-
-        jLabel30.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel30.setText("Mã");
-
-        txtMa.setForeground(new java.awt.Color(51, 51, 51));
-        txtMa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
 
         btnThem.setBackground(new java.awt.Color(41, 183, 212));
         btnThem.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -249,7 +240,6 @@ public class PanelKhachHang extends javax.swing.JPanel {
                         .addGroup(jPanel8Layout.createSequentialGroup()
                             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel35)
-                                .addComponent(jLabel30)
                                 .addComponent(jLabel36)
                                 .addComponent(jLabel33)
                                 .addComponent(jLabel29))
@@ -258,9 +248,7 @@ public class PanelKhachHang extends javax.swing.JPanel {
                                 .addComponent(txtDiaChiKH, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtHoTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtHoTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
                                     .addComponent(proCapBac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -270,11 +258,7 @@ public class PanelKhachHang extends javax.swing.JPanel {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
-                    .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(txtHoTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -360,29 +344,29 @@ public class PanelKhachHang extends javax.swing.JPanel {
     private void tbKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKhachHangMouseClicked
         // Click
         fillData(tbKhachHang.getSelectedRow());
-        int x;
+        BigDecimal x;
         int row = tbKhachHang.getSelectedRow();
         KhachHang kh = listKH.get(row);
         BigDecimal tienKhachMua = (BigDecimal) new KhachHangServiceImpl().getTongTienByIDHD(kh.getId());
         if (tienKhachMua != null) {
             if (kh.getCapBac() == 0) {
-                x = tienKhachMua.intValue() / 15000000 * 100;
-                proCapBac.setValue(x);
+                x = (tienKhachMua.divide(new BigDecimal(30000000))).multiply(new BigDecimal(100));
+                proCapBac.setValue(x.intValue());
                 lblCapBac.setText("");
                 lblCapBac.setIcon(new ImageIcon(""));
             } else if (kh.getCapBac() == 1) {
-                x = tienKhachMua.intValue() / 30000000 * 100;
-                proCapBac.setValue(x);
+                x = (tienKhachMua.divide(new BigDecimal(60000000))).multiply(new BigDecimal(100));
+                proCapBac.setValue(x.intValue());
                 lblCapBac.setText("Đồng");
                 lblCapBac.setIcon(new ImageIcon("src/main/img/dong.png"));
             } else if (kh.getCapBac() == 2) {
-                x = tienKhachMua.intValue() / 50000000 * 100;
-                proCapBac.setValue(x);
+                x = (tienKhachMua.divide(new BigDecimal(90000000))).multiply(new BigDecimal(100));
+                proCapBac.setValue(x.intValue());
                 lblCapBac.setText("Bạc");
                 lblCapBac.setIcon(new ImageIcon("src/main/img/bac.png"));
             } else if (kh.getCapBac() == 3) {
-                x = tienKhachMua.intValue() / 100000000 * 100;
-                proCapBac.setValue(x);
+                x = (tienKhachMua.divide(new BigDecimal(120000000))).multiply(new BigDecimal(100));
+                proCapBac.setValue(x.intValue());
                 lblCapBac.setText("Vàng");
                 lblCapBac.setIcon(new ImageIcon("src/main/img/vang.png"));
             } else {
@@ -453,7 +437,6 @@ public class PanelKhachHang extends javax.swing.JPanel {
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -471,7 +454,6 @@ public class PanelKhachHang extends javax.swing.JPanel {
     private javax.swing.JTextField txtDiaChiKH;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtHoTenKH;
-    private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables

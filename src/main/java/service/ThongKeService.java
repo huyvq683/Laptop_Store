@@ -51,12 +51,12 @@ public interface ThongKeService {
 
     Integer namBatDau();
 
-    void getAllSanPhamYearDB(int thang, int nam, JPanel panelHienThi);
+//    void bieuDoSanPhamYear(int thang, int nam, JPanel panelHienThi);
+//
+//    void bieuDoSanPhamMonth(int ngay, int thang, int nam, JPanel panelHienThi);
 
-    void getAllDoanhThuYearDB(int thang, int nam, JPanel panelHienThi);
+    void bieuDoDoanhThuYear(int thang, int nam, JPanel panelHienThi);
 
-    void getAllSanPhamMonthDB(int ngay, int thang, int nam, JPanel panelHienThi);
-
-    void getAllDoanhThuMonthDB(int ngay, int thang, int nam, JPanel panelHienThi);
+    void bieuDoDoanhThuMonth(int ngay, int thang, int nam, JPanel panelHienThi);
 
 }
