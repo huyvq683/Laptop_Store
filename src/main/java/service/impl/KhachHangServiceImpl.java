@@ -53,8 +53,6 @@ public class KhachHangServiceImpl implements KhachHangService<KhachHang> {
         Boolean check = repository.add(t);
         if (check) {
             return "Thành công";
-        } else if (getMa(t.getMa()) != null) {
-            return "Mã trùng";
         } else if (getEmail(t.getEmail()) != null) {
             return "Email trùng";
         } else {
@@ -95,8 +93,8 @@ public class KhachHangServiceImpl implements KhachHangService<KhachHang> {
     }
 
     @Override
-    public KhachHang getSdt(String sdt) {
-        return repository.getSdt(sdt);
+    public KhachHang getIdKhachHang(UUID id) {
+        return repository.getIdKhachHang(id);
     }
 
     @Override

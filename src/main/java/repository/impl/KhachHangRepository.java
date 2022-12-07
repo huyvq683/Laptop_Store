@@ -78,11 +78,11 @@ public class KhachHangRepository {
         }
     }
 
-    public KhachHang getSdt(String sdt) {
+    public KhachHang getIdKhachHang(UUID id) {
         try ( Session session = HibernateUtil.getFACTORY().openSession();) {
-            String sql = fromTable + " WHERE sdt = :sdt";
+            String sql = fromTable + " WHERE id = :id";
             Query query = session.createQuery(sql);
-            query.setParameter("sdt", sdt);
+            query.setParameter("id", id);
             KhachHang kh = (KhachHang) query.getSingleResult();
             return kh;
         } catch (Exception e) {

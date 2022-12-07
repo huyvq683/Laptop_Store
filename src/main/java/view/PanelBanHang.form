@@ -331,13 +331,9 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="37" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBox1" min="-2" pref="85" max="-2" attributes="0"/>
+                          <Component id="cbXoaHet" min="-2" pref="85" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="btnXoaTatCa" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnXoa" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btnXoa" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane6" min="-2" pref="531" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -349,14 +345,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="19" max="32767" attributes="0"/>
-                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbXoaHet" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane6" min="-2" pref="179" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnXoaTatCa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnXoa" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnXoa" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -425,20 +418,12 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="btnXoaTatCa">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="X&#xf3;a t&#x1ea5;t c&#x1ea3;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaTatCaActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+            <Component class="javax.swing.JCheckBox" name="cbXoaHet">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n t&#x1ea5;t c&#x1ea3;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbXoaHetActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

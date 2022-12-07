@@ -28,9 +28,9 @@ public class HoaDonChiTietRepository {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse "
-                    + "(c.idHoaDon.id, c.idCTSP.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
+                    + "(c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
                     + "FROM HoaDonChiTiet c WHERE c.idHoaDon.id = :id "
-                    + "GROUP BY c.idHoaDon.id, c.idCTSP.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
+                    + "GROUP BY c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
             query.setParameter("id", id);
             lists = query.getResultList();
         } catch (Exception e) {
@@ -148,4 +148,35 @@ public class HoaDonChiTietRepository {
         }
         return check;
     }
+
+    public HoaDonChiTiet getHDCTByIdChiTietSP(UUID id) {
+        HoaDonChiTiet hoaDonChiTiet = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("FROM HoaDonChiTiet WHERE idCTSP.id = :id");
+            query.setParameter("id", id);
+            hoaDonChiTiet = (HoaDonChiTiet) query.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return hoaDonChiTiet;
+    }
+
+    public boolean deleteHDCT(List<String> listSerial) {
+        boolean check = true;
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            for (String serial : listSerial) {
+                ChiTietSP chiTietSP = getCTSPBySerial(serial);
+                HoaDonChiTiet hoaDonChiTiet = getHDCTByIdChiTietSP(chiTietSP.getId());
+                session.delete(hoaDonChiTiet);
+            }
+            transaction.commit();
+            check = true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check;
+    }
+
 }

@@ -276,8 +276,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         btnXoa = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         tbHDCT = new javax.swing.JTable();
-        btnXoaTatCa = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cbXoaHet = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHoaDon = new javax.swing.JTable();
@@ -536,17 +535,10 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             tbHDCT.getColumnModel().getColumn(0).setMaxWidth(20);
         }
 
-        btnXoaTatCa.setText("Xóa tất cả");
-        btnXoaTatCa.addActionListener(new java.awt.event.ActionListener() {
+        cbXoaHet.setText("Chọn tất cả");
+        cbXoaHet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaTatCaActionPerformed(evt);
-            }
-        });
-
-        jCheckBox1.setText("Chọn tất cả");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                cbXoaHetActionPerformed(evt);
             }
         });
 
@@ -557,12 +549,9 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbXoaHet, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel8Layout.createSequentialGroup()
-                            .addComponent(btnXoaTatCa)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnXoa))
+                        .addComponent(btnXoa)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
@@ -570,13 +559,11 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jCheckBox1)
+                .addComponent(cbXoaHet)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXoaTatCa)
-                    .addComponent(btnXoa))
+                .addComponent(btnXoa)
                 .addGap(23, 23, 23))
         );
 
@@ -1110,8 +1097,9 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
-        String sdt = txtSDT.getText();
-        KhachHang khachHang = khachHangService.getSdt(sdt);
+        int rowKH = tbHienThi.getSelectedRow();
+        KhachHangReponse kh = listKH.get(rowKH);
+        KhachHang khachHang = khachHangService.getIdKhachHang(kh.getId());
         int row = tbHoaDon.getSelectedRow();
         HoaDonResponse hd = listHoaDon.get(row);
         HoaDon hoaDon = new HoaDon();
@@ -1147,7 +1135,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         switch (khr.getCapBac()) {
             case 0:
                 lblRank.setIcon(new ImageIcon(""));
-                lblRank.setText("Chưa có hạng");
+                lblRank.setText("Chưa có rank");
                 break;
             case 1:
                 lblRank.setIcon(new ImageIcon("src/main/img/dong.png"));
@@ -1182,16 +1170,26 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        int rowHD = tbHoaDon.getSelectedRow();
+        HoaDonResponse hoaDonResponse = listHoaDon.get(rowHD);
+
         List<String> listSeral = new ArrayList<>();
-        for (int i = 0; i < tbSerial.getRowCount(); i++) {
-            Boolean t = (Boolean) tbSerial.getValueAt(i, 0);
+        for (int i = 0; i < tbHDCT.getRowCount(); i++) {
+            Boolean t = (Boolean) tbHDCT.getValueAt(i, 0);
             if (t == true) {
-                listSeral.add(tbSerial.getValueAt(i, 3) + "");
+                listSeral.add(tbHDCT.getValueAt(i, 4) + "");
             }
         }
+
+        hoaDonChiTietService.deleteHDCT(listSeral);
+        showDataTableHDCT(hoaDonResponse.getId());
+
+        showDataTableGioHang(hoaDonResponse.getId());
+
         chiTietSPService.updateTinhTrangChuaBan(listSeral);
         listChiTietSP = chiTietSPService.getAll();
         showDataTableSanPham(listChiTietSP);
+        ViewHDCT.dispose();
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void txtTienCKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTienCKMouseExited
@@ -1202,33 +1200,28 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         txtTienTraLai.setText(String.valueOf(tienThua));
     }//GEN-LAST:event_txtTienCKMouseExited
 
-    private void btnXoaTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTatCaActionPerformed
-        // TODO add your handling code here:
-        List<String> listSeral = new ArrayList<>();
-        for (int i = 0; i < tbSerial.getRowCount(); i++) {
-            Boolean t = (Boolean) tbSerial.getValueAt(i, 0);
-            if (t == true) {
-                listSeral.add(tbSerial.getValueAt(i, 3) + "");
-            }
-        }
-        chiTietSPService.updateTinhTrangChuaBan(listSeral);
-        listChiTietSP = chiTietSPService.getAll();
-        showDataTableSanPham(listChiTietSP);
-    }//GEN-LAST:event_btnXoaTatCaActionPerformed
-
     private void cbChonTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChonTatCaActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < tbSerial.getRowCount(); i++) {
-            tbSerial.setValueAt(true, i, 0);
+            if (cbChonTatCa.isSelected()) {
+                tbSerial.setValueAt(true, i, 0);
+            } else {
+                tbSerial.setValueAt(false, i, 0);
+            }
+
         }
     }//GEN-LAST:event_cbChonTatCaActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void cbXoaHetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbXoaHetActionPerformed
         // TODO add your handling code here:
-        for (int i = 0; i < tbSerial.getRowCount(); i++) {
-            tbSerial.setValueAt(true, i, 0);
+        for (int i = 0; i < tbHDCT.getRowCount(); i++) {
+            if (cbXoaHet.isSelected()) {
+                tbHDCT.setValueAt(true, i, 0);
+            } else {
+                tbHDCT.setValueAt(false, i, 0);
+            }
         }
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_cbXoaHetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1242,11 +1235,10 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
     private javax.swing.JButton btnXacNhan;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaAll;
-    private javax.swing.JButton btnXoaTatCa;
     private javax.swing.JButton btnlamMoi;
     private javax.swing.JCheckBox cbChonTatCa;
+    private javax.swing.JCheckBox cbXoaHet;
     private javax.swing.JComboBox<String> cbbHinhThuc;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1337,12 +1329,9 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                     chiTietSPService.updateTinhTrang(chiTietSP);
                     listChiTietSP = chiTietSPService.getAll();
                     showDataTableSanPham(listChiTietSP);
-                    HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-                    hoaDonChiTiet.setIdCTSP(chiTietSP);
-                    hoaDonChiTiet.setIdHoaDon(idHoaDon);
-                    hoaDonChiTiet.setTenSP(chiTietSP.getIdSanPham().getTen());
-                    hoaDonChiTiet.setDonGia(chiTietSP.getGia());
-                    hoaDonChiTietService.addOne(hoaDonChiTiet);
+                    List<String> listSeral = new ArrayList<>();
+                    listSeral.add(serial);
+                    hoaDonChiTietService.add(listSeral, idHoaDon);
                     showDataTableGioHang(hoaDonResponse.getId());
                 } catch (Exception e) {
                 }

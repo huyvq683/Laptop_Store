@@ -50,4 +50,9 @@ public class HoaDonChiTietSeviceImpl implements HoaDonChiTietService {
         return hoaDonChiTietRepository.getList(id);
     }
 
+    @Override
+    public void deleteHDCT(List<String> listSerial) {
+         hoaDonChiTietRepository.deleteHDCT(listSerial);
+    }
+
 }
