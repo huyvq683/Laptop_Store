@@ -8,7 +8,6 @@ import custommodel.HoaDonChiTietResponse;
 import domainmodel.ChiTietSP;
 import domainmodel.HoaDon;
 import domainmodel.HoaDonChiTiet;
-import domainmodel.KhuyenMai;
 import domainmodel.SanPhamKM;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import java.util.List;
 import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import utility.HibernateUtil;
 
@@ -114,14 +112,14 @@ public class HoaDonChiTietRepository {
 
     public Boolean add(List<String> listSerial, HoaDon hd) {
         Transaction tran = null;
-         BigDecimal tienKM = new BigDecimal(0);
+        BigDecimal tienKM = new BigDecimal(0);
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             tran = session.beginTransaction();
             for (String serial : listSerial) {
                 HoaDonChiTiet hdct = new HoaDonChiTiet();
                 ChiTietSP ctsp = getCTSPBySerial(serial);
                 SanPhamKM sanPhamKM = getSanPhamKM(ctsp.getId());
-                if(sanPhamKM != null){
+                if (sanPhamKM != null) {
                     tienKM = sanPhamKM.getDonGia().subtract(sanPhamKM.getTienConLai());
                 }
                 hdct.setIdHoaDon(hd);
