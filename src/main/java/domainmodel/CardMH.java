@@ -59,9 +59,10 @@ public class CardMH implements Serializable {
         this.id = id;
     }
 
-    public CardMH(String ma, String ten) {
-        this.ma = ma;
+    public CardMH(String ten, Date createdDate, Date alstModifiedDate) {
         this.ten = ten;
+        this.createdDate = createdDate;
+        this.alstModifiedDate = alstModifiedDate;
     }
 
     public CardMH(UUID id, String ten) {

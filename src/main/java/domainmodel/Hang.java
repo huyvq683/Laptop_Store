@@ -60,9 +60,10 @@ public class Hang implements Serializable {
         this.alstModifiedDate = alstModifiedDate;
     }
 
-    public Hang(String ma, String ten) {
-        this.ma = ma;
+    public Hang(String ten, Date createdDate, Date alstModifiedDate) {
         this.ten = ten;
+        this.createdDate = createdDate;
+        this.alstModifiedDate = alstModifiedDate;
     }
 
     public Hang(UUID id, String ten) {
