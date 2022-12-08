@@ -21,7 +21,7 @@ public class CPURepository {
     public List<CPU> getAll() {
         List<CPU> lists = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From CPU");
+            Query query = session.createQuery("From CPU ORDER BY Ma DESC");
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);

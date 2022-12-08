@@ -151,4 +151,9 @@ public class HoaDonServiceImpl implements HoaDonService {
         return hoaDonRepository.getAllExcel();
     }
 
+    @Override
+    public List<ViewExcelReponse> getListExcel(int tt) {
+        return hoaDonRepository.getListExcel(tt);
+    }
+
 }

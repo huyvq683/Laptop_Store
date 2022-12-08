@@ -9,7 +9,6 @@ package service.impl;
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Date;
 import java.util.List;

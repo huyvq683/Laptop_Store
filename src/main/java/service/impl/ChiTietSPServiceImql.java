@@ -96,7 +96,6 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
         }
         return null;
     }
-
     @Override
     public List<ChiTietSPResponse> getAll() {
         return repository.getAll();
