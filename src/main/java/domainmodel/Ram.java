@@ -60,9 +60,10 @@ public class Ram implements Serializable {
         this.alstModifiedDate = alstModifiedDate;
     }
 
-    public Ram(String ma, String ten) {
-        this.ma = ma;
+    public Ram(String ten, Date createdDate, Date alstModifiedDate) {
         this.ten = ten;
+        this.createdDate = createdDate;
+        this.alstModifiedDate = alstModifiedDate;
     }
 
     public Ram(UUID id, String ten) {

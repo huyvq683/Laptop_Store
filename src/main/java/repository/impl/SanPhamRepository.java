@@ -29,6 +29,16 @@ public class SanPhamRepository {
         }
         return lists;
     }
+    public List<SanPham> getAllSP() {
+        List<SanPham> lists = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("From SanPham WHERE TrangThai = 0 ORDER BY Ma DESC");
+            lists = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return lists;
+    }
 
     public SanPham getOneSP(String ma) {
         String sql = " FROM SanPham WHERE Ten = :ten ";
@@ -93,6 +103,21 @@ public class SanPhamRepository {
             e.printStackTrace(System.out);
         }
         return false;
+    
+    } 
+
+    public Boolean upDateTrangThai(SanPham sp, UUID id) {
+        Transaction tran = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            tran = session.beginTransaction();
+            SanPham sanPham = session.get(SanPham.class, id);
+            sanPham.setTrangThai(1);
+            session.update(sanPham);
+            tran.commit();
+            return true;
+        } catch (Exception e) {
+        }
+        return null;
     }
 
     public List<SanPham> search(String seatchKey) {
@@ -107,11 +132,11 @@ public class SanPhamRepository {
         }
         return null;
     }
+
     public static void main(String[] args) {
         List<SanPham> list = new SanPhamRepository().getAllSanPham();
-        for (SanPham x : list) {
-            System.out.println(x.toString());
-        }
+            System.out.println(list);
+        
     }
 //    From SanPham WHERE Ma like concat (:searchKey,'%')"
 }

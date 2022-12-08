@@ -60,9 +60,10 @@ public class OCung implements Serializable {
         this.alstModifiedDate = alstModifiedDate;
     }
 
-    public OCung(String ma, String ten) {
-        this.ma = ma;
+    public OCung(String ten, Date createdDate, Date alstModifiedDate) {
         this.ten = ten;
+        this.createdDate = createdDate;
+        this.alstModifiedDate = alstModifiedDate;
     }
 
     public OCung(UUID id, String ten) {
