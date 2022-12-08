@@ -59,8 +59,8 @@ public class HoaDonChiTietResponse {
         this.serial = serial;
     }
 
-    public long thanhTien() {
-        return (long) (soluong * gia.doubleValue());
+    public BigDecimal thanhTien() {
+        return new BigDecimal(soluong * gia.doubleValue());
     }
 
     public Object[] toDataRow(int stt) {
