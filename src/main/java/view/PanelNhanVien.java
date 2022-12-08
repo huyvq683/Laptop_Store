@@ -86,7 +86,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         listNV = nhanVienServiceImpl.getAllPage(0);
         showData(listNV);
         initWebcam();
-        radioDaNghi.setEnabled(false);
+        btnTrangThai.setVisible(false);
     }
 
     /**
@@ -120,14 +120,12 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         radioNhanVien = new javax.swing.JRadioButton();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        radioDaNghi = new javax.swing.JRadioButton();
-        jLabel55 = new javax.swing.JLabel();
-        radioDangLamViec = new javax.swing.JRadioButton();
         btnNew = new javax.swing.JButton();
         txtNgaySinh = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         panelWebcam = new javax.swing.JPanel();
         qrCode = new javax.swing.JLabel();
+        btnTrangThai = new javax.swing.JButton();
         pnDanhSachNV = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tbNhanVien = new javax.swing.JTable();
@@ -204,6 +202,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setIcon(new ImageIcon("src/main/img/addNV.png"));
         btnThem.setText("Thêm");
+        btnThem.setToolTipText("Thêm nhân viên");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -215,29 +214,19 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setIcon(new ImageIcon("src/main/img/updateNV.png"));
         btnSua.setText("Sửa");
+        btnSua.setToolTipText("Sửa nhân viên");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
 
-        buttonGroup3.add(radioDaNghi);
-        radioDaNghi.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        radioDaNghi.setText("Đã nghỉ việc");
-
-        jLabel55.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel55.setText("Trạng thái");
-
-        buttonGroup3.add(radioDangLamViec);
-        radioDangLamViec.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        radioDangLamViec.setSelected(true);
-        radioDangLamViec.setText("Đang làm việc");
-
         btnNew.setBackground(new java.awt.Color(41, 183, 212));
         btnNew.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnNew.setForeground(new java.awt.Color(255, 255, 255));
         btnNew.setIcon(new ImageIcon("src/main/img/newNV.png"));
         btnNew.setText("New");
+        btnNew.setToolTipText("Làm mới các trường");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -270,6 +259,18 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         qrCode.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         qrCode.setIcon(new ImageIcon("src/main/img/scan.png"));
         qrCode.setText("QR Code scan");
+
+        btnTrangThai.setBackground(new java.awt.Color(41, 183, 212));
+        btnTrangThai.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnTrangThai.setForeground(new java.awt.Color(255, 255, 255));
+        btnTrangThai.setIcon(new ImageIcon("src/main/img/sathai.png"));
+        btnTrangThai.setText("Trạng thái");
+        btnTrangThai.setToolTipText("Cập nhật trạng thái");
+        btnTrangThai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrangThaiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnThongTinNVLayout = new javax.swing.GroupLayout(pnThongTinNV);
         pnThongTinNV.setLayout(pnThongTinNVLayout);
@@ -309,18 +310,13 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                                 .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(pnThongTinNVLayout.createSequentialGroup()
-                                        .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radioDangLamViec)
-                                            .addComponent(radioQuanLy))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radioNhanVien)
-                                            .addComponent(radioDaNghi)))))
+                                        .addComponent(radioQuanLy)
+                                        .addGap(54, 54, 54)
+                                        .addComponent(radioNhanVien))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnThongTinNVLayout.createSequentialGroup()
                                 .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(34, 34, 34)
                                 .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnThongTinNVLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -331,7 +327,9 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                                 .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(155, 155, 155))
                             .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(249, 249, 249)))
+                        .addGap(35, 35, 35)
+                        .addComponent(btnTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)))
                 .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnThongTinNVLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -384,18 +382,15 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                                 .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(radioQuanLy, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel53)
-                                    .addComponent(radioNhanVien))
-                                .addGap(27, 27, 27)
-                                .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel55)
-                                    .addComponent(radioDangLamViec)
-                                    .addComponent(radioDaNghi))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                    .addComponent(radioNhanVien))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
 
@@ -447,6 +442,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         jLabel54.setText("Tìm kiếm");
 
         txtSearch.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtSearch.setToolTipText("Tìm kiếm nhân viên ");
         txtSearch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
         txtSearch.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -459,6 +455,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnImport.setForeground(new java.awt.Color(255, 255, 255));
         btnImport.setIcon(new ImageIcon("src/main/img/import.png"));
         btnImport.setText("Import");
+        btnImport.setToolTipText("Nhập nhân viên");
         btnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImportActionPerformed(evt);
@@ -470,6 +467,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnExport.setForeground(new java.awt.Color(255, 255, 255));
         btnExport.setIcon(new ImageIcon("src/main/img/export.png"));
         btnExport.setText("Export");
+        btnExport.setToolTipText("Xuất file danh sách nhân viên");
         btnExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExportActionPerformed(evt);
@@ -664,11 +662,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         nhanVien.setSdt(txtSdt.getText());
         nhanVien.setEmail(txtEmail.getText());
         nhanVien.setMatKhau(getMd5("123456"));
-        if (radioDangLamViec.isSelected()) {
-            nhanVien.setTrangThai(0);
-        } else {
-            nhanVien.setTrangThai(1);
-        }
+        nhanVien.setTrangThai(0);
         if (radioQuanLy.isSelected()) {
             nhanVien.setChucVu(0);
         } else {
@@ -705,11 +699,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             nhanVien.setDiaChi(txtDiaChi.getText());
             nhanVien.setSdt(txtSdt.getText());
             nhanVien.setEmail(txtEmail.getText());
-            if (radioDangLamViec.isSelected()) {
-                nhanVien.setTrangThai(0);
-            } else {
-                nhanVien.setTrangThai(1);
-            }
+            nhanVien.setTrangThai(nv.getTrangThai());
             if (radioQuanLy.isSelected()) {
                 nhanVien.setChucVu(0);
             } else {
@@ -736,7 +726,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
     private void tbNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhanVienMouseClicked
         // TODO add your handling code here:
-        radioDaNghi.setEnabled(true);
         if (txtSearch.getText().isEmpty()) {
             int row = tbNhanVien.getSelectedRow();
             NhanVien nv = listNV.get(row);
@@ -757,11 +746,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 radioQuanLy.setSelected(true);
             } else {
                 radioNhanVien.setSelected(true);
-            }
-            if (nv.getTrangThai() == 0) {
-                radioDangLamViec.setSelected(true);
-            } else {
-                radioDaNghi.setSelected(true);
             }
         } else {
             List<NhanVien> listSearch = nhanVienServiceImpl.search(txtSearch.getText());
@@ -785,13 +769,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             } else {
                 radioNhanVien.setSelected(true);
             }
-            if (nv.getTrangThai() == 0) {
-                radioDangLamViec.setSelected(true);
-            } else {
-                radioDaNghi.setSelected(true);
-            }
-
         }
+        btnTrangThai.setVisible(true);
     }//GEN-LAST:event_tbNhanVienMouseClicked
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
@@ -802,8 +781,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         txtDiaChi.setText("");
         txtEmail.setText("");
         radioNhanVien.setSelected(true);
-        radioDangLamViec.setSelected(true);
-        radioDaNghi.setEnabled(false);
         tbNhanVien.clearSelection();
     }//GEN-LAST:event_btnNewActionPerformed
 
@@ -825,22 +802,18 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 int i = 0;
                 do {
                     for (NhanVien nhanVien : listIm) {
-//                        if (nhanVien.getHoTen().isEmpty()) {
-//                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!!");
-//                            listIm.clear();
-//                            return;
-//                            
-//                        }
-//                        if (nhanVien.getSdt().isEmpty()) {
-//                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
-//                            listIm.clear();
-//                            return;
-//                        }
-//                        if (nhanVien.getDiaChi().isEmpty()) {
-//                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
-//                            listIm.clear();
-//                            return;
-//                        }
+                        if (nhanVien.getHoTen().isEmpty()) {
+                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
+                            listIm.remove(nhanVien);
+                        }
+                        if (nhanVien.getSdt().isEmpty()) {
+                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
+                            listIm.remove(nhanVien);
+                        }
+                        if (nhanVien.getDiaChi().isEmpty()) {
+                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
+                            listIm.remove(nhanVien);
+                        }
                         if (nhanVien.getEmail().isEmpty()) {
                             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
                             listIm.remove(nhanVien);
@@ -1047,6 +1020,71 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             JOptionPane.showMessageDialog(this, "Tải thất bại");
         }
     }//GEN-LAST:event_btnDowloadTemplateActionPerformed
+
+    private void btnTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangThaiActionPerformed
+        int row = tbNhanVien.getSelectedRow();
+        NhanVien nv = listNV.get(row);
+        if (nv.getTrangThai() == 0) {
+            int update = JOptionPane.showConfirmDialog(this, "Bạn có muốn cập nhật trạng thái của " + nv.getMa() + " thành: Đã nghỉ việc không?", "Nghỉ việc!!", 2);
+            if (update == 0) {
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setId(nv.getId());
+                nhanVien.setMa(nv.getMa());
+                nhanVien.setHoTen(nv.getHoTen());
+                nhanVien.setGioiTinh(nv.isGioiTinh());
+                nhanVien.setNgaySinh(nv.getNgaySinh());
+                nhanVien.setMatKhau(nv.getMatKhau());
+                nhanVien.setDiaChi(nv.getDiaChi());
+                nhanVien.setSdt(nv.getSdt());
+                nhanVien.setEmail(nv.getEmail());
+                nhanVien.setTrangThai(1);
+                nhanVien.setChucVu(nv.getChucVu());
+                nhanVien.setLastModifiedDate(new Date());
+                nhanVien.setCreatedDate(nhanVien.getCreatedDate());
+                nhanVienServiceImpl.addOrUpdate(nhanVien);
+                listNV = nhanVienServiceImpl.getAllPage(0);
+                showData(listNV);
+                tbNhanVien.removeRowSelectionInterval(row, row);
+                btnTrangThai.setVisible(false);
+                txtTen.setText("");
+                radioNam.setSelected(true);
+                txtNgaySinh.setText("");
+                txtSdt.setText("");
+                txtDiaChi.setText("");
+                txtEmail.setText("");
+                radioNhanVien.setSelected(true);
+            }
+        } else {
+            int update = JOptionPane.showConfirmDialog(this, "Bạn có muốn cập nhật trạng thái của " + nv.getMa() + " thành: Đang làm việc không?", "Quay lại làm việc!!", 2);
+            if (update == 0) {
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setId(nv.getId());
+                nhanVien.setMa(nv.getMa());
+                nhanVien.setHoTen(nv.getHoTen());
+                nhanVien.setGioiTinh(nv.isGioiTinh());
+                nhanVien.setNgaySinh(nv.getNgaySinh());
+                nhanVien.setMatKhau(nv.getMatKhau());
+                nhanVien.setDiaChi(nv.getDiaChi());
+                nhanVien.setSdt(nv.getSdt());
+                nhanVien.setEmail(nv.getEmail());
+                nhanVien.setTrangThai(0);
+                nhanVien.setChucVu(nv.getChucVu());
+                nhanVien.setLastModifiedDate(new Date());
+                nhanVien.setCreatedDate(nhanVien.getCreatedDate());
+                nhanVienServiceImpl.addOrUpdate(nhanVien);
+                listNV = nhanVienServiceImpl.getAllPage(0);
+                showData(listNV);
+                btnTrangThai.setVisible(false);
+                txtTen.setText("");
+                radioNam.setSelected(true);
+                txtNgaySinh.setText("");
+                txtSdt.setText("");
+                txtDiaChi.setText("");
+                txtEmail.setText("");
+                radioNhanVien.setSelected(true);
+            }
+        }
+    }//GEN-LAST:event_btnTrangThaiActionPerformed
     private String convertDate(Date ngaySinh) {
         String date;
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -1169,6 +1207,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     private javax.swing.JButton btnPrevious;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTrangThai;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -1181,7 +1220,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JPanel panelWebcam;
@@ -1189,8 +1227,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     private javax.swing.JPanel pnQLNV;
     private javax.swing.JPanel pnThongTinNV;
     private javax.swing.JLabel qrCode;
-    private javax.swing.JRadioButton radioDaNghi;
-    private javax.swing.JRadioButton radioDangLamViec;
     private javax.swing.JRadioButton radioNam;
     private javax.swing.JRadioButton radioNhanVien;
     private javax.swing.JRadioButton radioNu;
