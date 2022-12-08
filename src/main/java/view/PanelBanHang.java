@@ -604,6 +604,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         btnTaoHD.setBackground(new java.awt.Color(41, 183, 212));
         btnTaoHD.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         btnTaoHD.setIcon(new ImageIcon("src/main/img/taoHoaDon.png"));
+        btnTaoHD.setToolTipText("Tạo hóa đơn");
         btnTaoHD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaoHDActionPerformed(evt);
@@ -849,9 +850,9 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         txtTienCK.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtTienCK.setForeground(new java.awt.Color(51, 51, 51));
         txtTienCK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
-        txtTienCK.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                txtTienCKMouseExited(evt);
+        txtTienCK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTienCKActionPerformed(evt);
             }
         });
 
@@ -1150,7 +1151,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             case 3:
                 lblRank.setIcon(new ImageIcon("src/main/img/vang.png"));
                 lblRank.setText("Vàng");
-                txtTongTien.setText(String.valueOf(tienKM - (tienKM * 11 / 100)));
+                txtTongTien.setText(String.valueOf(tienKM - (tienKM * 10 / 100)));
                 break;
             default:
                 lblRank.setIcon(new ImageIcon("src/main/img/kimcuong.png"));
@@ -1192,14 +1193,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         ViewHDCT.dispose();
     }//GEN-LAST:event_btnXoaActionPerformed
 
-    private void txtTienCKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTienCKMouseExited
-        // TODO add your handling code here:
-        double tienKhachDua = Double.valueOf(txtTienKhachDua.getText());
-        double tienCK = Double.valueOf(txtTienCK.getText());
-        double tienThua = (tienKhachDua + tienCK) - tongTien(listHoaDonChiTiet);
-        txtTienTraLai.setText(String.valueOf(tienThua));
-    }//GEN-LAST:event_txtTienCKMouseExited
-
     private void cbChonTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChonTatCaActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < tbSerial.getRowCount(); i++) {
@@ -1222,6 +1215,14 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             }
         }
     }//GEN-LAST:event_cbXoaHetActionPerformed
+
+    private void txtTienCKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienCKActionPerformed
+        // TODO add your handling code here:
+        double tienKhachDua = Double.valueOf(txtTienKhachDua.getText());
+        double tienCK = Double.valueOf(txtTienCK.getText());
+        double tienThua = (tienKhachDua + tienCK) - tongTien(listHoaDonChiTiet);
+        txtTienTraLai.setText(String.valueOf(tienThua));
+    }//GEN-LAST:event_txtTienCKActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1316,7 +1317,6 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             } catch (NotFoundException e) {
                 //No result...
             }
-
             if (result != null) {
                 try {
                     int rowHD = tbHoaDon.getSelectedRow();
