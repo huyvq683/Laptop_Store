@@ -59,9 +59,10 @@ public class CPU implements Serializable{
         this.alstModifiedDate = alstModifiedDate;
     }
 
-    public CPU(String ma, String ten) {
-        this.ma = ma;
+    public CPU(String ten, Date createdDate, Date alstModifiedDate) {
         this.ten = ten;
+        this.createdDate = createdDate;
+        this.alstModifiedDate = alstModifiedDate;
     }
 
     public CPU(UUID id) {
