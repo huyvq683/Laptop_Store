@@ -40,7 +40,13 @@ public class ViewExcelReponse {
     private int tinhTrang;
 
     public String getTinhTrang1() {
-        return this.tinhTrang == 0 ? "Chưa Thanh Toán" : "Đã Thanh Toán";
+        if (this.hinhThuc == 0) {
+            return "Chờ Thanh Toán";
+        } else if (this.hinhThuc == 1) {
+            return "Đã Thanh Toán";
+        } else {
+            return "Hủy";
+        }
     }
 
     public String getHinhThuc1() {

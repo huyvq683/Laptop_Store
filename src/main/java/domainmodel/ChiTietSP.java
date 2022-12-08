@@ -22,6 +22,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.poi.xssf.usermodel.XSSFCell;
 
 /**
  *
@@ -32,7 +33,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ChiTietSP")
+@Table(name = "ChiTietSp")
 @ToString
 public class ChiTietSP implements Serializable {
 
@@ -40,6 +41,9 @@ public class ChiTietSP implements Serializable {
     @GeneratedValue
     @Column(name = "Id")
     private UUID id;
+    
+    @Column(name = "MaCTSP")
+    private String maCTSP;
 
     @ManyToOne
     @JoinColumn(name = "IdSanPham")
@@ -80,9 +84,20 @@ public class ChiTietSP implements Serializable {
     @Column(name = "LastModifiedDate")
     private Date lastModifiedDate;
 
- public ChiTietSP(UUID id, String serial) {
+    public ChiTietSP(UUID id, String serial) {
         this.id = id;
         this.serial = serial;
+    }
+
+    public ChiTietSP(XSSFCell excelTenSP, XSSFCell excelSerial, XSSFCell excelCPU, XSSFCell excelHang, XSSFCell excelRam, XSSFCell excelCard, XSSFCell excelOCung, XSSFCell excelGia) {
+        this.idSanPham = idSanPham;
+        this.serial = serial;
+        this.idCPU = idCPU;
+        this.idHang = idHang;
+        this.idRam = idRam;
+        this.idCard = idCard;
+        this.idOCung = idOCung;
+        this.gia = gia;
     }
 
     public String conVert(Date x) {
@@ -103,5 +118,43 @@ public class ChiTietSP implements Serializable {
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
     }
+
+    public ChiTietSP(SanPham idSanPham, String serial, CPU idCPU, Hang idHang, Ram idRam, CardMH idCard, OCung idOCung, BigDecimal gia) {
+        this.idSanPham = idSanPham;
+        this.serial = serial;
+        this.idCPU = idCPU;
+        this.idHang = idHang;
+        this.idRam = idRam;
+        this.idCard = idCard;
+        this.idOCung = idOCung;
+        this.gia = gia;
+    }
+
+    public ChiTietSP(String maCTSP, SanPham idSanPham, String serial, CPU idCPU, Hang idHang, Ram idRam, CardMH idCard, OCung idOCung, BigDecimal gia) {
+        this.maCTSP = maCTSP;
+        this.idSanPham = idSanPham;
+        this.serial = serial;
+        this.idCPU = idCPU;
+        this.idHang = idHang;
+        this.idRam = idRam;
+        this.idCard = idCard;
+        this.idOCung = idOCung;
+        this.gia = gia;
+    }
     
+    public ChiTietSP(String maCTSP, SanPham idSanPham, String serial, CPU idCPU, Hang idHang, Ram idRam, CardMH idCard, OCung idOCung, BigDecimal gia, int tinhTrang, Date createdDate, Date lastModifiedDate) {
+        this.maCTSP = maCTSP;
+        this.idSanPham = idSanPham;
+        this.serial = serial;
+        this.idCPU = idCPU;
+        this.idHang = idHang;
+        this.idRam = idRam;
+        this.idCard = idCard;
+        this.idOCung = idOCung;
+        this.gia = gia;
+        this.tinhTrang = tinhTrang;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
 }

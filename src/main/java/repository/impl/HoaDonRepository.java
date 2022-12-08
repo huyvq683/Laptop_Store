@@ -87,6 +87,18 @@ public class HoaDonRepository {
         return query.list();
     }
 
+    public List<ViewExcelReponse> getListExcel(int tt) {
+        String sql = "SELECT new custommodel.ViewExcelReponse(h.ma , n.ma , n.hoTen , k.ma , k.hoTen , k.sdt , hd.tenSP , hd.donGia , h.hinhThuc , h.tienKhachTra , h.tienCK , h.tienThua , h.tongTien , h.ngayTao , h.tinhTrang) From HoaDon h"
+                + " JOIN NhanVien n ON h.idNV = n.id "
+                + "			   Join KhachHang k On k.id = h.idKH"
+                + "			   Join HoaDonChiTiet hd On hd.idHoaDon = h.id"
+                + " WHERE h.tinhTrang = :tinhTrang ";
+        Query query = session.createQuery(sql, ViewExcelReponse.class);
+        query.setParameter("tinhTrang", tt);
+        List<ViewExcelReponse> list = query.getResultList();
+        return query.list();
+    }
+
     public List<HoaDon> get_All() {
         javax.persistence.Query query = session.createQuery(fromTable, HoaDon.class);
         List<HoaDon> listCategory = query.getResultList();

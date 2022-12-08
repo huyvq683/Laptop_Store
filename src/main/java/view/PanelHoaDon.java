@@ -7,13 +7,24 @@ package view;
 import custommodel.HoaDonChiTietResponse;
 import custommodel.HoaDonResponse;
 import custommodel.ViewExcelReponse;
+import domainmodel.ChiTietSP;
 import domainmodel.Common;
 import domainmodel.HoaDon;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import service.HoaDonChiTietService;
 import service.HoaDonService;
 import service.impl.HoaDonChiTietSeviceImpl;
@@ -51,13 +62,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
         model.setRowCount(0);
         for (HoaDonResponse hd : list) {
             model.addRow(hd.toDataRow1());
-        }
-    }
-
-    public void showResultExcel(List<ViewExcelReponse> list) {
-        model2.setRowCount(0);
-        for (ViewExcelReponse hd : list) {
-            model2.addRow(hd.toDataRow());
         }
     }
 
@@ -507,6 +511,8 @@ public class PanelHoaDon extends javax.swing.JPanel {
         list.removeAll(list);
         list = hoaDonService.getByOne(0);
         showResult(list);
+        listExcel.removeAll(listExcel);
+        listExcel = hoaDonService.getListExcel(0);
     }//GEN-LAST:event_rbnChoActionPerformed
 
     private void rbnDaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnDaActionPerformed
@@ -514,6 +520,8 @@ public class PanelHoaDon extends javax.swing.JPanel {
         list.removeAll(list);
         list = hoaDonService.getByOne(1);
         showResult(list);
+        listExcel.removeAll(listExcel);
+        listExcel = hoaDonService.getListExcel(1);
     }//GEN-LAST:event_rbnDaActionPerformed
 
     private void txtSearchCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtSearchCaretUpdate
@@ -530,7 +538,97 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
     private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
         // TODO add your handling code here:
-//        hoaDonService.exportExcel(tbaExcel);
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet spreadsheet = workbook.createSheet("ChiTietHD");
+
+            XSSFRow row = null;
+            Cell cell = null;
+
+            Font headerFont = workbook.createFont();
+            headerFont.setBold(true);
+            headerFont.setFontHeightInPoints((short) 14);
+            headerFont.setColor(IndexedColors.RED.getIndex());
+            CellStyle headerCellStyle = workbook.createCellStyle();
+            headerCellStyle.setFont(headerFont);
+
+            Font tieuDe = workbook.createFont();
+            tieuDe.setBold(true);
+            tieuDe.setFontHeightInPoints((short) 18);
+            tieuDe.setColor(IndexedColors.BLACK.getIndex());
+            CellStyle tieuDeStyle = workbook.createCellStyle();
+            tieuDeStyle.setFont(tieuDe);
+
+            row = spreadsheet.createRow((short) 2);
+            row.setHeight((short) 500);
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Danh sách chi tiết hóa đơn");
+            cell.setCellStyle(tieuDeStyle);
+            row = spreadsheet.createRow((short) 3);
+            row.setHeight((short) 500);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("STT");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Mã HĐ");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("Nhân Viên");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Khách Hàng");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(4, CellType.STRING);
+            cell.setCellValue("Tên SP");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(5, CellType.STRING);
+            cell.setCellValue("Đơn Giá");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(6, CellType.STRING);
+            cell.setCellValue("Hình Thức");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(7, CellType.STRING);
+            cell.setCellValue("Tiền Khách Đưa");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(8, CellType.STRING);
+            cell.setCellValue("Tiền Thừa");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(8, CellType.STRING);
+            cell.setCellValue("Tổng Tiền");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(9, CellType.STRING);
+            cell.setCellValue("Ngày Tạo");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(10, CellType.STRING);
+            cell.setCellValue("Tình Trạng");
+            cell.setCellStyle(headerCellStyle);
+
+            for (int i = 0; i < listExcel.size(); i++) {
+                ViewExcelReponse ctcp = listExcel.get(i);
+                row = spreadsheet.createRow((short) 4 + i);
+                row.setHeight((short) 400);
+                row.createCell(0).setCellValue(i + 1);
+                row.createCell(1).setCellValue(ctcp.getMaHD());
+                row.createCell(2).setCellValue(ctcp.getMaNV() + " - " + ctcp.getTenNV());
+                row.createCell(3).setCellValue(ctcp.getMaKH() + " - " + ctcp.getTenKH() + " - " + ctcp.getSDT());
+                row.createCell(4).setCellValue(ctcp.getTenSP());
+                row.createCell(7).setCellValue(ctcp.getTienKhachTra().toString() + ctcp.getTienCK().toString());
+                row.createCell(5).setCellValue(String.valueOf(ctcp.getDonGia()));
+                //                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                //                String date = dateFormat.format(nv.getNgaySinh());
+                row.createCell(6).setCellValue(ctcp.getHinhThuc1());
+                row.createCell(8).setCellValue(ctcp.getTienThua().toString());
+                row.createCell(9).setCellValue(ctcp.getNgayTao().toString());
+                row.createCell(10).setCellValue(ctcp.getTinhTrang1());
+
+            }
+            FileOutputStream out = new FileOutputStream(new File("D:/ExportHoaDon .xlsx"));
+            workbook.write(out);
+            out.close();
+            JOptionPane.showMessageDialog(this, "Export thành công");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Export thất bại");
+        }
     }//GEN-LAST:event_btnThem1ActionPerformed
     int page = 0;
     private void rbnTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnTTActionPerformed
@@ -538,7 +636,8 @@ public class PanelHoaDon extends javax.swing.JPanel {
         list.removeAll(list);
         list = hoaDonService.getAll();
         showResult(list);
-
+        listExcel.removeAll(listExcel);
+        listExcel = hoaDonService.getAllExcel();
     }//GEN-LAST:event_rbnTTActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -556,6 +655,8 @@ public class PanelHoaDon extends javax.swing.JPanel {
         list.removeAll(list);
         list = hoaDonService.getByOne(2);
         showResult(list);
+        listExcel.removeAll(listExcel);
+        listExcel = hoaDonService.getListExcel(2);
     }//GEN-LAST:event_rbnHuyActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

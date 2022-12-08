@@ -23,7 +23,6 @@ import lombok.ToString;
  * @author FPT
  */
 @Entity
-@ToString
 @Getter
 @Setter
 @NoArgsConstructor

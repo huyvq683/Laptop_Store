@@ -22,7 +22,7 @@ public class SanPhamRepository {
     public List<SanPham> getAllSanPham() {
         List<SanPham> lists = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From SanPham");
+            Query query = session.createQuery("From SanPham ORDER BY Ma DESC");
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -107,11 +107,11 @@ public class SanPhamRepository {
         }
         return null;
     }
-//    public static void main(String[] args) {
-//        SanPham list = new SanPhamRepository().getOne("LapTop");
-//        for (SanPham x : list) {
-//            System.out.println(x.toString());
-//        }
-//    }
+    public static void main(String[] args) {
+        List<SanPham> list = new SanPhamRepository().getAllSanPham();
+        for (SanPham x : list) {
+            System.out.println(x.toString());
+        }
+    }
 //    From SanPham WHERE Ma like concat (:searchKey,'%')"
 }
