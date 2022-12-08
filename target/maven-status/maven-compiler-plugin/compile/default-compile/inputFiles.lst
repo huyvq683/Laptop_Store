@@ -1,215 +1,99 @@
-<<<<<<< HEAD
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\SanPhamService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\CPUService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\entity\CheckCapBacKH.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\ThongKeRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\QuenMatKhauRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\RamRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\KhuyenMaiServiceImpl.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\com\raven\chart\blankchart\SeriesSize.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\com\raven\chart\LabelColor.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\SanPham.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelKhachHang.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\CPU.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\SerialDaBanServiceImpl.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\ThongKeServiceImpl.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewMenu.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ThongKeDoanhThuRespone.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\com\raven\chart\LegendItem.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\SanPhamViewKMResponse.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\SerialDaBan.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ViewExcelReponse.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ViewHoaDonReponse.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\HoaDonChiTietSeviceImpl.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\com\raven\main\Main.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\SerialDaBanRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\KhachHangService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\Ram.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ThongKeSanPhamRespone.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\ChiTietSPRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\HoaDonChiTietResponse.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\HoaDonChiTietService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\com\raven\chart\ModelChart.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\HoaDonChiTietRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\entity\SendEmail.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\KhachHangServiceImpl.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\NhanVienRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\KhuyenMai.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\CardMH.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\KhuyenMaiRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelNhanVien.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewNhanVien.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\HoaDonService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\com\raven\chart\Chart.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\KhachHangRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\com\raven\chart\blankchart\NiceScale.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelKhuyenMai.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewDangNhap.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewDoiMatKhauMoi.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\CPUServiceImql.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelSanPham.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\ChiTietSPServiceImql.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewOCung.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\SanPhamKM.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\OCungServiceImql.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\Repository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\utility\HibernateUtil.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\QuenMatKhauServiceImpl.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\SerialDaBanService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\Hang.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewQuenMatKhau.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\HoaDonRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ThongKeBieuDoHD.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\HoaDonChiTiet.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\ChiTietSPService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\OCungService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewDoiMatKhau2.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelThongKe.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\application\Application.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\NhanVien.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\RamService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\HangRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewCPU.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\KhachHangReponse.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\com\raven\chart\blankchart\BlankPlotChatRender.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewHang.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\SanPhamRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\OCung.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\CPURepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\com\raven\chart\ModelLegend.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\KhachHang.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\CardService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\com\raven\chart\blankchart\BlankPlotChart.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ChiTietSPResponse.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\Common.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\CardRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\ChiTietSP.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\domainmodel\HoaDon.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\HoaDonServiceImpl.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\KhachHangRespone.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\NhanVienService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\repository\impl\OCungRepository.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\QuenMatKhauService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\CardServiceImql.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\HangServiceImql.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\HangService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewQuanLy.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelBanHang.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\RamServiceImql.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\PanelHoaDon.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\ThongKeService.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewRam.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\ThongKeBieuDoSP.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewSP.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\custommodel\HoaDonResponse.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\view\ViewCard.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\NhanVienServiceImpl.java
-D:\FPOLYK17\FALL 2022\DuAn1\du-an-1-nhom-3\src\main\java\service\impl\SanPhamServiceImpl.java
-=======
-E:\DuAn1\Code\src\main\java\view\PanelKhuyenMai.java
-E:\DuAn1\Code\src\main\java\service\impl\SerialDaBanServiceImpl.java
-E:\DuAn1\Code\src\main\java\view\ViewDangNhap.java
-E:\DuAn1\Code\src\main\java\com\raven\chart\LabelColor.java
-E:\DuAn1\Code\src\main\java\view\ViewMenu.java
-E:\DuAn1\Code\src\main\java\view\ViewSP.java
-E:\DuAn1\Code\src\main\java\domainmodel\CardMH.java
-E:\DuAn1\Code\src\main\java\domainmodel\Ram.java
-E:\DuAn1\Code\src\main\java\service\HoaDonChiTietService.java
-E:\DuAn1\Code\src\main\java\view\ViewCPU.java
-E:\DuAn1\Code\src\main\java\custommodel\KhachHangReponse.java
-E:\DuAn1\Code\src\main\java\entity\CheckCapBacKH.java
-E:\DuAn1\Code\src\main\java\service\impl\HangServiceImql.java
-E:\DuAn1\Code\src\main\java\view\PanelBanHang.java
-E:\DuAn1\Code\src\main\java\domainmodel\CPU.java
-E:\DuAn1\Code\src\main\java\com\raven\chart\ModelLegend.java
-E:\DuAn1\Code\src\main\java\view\PanelSanPham.java
-E:\DuAn1\Code\src\main\java\service\RamService.java
-E:\DuAn1\Code\src\main\java\custommodel\HoaDonResponse.java
-E:\DuAn1\Code\src\main\java\service\impl\ThongKeServiceImpl.java
-E:\DuAn1\Code\src\main\java\com\raven\main\Main.java
-E:\DuAn1\Code\src\main\java\entity\SendEmail.java
-E:\DuAn1\Code\src\main\java\view\PanelHoaDon.java
-E:\DuAn1\Code\src\main\java\com\raven\chart\blankchart\NiceScale.java
-E:\DuAn1\Code\src\main\java\repository\impl\HangRepository.java
-E:\DuAn1\Code\src\main\java\service\ThongKeService.java
-E:\DuAn1\Code\src\main\java\repository\impl\CPURepository.java
-E:\DuAn1\Code\src\main\java\repository\impl\CardRepository.java
-E:\DuAn1\Code\src\main\java\repository\impl\HoaDonRepository.java
-E:\DuAn1\Code\src\main\java\application\Application.java
-E:\DuAn1\Code\src\main\java\repository\impl\SanPhamRepository.java
-E:\DuAn1\Code\src\main\java\repository\Repository.java
-E:\DuAn1\Code\src\main\java\domainmodel\ChiTietSP.java
-E:\DuAn1\Code\src\main\java\service\HangService.java
-E:\DuAn1\Code\src\main\java\service\impl\HoaDonChiTietSeviceImpl.java
-E:\DuAn1\Code\src\main\java\com\raven\chart\blankchart\BlankPlotChart.java
-E:\DuAn1\Code\src\main\java\custommodel\ViewHoaDonReponse.java
-E:\DuAn1\Code\src\main\java\repository\impl\QuenMatKhauRepository.java
-E:\DuAn1\Code\src\main\java\service\SerialDaBanService.java
-E:\DuAn1\Code\src\main\java\service\impl\SanPhamServiceImpl.java
-E:\DuAn1\Code\src\main\java\domainmodel\Common.java
-E:\DuAn1\Code\src\main\java\view\ViewRam.java
-E:\DuAn1\Code\src\main\java\com\raven\chart\blankchart\BlankPlotChatRender.java
-E:\DuAn1\Code\src\main\java\custommodel\ViewExcelReponse.java
-E:\DuAn1\Code\src\main\java\domainmodel\OCung.java
-E:\DuAn1\Code\src\main\java\repository\impl\OCungRepository.java
-E:\DuAn1\Code\src\main\java\service\impl\HoaDonServiceImpl.java
-E:\DuAn1\Code\src\main\java\service\ChiTietSPService.java
-E:\DuAn1\Code\src\main\java\domainmodel\Hang.java
-E:\DuAn1\Code\src\main\java\custommodel\SanPhamViewKMResponse.java
-E:\DuAn1\Code\src\main\java\repository\impl\SerialDaBanRepository.java
-E:\DuAn1\Code\src\main\java\view\PanelKhachHang.java
-E:\DuAn1\Code\src\main\java\domainmodel\HoaDonChiTiet.java
-E:\DuAn1\Code\src\main\java\view\PanelNhanVien.java
-E:\DuAn1\Code\src\main\java\domainmodel\SanPham.java
-E:\DuAn1\Code\src\main\java\service\HoaDonService.java
-E:\DuAn1\Code\src\main\java\domainmodel\NhanVien.java
-E:\DuAn1\Code\src\main\java\custommodel\KhachHangRespone.java
-E:\DuAn1\Code\src\main\java\view\ViewHang.java
-E:\DuAn1\Code\src\main\java\view\ViewQuenMatKhau.java
-E:\DuAn1\Code\src\main\java\view\ViewCard.java
-E:\DuAn1\Code\src\main\java\service\impl\CPUServiceImql.java
-E:\DuAn1\Code\src\main\java\utility\HibernateUtil.java
-E:\DuAn1\Code\src\main\java\service\impl\KhachHangServiceImpl.java
-E:\DuAn1\Code\src\main\java\domainmodel\HoaDon.java
-E:\DuAn1\Code\src\main\java\service\impl\QuenMatKhauServiceImpl.java
-E:\DuAn1\Code\src\main\java\service\KhachHangService.java
-E:\DuAn1\Code\src\main\java\service\SanPhamService.java
-E:\DuAn1\Code\src\main\java\domainmodel\KhachHang.java
-E:\DuAn1\Code\src\main\java\repository\impl\RamRepository.java
-E:\DuAn1\Code\src\main\java\service\impl\NhanVienServiceImpl.java
-E:\DuAn1\Code\src\main\java\view\ViewDoiMatKhau2.java
-E:\DuAn1\Code\src\main\java\view\ViewOCung.java
-E:\DuAn1\Code\src\main\java\custommodel\ThongKeBieuDoHD.java
-E:\DuAn1\Code\src\main\java\com\raven\chart\blankchart\SeriesSize.java
-E:\DuAn1\Code\src\main\java\custommodel\ThongKeDoanhThuRespone.java
-E:\DuAn1\Code\src\main\java\repository\impl\KhachHangRepository.java
-E:\DuAn1\Code\src\main\java\view\ViewDoiMatKhauMoi.java
-E:\DuAn1\Code\src\main\java\service\QuenMatKhauService.java
-E:\DuAn1\Code\src\main\java\view\ViewNhanVien.java
-E:\DuAn1\Code\src\main\java\service\impl\RamServiceImql.java
-E:\DuAn1\Code\src\main\java\service\OCungService.java
-E:\DuAn1\Code\src\main\java\service\impl\CardServiceImql.java
-E:\DuAn1\Code\src\main\java\service\impl\KhuyenMaiServiceImpl.java
-E:\DuAn1\Code\src\main\java\custommodel\ChiTietSPResponse.java
-E:\DuAn1\Code\src\main\java\repository\impl\ThongKeRepository.java
-E:\DuAn1\Code\src\main\java\service\CardService.java
-E:\DuAn1\Code\src\main\java\custommodel\ThongKeBieuDoSP.java
-E:\DuAn1\Code\src\main\java\repository\impl\HoaDonChiTietRepository.java
-E:\DuAn1\Code\src\main\java\view\PanelThongKe.java
-E:\DuAn1\Code\src\main\java\repository\impl\KhuyenMaiRepository.java
-E:\DuAn1\Code\src\main\java\service\NhanVienService.java
-E:\DuAn1\Code\src\main\java\service\impl\ChiTietSPServiceImql.java
-E:\DuAn1\Code\src\main\java\domainmodel\SanPhamKM.java
-E:\DuAn1\Code\src\main\java\repository\impl\ChiTietSPRepository.java
-E:\DuAn1\Code\src\main\java\custommodel\HoaDonChiTietResponse.java
-E:\DuAn1\Code\src\main\java\domainmodel\KhuyenMai.java
-E:\DuAn1\Code\src\main\java\custommodel\ThongKeSanPhamRespone.java
-E:\DuAn1\Code\src\main\java\domainmodel\SerialDaBan.java
-E:\DuAn1\Code\src\main\java\service\CPUService.java
-E:\DuAn1\Code\src\main\java\com\raven\chart\LegendItem.java
-E:\DuAn1\Code\src\main\java\com\raven\chart\ModelChart.java
-E:\DuAn1\Code\src\main\java\service\impl\OCungServiceImql.java
-E:\DuAn1\Code\src\main\java\repository\impl\NhanVienRepository.java
-E:\DuAn1\Code\src\main\java\view\ViewQuanLy.java
-E:\DuAn1\Code\src\main\java\com\raven\chart\Chart.java
->>>>>>> e0472d9506da4699c2d3f99102583cb728a97704
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\Repository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\Ram.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewQuenMatKhau.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\KhuyenMaiServiceImpl.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\utility\HibernateUtil.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\KhachHangReponse.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\QuenMatKhauServiceImpl.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewDangNhap.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\SanPhamServiceImpl.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\SanPhamKM.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\Common.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\CardRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\HangRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\RamService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\HoaDonChiTietService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewDoiMatKhauMoi.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\KhachHangRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\ThongKeRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\ChiTietSPResponse.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\RamRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\CardMH.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\HoaDonChiTietSeviceImpl.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\PanelKhachHang.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\HoaDonRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\OCungService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\SanPhamViewKMResponse.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\HoaDonCHiTietInResponse.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\SerialDaBan.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\CPUServiceImql.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\PanelHoaDon.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\ThongKeBieuDoSP.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\KhuyenMai.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\KhachHang.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\CPUService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewHang.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\CPU.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\application\Application.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\CardService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\ThongKeDoanhThuRespone.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\entity\SendEmail.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewCard.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\ThongKeBieuDoHD.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\HangServiceImql.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\CPURepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\PanelBanHang.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\PanelNhanVien.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\HoaDonResponse.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\PanelThongKe.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\entity\InHoaDon.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewDoiMatKhau2.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\ViewHoaDonReponse.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\HoaDonService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\SanPham.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\ViewExcelReponse.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\HoaDonInResponse.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\Hang.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\SanPhamRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\ChiTietSPServiceImql.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\entity\CheckCapBacKH.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\HoaDon.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\HoaDonServiceImpl.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\RamServiceImql.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\KhachHangRespone.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\ThongKeService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\QuenMatKhauService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\SerialDaBanService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewSP.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\OCungServiceImql.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\NhanVienService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\SerialDaBanServiceImpl.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\DonHangResponse.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\NhanVienServiceImpl.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewMenu.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\KhachHangServiceImpl.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewQuanLy.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewCPU.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\HoaDonChiTiet.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\HoaDonChiTietRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\SerialDaBanRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\HangService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\NhanVienRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\HoaDonChiTietResponse.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\ChiTietSP.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\ChiTietSPRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\KhachHangService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\OCung.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\SanPhamService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewRam.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewNhanVien.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\ChiTietSPService.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\ThongKeServiceImpl.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\service\impl\CardServiceImql.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\KhuyenMaiRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\QuenMatKhauRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\PanelSanPham.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\repository\impl\OCungRepository.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\domainmodel\NhanVien.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\custommodel\ThongKeSanPhamRespone.java
+D:\FPT Polytechnic\Ki 4\Du an 1\Project 2\src\main\java\view\ViewOCung.java
