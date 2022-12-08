@@ -42,13 +42,9 @@ public class CheckCapBacKH extends Thread {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn3");
+        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1");
         properties.put(Environment.USER, "sa");
-<<<<<<< HEAD
         properties.put(Environment.PASS, "123456");
-=======
-        properties.put(Environment.PASS, "sa");
->>>>>>> 4c9640bbce52e936a842d2cb3b108b1ef7b75741
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
