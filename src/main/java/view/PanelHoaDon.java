@@ -434,7 +434,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã", "Tên", "Giá", "Số Lượng", "Tiền KM", "Tổng Tiền"
+                "STT", "Mã HĐ", "Tên", "Giá", "Số Lượng", "Tiền KM", "Tổng Tiền"
             }
         ));
         jScrollPane2.setViewportView(tbaBangHDCT);
@@ -619,7 +619,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 row.createCell(6).setCellValue(ctcp.getHinhThuc1());
                 row.createCell(8).setCellValue(ctcp.getTienThua().toString());
                 row.createCell(9).setCellValue(ctcp.getNgayTao().toString());
-                row.createCell(10).setCellValue(ctcp.getTinhTrang1());
+                row.createCell(10).setCellValue(ctcp.trangThai());
 
             }
             FileOutputStream out = new FileOutputStream(new File("D:/ExportHoaDon .xlsx"));

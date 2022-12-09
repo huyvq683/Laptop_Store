@@ -39,13 +39,16 @@ public class ViewExcelReponse {
     private Date ngayTao;
     private int tinhTrang;
 
-    public String getTinhTrang1() {
-        if (this.hinhThuc == 0) {
-            return "Chờ Thanh Toán";
-        } else if (this.hinhThuc == 1) {
-            return "Đã Thanh Toán";
-        } else {
-            return "Hủy";
+    public String trangThai() {
+        switch (tinhTrang) {
+            case 0:
+                return "Chờ thanh toán";
+            case 1:
+                return "Đã thanh toán";
+            case 2:
+                return "Hủy";
+            default:
+                throw new AssertionError();
         }
     }
 
@@ -66,7 +69,7 @@ public class ViewExcelReponse {
     }
 
     public Object[] toDataRow() {
-        return new Object[]{maHD, maNV + tenNV, maKH + tenKH + SDT, tenSP, donGia, getHinhThuc1(), tienKhachTra, tienCK, tienThua, tongTien, ngayTao1(), getTinhTrang1()};
+        return new Object[]{maHD, maNV + tenNV, maKH + tenKH + SDT, tenSP, donGia, getHinhThuc1(), tienKhachTra, tienCK, tienThua, tongTien, ngayTao1(), trangThai()};
     }
 
 }

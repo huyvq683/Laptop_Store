@@ -22,7 +22,6 @@ public interface HoaDonService {
 
     void exportExcel(JTable table);
 
-    List<ViewExcelReponse> getOne(int tt);
 
     public List<ViewExcelReponse> getListExcel(int tt);
 
