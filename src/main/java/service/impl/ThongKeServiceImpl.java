@@ -133,7 +133,7 @@ public class ThongKeServiceImpl implements ThongKeService {
                 false, false, false);
 
         ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 618));
+        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 580));
 
         jpnItem.removeAll();
         jpnItem.setLayout(new CardLayout());
@@ -154,7 +154,7 @@ public class ThongKeServiceImpl implements ThongKeService {
                 dataset, PlotOrientation.VERTICAL, false, false, false);
 
         ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 618));
+        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 580));
 
         jpnItem.removeAll();
         jpnItem.setLayout(new CardLayout());
