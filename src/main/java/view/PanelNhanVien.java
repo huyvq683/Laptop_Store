@@ -854,93 +854,185 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_btnImportActionPerformed
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
-        try {
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            XSSFSheet spreadsheet = workbook.createSheet("NhanVien");
+        if (txtSearch.getText().isEmpty()) {
+            try {
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                XSSFSheet spreadsheet = workbook.createSheet("NhanVien");
 
-            XSSFRow row = null;
-            Cell cell = null;
+                XSSFRow row = null;
+                Cell cell = null;
 
-            Font headerFont = workbook.createFont();
-            headerFont.setBold(true);
-            headerFont.setFontHeightInPoints((short) 14);
-            headerFont.setColor(IndexedColors.RED.getIndex());
-            CellStyle headerCellStyle = workbook.createCellStyle();
-            headerCellStyle.setFont(headerFont);
+                Font headerFont = workbook.createFont();
+                headerFont.setBold(true);
+                headerFont.setFontHeightInPoints((short) 14);
+                headerFont.setColor(IndexedColors.RED.getIndex());
+                CellStyle headerCellStyle = workbook.createCellStyle();
+                headerCellStyle.setFont(headerFont);
 
-            Font tieuDe = workbook.createFont();
-            tieuDe.setBold(true);
-            tieuDe.setFontHeightInPoints((short) 18);
-            tieuDe.setColor(IndexedColors.BLACK.getIndex());
-            CellStyle tieuDeStyle = workbook.createCellStyle();
-            tieuDeStyle.setFont(tieuDe);
+                Font tieuDe = workbook.createFont();
+                tieuDe.setBold(true);
+                tieuDe.setFontHeightInPoints((short) 18);
+                tieuDe.setColor(IndexedColors.BLACK.getIndex());
+                CellStyle tieuDeStyle = workbook.createCellStyle();
+                tieuDeStyle.setFont(tieuDe);
 
-            row = spreadsheet.createRow((short) 2);
-            row.setHeight((short) 500);
-            cell = row.createCell(3, CellType.STRING);
-            cell.setCellValue("     Danh sách nhân viên");
-            cell.setCellStyle(tieuDeStyle);
-            row = spreadsheet.createRow((short) 3);
-            row.setHeight((short) 500);
-            cell = row.createCell(0, CellType.STRING);
-            cell.setCellValue("STT");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(1, CellType.STRING);
-            cell.setCellValue("Mã NV");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(2, CellType.STRING);
-            cell.setCellValue("Tên");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(3, CellType.STRING);
-            cell.setCellValue("Giới tính");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(4, CellType.STRING);
-            cell.setCellValue("Ngày sinh");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(5, CellType.STRING);
-            cell.setCellValue("Địa chỉ");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(6, CellType.STRING);
-            cell.setCellValue("Số điện thoại");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(7, CellType.STRING);
-            cell.setCellValue("Email");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(8, CellType.STRING);
-            cell.setCellValue("Chức vụ");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(9, CellType.STRING);
-            cell.setCellValue("Trạng thái");
-            cell.setCellStyle(headerCellStyle);
-            for (int i = 0; i < list.size(); i++) {
-                NhanVien nv = list.get(i);
-                row = spreadsheet.createRow((short) 4 + i);
-                row.setHeight((short) 400);
-                row.createCell(0).setCellValue(i + 1);
-                row.createCell(1).setCellValue(nv.getMa());
-                row.createCell(2).setCellValue(nv.getHoTen());
-                String gioiTinh;
-                if (nv.isGioiTinh()) {
-                    gioiTinh = "Nam";
-                } else {
-                    gioiTinh = "Nữ";
+                row = spreadsheet.createRow((short) 2);
+                row.setHeight((short) 500);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("     Danh sách nhân viên");
+                cell.setCellStyle(tieuDeStyle);
+                row = spreadsheet.createRow((short) 3);
+                row.setHeight((short) 500);
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue("STT");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue("Mã NV");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue("Tên");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("Giới tính");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue("Ngày sinh");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue("Địa chỉ");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(6, CellType.STRING);
+                cell.setCellValue("Số điện thoại");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(7, CellType.STRING);
+                cell.setCellValue("Email");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(8, CellType.STRING);
+                cell.setCellValue("Chức vụ");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(9, CellType.STRING);
+                cell.setCellValue("Trạng thái");
+                cell.setCellStyle(headerCellStyle);
+                for (int i = 0; i < list.size(); i++) {
+                    NhanVien nv = list.get(i);
+                    row = spreadsheet.createRow((short) 4 + i);
+                    row.setHeight((short) 400);
+                    row.createCell(0).setCellValue(i + 1);
+                    row.createCell(1).setCellValue(nv.getMa());
+                    row.createCell(2).setCellValue(nv.getHoTen());
+                    String gioiTinh;
+                    if (nv.isGioiTinh()) {
+                        gioiTinh = "Nam";
+                    } else {
+                        gioiTinh = "Nữ";
+                    }
+                    row.createCell(3).setCellValue(gioiTinh);
+                    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    String date = dateFormat.format(nv.getNgaySinh());
+                    row.createCell(4).setCellValue(date);
+                    row.createCell(5).setCellValue(nv.getDiaChi());
+                    row.createCell(6).setCellValue(nv.getSdt());
+                    row.createCell(7).setCellValue(nv.getEmail());
+                    row.createCell(8).setCellValue(nv.getChucVu() == 0 ? "Quản lý" : "Nhân viên");
+                    row.createCell(9).setCellValue(nv.getTrangThai() == 0 ? "Đang làm việc" : "Đã nghỉ việc");
                 }
-                row.createCell(3).setCellValue(gioiTinh);
-                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                String date = dateFormat.format(nv.getNgaySinh());
-                row.createCell(4).setCellValue(date);
-                row.createCell(5).setCellValue(nv.getDiaChi());
-                row.createCell(6).setCellValue(nv.getSdt());
-                row.createCell(7).setCellValue(nv.getEmail());
-                row.createCell(8).setCellValue(nv.getChucVu() == 0 ? "Quản lý" : "Nhân viên");
-                row.createCell(9).setCellValue(nv.getTrangThai() == 0 ? "Đang làm việc" : "Đã nghỉ việc");
+                FileOutputStream out = new FileOutputStream(new File("D:/NhanVien.xlsx"));
+                workbook.write(out);
+                out.close();
+                JOptionPane.showMessageDialog(this, "Export nhân viên thành công");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Export nhân viên thất bại");
             }
-            FileOutputStream out = new FileOutputStream(new File("D:/NhanVien.xlsx"));
-            workbook.write(out);
-            out.close();
-            JOptionPane.showMessageDialog(this, "Export nhân viên thành công");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Export nhân viên thất bại");
+        } else {
+            try {
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                XSSFSheet spreadsheet = workbook.createSheet("NhanVien");
+
+                XSSFRow row = null;
+                Cell cell = null;
+
+                Font headerFont = workbook.createFont();
+                headerFont.setBold(true);
+                headerFont.setFontHeightInPoints((short) 14);
+                headerFont.setColor(IndexedColors.RED.getIndex());
+                CellStyle headerCellStyle = workbook.createCellStyle();
+                headerCellStyle.setFont(headerFont);
+
+                Font tieuDe = workbook.createFont();
+                tieuDe.setBold(true);
+                tieuDe.setFontHeightInPoints((short) 18);
+                tieuDe.setColor(IndexedColors.BLACK.getIndex());
+                CellStyle tieuDeStyle = workbook.createCellStyle();
+                tieuDeStyle.setFont(tieuDe);
+
+                row = spreadsheet.createRow((short) 2);
+                row.setHeight((short) 500);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("     Danh sách nhân viên");
+                cell.setCellStyle(tieuDeStyle);
+                row = spreadsheet.createRow((short) 3);
+                row.setHeight((short) 500);
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue("STT");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue("Mã NV");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue("Tên");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("Giới tính");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue("Ngày sinh");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue("Địa chỉ");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(6, CellType.STRING);
+                cell.setCellValue("Số điện thoại");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(7, CellType.STRING);
+                cell.setCellValue("Email");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(8, CellType.STRING);
+                cell.setCellValue("Chức vụ");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(9, CellType.STRING);
+                cell.setCellValue("Trạng thái");
+                cell.setCellStyle(headerCellStyle);
+                listSearch = nhanVienServiceImpl.search(txtSearch.getText());
+                for (int i = 0; i < listSearch.size(); i++) {
+                    NhanVien nv = listSearch.get(i);
+                    row = spreadsheet.createRow((short) 4 + i);
+                    row.setHeight((short) 400);
+                    row.createCell(0).setCellValue(i + 1);
+                    row.createCell(1).setCellValue(nv.getMa());
+                    row.createCell(2).setCellValue(nv.getHoTen());
+                    String gioiTinh;
+                    if (nv.isGioiTinh()) {
+                        gioiTinh = "Nam";
+                    } else {
+                        gioiTinh = "Nữ";
+                    }
+                    row.createCell(3).setCellValue(gioiTinh);
+                    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    String date = dateFormat.format(nv.getNgaySinh());
+                    row.createCell(4).setCellValue(date);
+                    row.createCell(5).setCellValue(nv.getDiaChi());
+                    row.createCell(6).setCellValue(nv.getSdt());
+                    row.createCell(7).setCellValue(nv.getEmail());
+                    row.createCell(8).setCellValue(nv.getChucVu() == 0 ? "Quản lý" : "Nhân viên");
+                    row.createCell(9).setCellValue(nv.getTrangThai() == 0 ? "Đang làm việc" : "Đã nghỉ việc");
+                }
+                FileOutputStream out = new FileOutputStream(new File("D:/NhanVien.xlsx"));
+                workbook.write(out);
+                out.close();
+                JOptionPane.showMessageDialog(this, "Export nhân viên thành công");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Export nhân viên thất bại");
+            }
         }
     }//GEN-LAST:event_btnExportActionPerformed
 

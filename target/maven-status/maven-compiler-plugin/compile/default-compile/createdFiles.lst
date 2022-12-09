@@ -76,7 +76,6 @@ view\PanelHoaDon$5.class
 service\impl\KhuyenMaiServiceImpl.class
 view\PanelKhachHang.class
 view\PanelSanPham$46.class
-entity\SendEmail$1$1.class
 view\PanelBanHang$12.class
 view\PanelThongKe$25.class
 repository\impl\ChiTietSPRepository.class
@@ -103,7 +102,6 @@ view\PanelHoaDon$3.class
 view\ViewNhanVien$8.class
 view\ViewQuanLy$10.class
 view\PanelKhachHang$3.class
-entity\SendEmail.class
 view\ViewDoiMatKhau2$2.class
 view\ViewSP$2.class
 custommodel\KhachHangReponse.class
@@ -174,7 +172,10 @@ view\ViewSP$1.class
 view\PanelSanPham$42.class
 repository\impl\CardRepository.class
 view\ViewQuenMatKhau$7.class
+<<<<<<< HEAD
+=======
 entity\CheckCapBacKH.class
+>>>>>>> df5ed757df3813b18e1ecd40fe415a54e0c50706
 view\PanelKhuyenMai$3.class
 view\ViewQuanLy$7.class
 service\impl\HoaDonChiTietSeviceImpl.class
@@ -214,7 +215,6 @@ view\ViewSP$6.class
 view\ViewQuanLy$11.class
 service\SanPhamService.class
 view\PanelKhachHang$1.class
-entity\SendEmail$1.class
 view\PanelBanHang$6.class
 view\PanelSanPham$10.class
 service\CPUService.class
@@ -309,7 +309,6 @@ view\ViewDoiMatKhauMoi$1.class
 domainmodel\CardMH.class
 repository\impl\HoaDonChiTietRepository.class
 view\PanelThongKe$16.class
-entity\CheckCapBacKH$1.class
 view\ViewNhanVien.class
 view\ViewOCung.class
 custommodel\HoaDonResponse.class

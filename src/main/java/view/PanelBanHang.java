@@ -1168,6 +1168,8 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         NhanVien nhanVien = nhanVienService.getOne(Common.tenNV.getEmail());
         hoaDon.setIdNV(nhanVien);
         hoaDon.setTinhTrang(0);
+        hoaDon.setCreatedDate(new Date());
+        hoaDon.setLastModifiedDate(new Date());
         JOptionPane.showMessageDialog(this, hoaDonService.add(hoaDon));
         listHoaDon = hoaDonService.getAll(Common.tenNV);
         showDataHoaDonTable(listHoaDon);
