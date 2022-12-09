@@ -147,8 +147,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnKhachHang = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
-        btnCTNV = new javax.swing.JButton();
-        btnDoiMK = new javax.swing.JButton();
         panelBanHang = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -355,26 +353,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnCTNV.setBackground(new java.awt.Color(77, 83, 161));
-        btnCTNV.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnCTNV.setForeground(new java.awt.Color(255, 255, 255));
-        btnCTNV.setText("Chi tiết nhân viên");
-        btnCTNV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCTNVActionPerformed(evt);
-            }
-        });
-
-        btnDoiMK.setBackground(new java.awt.Color(77, 83, 161));
-        btnDoiMK.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnDoiMK.setForeground(new java.awt.Color(255, 255, 255));
-        btnDoiMK.setText("Đổi mật khẩu");
-        btnDoiMK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoiMKActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout view2Layout = new javax.swing.GroupLayout(view2);
         view2.setLayout(view2Layout);
         view2Layout.setHorizontalGroup(
@@ -391,12 +369,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, view2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCTNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(46, 46, 46))
         );
         view2Layout.setVerticalGroup(
             view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,11 +391,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
                 .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCTNV, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -764,20 +732,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnThoatMouseExited
 
-    private void btnCTNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCTNVActionPerformed
-        // TODO add your handling code here:
-        NhanVien nv = TenTKNV.tenNV;
-        DetailChiTietNV detailChiTietNV = new DetailChiTietNV(this, true, nv);
-        detailChiTietNV.setVisible(true);
-    }//GEN-LAST:event_btnCTNVActionPerformed
-
-    private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
-        // TODO add your handling code here:
-        ViewDoiMatKhau2 dmk = new ViewDoiMatKhau2();
-        dmk.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnDoiMKActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -830,8 +784,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBanHang;
-    private javax.swing.JButton btnCTNV;
-    private javax.swing.JButton btnDoiMK;
     private javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnNhanVien;
