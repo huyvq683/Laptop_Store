@@ -52,28 +52,28 @@ public class SanPham implements Serializable {
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date alstModifiedDate;
+    private Date lastModifiedDate;
 
-   public SanPham(String ma, String ten, Date createdDate, Date alstModifiedDate) {
+   public SanPham(String ma, String ten, Date createdDate, Date lastModifiedDate) {
         this.ma = ma;
         this.ten = ten;
         this.createdDate = createdDate;
-        this.alstModifiedDate = alstModifiedDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
-    public SanPham(String ma, String ten, int trangThai, Date createdDate, Date alstModifiedDate) {
+    public SanPham(String ma, String ten, int trangThai, Date createdDate, Date lastModifiedDate) {
         this.ma = ma;
         this.ten = ten;
         this.trangThai = trangThai;
         this.createdDate = createdDate;
-        this.alstModifiedDate = alstModifiedDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
-    public SanPham(String ten, int trangThai, Date createdDate, Date alstModifiedDate) {
+    public SanPham(String ten, int trangThai, Date createdDate, Date lastModifiedDate) {
         this.ten = ten;
         this.trangThai = trangThai;
         this.createdDate = createdDate;
-        this.alstModifiedDate = alstModifiedDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
    
 
@@ -82,10 +82,10 @@ public class SanPham implements Serializable {
         this.ten = ten;
     }
 
-    public SanPham(String ten, Date createdDate, Date alstModifiedDate) {
+    public SanPham(String ten, Date createdDate, Date lastModifiedDate) {
         this.ten = ten;
         this.createdDate = createdDate;
-        this.alstModifiedDate = alstModifiedDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
  
     public String conVert(Date x) {

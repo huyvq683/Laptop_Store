@@ -48,9 +48,9 @@ public class KhuyenMaiServiceImpl {
         return "Thêm thành công";
     }
 
-    public List<KhuyenMai> getAllKhuyenMai(String txt) {
+    public List<KhuyenMai> getAllKhuyenMai(String txt, int trangThai) {
         List<KhuyenMai> list = new ArrayList<>();
-        for (KhuyenMai khuyenMai : khuyenMaiRepository.getAllKhuyenMai()) {
+        for (KhuyenMai khuyenMai : trangThai == 2 ? khuyenMaiRepository.getAllKhuyenMai() : locTrangThai(trangThai)) {
             if (khuyenMai.getTenKM().toLowerCase().contains(txt.toLowerCase())) {
                 list.add(khuyenMai);
             }
@@ -58,14 +58,27 @@ public class KhuyenMaiServiceImpl {
         return list;
     }
 
+    public List<KhuyenMai> locTrangThai(int trangThai) {
+        List<KhuyenMai> list = new ArrayList<>();
+        for (KhuyenMai km : khuyenMaiRepository.getAllKhuyenMai()) {
+            if (km.getTrangThai() == trangThai) {
+                list.add(km);
+            }
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        new KhuyenMaiServiceImpl().getAllKhuyenMai("", 0).forEach(c -> System.out.println(c));
+    }
+
     public void deleteSanPhamKhuyenMaiByMa(List<SanPhamViewKMResponse> listMaSP, KhuyenMai km) {
         khuyenMaiRepository.deleteSanPhamKhuyenMaiByMa(listMaSP, km);
     }
 
-    public static void main(String[] args) {
-        new KhuyenMaiServiceImpl().getAllKhuyenMai("").forEach(c -> System.out.println(c.getTenKM()));
-    }
-
+//    public static void main(String[] args) {
+//        new KhuyenMaiServiceImpl().getAllKhuyenMai("").forEach(c -> System.out.println(c.getTenKM()));
+//    }
     public int genMaHD() {
         return khuyenMaiRepository.genMaHD();
     }
@@ -90,5 +103,9 @@ public class KhuyenMaiServiceImpl {
 
     public boolean kiemTraKM(SanPhamViewKMResponse spvkmr, KhuyenMai km) {
         return khuyenMaiRepository.kiemTraKM(spvkmr, km);
+    }
+
+    public void updateTrangThaiKM() {
+        khuyenMaiRepository.updateTrangThaiKM();
     }
 }

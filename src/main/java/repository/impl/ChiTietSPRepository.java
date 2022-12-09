@@ -19,6 +19,7 @@ import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import utility.HibernateUtil;
 
 /**
@@ -30,7 +31,9 @@ public class ChiTietSPRepository {
     public List<ChiTietSP> getAllChiTietSP() {
         List<ChiTietSP> listCTSP = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From ChiTietSP ORDER BY MaCTSP DESC");
+            NativeQuery query = session.createNativeQuery(" SELECT ct.id , ct.maCTSP , ct.idSanPham , ct.idCPU , ct.idCardMH, ct.idHang, ct.idOCung , ct.idRam ,ct.serial , ct.gia , ct.tinhTrang, ct.createdDate , ct.lastModifiedDate FROM ChiTietSP ct "
+                    + " GROUP BY ct.id , ct.maCTSP , ct.idSanPham , ct.idCPU , ct.idCardMH , ct.idHang , ct.idOCung , ct.idRam ,ct.serial , ct.gia , ct.tinhTrang, ct.createdDate , ct.lastModifiedDate "
+                    + " ORDER BY MAX(CONVERT(INT, SUBSTRING(maCTSP, 5, 10))) DESC",ChiTietSP.class);
             listCTSP = query.getResultList();
         } catch (Exception e) {
         }
@@ -66,9 +69,7 @@ public class ChiTietSPRepository {
 
     public static void main(String[] args) {
         List<ChiTietSP> ct = (List<ChiTietSP>) new ChiTietSPRepository().getAllChiTietSP();
-        for (ChiTietSP x : ct) {
-            System.out.println(x.toString());
-        }
+            System.out.println(ct);
     }
 
     public Boolean add(ChiTietSP ctsp) {
@@ -105,6 +106,34 @@ public class ChiTietSPRepository {
             e.printStackTrace(System.out);
             return false;
         }
+    }
+    public Boolean upDateTinhTrang(List<ChiTietSP> ctsp){
+        Transaction tranction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
+            tranction = session.beginTransaction();
+            for (ChiTietSP x : ctsp) {
+                x.setTinhTrang(2);
+                session.update(x);
+            }
+            tranction.commit();
+            return true;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public Boolean upDateKhoiPhuc(List<ChiTietSP> ctsp){
+        Transaction tranction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
+            tranction = session.beginTransaction();
+            for (ChiTietSP x : ctsp) {
+                x.setTinhTrang(0);
+                session.update(x);
+            }
+            tranction.commit();
+            return true;
+        } catch (Exception e) {
+        }
+        return null;
     }
 
     public Boolean delete(ChiTietSP ctsp, UUID id) {

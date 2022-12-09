@@ -1,7 +1,5 @@
 package service;
 
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
@@ -50,10 +48,6 @@ public interface ThongKeService {
     Long spKinhDoanhAll();
 
     Integer namBatDau();
-
-//    void bieuDoSanPhamYear(int thang, int nam, JPanel panelHienThi);
-//
-//    void bieuDoSanPhamMonth(int ngay, int thang, int nam, JPanel panelHienThi);
 
     void bieuDoDoanhThuYear(int thang, int nam, JPanel panelHienThi);
 

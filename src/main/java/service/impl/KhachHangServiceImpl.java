@@ -39,7 +39,7 @@ public class KhachHangServiceImpl implements KhachHangService<KhachHang> {
 
     @Override
     public String add(KhachHang t) {
-        if (t.getMa().trim().isBlank() || t.getHoTen().trim().isBlank()
+        if (t.getHoTen().trim().isBlank()
                 || t.getSdt().trim().isBlank() || t.getEmail().trim().isBlank()
                 || t.getDiaChi().trim().isBlank()) {
             return "Không được để trống";

@@ -141,6 +141,19 @@ public class ChiTietSP implements Serializable {
         this.idOCung = idOCung;
         this.gia = gia;
     }
+
+    public ChiTietSP(String maCTSP, SanPham idSanPham, String serial, CPU idCPU, Hang idHang, Ram idRam, CardMH idCard, OCung idOCung, BigDecimal gia, int tinhTrang) {
+        this.maCTSP = maCTSP;
+        this.idSanPham = idSanPham;
+        this.serial = serial;
+        this.idCPU = idCPU;
+        this.idHang = idHang;
+        this.idRam = idRam;
+        this.idCard = idCard;
+        this.idOCung = idOCung;
+        this.gia = gia;
+        this.tinhTrang = tinhTrang;
+    }
     
     public ChiTietSP(String maCTSP, SanPham idSanPham, String serial, CPU idCPU, Hang idHang, Ram idRam, CardMH idCard, OCung idOCung, BigDecimal gia, int tinhTrang, Date createdDate, Date lastModifiedDate) {
         this.maCTSP = maCTSP;
