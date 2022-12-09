@@ -24,8 +24,8 @@ public class SanPhamRepository {
     public List<SanPham> getAllSanPham() {
         List<SanPham> lists = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            NativeQuery query = session.createNativeQuery("SELECT s.id , s.ma , s.ten ,s.trangThai , s.createdDate , s.lastModifiedDate From SanPham s"
-                    + " GROUP BY s.id , s.ma , s.ten ,s.trangThai , s.createdDate , s.lastModifiedDate "
+            NativeQuery query = session.createNativeQuery("SELECT s.id , s.ma , s.ten  , s.createdDate , s.lastModifiedDate From SanPham s"
+                    + " GROUP BY s.id , s.ma , s.ten  , s.createdDate , s.lastModifiedDate "
                     + " ORDER BY MAX(CONVERT(INT, SUBSTRING(ma, 3, 10))) DESC",SanPham.class);
             lists = query.getResultList();
         } catch (Exception e) {
@@ -36,7 +36,7 @@ public class SanPhamRepository {
     public List<SanPham> getAllSP() {
         List<SanPham> lists = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From SanPham WHERE TrangThai = 0 ORDER BY Ma DESC");
+            Query query = session.createQuery("From SanPham WHERE ORDER BY Ma DESC");
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -115,7 +115,6 @@ public class SanPhamRepository {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             tran = session.beginTransaction();
             SanPham sanPham = session.get(SanPham.class, id);
-            sanPham.setTrangThai(1);
             session.update(sanPham);
             tran.commit();
             return true;

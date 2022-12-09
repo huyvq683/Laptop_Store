@@ -44,9 +44,7 @@ public class SanPham implements Serializable {
 
     @Column(name = "Ten")
     private String ten;
-    
-    @Column(name = "TrangThai")
-    private int trangThai;
+
     
     @Column(name = "CreatedDate")
     private Date createdDate;
@@ -60,22 +58,6 @@ public class SanPham implements Serializable {
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
     }
-
-    public SanPham(String ma, String ten, int trangThai, Date createdDate, Date lastModifiedDate) {
-        this.ma = ma;
-        this.ten = ten;
-        this.trangThai = trangThai;
-        this.createdDate = createdDate;
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
-    public SanPham(String ten, int trangThai, Date createdDate, Date lastModifiedDate) {
-        this.ten = ten;
-        this.trangThai = trangThai;
-        this.createdDate = createdDate;
-        this.lastModifiedDate = lastModifiedDate;
-    }
-   
 
     public SanPham(UUID id, String ten) {
         this.id = id;
