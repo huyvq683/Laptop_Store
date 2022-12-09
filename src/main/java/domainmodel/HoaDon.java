@@ -78,7 +78,7 @@ public class HoaDon implements Serializable {
     private Date lastModifiedDate;
 
       public String getTinhTrang1() {
-        return this.tinhTrang == 1 ? "Chưa Thanh Toán" : "Đã Thanh Toán";
+        return this.tinhTrang == 1 ? "Chờ Thanh Toán" : "Đã Thanh Toán";
     }
 
     public String getHinhThuc1() {

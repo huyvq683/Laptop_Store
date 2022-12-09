@@ -141,10 +141,7 @@ public class HoaDonServiceImpl implements HoaDonService {
         return hoaDonRepository.getAllPage(row);
     }
 
-    @Override
-    public List<ViewExcelReponse> getOne(int tt) {
-        return hoaDonRepository.getOne(tt);
-    }
+
 
     @Override
     public List<ViewExcelReponse> getAllExcel() {
