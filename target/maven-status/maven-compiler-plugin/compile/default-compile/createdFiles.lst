@@ -25,6 +25,7 @@ view\PanelBanHang$4.class
 view\ViewNhanVien$10.class
 view\ViewDangNhap$3.class
 view\ViewQuanLy$14.class
+view\PanelThongKe$26.class
 view\PanelThongKe.class
 view\PanelThongKe$11.class
 view\ViewNhanVien$1.class
@@ -46,7 +47,6 @@ view\PanelThongKe$23.class
 view\ViewQuenMatKhau$5.class
 view\PanelThongKe$13.class
 repository\Repository.class
-view\ViewQuanLy$18.class
 view\PanelSanPham$3.class
 service\HoaDonChiTietService.class
 view\ViewQuanLy$5.class
@@ -61,10 +61,8 @@ view\ViewQuenMatKhau$4.class
 domainmodel\TenTKNV.class
 view\PanelBanHang$6.class
 view\PanelSanPham$10.class
-view\ViewQuanLy$19.class
 domainmodel\SanPhamKM.class
 view\ViewNhanVien$3.class
-view\ViewDoiMatKhauMoi$5.class
 repository\impl\HoaDonRepository.class
 view\PanelNhanVien$1.class
 view\PanelThongKe$12.class
@@ -86,6 +84,7 @@ custommodel\ThongKeSanPhamRespone.class
 service\impl\QuenMatKhauServiceImpl.class
 view\PanelThongKe$1.class
 view\PanelThongKe$15.class
+view\PanelThongKe$25.class
 repository\impl\ChiTietSPRepository.class
 view\PanelThongKe$4.class
 view\ViewDangNhap$2.class
@@ -141,7 +140,6 @@ view\ViewQuenMatKhau$2.class
 view\PanelNhanVien$4.class
 view\ViewNhanVien$7.class
 view\PanelHoaDon$1.class
-view\ViewQuenMatKhau$9.class
 domainmodel\HoaDonChiTiet.class
 view\PanelThongKe$10.class
 view\PanelThongKe$2.class

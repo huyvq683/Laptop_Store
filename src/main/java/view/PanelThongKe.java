@@ -1500,41 +1500,45 @@ public class PanelThongKe extends javax.swing.JPanel {
 
     private void btnMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaiActionPerformed
         String email = JOptionPane.showInputDialog("Vui lòng nhập mail nhân viên/quản lí nhận: ");
-        if (serviceQuenMK.getOne(email) == "Tài khoản chính xác") {
-            final String username = "laptopgroup3@gmail.com";
-            final String password = "lveekscgavporrkq";
-            Properties prop = new Properties();
-            prop.put("mail.smtp.host", "smtp.gmail.com");
-            prop.put("mail.smtp.port", "587");
-            prop.put("mail.smtp.auth", "true");
-            prop.put("mail.smtp.starttls.enable", "true"); //TLS
-            Session session = Session.getInstance(prop,
-                    new Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(username, password);
-                }
-            });
-            try {
-                Message message = new MimeMessage(session);
-                if (listDT.size() > 0) {
-                    JOptionPane.showMessageDialog(this, "Đã gửi doanh thu tới tài khoản của nhân viên");
-                    message.setFrom(new InternetAddress("laptopgroup3@gmail.com"));
-                    message.setRecipients(
-                            Message.RecipientType.TO,
-                            InternetAddress.parse(email)
-                    );
-                    message.setSubject("Doanh thu");
-                    message.setText("Doanh thu " + cbbLoaiDoanhThu.getSelectedItem() + ", cua ban la : " + lbTongDoanhThu.getText());
-                    Transport.send(message);
+        if (!email.isEmpty()) {
+            if (serviceQuenMK.getOne(email) == "Tài khoản chính xác") {
+                final String username = "laptopgroup3@gmail.com";
+                final String password = "lveekscgavporrkq";
+                Properties prop = new Properties();
+                prop.put("mail.smtp.host", "smtp.gmail.com");
+                prop.put("mail.smtp.port", "587");
+                prop.put("mail.smtp.auth", "true");
+                prop.put("mail.smtp.starttls.enable", "true"); //TLS
+                Session session = Session.getInstance(prop,
+                        new Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+                try {
+                    Message message = new MimeMessage(session);
+                    if (listDT.size() > 0) {
+                        JOptionPane.showMessageDialog(this, "Đã gửi doanh thu tới tài khoản của nhân viên");
+                        message.setFrom(new InternetAddress("laptopgroup3@gmail.com"));
+                        message.setRecipients(
+                                Message.RecipientType.TO,
+                                InternetAddress.parse(email)
+                        );
+                        message.setSubject("Doanh thu");
+                        message.setText("Doanh thu cua ban la : " + lbTongDoanhThu.getText().substring(0, lbTongDoanhThu.getText().length() - 1) + "VND");
+                        Transport.send(message);
 
-                } else {
-                    JOptionPane.showMessageDialog(this, "Vui lòng lọc hóa đơn có sẵn");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Vui lòng lọc hóa đơn có sẵn");
+                    }
+                } catch (MessagingException e) {
+                    e.printStackTrace();
                 }
-            } catch (MessagingException e) {
-                e.printStackTrace();
+            } else {
+                JOptionPane.showMessageDialog(this, "Tài khoản sai");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Tài khoản sai định dạng hoặc không được để trống");
+            JOptionPane.showMessageDialog(this, "Tài khoản bị không được để trống");
         }
     }//GEN-LAST:event_btnMaiActionPerformed
     private void loadThangBieuDo() {
