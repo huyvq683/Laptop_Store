@@ -224,7 +224,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
     private BigDecimal tienGiamGia(List<HoaDonChiTietResponse> list) {
         BigDecimal tienGiamGia = new BigDecimal(0);
         for (HoaDonChiTietResponse hoaDonChiTietResponse : list) {
-            tienGiamGia = tienGiamGia.add(hoaDonChiTietResponse.getTienKM());
+            tienGiamGia = tienGiamGia.add((hoaDonChiTietResponse.getTienKM()).multiply(new BigDecimal(hoaDonChiTietResponse.getSoluong())));
         }
         return tienGiamGia;
     }
@@ -1231,6 +1231,8 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         hoaDon.setTienThua(new BigDecimal(txtTienTraLai.getText()));
         hoaDon.setTongTien(new BigDecimal(txtTongTien.getText()));
         hoaDon.setTinhTrang(1);
+        hoaDon.setCreatedDate(new Date());
+        hoaDon.setLastModifiedDate(new Date());
         hoaDon.setIdKH(khachHang);
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon));
         if (JOptionPane.showConfirmDialog(this, "Bạn muốn in hóa đơn không") == JOptionPane.YES_OPTION) {
@@ -1260,6 +1262,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         }
         txtSDT.setText("");
         txtTenKH.setText("Khách lẻ");
+        lblRank.setText("");
         listHoaDon = hoaDonService.getAll(Common.tenNV);
         showDataHoaDonTable(listHoaDon);
     }//GEN-LAST:event_btnThanhToanActionPerformed

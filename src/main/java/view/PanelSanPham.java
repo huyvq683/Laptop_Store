@@ -11,58 +11,34 @@ import domainmodel.Hang;
 import domainmodel.OCung;
 import domainmodel.Ram;
 import domainmodel.SanPham;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Image;
-import java.awt.LayoutManager;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.smartcardio.Card;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.BuiltinFormats;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.RichTextString;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.util.CellReference;
-import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -81,8 +57,6 @@ import service.impl.HangServiceImql;
 import service.impl.OCungServiceImql;
 import service.impl.RamServiceImql;
 import service.impl.SanPhamServiceImpl;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  *
@@ -249,7 +223,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         modelSP.setRowCount(0);
         int stt = 1;
         for (SanPham x : listss) {
-            modelSP.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.getTrangThai() == 0 ? "Đang hoạt động" : "Ngừng hoạt động", x.conVert(x.getCreatedDate()), x.conVert(x.getLastModifiedDate())});
+            modelSP.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getLastModifiedDate())});
             stt++;
         }
     }
@@ -259,7 +233,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         modelSP1.setRowCount(0);
         int stt = 1;
         for (SanPham x : lists) {
-            modelSP1.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.getTrangThai() == 0 ? "Đang hoạt động" : "Ngừng hoạt động", x.conVert(x.getCreatedDate()), x.conVert(x.getLastModifiedDate())});
+            modelSP1.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getLastModifiedDate())});
             stt++;
         }
     }
@@ -269,7 +243,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         modelCPU.setRowCount(0);
         int stt = 1;
         for (CPU x : list) {
-            modelCPU.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getAlstModifiedDate())});
+            modelCPU.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getLastModifiedDate())});
             stt++;
         }
     }
@@ -279,7 +253,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         modelCard.setRowCount(0);
         int stt = 1;
         for (CardMH x : list) {
-            modelCard.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getAlstModifiedDate())});
+            modelCard.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getLastModifiedDate())});
             stt++;
         }
     }
@@ -289,7 +263,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         modelHang.setRowCount(0);
         int stt = 1;
         for (Hang x : list) {
-            modelHang.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getAlstModifiedDate())});
+            modelHang.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getLastModifiedDate())});
             stt++;
         }
     }
@@ -299,7 +273,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         modelOCung.setRowCount(0);
         int stt = 1;
         for (OCung x : list) {
-            modelOCung.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getAlstModifiedDate())});
+            modelOCung.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getLastModifiedDate())});
             stt++;
         }
     }
@@ -309,13 +283,13 @@ public class PanelSanPham extends javax.swing.JPanel {
         modelRam.setRowCount(0);
         int stt = 1;
         for (Ram x : list) {
-            modelRam.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getAlstModifiedDate())});
+            modelRam.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getLastModifiedDate())});
             stt++;
         }
     }
 
     SanPham getData() {
-        return new SanPham("SP" + (listSanPham.size() + 1), txtTenSP1.getText(), 0, new Date(), new Date());
+        return new SanPham("SP" + (listSanPham.size() + 1), txtTenSP1.getText(), new Date(), new Date());
     }
 
     /**
@@ -1692,7 +1666,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void btnSuaSP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSP1ActionPerformed
         CPU sPham = listCPU.get(tblCPU.getSelectedRow());
-        CPU sp = new CPU(sPham.getTen(), txtTenCPU.getText(), new Date(), sPham.getAlstModifiedDate());
+        CPU sp = new CPU(sPham.getTen(), txtTenCPU.getText(), new Date(), sPham.getLastModifiedDate());
         UUID id = sPham.getId();
         JOptionPane.showMessageDialog(this, serviceCPU.upDate(sp, id));
         listCPU = serviceCPU.getAll();
@@ -1717,7 +1691,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void btnSuaSP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSP2ActionPerformed
         CardMH sPham = listCard.get(tblCard.getSelectedRow());
-        CardMH sp = new CardMH(sPham.getMa(), txtTenCard.getText(), new Date(), sPham.getAlstModifiedDate());
+        CardMH sp = new CardMH(sPham.getMa(), txtTenCard.getText(), new Date(), sPham.getLastModifiedDate());
         UUID id = sPham.getId();
         JOptionPane.showMessageDialog(this, serviceCard.upDate(sp, id));
         listCard = serviceCard.getAll();
@@ -1737,7 +1711,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void btnSuaSP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSP3ActionPerformed
         Hang sPham = listHang.get(tblHang.getSelectedRow());
-        Hang sp = new Hang(sPham.getMa(), txtTenHang.getText(), new Date(), sPham.getAlstModifiedDate());
+        Hang sp = new Hang(sPham.getMa(), txtTenHang.getText(), new Date(), sPham.getLastModifiedDate());
         UUID id = sPham.getId();
         JOptionPane.showMessageDialog(this, serviceHang.upDate(sp, id));
         listHang = serviceHang.getAll();
@@ -1767,7 +1741,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void btnSuaSP4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSP4ActionPerformed
         OCung sPham = listOCung.get(tblOCung.getSelectedRow());
-        OCung sp = new OCung(sPham.getMa(), txtTenOCung.getText(), new Date(), sPham.getAlstModifiedDate());
+        OCung sp = new OCung(sPham.getMa(), txtTenOCung.getText(), new Date(), sPham.getLastModifiedDate());
         UUID id = sPham.getId();
         JOptionPane.showMessageDialog(this, serviceOCung.upDate(sp, id));
         listOCung = serviceOCung.getAll();
@@ -1787,7 +1761,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void btnSuaSP5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSP5ActionPerformed
         Ram sPham = listRam.get(tblRam.getSelectedRow());
-        Ram sp = new Ram(sPham.getMa(), txtTenRam.getText(), new Date(), sPham.getAlstModifiedDate());
+        Ram sp = new Ram(sPham.getMa(), txtTenRam.getText(), new Date(), sPham.getLastModifiedDate());
         UUID id = sPham.getId();
         JOptionPane.showMessageDialog(this, serviceRam.upDate(sp, id));
         listRam = serviceRam.getAll();

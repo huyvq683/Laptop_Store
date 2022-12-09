@@ -46,23 +46,23 @@ public class CardMH implements Serializable {
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date alstModifiedDate;
+    private Date lastModifiedDate;
 
-    public CardMH(String ma, String ten, Date createdDate, Date alstModifiedDate) {
+    public CardMH(String ma, String ten, Date createdDate, Date lastModifiedDate) {
         this.ma = ma;
         this.ten = ten;
         this.createdDate = createdDate;
-        this.alstModifiedDate = alstModifiedDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public CardMH(UUID id) {
         this.id = id;
     }
 
-    public CardMH(String ten, Date createdDate, Date alstModifiedDate) {
+    public CardMH(String ten, Date createdDate, Date lastModifiedDate) {
         this.ten = ten;
         this.createdDate = createdDate;
-        this.alstModifiedDate = alstModifiedDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public CardMH(UUID id, String ten) {

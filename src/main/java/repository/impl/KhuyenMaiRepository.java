@@ -218,7 +218,7 @@ public class KhuyenMaiRepository {
                     }
                     spkm.setTienConLai(tienConLai);
                     spkm.setCreatedDate(new Date());
-                    spkm.setAlstModifiedDate(new Date());
+                    spkm.setLastModifiedDate(new Date());
                     sess.getTransaction().begin();
                     sess.save(spkm);
                     sess.getTransaction().commit();

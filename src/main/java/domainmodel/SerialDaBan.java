@@ -47,5 +47,5 @@ public class SerialDaBan implements Serializable {
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date alstModifiedDate;
+    private Date lastModifiedDate;
 }

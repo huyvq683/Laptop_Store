@@ -23,20 +23,21 @@ public class SanPhamRepository {
 
     public List<SanPham> getAllSanPham() {
         List<SanPham> lists = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            NativeQuery query = session.createNativeQuery("SELECT s.id , s.ma , s.ten ,s.trangThai , s.createdDate , s.lastModifiedDate From SanPham s"
-                    + " GROUP BY s.id , s.ma , s.ten ,s.trangThai , s.createdDate , s.lastModifiedDate "
-                    + " ORDER BY MAX(CONVERT(INT, SUBSTRING(ma, 3, 10))) DESC",SanPham.class);
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            NativeQuery query = session.createNativeQuery("SELECT s.id , s.ma, s.ten, s.createdDate , s.lastModifiedDate From SanPham s"
+                    + " GROUP BY s.id , s.ma, s.ten, s.createdDate , s.lastModifiedDate "
+                    + " ORDER BY MAX(CONVERT(INT, SUBSTRING(ma, 3, 10))) DESC", SanPham.class);
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return lists;
     }
+
     public List<SanPham> getAllSP() {
         List<SanPham> lists = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From SanPham WHERE TrangThai = 0 ORDER BY Ma DESC");
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("From SanPham ORDER BY Ma DESC");
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -54,7 +55,7 @@ public class SanPhamRepository {
     }
 
     public SanPham getOne(String maSP) {
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery(" SELECT new SanPham (s.id , s.ten) FROM SanPham s WHERE Ten =:ten ", SanPham.class);
             query.setParameter("ten", maSP);
             SanPham sp = (SanPham) query.getSingleResult();
@@ -66,7 +67,7 @@ public class SanPhamRepository {
 
     public Boolean addSanPham(SanPham sp) {
         Transaction tran = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             tran = session.beginTransaction();
             session.save(sp);
             tran.commit();
@@ -78,7 +79,7 @@ public class SanPhamRepository {
 
     public Boolean updateSanPham(SanPham sp, UUID id) {
         Transaction tran = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             tran = session.beginTransaction();
             SanPham s = session.get(SanPham.class, id);
             s.setMa(sp.getMa());
@@ -96,7 +97,7 @@ public class SanPhamRepository {
 
     public Boolean deleteSanPham(UUID id) {
         Transaction tran = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             tran = session.beginTransaction();
             SanPham s = session.get(SanPham.class,
                     id);
@@ -107,15 +108,14 @@ public class SanPhamRepository {
             e.printStackTrace(System.out);
         }
         return false;
-    
-    } 
+
+    }
 
     public Boolean upDateTrangThai(SanPham sp, UUID id) {
         Transaction tran = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             tran = session.beginTransaction();
             SanPham sanPham = session.get(SanPham.class, id);
-            sanPham.setTrangThai(1);
             session.update(sanPham);
             tran.commit();
             return true;
@@ -126,7 +126,7 @@ public class SanPhamRepository {
 
     public List<SanPham> search(String seatchKey) {
         List<SanPham> listSP = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("From SanPham WHERE Ma like concat (:searchKey,'%') OR Ten like concat (:searchKey , '%')");
             query.setParameter("searchKey", seatchKey);
             listSP = query.getResultList();
@@ -139,8 +139,7 @@ public class SanPhamRepository {
 
     public static void main(String[] args) {
         List<SanPham> list = new SanPhamRepository().getAllSanPham();
-            System.out.println(list);
-        
+        System.out.println(list);
+
     }
-//    From SanPham WHERE Ma like concat (:searchKey,'%')"
 }

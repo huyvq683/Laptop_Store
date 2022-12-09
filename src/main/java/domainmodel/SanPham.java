@@ -45,9 +45,6 @@ public class SanPham implements Serializable {
     @Column(name = "Ten")
     private String ten;
     
-    @Column(name = "TrangThai")
-    private int trangThai;
-    
     @Column(name = "CreatedDate")
     private Date createdDate;
 
@@ -61,17 +58,8 @@ public class SanPham implements Serializable {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public SanPham(String ma, String ten, int trangThai, Date createdDate, Date lastModifiedDate) {
-        this.ma = ma;
+    public SanPham(String ten, Date createdDate, Date lastModifiedDate) {
         this.ten = ten;
-        this.trangThai = trangThai;
-        this.createdDate = createdDate;
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
-    public SanPham(String ten, int trangThai, Date createdDate, Date lastModifiedDate) {
-        this.ten = ten;
-        this.trangThai = trangThai;
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
     }
@@ -82,11 +70,6 @@ public class SanPham implements Serializable {
         this.ten = ten;
     }
 
-    public SanPham(String ten, Date createdDate, Date lastModifiedDate) {
-        this.ten = ten;
-        this.createdDate = createdDate;
-        this.lastModifiedDate = lastModifiedDate;
-    }
  
     public String conVert(Date x) {
         DateFormat format = new SimpleDateFormat("dd-MM-yyyy");

@@ -11,6 +11,7 @@ import domainmodel.HoaDonChiTiet;
 import domainmodel.SanPhamKM;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import org.hibernate.Session;
@@ -127,6 +128,8 @@ public class HoaDonChiTietRepository {
                 hdct.setTenSP(ctsp.getIdSanPham().getTen());
                 hdct.setTienKM(tienKM);
                 hdct.setDonGia(ctsp.getGia());
+                hdct.setCreatedDate(new Date());
+                hdct.setLastModifiedDate(new Date());
                 session.save(hdct);
             }
             tran.commit();
