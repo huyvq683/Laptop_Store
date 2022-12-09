@@ -101,4 +101,19 @@ public class SanPhamServiceImpl implements SanPhamService {
         return sanPhamRe.search(seatchKey);
     }
 
+    @Override
+    public String upDateTrangThai(SanPham sp, UUID id) {
+        Boolean trangThai = sanPhamRe.upDateTrangThai(sp, id);
+        if (trangThai) {
+            return "Xóa thành công";
+        } else {
+            return "Xóa thất bại";
+        }
+    }
+
+    @Override
+    public List<SanPham> getAllSP() {
+        return sanPhamRe.getAllSP();
+    }
+
 }
