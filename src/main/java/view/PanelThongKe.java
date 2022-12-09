@@ -1,7 +1,5 @@
 package view;
 
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -1487,8 +1485,14 @@ public class PanelThongKe extends javax.swing.JPanel {
             dcbmThangBieuDo = new DefaultComboBoxModel();
             lbChonBD.setText("Chọn năm :");
             int nam = Integer.parseInt(dateFor.format(new Date()).substring(6, 10));
-            for (int i = serviceThongKe.namBatDau(); i <= nam; i++) {
-                dcbmThangBieuDo.addElement(i);
+            if (serviceThongKe.namBatDauDoanhThu() != 0) {
+                for (int i = serviceThongKe.namBatDauDoanhThu(); i <= nam; i++) {
+                    dcbmThangBieuDo.addElement(i);
+                }
+            } else {
+                for (int i = 2020; i <= nam; i++) {
+                    dcbmThangBieuDo.addElement(i);
+                }
             }
             cbbBieuDoChonThang.setModel(dcbmThangBieuDo);
         }
