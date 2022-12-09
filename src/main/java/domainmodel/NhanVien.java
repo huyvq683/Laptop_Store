@@ -79,6 +79,23 @@ public class NhanVien implements Serializable {
         return date;
     }
 
+    public NhanVien(String ma, String hoTen, boolean gioiTinh, Date ngaySinh, String diaChi, String sdt, String email, int chucVu, String matKhau, int trangThai, Date createdDate, Date lastModifiedDate) {
+        this.ma = ma;
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.diaChi = diaChi;
+        this.sdt = sdt;
+        this.email = email;
+        this.chucVu = chucVu;
+        this.matKhau = matKhau;
+        this.trangThai = trangThai;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
+    }
+    
+    
+
     public Object[] toDataRow() {
         return new Object[]{ma, hoTen, gioiTinh == true ? "Nam" : "Nữ", convertDate(), diaChi, sdt, email, trangThai == 0 ? "Đang làm việc" : "Đã nghỉ việc", chucVu == 0 ? "Quản lý" : "Nhân viên"};
     }

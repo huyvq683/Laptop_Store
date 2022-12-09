@@ -117,7 +117,7 @@ public class SendEmail extends Thread {
                     System.out.println("Done");
 
                 } catch (MessagingException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }
         };

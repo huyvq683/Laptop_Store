@@ -627,65 +627,66 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (txtNgaySinh.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng điền ngày sinh");
+            return;
+        }
         NhanVien nhanVien = getData();
         if (nhanVien != null) {
             NhanVien nv = nhanVienServiceImpl.getOne(nhanVien.getEmail());
             if (nv != null) {
                 JOptionPane.showMessageDialog(this, "Nhân viên mang email " + nhanVien.getEmail() + " đã tồn tại!!");
+            } else if (!txtNgaySinh.getText().matches("^(0?[1-9]|[12][0-9]|3[01])[-](0?[1-9]|1[012])[-][0-9]{4}$")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày sinh theo định dạng dd-mm-yyyy");
             } else {
-                JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
-                SendEmail.send(nhanVien.getEmail());
-                list = nhanVienServiceImpl.getAll();
-                listNV = nhanVienServiceImpl.getAllPage(0);
-                showData(listNV);
+                if (true) {
+                    String check = txtNgaySinh.getText();
+                    String[] a = check.split("-");
+                    int nam = Integer.valueOf(a[2]);
+                    if (nam < 1960 || nam > 2022) {
+                        JOptionPane.showMessageDialog(this, "Năm sinh không hợp lệ!!!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
+                        SendEmail.send(nhanVien.getEmail());
+                        list = nhanVienServiceImpl.getAll();
+                        listNV = nhanVienServiceImpl.getAllPage(0);
+                        showData(listNV);
+                    }
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Không thành công");
         }
     }//GEN-LAST:event_btnThemActionPerformed
     private NhanVien getData() {
-        NhanVien nhanVien = new NhanVien();
-        nhanVien.setMa("NV" + (list.size() + 1));
-        nhanVien.setHoTen(txtTen.getText());
+        String ma = "NV" + (list.size() + 1);
+        String ten = (txtTen.getText());
+        boolean gioiTinh;
         if (radioNam.isSelected()) {
-            nhanVien.setGioiTinh(true);
+            gioiTinh = true;
         } else {
-            nhanVien.setGioiTinh(false);
+            gioiTinh = false;
         }
-        if (txtNgaySinh.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Không được để trống ngày sinh!!");
-            return null;
-        } else if (!txtNgaySinh.getText().matches("^(?:(?:31(\\-)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\-)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\-)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?19|1\\d|20)(\\-)(?:(?:0[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{4})$")) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày sinh theo định dạng dd-mm-yyyy");
-            return null;
-        } else {
-            SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
-            try {
-                Date date = convertToDate.parse(txtNgaySinh.getText());
-                nhanVien.setNgaySinh(date);
-                return null;
-            } catch (Exception e) {
-                e.printStackTrace(System.out);
-            }
+        Date ngaySinh = null;
+        SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            ngaySinh = convertToDate.parse(txtNgaySinh.getText());
+        } catch (Exception e) {
         }
-//        String check = txtNgaySinh.getText();
-//        String[] a = check.split("-");
-//        int nam = Integer.valueOf(a[2]);
-        nhanVien.setDiaChi(txtDiaChi.getText());
-        nhanVien.setSdt(txtSdt.getText());
-        if (txtEmail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập email");
-            return null;
-        } else {
-            nhanVien.setEmail(txtEmail.getText());
-        }
-        nhanVien.setMatKhau(getMd5("123456"));
-        nhanVien.setTrangThai(0);
+        String diaChi = (txtDiaChi.getText());
+        String sdt = (txtSdt.getText());
+        String email = txtEmail.getText();
+        String matKhau = (getMd5("123456"));
+        int trangThai = 0;
+        int chucVu;
         if (radioQuanLy.isSelected()) {
-            nhanVien.setChucVu(0);
+            chucVu = 0;
         } else {
-            nhanVien.setChucVu(1);
+            chucVu = 1;
         }
-        nhanVien.setCreatedDate(new Date());
-        nhanVien.setLastModifiedDate(new Date());
+        Date createdDate = (new Date());
+        Date lastModifiedDate = (new Date());
+        NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, diaChi, sdt, email, chucVu, matKhau, trangThai, createdDate, lastModifiedDate);
         return nhanVien;
     }
 
@@ -709,7 +710,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 Date date = convertToDate.parse(txtNgaySinh.getText());
                 nhanVien.setNgaySinh(date);
             } catch (Exception e) {
-                e.printStackTrace(System.out);
+//                e.printStackTrace(System.out);
             }
             nhanVien.setMatKhau(nv.getMatKhau());
             nhanVien.setDiaChi(txtDiaChi.getText());
@@ -1263,7 +1264,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                     Date date = convertToDate.parse(String.valueOf(getCellValue(currentRow.getCell(2))).trim());
                     nhanVien.setNgaySinh(date);
                 } catch (Exception e) {
-                    e.printStackTrace(System.out);
+//                    e.printStackTrace(System.out);
                 }
                 nhanVien.setDiaChi(String.valueOf(getCellValue(currentRow.getCell(3))).trim());
                 nhanVien.setSdt(String.valueOf(getCellValue(currentRow.getCell(4))).trim());
@@ -1280,7 +1281,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 listNVien.add(nhanVien);
             }
         } catch (IOException e) {
-            e.printStackTrace(System.out);
+//            e.printStackTrace(System.out);
         }
         return listNVien;
     }
