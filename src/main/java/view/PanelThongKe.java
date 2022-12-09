@@ -77,7 +77,6 @@ public class PanelThongKe extends javax.swing.JPanel {
         String hearSP[] = {"Mã SP", "Tên SP", "Giá", "Số lượng đã bán", "Doanh thu"};
         dtmSP.setColumnIdentifiers(hearSP);
         tbSanPham.setModel(dtmSP);
-
         nam = Integer.valueOf(dateFor.format(date).substring(6, 10));
         thaang = Integer.valueOf(dateFor.format(date).substring(3, 5));
         showDataSP(dateFor.format(date));
