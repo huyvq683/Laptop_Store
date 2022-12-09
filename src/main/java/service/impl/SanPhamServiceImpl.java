@@ -69,8 +69,8 @@ public class SanPhamServiceImpl implements SanPhamService {
         if (sp.getTen().trim().isBlank()) {
             return "Tên trống";
         }
-        if (getOne(sp.getMa()) != null) {
-            return "Trùng mã";
+        if (getOne(sp.getTen()) != null) {
+            return "Trùng tên";
         }
         return null;
     }

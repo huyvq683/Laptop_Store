@@ -5,12 +5,14 @@
 package repository.impl;
 
 import domainmodel.SanPham;
+import java.lang.annotation.Native;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import utility.HibernateUtil;
 
 /**
@@ -22,7 +24,9 @@ public class SanPhamRepository {
     public List<SanPham> getAllSanPham() {
         List<SanPham> lists = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From SanPham ORDER BY Ma DESC");
+            NativeQuery query = session.createNativeQuery("SELECT s.id , s.ma , s.ten ,s.trangThai , s.createdDate , s.lastModifiedDate From SanPham s"
+                    + " GROUP BY s.id , s.ma , s.ten ,s.trangThai , s.createdDate , s.lastModifiedDate "
+                    + " ORDER BY MAX(CONVERT(INT, SUBSTRING(ma, 3, 10))) DESC",SanPham.class);
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -80,7 +84,7 @@ public class SanPhamRepository {
             s.setMa(sp.getMa());
             s.setTen(sp.getTen());
             s.setCreatedDate(sp.getCreatedDate());
-            s.setAlstModifiedDate(sp.getAlstModifiedDate());
+            s.setLastModifiedDate(sp.getLastModifiedDate());
             session.update(s);
             tran.commit();
             return true;
