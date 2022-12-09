@@ -1,9 +1,5 @@
 package custommodel;
 
-
-
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -35,7 +31,6 @@ public class ThongKeDoanhThuRespone {
     private BigDecimal tienKhachTra;
     private BigDecimal tienCK;
     private BigDecimal tongTien;
-
 
     public String dinhDangTienVN(BigDecimal tien) {
         Locale localeVN = new Locale("vi", "VN");

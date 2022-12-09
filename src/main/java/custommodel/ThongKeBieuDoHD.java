@@ -7,9 +7,7 @@ package custommodel;
 
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
 import java.util.Date;
-import java.util.Locale;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

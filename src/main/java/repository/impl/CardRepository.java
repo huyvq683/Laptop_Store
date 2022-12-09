@@ -71,7 +71,7 @@ public class CardRepository {
             s.setMa(sp.getMa());
             s.setTen(sp.getTen());
             s.setCreatedDate(sp.getCreatedDate());
-            s.setAlstModifiedDate(sp.getAlstModifiedDate());
+            s.setLastModifiedDate(sp.getLastModifiedDate());
             session.update(s);
             tran.commit();
             return true;
