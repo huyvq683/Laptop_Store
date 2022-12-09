@@ -174,14 +174,14 @@ public class ViewQuanLy extends javax.swing.JFrame {
 
         view2.setPreferredSize(new java.awt.Dimension(240, 723));
 
-        btnSanPham.setBackground(new java.awt.Color(0, 0, 0));
-        btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        btnSanPham.setForeground(new java.awt.Color(255, 255, 255));
         btnSanPham.setIcon(new ImageIcon("src/main/img/maytinh.png"));
         btnSanPham.setText("Sản phẩm");
         btnSanPham.setActionCommand(" Sản phẩm");
         btnSanPham.setAlignmentY(0.0F);
+        btnSanPham.setBackground(new java.awt.Color(0, 0, 0));
         btnSanPham.setBorder(null);
+        btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btnSanPham.setForeground(new java.awt.Color(255, 255, 255));
         btnSanPham.setMargin(new java.awt.Insets(2, 13, 2, 14));
         btnSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -200,13 +200,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnBanHang.setBackground(new java.awt.Color(0, 0, 0));
-        btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        btnBanHang.setForeground(new java.awt.Color(255, 255, 255));
         btnBanHang.setIcon(new ImageIcon("src/main/img/ban.png"));
         btnBanHang.setText("Bán hàng");
         btnBanHang.setAlignmentY(0.0F);
+        btnBanHang.setBackground(new java.awt.Color(0, 0, 0));
         btnBanHang.setBorder(null);
+        btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btnBanHang.setForeground(new java.awt.Color(255, 255, 255));
         btnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBanHangMouseClicked(evt);
@@ -224,13 +224,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnNhanVien.setBackground(new java.awt.Color(0, 0, 0));
-        btnNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        btnNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanVien.setIcon(new ImageIcon("src/main/img/nhanvien.png"));
         btnNhanVien.setText("Nhân viên");
         btnNhanVien.setAlignmentY(0.0F);
+        btnNhanVien.setBackground(new java.awt.Color(0, 0, 0));
         btnNhanVien.setBorder(null);
+        btnNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btnNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNhanVienMouseClicked(evt);
@@ -248,15 +248,15 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnHoaDon.setBackground(new java.awt.Color(0, 0, 0));
-        btnHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        btnHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         btnHoaDon.setIcon(new ImageIcon("src/main/img/hoadon.png"));
         btnHoaDon.setText("Hóa đơn");
-        btnHoaDon.setToolTipText("");
         btnHoaDon.setActionCommand("   Hóa đơn");
         btnHoaDon.setAlignmentY(0.0F);
+        btnHoaDon.setBackground(new java.awt.Color(0, 0, 0));
         btnHoaDon.setBorder(null);
+        btnHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btnHoaDon.setForeground(new java.awt.Color(255, 255, 255));
+        btnHoaDon.setToolTipText("");
         btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnHoaDonMouseClicked(evt);
@@ -274,13 +274,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnkhuyenMai.setBackground(new java.awt.Color(0, 0, 0));
-        btnkhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        btnkhuyenMai.setForeground(new java.awt.Color(255, 255, 255));
         btnkhuyenMai.setIcon(new ImageIcon("src/main/img/sale.png"));
         btnkhuyenMai.setText("Khuyến mãi");
         btnkhuyenMai.setAlignmentY(0.0F);
+        btnkhuyenMai.setBackground(new java.awt.Color(0, 0, 0));
         btnkhuyenMai.setBorder(null);
+        btnkhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btnkhuyenMai.setForeground(new java.awt.Color(255, 255, 255));
         btnkhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnkhuyenMaiMouseClicked(evt);
@@ -298,13 +298,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnKhachHang.setBackground(new java.awt.Color(0, 0, 0));
-        btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        btnKhachHang.setForeground(new java.awt.Color(255, 255, 255));
         btnKhachHang.setIcon(new ImageIcon("src/main/img/khachhang.png"));
         btnKhachHang.setText("Khách hàng");
         btnKhachHang.setAlignmentY(0.0F);
+        btnKhachHang.setBackground(new java.awt.Color(0, 0, 0));
         btnKhachHang.setBorder(null);
+        btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btnKhachHang.setForeground(new java.awt.Color(255, 255, 255));
         btnKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnKhachHangMouseClicked(evt);
@@ -322,13 +322,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnThongKe.setBackground(new java.awt.Color(0, 0, 0));
-        btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        btnThongKe.setForeground(new java.awt.Color(255, 255, 255));
         btnThongKe.setIcon(new ImageIcon("src/main/img/thongke.png"));
         btnThongKe.setText("Thống kê");
         btnThongKe.setAlignmentY(0.0F);
+        btnThongKe.setBackground(new java.awt.Color(0, 0, 0));
         btnThongKe.setBorder(null);
+        btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btnThongKe.setForeground(new java.awt.Color(255, 255, 255));
         btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnThongKeMouseClicked(evt);
@@ -346,13 +346,13 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnThoat.setBackground(new java.awt.Color(0, 0, 0));
-        btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        btnThoat.setForeground(new java.awt.Color(255, 255, 255));
         btnThoat.setIcon(new ImageIcon("src/main/img/thoat.png"));
         btnThoat.setText("Thoát");
         btnThoat.setAlignmentY(0.0F);
+        btnThoat.setBackground(new java.awt.Color(0, 0, 0));
         btnThoat.setBorder(null);
+        btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btnThoat.setForeground(new java.awt.Color(255, 255, 255));
         btnThoat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnThoatMouseClicked(evt);
@@ -370,37 +370,37 @@ public class ViewQuanLy extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Thông tin nhân viên");
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel2.setText("Tên nhân viên:");
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel3.setText("Mã nhân viên:");
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel4.setText("Chúc vụ:");
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
-        lblDoiMK.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDoiMK.setText("Đổi mật khẩu");
+        lblDoiMK.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDoiMK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDoiMKMouseClicked(evt);
             }
         });
 
-        lblMa.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lblMa.setText("Mã nhân viên:");
         lblMa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        lblMa.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
-        lblTen.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lblTen.setText("Mã nhân viên:");
         lblTen.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        lblTen.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
-        lblChucVu.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lblChucVu.setText("Mã nhân viên:");
         lblChucVu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        lblChucVu.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout view2Layout = new javax.swing.GroupLayout(view2);
         view2.setLayout(view2Layout);

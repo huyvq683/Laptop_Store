@@ -64,7 +64,6 @@ public class SanPham implements Serializable {
         this.lastModifiedDate = lastModifiedDate;
     }
    
-
     public SanPham(UUID id, String ten) {
         this.id = id;
         this.ten = ten;

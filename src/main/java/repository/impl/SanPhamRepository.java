@@ -137,9 +137,4 @@ public class SanPhamRepository {
         return null;
     }
 
-    public static void main(String[] args) {
-        List<SanPham> list = new SanPhamRepository().getAllSanPham();
-        System.out.println(list);
-
-    }
 }
