@@ -628,17 +628,18 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         NhanVien nhanVien = getData();
-        NhanVien nv = nhanVienServiceImpl.getOne(nhanVien.getEmail());
-        if (nv != null) {
-            JOptionPane.showMessageDialog(this, "Nhân viên mang email " + nhanVien.getEmail() + " đã tồn tại!!");
-        } else {
-            JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
-            SendEmail.send(nhanVien.getEmail());
-            list = nhanVienServiceImpl.getAll();
-            listNV = nhanVienServiceImpl.getAllPage(0);
-            showData(listNV);
+        if (nhanVien != null) {
+            NhanVien nv = nhanVienServiceImpl.getOne(nhanVien.getEmail());
+            if (nv != null) {
+                JOptionPane.showMessageDialog(this, "Nhân viên mang email " + nhanVien.getEmail() + " đã tồn tại!!");
+            } else {
+                JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
+                SendEmail.send(nhanVien.getEmail());
+                list = nhanVienServiceImpl.getAll();
+                listNV = nhanVienServiceImpl.getAllPage(0);
+                showData(listNV);
+            }
         }
-
     }//GEN-LAST:event_btnThemActionPerformed
     private NhanVien getData() {
         NhanVien nhanVien = new NhanVien();
@@ -651,21 +652,28 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         }
         if (txtNgaySinh.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày sinh!!");
-        } else if (!txtNgaySinh.getText().matches("^([0-2][0-9]|(3)[0-1])(\\-)(((0)[0-9])|((1)[0-2]))(\\-)\\d{4}$")) {
+            return null;
+        } else if (!txtNgaySinh.getText().matches("^(?:(?:31(\\-)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\-)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\-)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?19|1\\d|20)(\\-)(?:(?:0[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{4})$")) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày sinh theo định dạng dd-mm-yyyy");
+            return null;
         } else {
             SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
             try {
                 Date date = convertToDate.parse(txtNgaySinh.getText());
                 nhanVien.setNgaySinh(date);
+                return null;
             } catch (Exception e) {
                 e.printStackTrace(System.out);
             }
         }
+//        String check = txtNgaySinh.getText();
+//        String[] a = check.split("-");
+//        int nam = Integer.valueOf(a[2]);
         nhanVien.setDiaChi(txtDiaChi.getText());
         nhanVien.setSdt(txtSdt.getText());
         if (txtEmail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập email");
+            return null;
         } else {
             nhanVien.setEmail(txtEmail.getText());
         }
