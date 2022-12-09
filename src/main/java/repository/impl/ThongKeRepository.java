@@ -1,7 +1,5 @@
 package repository.impl;
 
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -261,7 +259,6 @@ public class ThongKeRepository {
         return 0;
     }
 
-//biểu đồ tháng doanhthu
     public String bieuDoDoanhThuMonth(int ngay, int thang, int nam) {
         String tong = null;
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
@@ -290,34 +287,4 @@ public class ThongKeRepository {
         }
         return "0";
     }
-    //    public String bieuDoSanPhamMonth(int ngay, int thang, int nam) {
-//        String tong = null;
-//        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
-//            NativeQuery query = session.createNativeQuery("SELECT COUNT(*) FROM ChiTietSP ctsp"
-//                    + " WHERE ctsp.tinhTrang = 1 AND Day(ctsp.createdDate) =:daa AND Month(ctsp.createdDate) =:mot AND Year(ctsp.createdDate) =:yea GROUP BY ctsp.createdDate");
-//            query.setParameter("daa", ngay);
-//            query.setParameter("mot", thang);
-//            query.setParameter("yea", nam);
-//            tong = query.getSingleResult().toString();
-//            return tong;
-//        } catch (Exception e) {
-//            // e.printStackTrace(System.out);
-//        }
-//        return "0";
-//    }
-
-//    public String bieuDoSanPhamYear(int thang, int nam) {
-//        String tong = null;
-//        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
-//            NativeQuery query = session.createNativeQuery("SELECT COUNT(*) FROM ChiTietSP ctsp"
-//                    + " WHERE ctsp.tinhTrang = 1 AND Month(ctsp.createdDate) =:mot AND Year(ctsp.createdDate) =:yea GROUP BY ctsp.createdDate");
-//            query.setParameter("mot", thang);
-//            query.setParameter("yea", nam);
-//            tong = query.getSingleResult().toString();
-//            return tong;
-//        } catch (Exception e) {
-//            // e.printStackTrace(System.out);
-//        }
-//        return "0";
-//    }
 }
