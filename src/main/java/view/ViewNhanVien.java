@@ -4,7 +4,6 @@
  */
 package view;
 
-import domainmodel.NhanVien;
 import domainmodel.Common;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -45,12 +44,6 @@ public class ViewNhanVien extends javax.swing.JFrame {
     }
 
     private void designImg() {
-        ImageIcon originalIcon = new ImageIcon("src/main/img/logo.png");
-        int width = 200;
-        int height = 164;
-        Image scaled = scaleImage(originalIcon.getImage(), width, height);
-        ImageIcon scaledIcon = new ImageIcon(scaled);
-        lblLogo.setIcon(scaledIcon);
 
         ImageIcon thoat = new ImageIcon("src/main/img/thoat.png");
         int widthThoat = 55;
@@ -100,13 +93,18 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         view2 = new view.ViewMenu();
-        lblLogo = new javax.swing.JLabel();
         btnBanHang = new javax.swing.JButton();
         btnHoaDon = new javax.swing.JButton();
         btnKhachHang = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
-        btnChiTietNV = new javax.swing.JButton();
-        btnDoiMK = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblDoiMK = new javax.swing.JLabel();
+        lblMa = new javax.swing.JLabel();
+        lblTen = new javax.swing.JLabel();
+        lblChucVu = new javax.swing.JLabel();
         panelBanHang = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,8 +114,6 @@ public class ViewNhanVien extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1535, 850));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblLogo.setIcon(new ImageIcon("src/main/img/logo.png"));
 
         btnBanHang.setBackground(new java.awt.Color(0, 0, 0));
         btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -217,25 +213,37 @@ public class ViewNhanVien extends javax.swing.JFrame {
             }
         });
 
-        btnChiTietNV.setBackground(new java.awt.Color(77, 83, 161));
-        btnChiTietNV.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnChiTietNV.setForeground(new java.awt.Color(255, 255, 255));
-        btnChiTietNV.setText("Chi tiết nhân viên");
-        btnChiTietNV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChiTietNVActionPerformed(evt);
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setText("Thông tin nhân viên");
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel2.setText("Tên nhân viên:");
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel3.setText("Mã nhân viên:");
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel4.setText("Chúc vụ:");
+
+        lblDoiMK.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDoiMK.setText("Đổi mật khẩu");
+        lblDoiMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDoiMKMouseClicked(evt);
             }
         });
 
-        btnDoiMK.setBackground(new java.awt.Color(77, 83, 161));
-        btnDoiMK.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnDoiMK.setForeground(new java.awt.Color(255, 255, 255));
-        btnDoiMK.setText("Đổi mật khẩu");
-        btnDoiMK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoiMKActionPerformed(evt);
-            }
-        });
+        lblMa.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblMa.setText("Mã nhân viên:");
+        lblMa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+
+        lblTen.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblTen.setText("Mã nhân viên:");
+        lblTen.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+
+        lblChucVu.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblChucVu.setText("Mã nhân viên:");
+        lblChucVu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout view2Layout = new javax.swing.GroupLayout(view2);
         view2.setLayout(view2Layout);
@@ -244,25 +252,45 @@ public class ViewNhanVien extends javax.swing.JFrame {
             .addComponent(btnBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(view2Layout.createSequentialGroup()
-                .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(view2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(view2Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnChiTietNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(20, Short.MAX_VALUE))
             .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(view2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(view2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(lblMa, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTen, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(view2Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(lblDoiMK)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         view2Layout.setVerticalGroup(
             view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(view2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel3)
+                .addGap(0, 0, 0)
+                .addComponent(lblMa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(0, 0, 0)
+                .addComponent(lblTen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addGap(3, 3, 3)
+                .addComponent(lblChucVu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDoiMK)
+                .addGap(27, 27, 27)
                 .addComponent(btnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,11 +298,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
                 .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
-                .addComponent(btnChiTietNV, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -433,19 +457,13 @@ public class ViewNhanVien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnThoatMouseExited
 
-    private void btnChiTietNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNVActionPerformed
+    private void lblDoiMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMKMouseClicked
         // TODO add your handling code here:
-//        NhanVien nv = Common.tenNV;
-//        DetailChiTietNV detailChiTietNV = new DetailChiTietNV(this, true, nv);
-//        detailChiTietNV.setVisible(true);
-    }//GEN-LAST:event_btnChiTietNVActionPerformed
-
-    private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
-        // TODO add your handling code here:
+        Common.webcam.close();
         ViewDoiMatKhau2 dmk = new ViewDoiMatKhau2();
         dmk.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnDoiMKActionPerformed
+    }//GEN-LAST:event_lblDoiMKMouseClicked
 
     /**
      * @param args the command line arguments
@@ -491,13 +509,18 @@ public class ViewNhanVien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBanHang;
-    private javax.swing.JButton btnChiTietNV;
-    private javax.swing.JButton btnDoiMK;
     private javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnThoat;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblChucVu;
+    private javax.swing.JLabel lblDoiMK;
+    private javax.swing.JLabel lblMa;
+    private javax.swing.JLabel lblTen;
     private javax.swing.JPanel panelBanHang;
     private view.ViewMenu view2;
     // End of variables declaration//GEN-END:variables
