@@ -1499,7 +1499,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     }//GEN-LAST:event_cbbLoaiThoiGianBDItemStateChanged
 
     private void btnMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaiActionPerformed
-        String email = JOptionPane.showInputDialog("Vui lòng nhập mail nhân viên nhận: ");
+        String email = JOptionPane.showInputDialog("Vui lòng nhập mail nhân viên/quản lí nhận: ");
         if (serviceQuenMK.getOne(email) == "Tài khoản chính xác") {
             final String username = "laptopgroup3@gmail.com";
             final String password = "lveekscgavporrkq";
