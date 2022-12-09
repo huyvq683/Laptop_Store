@@ -14,12 +14,10 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.Authenticator;
@@ -85,7 +83,6 @@ public class PanelThongKe extends javax.swing.JPanel {
         showDataSP(dateFor.format(date));
         showDataDoanhThu(dateFor.format(date));
         start();
-
     }
 
     private void start() {
@@ -1325,6 +1322,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         if (cbbLoaiThoiGian.getSelectedIndex() == 0) {
             lbChonNgayBatDauSP.setText("Chọn ngày :");
             txtStartTKSP.setVisible(true);
+            cbbThangNam.setVisible(false);
             lbChonNgayKetThucSP.setVisible(false);
             txtEndTKSP.setVisible(false);
         } else if (cbbLoaiThoiGian.getSelectedIndex() == 1) {
@@ -1487,15 +1485,21 @@ public class PanelThongKe extends javax.swing.JPanel {
             dcbmThangBieuDo = new DefaultComboBoxModel();
             lbChonBD.setText("Chọn năm :");
             int nam = Integer.parseInt(dateFor.format(new Date()).substring(6, 10));
-            for (int i = serviceThongKe.namBatDau(); i <= nam; i++) {
-                dcbmThangBieuDo.addElement(i);
+            if (serviceThongKe.namBatDauDoanhThu() != 0) {
+                for (int i = serviceThongKe.namBatDauDoanhThu(); i <= nam; i++) {
+                    dcbmThangBieuDo.addElement(i);
+                }
+            } else {
+                for (int i = 2020; i <= nam; i++) {
+                    dcbmThangBieuDo.addElement(i);
+                }
             }
             cbbBieuDoChonThang.setModel(dcbmThangBieuDo);
         }
     }//GEN-LAST:event_cbbLoaiThoiGianBDItemStateChanged
 
     private void btnMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaiActionPerformed
-        String email = JOptionPane.showInputDialog("Vui lòng nhập mail nhân viên nhận: ");
+        String email = JOptionPane.showInputDialog("Vui lòng nhập mail nhân viên/quản lí nhận: ");
         if (serviceQuenMK.getOne(email) == "Tài khoản chính xác") {
             final String username = "laptopgroup3@gmail.com";
             final String password = "lveekscgavporrkq";
