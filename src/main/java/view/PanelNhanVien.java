@@ -649,7 +649,11 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         } else {
             nhanVien.setGioiTinh(false);
         }
-        if (!txtEmail.getText().isEmpty()) {
+        if (txtNgaySinh.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không được để trống ngày sinh!!");
+        } else if (!txtNgaySinh.getText().matches("^([0-2][0-9]|(3)[0-1])(\\-)(((0)[0-9])|((1)[0-2]))(\\-)\\d{4}$")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày sinh theo định dạng dd-mm-yyyy");
+        } else {
             SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
             try {
                 Date date = convertToDate.parse(txtNgaySinh.getText());
@@ -660,7 +664,11 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         }
         nhanVien.setDiaChi(txtDiaChi.getText());
         nhanVien.setSdt(txtSdt.getText());
-        nhanVien.setEmail(txtEmail.getText());
+        if (txtEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập email");
+        } else {
+            nhanVien.setEmail(txtEmail.getText());
+        }
         nhanVien.setMatKhau(getMd5("123456"));
         nhanVien.setTrangThai(0);
         if (radioQuanLy.isSelected()) {
