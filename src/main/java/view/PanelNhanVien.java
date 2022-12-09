@@ -639,6 +639,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 listNV = nhanVienServiceImpl.getAllPage(0);
                 showData(listNV);
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Không thành công");
         }
     }//GEN-LAST:event_btnThemActionPerformed
     private NhanVien getData() {
@@ -652,23 +654,23 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         }
         if (txtNgaySinh.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày sinh!!");
-            return null;
-        } else if (!txtNgaySinh.getText().matches("^(?:(?:31(\\-)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\-)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\-)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?19|1\\d|20)(\\-)(?:(?:0[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{4})$")) {
+        } else if (!txtNgaySinh.getText().matches("^(0?[1-9]|[12][0-9]|3[01])[-](0?[1-9]|1[012])[-][0-9]{4}$")) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày sinh theo định dạng dd-mm-yyyy");
-            return null;
         } else {
-            SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
-            try {
-                Date date = convertToDate.parse(txtNgaySinh.getText());
-                nhanVien.setNgaySinh(date);
-                return null;
-            } catch (Exception e) {
-                e.printStackTrace(System.out);
+            String check = txtNgaySinh.getText();
+            String[] a = check.split("-");
+            int nam = Integer.valueOf(a[2]);
+            if (nam < 1960 || nam > 2022) {
+                JOptionPane.showMessageDialog(this, "Năm sinh không hợp lệ!!!");
+            } else {
+                SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
+                try {
+                    Date date = convertToDate.parse(txtNgaySinh.getText());
+                    nhanVien.setNgaySinh(date);
+                } catch (Exception e) {
+                }
             }
         }
-//        String check = txtNgaySinh.getText();
-//        String[] a = check.split("-");
-//        int nam = Integer.valueOf(a[2]);
         nhanVien.setDiaChi(txtDiaChi.getText());
         nhanVien.setSdt(txtSdt.getText());
         if (txtEmail.getText().isEmpty()) {
