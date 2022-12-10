@@ -4,6 +4,7 @@
  */
 package custommodel;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,8 +27,23 @@ public class HoaDonResponse {
     private UUID id;
     private String ma;
     private Date ngayTao;
+    private String maKH;
+    private String tenKH;
+    private int hinhThuc;
+    private BigDecimal tongTien;
+    private BigDecimal tienKhachTra;
+    private BigDecimal tienCK;
     private String tenNhanVien;
     private int tinhTrang;
+
+    public HoaDonResponse(UUID id, String ma, Date ngayTao, String tenNhanVien, int tinhTrang) {
+        this.id = id;
+        this.ma = ma;
+        this.ngayTao = ngayTao;
+        this.tenNhanVien = tenNhanVien;
+        this.tinhTrang = tinhTrang;
+    }
+
 
     public String trangThai() {
         switch (tinhTrang) {

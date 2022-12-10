@@ -27,7 +27,7 @@ public class ThongKeRepository {
         List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
-                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
+                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhachTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
                     + " WHERE hd.tinhTrang = 1 AND hd.createdDate =:date ORDER BY hd.ma ASC");
             query.setParameter("date", n);
             getAllDoanhThu = query.getResultList();
@@ -40,25 +40,10 @@ public class ThongKeRepository {
         List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
-                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
+                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhachTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
                     + " WHERE hd.tinhTrang = 1 AND hd.createdDate >=:date AND hd.createdDate <=: kt ORDER BY hd.ma ASC");
             query.setParameter("date", n);
             query.setParameter("kt", kt);
-            getAllDoanhThu = query.getResultList();
-        } catch (Exception e) {
-        }
-        return getAllDoanhThu;
-    }
-
-    public List<ThongKeDoanhThuRespone> getAllDoanhThuMonthBDNgay(int ngay, int thang, int nam) {
-        List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
-        try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
-                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
-                    + " WHERE hd.tinhTrang = 1 AND Day(hd.createdDate) =:ab Month(hd.createdDate) =:mot AND Year(hd.createdDate) =:yea ORDER BY hd.ma ASC");
-            query.setParameter("ab", ngay);
-            query.setParameter("mot", thang);
-            query.setParameter("yea", nam);
             getAllDoanhThu = query.getResultList();
         } catch (Exception e) {
         }
@@ -69,7 +54,7 @@ public class ThongKeRepository {
         List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
-                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
+                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhachTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
                     + " WHERE hd.tinhTrang = 1 AND Month(hd.createdDate) =:mot AND Year(hd.createdDate) =:yea ORDER BY hd.ma ASC");
             query.setParameter("mot", thang);
             query.setParameter("yea", nam);
@@ -83,7 +68,7 @@ public class ThongKeRepository {
         List<ThongKeDoanhThuRespone> getAllDoanhThu = new ArrayList<>();
         try ( Session session = utility.HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.ThongKeDoanhThuRespone"
-                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhacTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
+                    + "(hd.ma, hd.idNV.ma, hd.idNV.hoTen, hd.hinhThuc, hd.tienKhachTra, hd.tienCK ,hd.tongTien) FROM HoaDon hd"
                     + " WHERE hd.tinhTrang = 1 AND YEAR(hd.createdDate) =:yea ORDER BY hd.ma ASC");
             query.setParameter("yea", nam);
             getAllDoanhThu = query.getResultList();

@@ -22,7 +22,6 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import custommodel.HoaDonCHiTietInResponse;
 import custommodel.HoaDonInResponse;
-import java.util.concurrent.Phaser;
 
 /**
  *

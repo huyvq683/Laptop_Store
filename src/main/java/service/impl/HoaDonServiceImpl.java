@@ -77,7 +77,7 @@ public class HoaDonServiceImpl implements HoaDonService {
     }
 
     @Override
-    public HoaDon getByMa(String ma) {
+    public HoaDonResponse getByMa(String ma) {
         return hoaDonRepository.getOne(ma);
     }
 

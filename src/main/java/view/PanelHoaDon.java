@@ -80,8 +80,10 @@ public class PanelHoaDon extends javax.swing.JPanel {
         }
     }
 
-    public HoaDon getThongTinHoaDon() {
-        return hoaDonService.getByMa(lblMa.getText());
+    public HoaDonResponse getThongTinHoaDon() {
+        int row = tbaBang.getSelectedRow();
+        HoaDonResponse hoaDon = list.get(row);
+        return hoaDonService.getByMa(hoaDon.getMa());
     }
 
     /**
@@ -494,14 +496,17 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lblTGT.setText(tbaBang.getModel().getValueAt(index, 1).toString());
         lblTT.setText(tbaBang.getModel().getValueAt(index, 3).toString());
         listHoaChiTietResponses.removeAll(listHoaChiTietResponses);
-        if (!lblMa.getText().isBlank()) {
-            HoaDon hd = getThongTinHoaDon();
-            lblTenKh.setText(hd.getIdKH().getHoTen());
-            lblLTT.setText(hd.getHinhThuc1());
+            HoaDonResponse hd = getThongTinHoaDon();
+            System.out.println(hd.getMa());
+            if (hd.getTenKH() != null) {
+                lblTenKh.setText(hd.getTenKH());
+            } else {
+                lblTenKh.setText("Khách lẻ");
+            }
+            lblLTT.setText(String.valueOf(hd.getHinhThuc()));
             lblTongTien.setText(hd.getTongTien().toString());
             lblKD.setText(hd.getTienKhachTra().toString());
             lblCK.setText(hd.getTienCK().toString());
-        }
         getListHDCT();
         showResultHDCT(listHoaChiTietResponses);
     }//GEN-LAST:event_tbaBangMouseClicked

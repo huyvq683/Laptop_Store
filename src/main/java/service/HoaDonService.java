@@ -35,7 +35,7 @@ public interface HoaDonService {
 
     List<HoaDonResponse> getAll();
 
-    HoaDon getByMa(String ma);
+    HoaDonResponse getByMa(String ma);
 
     List<HoaDon> get_All();
 
