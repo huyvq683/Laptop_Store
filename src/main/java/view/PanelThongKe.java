@@ -1,7 +1,5 @@
 package view;
 
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -1527,7 +1525,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                                 InternetAddress.parse(email)
                         );
                         message.setSubject("Doanh thu");
-                        message.setText("Doanh thu cua ban la : " + lbTongDoanhThu.getText().substring(0, lbTongDoanhThu.getText().length() - 1) + "VND");
+                        message.setText("Your revenue is : " + lbTongDoanhThu.getText().substring(0, lbTongDoanhThu.getText().length() - 1) + "VND.");
                         Transport.send(message);
 
                     } else {
@@ -1540,7 +1538,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Tài khoản sai");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Tài khoản bị không được để trống");
+            JOptionPane.showMessageDialog(this, "Tài khoản không được để trống hoặc sai định dạng");
         }
     }//GEN-LAST:event_btnMaiActionPerformed
     private void loadThangBieuDo() {
