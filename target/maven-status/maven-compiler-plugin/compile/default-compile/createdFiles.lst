@@ -41,10 +41,7 @@ service\HoaDonChiTietService.class
 view\ViewQuanLy$5.class
 view\PanelHoaDon$4.class
 repository\impl\RamRepository.class
-<<<<<<< HEAD
 view\PanelSanPham$44.class
-=======
->>>>>>> 662ab488ffbf3c11560f50dad698c00ad662172d
 view\ViewDoiMatKhau2$1.class
 view\PanelNhanVien$7.class
 view\PanelBanHang$5.class

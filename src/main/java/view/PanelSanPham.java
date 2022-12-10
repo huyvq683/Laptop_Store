@@ -222,7 +222,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         modelSP.setRowCount(0);
         int stt = 1;
         for (SanPham x : listss) {
-            modelSP.addRow(new Object[]{stt, x.getMa(), x.getTen(), x.conVert(x.getCreatedDate()), x.conVert(x.getLastModifiedDate())});
+            modelSP.addRow(new Object[]{stt, x.getMa(), x.getTen()});
             stt++;
         }
     }
