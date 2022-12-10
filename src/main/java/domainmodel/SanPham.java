@@ -19,17 +19,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.GeneratorType;
 
 /**
  *
  * @author FPT
  */
 @Entity
+@Table(name = "SanPham")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "SanPham")
 @ToString
 public class SanPham implements Serializable {
 
@@ -48,32 +49,30 @@ public class SanPham implements Serializable {
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date alstModifiedDate;
+    private Date lastModifiedDate;
 
-    public SanPham(String ma, String ten, Date createdDate, Date alstModifiedDate) {
+   public SanPham(String ma, String ten, Date createdDate, Date lastModifiedDate) {
         this.ma = ma;
         this.ten = ten;
         this.createdDate = createdDate;
-        this.alstModifiedDate = alstModifiedDate;
-    }
-    
-    public String conVert(Date x) {
-        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        return format.format(x);
+        this.lastModifiedDate = lastModifiedDate;
     }
 
-    public SanPham(UUID id) {
-        this.id = id;
+    public SanPham(String ten, Date createdDate, Date lastModifiedDate) {
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
-
+   
     public SanPham(UUID id, String ten) {
         this.id = id;
         this.ten = ten;
     }
 
-    
-    public SanPham(String ma, String ten) {
-        this.ma = ma;
-        this.ten = ten;
+ 
+    public String conVert(Date x) {
+        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        return format.format(x);
     }
+
 }

@@ -39,8 +39,17 @@ public class ViewExcelReponse {
     private Date ngayTao;
     private int tinhTrang;
 
-    public String getTinhTrang1() {
-        return this.tinhTrang == 0 ? "Chưa Thanh Toán" : "Đã Thanh Toán";
+    public String trangThai() {
+        switch (tinhTrang) {
+            case 0:
+                return "Chờ thanh toán";
+            case 1:
+                return "Đã thanh toán";
+            case 2:
+                return "Hủy";
+            default:
+                throw new AssertionError();
+        }
     }
 
     public String getHinhThuc1() {
@@ -60,7 +69,7 @@ public class ViewExcelReponse {
     }
 
     public Object[] toDataRow() {
-        return new Object[]{maHD, maNV + tenNV, maKH + tenKH + SDT, tenSP, donGia, getHinhThuc1(), tienKhachTra, tienCK, tienThua, tongTien, ngayTao1(), getTinhTrang1()};
+        return new Object[]{maHD, maNV + tenNV, maKH + tenKH + SDT, tenSP, donGia, getHinhThuc1(), tienKhachTra, tienCK, tienThua, tongTien, ngayTao1(), trangThai()};
     }
 
 }

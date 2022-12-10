@@ -22,9 +22,10 @@ public interface HoaDonService {
 
     void exportExcel(JTable table);
 
-    List<ViewExcelReponse> getOne(int tt);
 
-    List<ViewExcelReponse> getAllExcel();
+    public List<ViewExcelReponse> getListExcel(int tt);
+
+    List<ViewExcelReponse> getAllExcel ();
 
     List<HoaDonResponse> getByOne(int tt);
 

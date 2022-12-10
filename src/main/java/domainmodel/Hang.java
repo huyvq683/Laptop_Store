@@ -46,32 +46,33 @@ public class Hang implements Serializable {
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date alstModifiedDate;
+    private Date lastModifiedDate;
 
     public String conVert(Date x) {
         DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         return format.format(x);
     }
 
-    public Hang(String ma, String ten, Date createdDate, Date alstModifiedDate) {
+    public Hang(String ma, String ten, Date createdDate, Date lastModifiedDate) {
         this.ma = ma;
         this.ten = ten;
         this.createdDate = createdDate;
-        this.alstModifiedDate = alstModifiedDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
-    public Hang(String ma, String ten) {
-        this.ma = ma;
+    public Hang(String ten, Date createdDate, Date lastModifiedDate) {
         this.ten = ten;
-    }
-
-    public Hang(UUID id) {
-        this.id = id;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public Hang(UUID id, String ten) {
         this.id = id;
         this.ten = ten;
+    }
+
+    public Hang(UUID id) {
+        this.id = id;
     }
 
 }

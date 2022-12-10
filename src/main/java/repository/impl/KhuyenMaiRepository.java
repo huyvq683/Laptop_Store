@@ -42,13 +42,30 @@ public class KhuyenMaiRepository {
         List<KhuyenMai> list = new ArrayList<>();
         try {
             Session sess = HibernateUtil.getFACTORY().openSession();
-            Query q = sess.createQuery("FROM KhuyenMai");
+            Query q = sess.createQuery("FROM KhuyenMai ORDER BY ma DESC");
             list = q.getResultList();
             sess.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public void updateTrangThaiKM() {
+        try {
+            Session sess = HibernateUtil.getFACTORY().openSession();
+            for (KhuyenMai km : getAllKhuyenMai()) {
+                if (km.getNgayKT().before(new Date())) {
+                    km.setTrangThai(0);
+                    sess.getTransaction().begin();
+                    sess.update(km);
+                    sess.getTransaction().commit();
+                }
+            }
+            sess.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean kiemTraKM(SanPhamViewKMResponse spvkmr, KhuyenMai km) {
@@ -97,7 +114,7 @@ public class KhuyenMaiRepository {
         List<SanPhamViewKMResponse> list = new ArrayList<>();
         try {
             Session sess = HibernateUtil.getFACTORY().openSession();
-            Query q = sess.createQuery("SELECT new custommodel.SanPhamViewKMResponse (s.idSanPham.ma, s.idSanPham.ten, s.idCPU.ten, s.idHang.ten, s.idRam.ten, s.idCard.ten, s.idOCung.ten, s.gia, COUNT(s.idSanPham)) FROM ChiTietSP s WHERE s.tinhTrang = 0 GROUP BY s.idSanPham.ma, s.idSanPham.ten, s.idCPU.ten, s.idHang.ten, s.idRam.ten, s.idCard.ten, s.idOCung.ten, s.gia");
+            Query q = sess.createQuery("SELECT new custommodel.SanPhamViewKMResponse (s.idSanPham.ma, s.idSanPham.ten, s.idCPU.ten, s.idHang.ten, s.idRam.ten, s.idCard.ten, s.idOCung.ten, s.gia, COUNT(s.idSanPham.id)) FROM ChiTietSP s WHERE s.tinhTrang = 0 GROUP BY s.idSanPham.ma, s.idSanPham.ten, s.idCPU.ten, s.idHang.ten, s.idRam.ten, s.idCard.ten, s.idOCung.ten, s.gia");
             list = q.getResultList();
             sess.close();
         } catch (Exception e) {
@@ -201,7 +218,7 @@ public class KhuyenMaiRepository {
                     }
                     spkm.setTienConLai(tienConLai);
                     spkm.setCreatedDate(new Date());
-                    spkm.setAlstModifiedDate(new Date());
+                    spkm.setLastModifiedDate(new Date());
                     sess.getTransaction().begin();
                     sess.save(spkm);
                     sess.getTransaction().commit();
@@ -211,9 +228,5 @@ public class KhuyenMaiRepository {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        new KhuyenMaiRepository().getAllSanPham().forEach(c -> System.out.println(c.getMa()));
     }
 }

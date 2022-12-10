@@ -21,7 +21,7 @@ public class CPURepository {
     public List<CPU> getAll() {
         List<CPU> lists = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From CPU");
+            Query query = session.createQuery("From CPU ORDER BY Ma DESC");
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -70,7 +70,7 @@ public class CPURepository {
             s.setMa(sp.getMa());
             s.setTen(sp.getTen());
             s.setCreatedDate(sp.getCreatedDate());
-            s.setAlstModifiedDate(sp.getAlstModifiedDate());
+            s.setLastModifiedDate(sp.getLastModifiedDate());
             session.update(s);
             tran.commit();
             return true;

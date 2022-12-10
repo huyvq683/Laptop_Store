@@ -15,6 +15,8 @@ import java.util.UUID;
 public interface SanPhamService {
 
     List<SanPham> getAllSanPham();
+    
+    List<SanPham> getAllSP();
 
     SanPham getOneSP(String ma);
 
@@ -23,6 +25,8 @@ public interface SanPhamService {
     String addSanPham(SanPham sp);
 
     String upDateSanPham(SanPham sp, UUID id);
+
+    String upDateTrangThai(SanPham sp, UUID id);
 
     String deleteSanPham(UUID id);
 

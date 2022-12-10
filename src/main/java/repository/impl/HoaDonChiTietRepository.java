@@ -11,6 +11,7 @@ import domainmodel.HoaDonChiTiet;
 import domainmodel.SanPhamKM;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import org.hibernate.Session;
@@ -28,9 +29,9 @@ public class HoaDonChiTietRepository {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse "
-                    + "(c.idHoaDon.id, c.idCTSP.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
+                    + "(c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
                     + "FROM HoaDonChiTiet c WHERE c.idHoaDon.id = :id "
-                    + "GROUP BY c.idHoaDon.id, c.idCTSP.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
+                    + "GROUP BY c.idHoaDon.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
             query.setParameter("id", id);
             lists = query.getResultList();
         } catch (Exception e) {
@@ -54,13 +55,13 @@ public class HoaDonChiTietRepository {
     }
 
 //lười dùng id quá :)))
-    public List<HoaDonChiTietResponse> get_All(String ma) {
+       public List<HoaDonChiTietResponse> get_All(String ma) {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse "
-                    + "(c.idHoaDon.id, c.idCTSP.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
+                    + "(c.idHoaDon.id, c.idHoaDon.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
                     + "FROM HoaDonChiTiet c WHERE c.idHoaDon.ma = :ma "
-                    + "GROUP BY c.idHoaDon.id, c.idCTSP.id, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
+                    + "GROUP BY c.idHoaDon.id,  c.idHoaDon.ma, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
             query.setParameter("ma", ma);
             lists = query.getResultList();
         } catch (Exception e) {
@@ -127,6 +128,8 @@ public class HoaDonChiTietRepository {
                 hdct.setTenSP(ctsp.getIdSanPham().getTen());
                 hdct.setTienKM(tienKM);
                 hdct.setDonGia(ctsp.getGia());
+                hdct.setCreatedDate(new Date());
+                hdct.setLastModifiedDate(new Date());
                 session.save(hdct);
             }
             tran.commit();
@@ -178,12 +181,5 @@ public class HoaDonChiTietRepository {
         }
         return check;
     }
-    
-    public static void main(String[] args) {
-        List<String>listSerial = new ArrayList<>();
-        listSerial.add("579123");
-        listSerial.add("135789");   
-        boolean delete = new HoaDonChiTietRepository().deleteHDCT(listSerial);
-        System.out.println(delete);
-    }
+
 }

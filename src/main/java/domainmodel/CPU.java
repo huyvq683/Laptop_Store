@@ -29,7 +29,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "CPU")
-public class CPU implements Serializable{
+public class CPU implements Serializable {
+
     @Id
     @GeneratedValue
     @Column(name = "Id")
@@ -40,28 +41,29 @@ public class CPU implements Serializable{
 
     @Column(name = "Ten")
     private String ten;
-    
+
     @Column(name = "CreatedDate")
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date alstModifiedDate;
-    
-        public String conVert(Date x) {
+    private Date lastModifiedDate;
+
+    public String conVert(Date x) {
         DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         return format.format(x);
     }
 
-    public CPU(String ma, String ten, Date createdDate, Date alstModifiedDate) {
+    public CPU(String ma, String ten, Date createdDate, Date lastModifiedDate) {
         this.ma = ma;
         this.ten = ten;
         this.createdDate = createdDate;
-        this.alstModifiedDate = alstModifiedDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
-    public CPU(String ma, String ten) {
-        this.ma = ma;
+    public CPU(String ten, Date createdDate, Date lastModifiedDate) {
         this.ten = ten;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public CPU(UUID id) {
@@ -72,6 +74,5 @@ public class CPU implements Serializable{
         this.id = id;
         this.ten = ten;
     }
-    
-        
+
 }

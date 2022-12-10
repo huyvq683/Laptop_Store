@@ -46,32 +46,33 @@ public class OCung implements Serializable {
     private Date createdDate;
 
     @Column(name = "LastModifiedDate")
-    private Date alstModifiedDate;
+    private Date lastModifiedDate;
     
         public String conVert(Date x) {
         DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         return format.format(x);
     }
 
-    public OCung(String ma, String ten, Date createdDate, Date alstModifiedDate) {
+    public OCung(String ma, String ten, Date createdDate, Date lastModifiedDate) {
         this.ma = ma;
         this.ten = ten;
         this.createdDate = createdDate;
-        this.alstModifiedDate = alstModifiedDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
-    public OCung(String ma, String ten) {
-        this.ma = ma;
+    public OCung(String ten, Date createdDate, Date lastModifiedDate) {
         this.ten = ten;
-    }
-
-    public OCung(UUID id) {
-        this.id = id;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public OCung(UUID id, String ten) {
         this.id = id;
         this.ten = ten;
+    }
+
+    public OCung(UUID id) {
+        this.id = id;
     }
         
 }

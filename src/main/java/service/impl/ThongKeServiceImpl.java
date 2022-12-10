@@ -1,5 +1,7 @@
 package service.impl;
 
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -9,6 +11,7 @@ import custommodel.ThongKeSanPhamRespone;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JPanel;
@@ -109,55 +112,21 @@ public class ThongKeServiceImpl implements ThongKeService {
     }
 
     @Override
-    public void getAllSanPhamMonthDB(int ngay, int thang, int nam, JPanel jpnItem) {
+    public void bieuDoDoanhThuMonth(int ngay, int thang, int nam, JPanel jpnItem) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         if (thang == 1 || thang == 3 || thang == 5 || thang == 7 || thang == 8 || thang == 10 || thang == 12) {
             for (int i = 1; i <= 31; i++) {
-                dataset.addValue(new Integer(res.getAllSanPhamMonthDB(i, thang, nam)), "Doanh số", i + "");
+                dataset.addValue(new BigDecimal(res.bieuDoDoanhThuMonth(i, thang, nam)), "Doanh số", i + "");
             }
         }
         if (thang == 2) {
             for (int i = 1; i <= 28; i++) {
-                dataset.addValue(new Integer(res.getAllSanPhamMonthDB(i, thang, nam)), "Doanh số", i + "");
+                dataset.addValue(new BigDecimal(res.bieuDoDoanhThuMonth(i, thang, nam)), "Doanh số", i + "");
             }
         }
         if (thang == 4 || thang == 6 || thang == 9 || thang == 11) {
             for (int i = 1; i <= 30; i++) {
-                dataset.addValue(new Integer(res.getAllSanPhamMonthDB(i, thang, nam)), "Doanh số", i + "");
-            }
-        }
-        JFreeChart barChart = ChartFactory.createBarChart(
-                "Biểu đồ thống kê số lượng sản phẩm đã bán ra tháng " + thang + " năm " + nam + "".toUpperCase(),
-                "Thời gian", "Số lượng",
-                dataset, PlotOrientation.VERTICAL, false, false, false);
-        ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(
-                new Dimension(jpnItem.getWidth(), 578));
-        jpnItem.removeAll();
-        jpnItem.setLayout(
-                new CardLayout());
-        jpnItem.add(chartPanel);
-        jpnItem.validate();
-        jpnItem.setBackground(Color.MAGENTA);
-        jpnItem.repaint();
-    }
-
-    @Override
-    public void getAllDoanhThuMonthDB(int ngay, int thang, int nam, JPanel jpnItem) {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        if (thang == 1 || thang == 3 || thang == 5 || thang == 7 || thang == 8 || thang == 10 || thang == 12) {
-            for (int i = 1; i <= 31; i++) {
-                dataset.addValue(new Double(res.getAllDoanhThuMonthDB(i, thang, nam)), "Doanh số", i + "");
-            }
-        }
-        if (thang == 2) {
-            for (int i = 1; i <= 28; i++) {
-                dataset.addValue(new Double(res.getAllDoanhThuMonthDB(i, thang, nam)), "Doanh số", i + "");
-            }
-        }
-        if (thang == 4 || thang == 6 || thang == 9 || thang == 11) {
-            for (int i = 1; i <= 30; i++) {
-                dataset.addValue(new Double(res.getAllDoanhThuMonthDB(i, thang, nam)), "Doanh số", i + "");
+                dataset.addValue(new BigDecimal(res.bieuDoDoanhThuMonth(i, thang, nam)), "Doanh số", i + "");
             }
         }
         JFreeChart barChart = ChartFactory.createBarChart(
@@ -167,56 +136,7 @@ public class ThongKeServiceImpl implements ThongKeService {
                 false, false, false);
 
         ChartPanel chartPanel = new ChartPanel(barChart);
-
-        chartPanel.setPreferredSize(
-                new Dimension(jpnItem.getWidth(), 578));
-
-        jpnItem.removeAll();
-
-        jpnItem.setLayout(
-                new CardLayout());
-        jpnItem.add(chartPanel);
-
-        jpnItem.validate();
-
-        jpnItem.repaint();
-    }
-
-    @Override
-    public void getAllSanPhamYearDB(int thang, int nam, JPanel jpnItem) {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        for (int i = 1; i <= 12; i++) {
-            dataset.addValue(new Integer(res.getAllSanPhamYearDB(i, nam)), "Doanh số", i + "");
-        }
-        JFreeChart barChart = ChartFactory.createBarChart(
-                "Biểu đồ thống kê số lượng sản phẩm đã bán ra  năm " + nam + " ".toUpperCase(),
-                "Thời gian", "Số lượng",
-                dataset, PlotOrientation.VERTICAL, false, false, false);
-        ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(
-                new Dimension(jpnItem.getWidth(), 578));
-        jpnItem.removeAll();
-        jpnItem.setLayout(
-                new CardLayout());
-        jpnItem.add(chartPanel);
-        jpnItem.validate();
-        jpnItem.setBackground(Color.MAGENTA);
-        jpnItem.repaint();
-    }
-
-    @Override
-    public void getAllDoanhThuYearDB(int thang, int nam, JPanel jpnItem) {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        for (int i = 1; i <= 12; i++) {
-            dataset.addValue(new Double(res.getAllDoanhThuYearDB(i, nam)), "Doanh số", i + "");
-        }
-        JFreeChart barChart = ChartFactory.createBarChart(
-                "Biểu đồ thống kê doanh thu năm " + nam + "".toUpperCase(),
-                "Thời gian", "Doanh thu",
-                dataset, PlotOrientation.VERTICAL, false, false, false);
-
-        ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 578));
+        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 580));
 
         jpnItem.removeAll();
         jpnItem.setLayout(new CardLayout());
@@ -224,4 +144,80 @@ public class ThongKeServiceImpl implements ThongKeService {
         jpnItem.validate();
         jpnItem.repaint();
     }
+
+    @Override
+    public void bieuDoDoanhThuYear(int thang, int nam, JPanel jpnItem) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 1; i <= 12; i++) {
+            dataset.addValue(new BigDecimal(res.bieuDoDoanhThuYear(i, nam)), "Doanh số", i + "");
+        }
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Biểu đồ thống kê doanh thu năm " + nam + "".toUpperCase(),
+                "Thời gian", "Doanh thu",
+                dataset, PlotOrientation.VERTICAL, false, false, false);
+
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(jpnItem.getWidth(), 580));
+
+        jpnItem.removeAll();
+        jpnItem.setLayout(new CardLayout());
+        jpnItem.add(chartPanel);
+        jpnItem.validate();
+        jpnItem.repaint();
+    }
+//    @Override
+//    public void bieuDoSanPhamMonth(int ngay, int thang, int nam, JPanel jpnItem) {
+//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+//        if (thang == 1 || thang == 3 || thang == 5 || thang == 7 || thang == 8 || thang == 10 || thang == 12) {
+//            for (int i = 1; i <= 31; i++) {
+//                dataset.addValue(new Integer(res.bieuDoSanPhamMonth(i, thang, nam)), "Doanh số", i + "");
+//            }
+//        }
+//        if (thang == 2) {
+//            for (int i = 1; i <= 28; i++) {
+//                dataset.addValue(new Integer(res.bieuDoSanPhamMonth(i, thang, nam)), "Doanh số", i + "");
+//            }
+//        }
+//        if (thang == 4 || thang == 6 || thang == 9 || thang == 11) {
+//            for (int i = 1; i <= 28; i++) {
+//                dataset.addValue(new Integer(res.bieuDoSanPhamMonth(i, thang, nam)), "Doanh số", i + "");
+//            }
+//        }
+//
+//        JFreeChart barChart = ChartFactory.createBarChart(
+//                "Biểu đồ thống kê số lượng sản phẩm đã bán ra tháng " + thang + " năm " + nam + "".toUpperCase(),
+//                "Thời gian", "Số lượng",
+//                dataset, PlotOrientation.VERTICAL, false, false, false);
+//        ChartPanel chartPanel = new ChartPanel(barChart);
+//        chartPanel.setPreferredSize(
+//                new Dimension(jpnItem.getWidth(), 578));
+//        jpnItem.removeAll();
+//        jpnItem.setLayout(
+//                new CardLayout());
+//        jpnItem.add(chartPanel);
+//        jpnItem.validate();
+//        jpnItem.setBackground(Color.MAGENTA);
+//        jpnItem.repaint();
+//    }
+//    @Override
+//    public void bieuDoSanPhamYear(int thang, int nam, JPanel jpnItem) {
+//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+//        for (int i = 1; i <= 12; i++) {
+//            dataset.addValue(new Integer(res.bieuDoSanPhamYear(i, nam)), "Doanh số", i + "");
+//        }
+//        JFreeChart barChart = ChartFactory.createBarChart(
+//                "Biểu đồ thống kê số lượng sản phẩm đã bán ra  năm " + nam + " ".toUpperCase(),
+//                "Thời gian", "Số lượng",
+//                dataset, PlotOrientation.VERTICAL, false, false, false);
+//        ChartPanel chartPanel = new ChartPanel(barChart);
+//        chartPanel.setPreferredSize(
+//                new Dimension(jpnItem.getWidth(), 578));
+//        jpnItem.removeAll();
+//        jpnItem.setLayout(
+//                new CardLayout());
+//        jpnItem.add(chartPanel);
+//        jpnItem.validate();
+//        jpnItem.setBackground(Color.MAGENTA);
+//        jpnItem.repaint();
+//    }
 }

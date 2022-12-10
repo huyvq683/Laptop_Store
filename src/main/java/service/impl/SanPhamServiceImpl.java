@@ -69,8 +69,8 @@ public class SanPhamServiceImpl implements SanPhamService {
         if (sp.getTen().trim().isBlank()) {
             return "Tên trống";
         }
-        if (getOne(sp.getMa()) != null) {
-            return "Trùng mã";
+        if (getOne(sp.getTen()) != null) {
+            return "Trùng tên";
         }
         return null;
     }
@@ -99,6 +99,21 @@ public class SanPhamServiceImpl implements SanPhamService {
     @Override
     public List<SanPham> search(String seatchKey) {
         return sanPhamRe.search(seatchKey);
+    }
+
+    @Override
+    public String upDateTrangThai(SanPham sp, UUID id) {
+        Boolean trangThai = sanPhamRe.upDateTrangThai(sp, id);
+        if (trangThai) {
+            return "Xóa thành công";
+        } else {
+            return "Xóa thất bại";
+        }
+    }
+
+    @Override
+    public List<SanPham> getAllSP() {
+        return sanPhamRe.getAllSP();
     }
 
 }

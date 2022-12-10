@@ -20,7 +20,7 @@ public class HangRepository {
     public List<Hang> getAll() {
         List<Hang> lists = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From Hang");
+            Query query = session.createQuery("From Hang ORDER BY Ma DESC");
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -69,7 +69,7 @@ public class HangRepository {
             s.setMa(sp.getMa());
             s.setTen(sp.getTen());
             s.setCreatedDate(sp.getCreatedDate());
-            s.setAlstModifiedDate(sp.getAlstModifiedDate());
+            s.setLastModifiedDate(sp.getLastModifiedDate());
             session.update(s);
             tran.commit();
             return true;

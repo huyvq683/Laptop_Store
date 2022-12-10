@@ -22,7 +22,7 @@ public class RamRepository {
     public List<Ram> getAll() {
         List<Ram> lists = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From Ram");
+            Query query = session.createQuery("From Ram ORDER BY Ma DESC");
             lists = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -71,7 +71,7 @@ public class RamRepository {
             s.setMa(sp.getMa());
             s.setTen(sp.getTen());
             s.setCreatedDate(sp.getCreatedDate());
-            s.setAlstModifiedDate(sp.getAlstModifiedDate());
+            s.setLastModifiedDate(sp.getLastModifiedDate());
             session.update(s);
             tran.commit();
             return true;

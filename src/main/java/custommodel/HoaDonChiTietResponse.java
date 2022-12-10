@@ -31,8 +31,7 @@ public class HoaDonChiTietResponse {
     private String serial;
     private long soluong;
 
-    public HoaDonChiTietResponse(UUID idCTSP, UUID idHD, String ma, String ten, BigDecimal tienKM, BigDecimal gia, long soluong) {
-        this.idCTSP = idCTSP;
+    public HoaDonChiTietResponse(UUID idHD, String ma, String ten, BigDecimal tienKM, BigDecimal gia, long soluong) {
         this.idHD = idHD;
         this.ma = ma;
         this.ten = ten;
@@ -60,8 +59,8 @@ public class HoaDonChiTietResponse {
         this.serial = serial;
     }
 
-    public long thanhTien() {
-        return (long) (soluong * gia.doubleValue());
+    public BigDecimal thanhTien() {
+        return new BigDecimal(soluong * gia.doubleValue());
     }
 
     public Object[] toDataRow(int stt) {

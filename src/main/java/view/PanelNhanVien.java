@@ -32,6 +32,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -47,6 +48,7 @@ import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -84,7 +86,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         listNV = nhanVienServiceImpl.getAllPage(0);
         showData(listNV);
         initWebcam();
-        radioDaNghi.setEnabled(false);
+        btnTrangThai.setVisible(false);
     }
 
     /**
@@ -118,14 +120,12 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         radioNhanVien = new javax.swing.JRadioButton();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        radioDaNghi = new javax.swing.JRadioButton();
-        jLabel55 = new javax.swing.JLabel();
-        radioDangLamViec = new javax.swing.JRadioButton();
         btnNew = new javax.swing.JButton();
         txtNgaySinh = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         panelWebcam = new javax.swing.JPanel();
         qrCode = new javax.swing.JLabel();
+        btnTrangThai = new javax.swing.JButton();
         pnDanhSachNV = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tbNhanVien = new javax.swing.JTable();
@@ -137,6 +137,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnPrevious = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
+        btnDowloadTemplate = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1300, 850));
@@ -201,6 +202,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setIcon(new ImageIcon("src/main/img/addNV.png"));
         btnThem.setText("Thêm");
+        btnThem.setToolTipText("Thêm nhân viên");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -212,29 +214,19 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setIcon(new ImageIcon("src/main/img/updateNV.png"));
         btnSua.setText("Sửa");
+        btnSua.setToolTipText("Sửa nhân viên");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
 
-        buttonGroup3.add(radioDaNghi);
-        radioDaNghi.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        radioDaNghi.setText("Đã nghỉ việc");
-
-        jLabel55.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel55.setText("Trạng thái");
-
-        buttonGroup3.add(radioDangLamViec);
-        radioDangLamViec.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        radioDangLamViec.setSelected(true);
-        radioDangLamViec.setText("Đang làm việc");
-
         btnNew.setBackground(new java.awt.Color(41, 183, 212));
         btnNew.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnNew.setForeground(new java.awt.Color(255, 255, 255));
         btnNew.setIcon(new ImageIcon("src/main/img/newNV.png"));
         btnNew.setText("New");
+        btnNew.setToolTipText("Làm mới các trường");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -267,6 +259,18 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         qrCode.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         qrCode.setIcon(new ImageIcon("src/main/img/scan.png"));
         qrCode.setText("QR Code scan");
+
+        btnTrangThai.setBackground(new java.awt.Color(41, 183, 212));
+        btnTrangThai.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnTrangThai.setForeground(new java.awt.Color(255, 255, 255));
+        btnTrangThai.setIcon(new ImageIcon("src/main/img/sathai.png"));
+        btnTrangThai.setText("Trạng thái");
+        btnTrangThai.setToolTipText("Cập nhật trạng thái");
+        btnTrangThai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrangThaiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnThongTinNVLayout = new javax.swing.GroupLayout(pnThongTinNV);
         pnThongTinNV.setLayout(pnThongTinNVLayout);
@@ -306,18 +310,13 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                                 .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(pnThongTinNVLayout.createSequentialGroup()
-                                        .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radioDangLamViec)
-                                            .addComponent(radioQuanLy))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radioNhanVien)
-                                            .addComponent(radioDaNghi)))))
+                                        .addComponent(radioQuanLy)
+                                        .addGap(54, 54, 54)
+                                        .addComponent(radioNhanVien))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnThongTinNVLayout.createSequentialGroup()
                                 .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(34, 34, 34)
                                 .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnThongTinNVLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -328,7 +327,9 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                                 .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(155, 155, 155))
                             .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(249, 249, 249)))
+                        .addGap(35, 35, 35)
+                        .addComponent(btnTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)))
                 .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnThongTinNVLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -381,18 +382,15 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                                 .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(radioQuanLy, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel53)
-                                    .addComponent(radioNhanVien))
-                                .addGap(27, 27, 27)
-                                .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel55)
-                                    .addComponent(radioDangLamViec)
-                                    .addComponent(radioDaNghi))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                    .addComponent(radioNhanVien))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(pnThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
 
@@ -429,12 +427,22 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             }
         });
         jScrollPane7.setViewportView(tbNhanVien);
+        if (tbNhanVien.getColumnModel().getColumnCount() > 0) {
+            tbNhanVien.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tbNhanVien.getColumnModel().getColumn(2).setPreferredWidth(30);
+            tbNhanVien.getColumnModel().getColumn(3).setPreferredWidth(30);
+            tbNhanVien.getColumnModel().getColumn(4).setPreferredWidth(30);
+            tbNhanVien.getColumnModel().getColumn(5).setPreferredWidth(120);
+            tbNhanVien.getColumnModel().getColumn(6).setPreferredWidth(80);
+            tbNhanVien.getColumnModel().getColumn(7).setPreferredWidth(40);
+        }
 
         jLabel54.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel54.setIcon(new ImageIcon("src/main/img/searchNV.png"));
         jLabel54.setText("Tìm kiếm");
 
         txtSearch.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtSearch.setToolTipText("Tìm kiếm nhân viên ");
         txtSearch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
         txtSearch.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -447,6 +455,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnImport.setForeground(new java.awt.Color(255, 255, 255));
         btnImport.setIcon(new ImageIcon("src/main/img/import.png"));
         btnImport.setText("Import");
+        btnImport.setToolTipText("Nhập nhân viên");
         btnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImportActionPerformed(evt);
@@ -458,6 +467,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnExport.setForeground(new java.awt.Color(255, 255, 255));
         btnExport.setIcon(new ImageIcon("src/main/img/export.png"));
         btnExport.setText("Export");
+        btnExport.setToolTipText("Xuất file danh sách nhân viên");
         btnExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExportActionPerformed(evt);
@@ -508,6 +518,17 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             }
         });
 
+        btnDowloadTemplate.setBackground(new java.awt.Color(41, 183, 212));
+        btnDowloadTemplate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnDowloadTemplate.setForeground(new java.awt.Color(255, 255, 255));
+        btnDowloadTemplate.setIcon(new ImageIcon("src/main/img/download.png"));
+        btnDowloadTemplate.setToolTipText("Tải template mẫu");
+        btnDowloadTemplate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDowloadTemplateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnDanhSachNVLayout = new javax.swing.GroupLayout(pnDanhSachNV);
         pnDanhSachNV.setLayout(pnDanhSachNVLayout);
         pnDanhSachNVLayout.setHorizontalGroup(
@@ -521,6 +542,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDowloadTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -534,7 +557,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(358, Short.MAX_VALUE))
         );
         pnDanhSachNVLayout.setVerticalGroup(
             pnDanhSachNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -546,7 +569,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnDanhSachNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDowloadTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -603,53 +627,66 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        NhanVien nhanVien = getData();
-        NhanVien nv = nhanVienServiceImpl.getOne(nhanVien.getEmail());
-        if (nv != null) {
-            JOptionPane.showMessageDialog(this, "Nhân viên mang email " + nhanVien.getEmail() + " đã tồn tại!!");
-        } else {
-            JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
-            SendEmail.send(nhanVien.getEmail());
-            list = nhanVienServiceImpl.getAll();
-            listNV = nhanVienServiceImpl.getAllPage(0);
-            showData(listNV);
+        if (txtNgaySinh.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng điền ngày sinh");
+            return;
         }
-
+        NhanVien nhanVien = getData();
+        if (nhanVien != null) {
+            NhanVien nv = nhanVienServiceImpl.getOne(nhanVien.getEmail());
+            if (nv != null) {
+                JOptionPane.showMessageDialog(this, "Nhân viên mang email " + nhanVien.getEmail() + " đã tồn tại!!");
+            } else if (!txtNgaySinh.getText().matches("^(0?[1-9]|[12][0-9]|3[01])[-](0?[1-9]|1[012])[-][0-9]{4}$")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày sinh theo định dạng dd-mm-yyyy");
+            } else {
+                if (true) {
+                    String check = txtNgaySinh.getText();
+                    String[] a = check.split("-");
+                    int nam = Integer.valueOf(a[2]);
+                    if (nam < 1960 || nam > 2022) {
+                        JOptionPane.showMessageDialog(this, "Năm sinh không hợp lệ!!!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
+                        SendEmail.send(nhanVien.getEmail());
+                        list = nhanVienServiceImpl.getAll();
+                        listNV = nhanVienServiceImpl.getAllPage(0);
+                        showData(listNV);
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Không thành công");
+        }
     }//GEN-LAST:event_btnThemActionPerformed
     private NhanVien getData() {
-        NhanVien nhanVien = new NhanVien();
-        nhanVien.setMa("NV" + (list.size() + 1));
-        nhanVien.setHoTen(txtTen.getText());
+        String ma = "NV" + (list.size() + 1);
+        String ten = (txtTen.getText());
+        boolean gioiTinh;
         if (radioNam.isSelected()) {
-            nhanVien.setGioiTinh(true);
+            gioiTinh = true;
         } else {
-            nhanVien.setGioiTinh(false);
+            gioiTinh = false;
         }
-        if (!txtEmail.getText().isEmpty()) {
-            SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
-            try {
-                Date date = convertToDate.parse(txtNgaySinh.getText());
-                nhanVien.setNgaySinh(date);
-            } catch (Exception e) {
-                e.printStackTrace(System.out);
-            }
+        Date ngaySinh = null;
+        SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            ngaySinh = convertToDate.parse(txtNgaySinh.getText());
+        } catch (Exception e) {
         }
-        nhanVien.setDiaChi(txtDiaChi.getText());
-        nhanVien.setSdt(txtSdt.getText());
-        nhanVien.setEmail(txtEmail.getText());
-        nhanVien.setMatKhau(getMd5("123456"));
-        if (radioDangLamViec.isSelected()) {
-            nhanVien.setTrangThai(0);
-        } else {
-            nhanVien.setTrangThai(1);
-        }
+        String diaChi = (txtDiaChi.getText());
+        String sdt = (txtSdt.getText());
+        String email = txtEmail.getText();
+        String matKhau = (getMd5("123456"));
+        int trangThai = 0;
+        int chucVu;
         if (radioQuanLy.isSelected()) {
-            nhanVien.setChucVu(0);
+            chucVu = 0;
         } else {
-            nhanVien.setChucVu(1);
+            chucVu = 1;
         }
-        nhanVien.setCreatedDate(new Date());
-        nhanVien.setLastModifiedDate(new Date());
+        Date createdDate = (new Date());
+        Date lastModifiedDate = (new Date());
+        NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, diaChi, sdt, email, chucVu, matKhau, trangThai, createdDate, lastModifiedDate);
         return nhanVien;
     }
 
@@ -673,17 +710,13 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 Date date = convertToDate.parse(txtNgaySinh.getText());
                 nhanVien.setNgaySinh(date);
             } catch (Exception e) {
-                e.printStackTrace(System.out);
+//                e.printStackTrace(System.out);
             }
             nhanVien.setMatKhau(nv.getMatKhau());
             nhanVien.setDiaChi(txtDiaChi.getText());
             nhanVien.setSdt(txtSdt.getText());
             nhanVien.setEmail(txtEmail.getText());
-            if (radioDangLamViec.isSelected()) {
-                nhanVien.setTrangThai(0);
-            } else {
-                nhanVien.setTrangThai(1);
-            }
+            nhanVien.setTrangThai(nv.getTrangThai());
             if (radioQuanLy.isSelected()) {
                 nhanVien.setChucVu(0);
             } else {
@@ -710,7 +743,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
     private void tbNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhanVienMouseClicked
         // TODO add your handling code here:
-        radioDaNghi.setEnabled(true);
         if (txtSearch.getText().isEmpty()) {
             int row = tbNhanVien.getSelectedRow();
             NhanVien nv = listNV.get(row);
@@ -731,11 +763,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 radioQuanLy.setSelected(true);
             } else {
                 radioNhanVien.setSelected(true);
-            }
-            if (nv.getTrangThai() == 0) {
-                radioDangLamViec.setSelected(true);
-            } else {
-                radioDaNghi.setSelected(true);
             }
         } else {
             List<NhanVien> listSearch = nhanVienServiceImpl.search(txtSearch.getText());
@@ -759,13 +786,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             } else {
                 radioNhanVien.setSelected(true);
             }
-            if (nv.getTrangThai() == 0) {
-                radioDangLamViec.setSelected(true);
-            } else {
-                radioDaNghi.setSelected(true);
-            }
-
         }
+        btnTrangThai.setVisible(true);
     }//GEN-LAST:event_tbNhanVienMouseClicked
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
@@ -776,8 +798,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         txtDiaChi.setText("");
         txtEmail.setText("");
         radioNhanVien.setSelected(true);
-        radioDangLamViec.setSelected(true);
-        radioDaNghi.setEnabled(false);
         tbNhanVien.clearSelection();
     }//GEN-LAST:event_btnNewActionPerformed
 
@@ -799,22 +819,18 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 int i = 0;
                 do {
                     for (NhanVien nhanVien : listIm) {
-//                        if (nhanVien.getHoTen().isEmpty()) {
-//                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!!");
-//                            listIm.clear();
-//                            return;
-//                            
-//                        }
-//                        if (nhanVien.getSdt().isEmpty()) {
-//                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
-//                            listIm.clear();
-//                            return;
-//                        }
-//                        if (nhanVien.getDiaChi().isEmpty()) {
-//                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
-//                            listIm.clear();
-//                            return;
-//                        }
+                        if (nhanVien.getHoTen().isEmpty()) {
+                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
+                            listIm.remove(nhanVien);
+                        }
+                        if (nhanVien.getSdt().isEmpty()) {
+                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
+                            listIm.remove(nhanVien);
+                        }
+                        if (nhanVien.getDiaChi().isEmpty()) {
+                            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
+                            listIm.remove(nhanVien);
+                        }
                         if (nhanVien.getEmail().isEmpty()) {
                             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin các nhân viên!!");
                             listIm.remove(nhanVien);
@@ -855,105 +871,198 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_btnImportActionPerformed
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
-        try {
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            XSSFSheet spreadsheet = workbook.createSheet("NhanVien");
+        if (txtSearch.getText().isEmpty()) {
+            try {
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                XSSFSheet spreadsheet = workbook.createSheet("NhanVien");
 
-            XSSFRow row = null;
-            Cell cell = null;
+                XSSFRow row = null;
+                Cell cell = null;
 
-            Font headerFont = workbook.createFont();
-            headerFont.setBold(true);
-            headerFont.setFontHeightInPoints((short) 14);
-            headerFont.setColor(IndexedColors.RED.getIndex());
-            CellStyle headerCellStyle = workbook.createCellStyle();
-            headerCellStyle.setFont(headerFont);
+                Font headerFont = workbook.createFont();
+                headerFont.setBold(true);
+                headerFont.setFontHeightInPoints((short) 14);
+                headerFont.setColor(IndexedColors.RED.getIndex());
+                CellStyle headerCellStyle = workbook.createCellStyle();
+                headerCellStyle.setFont(headerFont);
 
-            Font tieuDe = workbook.createFont();
-            tieuDe.setBold(true);
-            tieuDe.setFontHeightInPoints((short) 18);
-            tieuDe.setColor(IndexedColors.BLACK.getIndex());
-            CellStyle tieuDeStyle = workbook.createCellStyle();
-            tieuDeStyle.setFont(tieuDe);
+                Font tieuDe = workbook.createFont();
+                tieuDe.setBold(true);
+                tieuDe.setFontHeightInPoints((short) 18);
+                tieuDe.setColor(IndexedColors.BLACK.getIndex());
+                CellStyle tieuDeStyle = workbook.createCellStyle();
+                tieuDeStyle.setFont(tieuDe);
 
-            row = spreadsheet.createRow((short) 2);
-            row.setHeight((short) 500);
-            cell = row.createCell(3, CellType.STRING);
-            cell.setCellValue("     Danh sách nhân viên");
-            cell.setCellStyle(tieuDeStyle);
-            row = spreadsheet.createRow((short) 3);
-            row.setHeight((short) 500);
-            cell = row.createCell(0, CellType.STRING);
-            cell.setCellValue("STT");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(1, CellType.STRING);
-            cell.setCellValue("Mã NV");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(2, CellType.STRING);
-            cell.setCellValue("Tên");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(3, CellType.STRING);
-            cell.setCellValue("Giới tính");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(4, CellType.STRING);
-            cell.setCellValue("Ngày sinh");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(5, CellType.STRING);
-            cell.setCellValue("Địa chỉ");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(6, CellType.STRING);
-            cell.setCellValue("Số điện thoại");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(7, CellType.STRING);
-            cell.setCellValue("Email");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(8, CellType.STRING);
-            cell.setCellValue("Chức vụ");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(9, CellType.STRING);
-            cell.setCellValue("Trạng thái");
-            cell.setCellStyle(headerCellStyle);
-            for (int i = 0; i < list.size(); i++) {
-                NhanVien nv = list.get(i);
-                row = spreadsheet.createRow((short) 4 + i);
-                row.setHeight((short) 400);
-                row.createCell(0).setCellValue(i + 1);
-                row.createCell(1).setCellValue(nv.getMa());
-                row.createCell(2).setCellValue(nv.getHoTen());
-                String gioiTinh;
-                if (nv.isGioiTinh()) {
-                    gioiTinh = "Nam";
-                } else {
-                    gioiTinh = "Nữ";
+                row = spreadsheet.createRow((short) 2);
+                row.setHeight((short) 500);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("     Danh sách nhân viên");
+                cell.setCellStyle(tieuDeStyle);
+                row = spreadsheet.createRow((short) 3);
+                row.setHeight((short) 500);
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue("STT");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue("Mã NV");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue("Tên");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("Giới tính");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue("Ngày sinh");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue("Địa chỉ");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(6, CellType.STRING);
+                cell.setCellValue("Số điện thoại");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(7, CellType.STRING);
+                cell.setCellValue("Email");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(8, CellType.STRING);
+                cell.setCellValue("Chức vụ");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(9, CellType.STRING);
+                cell.setCellValue("Trạng thái");
+                cell.setCellStyle(headerCellStyle);
+                for (int i = 0; i < list.size(); i++) {
+                    NhanVien nv = list.get(i);
+                    row = spreadsheet.createRow((short) 4 + i);
+                    row.setHeight((short) 400);
+                    row.createCell(0).setCellValue(i + 1);
+                    row.createCell(1).setCellValue(nv.getMa());
+                    row.createCell(2).setCellValue(nv.getHoTen());
+                    String gioiTinh;
+                    if (nv.isGioiTinh()) {
+                        gioiTinh = "Nam";
+                    } else {
+                        gioiTinh = "Nữ";
+                    }
+                    row.createCell(3).setCellValue(gioiTinh);
+                    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    String date = dateFormat.format(nv.getNgaySinh());
+                    row.createCell(4).setCellValue(date);
+                    row.createCell(5).setCellValue(nv.getDiaChi());
+                    row.createCell(6).setCellValue(nv.getSdt());
+                    row.createCell(7).setCellValue(nv.getEmail());
+                    row.createCell(8).setCellValue(nv.getChucVu() == 0 ? "Quản lý" : "Nhân viên");
+                    row.createCell(9).setCellValue(nv.getTrangThai() == 0 ? "Đang làm việc" : "Đã nghỉ việc");
                 }
-                row.createCell(3).setCellValue(gioiTinh);
-                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                String date = dateFormat.format(nv.getNgaySinh());
-                row.createCell(4).setCellValue(date);
-                row.createCell(5).setCellValue(nv.getDiaChi());
-                row.createCell(6).setCellValue(nv.getSdt());
-                row.createCell(7).setCellValue(nv.getEmail());
-                row.createCell(8).setCellValue(nv.getChucVu() == 0 ? "Quản lý" : "Nhân viên");
-                row.createCell(9).setCellValue(nv.getTrangThai() == 0 ? "Đang làm việc" : "Đã nghỉ việc");
+                FileOutputStream out = new FileOutputStream(new File("D:/NhanVien.xlsx"));
+                workbook.write(out);
+                out.close();
+                JOptionPane.showMessageDialog(this, "Export nhân viên thành công");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Export nhân viên thất bại");
             }
-            FileOutputStream out = new FileOutputStream(new File("D:/NhanVien.xlsx"));
-            workbook.write(out);
-            out.close();
-            JOptionPane.showMessageDialog(this, "Export nhân viên thành công");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Export nhân viên thất bại");
+        } else {
+            try {
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                XSSFSheet spreadsheet = workbook.createSheet("NhanVien");
+
+                XSSFRow row = null;
+                Cell cell = null;
+
+                Font headerFont = workbook.createFont();
+                headerFont.setBold(true);
+                headerFont.setFontHeightInPoints((short) 14);
+                headerFont.setColor(IndexedColors.RED.getIndex());
+                CellStyle headerCellStyle = workbook.createCellStyle();
+                headerCellStyle.setFont(headerFont);
+
+                Font tieuDe = workbook.createFont();
+                tieuDe.setBold(true);
+                tieuDe.setFontHeightInPoints((short) 18);
+                tieuDe.setColor(IndexedColors.BLACK.getIndex());
+                CellStyle tieuDeStyle = workbook.createCellStyle();
+                tieuDeStyle.setFont(tieuDe);
+
+                row = spreadsheet.createRow((short) 2);
+                row.setHeight((short) 500);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("     Danh sách nhân viên");
+                cell.setCellStyle(tieuDeStyle);
+                row = spreadsheet.createRow((short) 3);
+                row.setHeight((short) 500);
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue("STT");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue("Mã NV");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue("Tên");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("Giới tính");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue("Ngày sinh");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue("Địa chỉ");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(6, CellType.STRING);
+                cell.setCellValue("Số điện thoại");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(7, CellType.STRING);
+                cell.setCellValue("Email");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(8, CellType.STRING);
+                cell.setCellValue("Chức vụ");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(9, CellType.STRING);
+                cell.setCellValue("Trạng thái");
+                cell.setCellStyle(headerCellStyle);
+                listSearch = nhanVienServiceImpl.search(txtSearch.getText());
+                for (int i = 0; i < listSearch.size(); i++) {
+                    NhanVien nv = listSearch.get(i);
+                    row = spreadsheet.createRow((short) 4 + i);
+                    row.setHeight((short) 400);
+                    row.createCell(0).setCellValue(i + 1);
+                    row.createCell(1).setCellValue(nv.getMa());
+                    row.createCell(2).setCellValue(nv.getHoTen());
+                    String gioiTinh;
+                    if (nv.isGioiTinh()) {
+                        gioiTinh = "Nam";
+                    } else {
+                        gioiTinh = "Nữ";
+                    }
+                    row.createCell(3).setCellValue(gioiTinh);
+                    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    String date = dateFormat.format(nv.getNgaySinh());
+                    row.createCell(4).setCellValue(date);
+                    row.createCell(5).setCellValue(nv.getDiaChi());
+                    row.createCell(6).setCellValue(nv.getSdt());
+                    row.createCell(7).setCellValue(nv.getEmail());
+                    row.createCell(8).setCellValue(nv.getChucVu() == 0 ? "Quản lý" : "Nhân viên");
+                    row.createCell(9).setCellValue(nv.getTrangThai() == 0 ? "Đang làm việc" : "Đã nghỉ việc");
+                }
+                FileOutputStream out = new FileOutputStream(new File("D:/NhanVien.xlsx"));
+                workbook.write(out);
+                out.close();
+                JOptionPane.showMessageDialog(this, "Export nhân viên thành công");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Export nhân viên thất bại");
+            }
         }
     }//GEN-LAST:event_btnExportActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         listNV = nhanVienServiceImpl.getAllPage(0);
+        page = 0;
         showData(listNV);
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
         page = page - 10;
         if (page < 0) {
-            page = list.size() - 10;
+            page = list.size() - (list.size() % 10);
         }
         listNV = nhanVienServiceImpl.getAllPage(page);
         showData(listNV);
@@ -969,9 +1078,122 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
-        listNV = nhanVienServiceImpl.getAllPage(list.size() - 10);
+        page = list.size() - (list.size() % 10);
+        listNV = nhanVienServiceImpl.getAllPage(page);
         showData(listNV);
     }//GEN-LAST:event_btnLastActionPerformed
+
+    private void btnDowloadTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDowloadTemplateActionPerformed
+        // TODO add your handling code here:
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet spreadsheet = workbook.createSheet("NhanVien");
+
+            XSSFRow row = null;
+            Cell cell = null;
+
+            Font headerFont = workbook.createFont();
+            headerFont.setBold(true);
+            headerFont.setFontHeightInPoints((short) 10);
+            headerFont.setColor(IndexedColors.RED.getIndex());
+            CellStyle headerCellStyle = workbook.createCellStyle();
+            headerCellStyle.setFont(headerFont);
+
+            row = spreadsheet.createRow((short) 0);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("Tên");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Giới tính");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("Ngày sinh");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Địa chỉ");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(4, CellType.STRING);
+            cell.setCellValue("Số ĐT");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(5, CellType.STRING);
+            cell.setCellValue("Email");
+            cell.setCellStyle(headerCellStyle);
+            cell = row.createCell(6, CellType.STRING);
+            cell.setCellValue("Chức vụ");
+            cell.setCellStyle(headerCellStyle);
+            FileOutputStream out = new FileOutputStream(new File("D:/ImportNhanVien.xlsx"));
+            workbook.write(out);
+            out.close();
+            JOptionPane.showMessageDialog(this, "Template mẫu được lưu tại ổ D");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Tải thất bại");
+        }
+    }//GEN-LAST:event_btnDowloadTemplateActionPerformed
+
+    private void btnTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangThaiActionPerformed
+        int row = tbNhanVien.getSelectedRow();
+        NhanVien nv = listNV.get(row);
+        if (nv.getTrangThai() == 0) {
+            int update = JOptionPane.showConfirmDialog(this, "Bạn có muốn cập nhật trạng thái của " + nv.getMa() + " thành: Đã nghỉ việc không?", "Nghỉ việc!!", 2);
+            if (update == 0) {
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setId(nv.getId());
+                nhanVien.setMa(nv.getMa());
+                nhanVien.setHoTen(nv.getHoTen());
+                nhanVien.setGioiTinh(nv.isGioiTinh());
+                nhanVien.setNgaySinh(nv.getNgaySinh());
+                nhanVien.setMatKhau(nv.getMatKhau());
+                nhanVien.setDiaChi(nv.getDiaChi());
+                nhanVien.setSdt(nv.getSdt());
+                nhanVien.setEmail(nv.getEmail());
+                nhanVien.setTrangThai(1);
+                nhanVien.setChucVu(nv.getChucVu());
+                nhanVien.setLastModifiedDate(new Date());
+                nhanVien.setCreatedDate(nhanVien.getCreatedDate());
+                nhanVienServiceImpl.addOrUpdate(nhanVien);
+                listNV = nhanVienServiceImpl.getAllPage(0);
+                showData(listNV);
+                tbNhanVien.removeRowSelectionInterval(row, row);
+                btnTrangThai.setVisible(false);
+                txtTen.setText("");
+                radioNam.setSelected(true);
+                txtNgaySinh.setText("");
+                txtSdt.setText("");
+                txtDiaChi.setText("");
+                txtEmail.setText("");
+                radioNhanVien.setSelected(true);
+            }
+        } else {
+            int update = JOptionPane.showConfirmDialog(this, "Bạn có muốn cập nhật trạng thái của " + nv.getMa() + " thành: Đang làm việc không?", "Quay lại làm việc!!", 2);
+            if (update == 0) {
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setId(nv.getId());
+                nhanVien.setMa(nv.getMa());
+                nhanVien.setHoTen(nv.getHoTen());
+                nhanVien.setGioiTinh(nv.isGioiTinh());
+                nhanVien.setNgaySinh(nv.getNgaySinh());
+                nhanVien.setMatKhau(nv.getMatKhau());
+                nhanVien.setDiaChi(nv.getDiaChi());
+                nhanVien.setSdt(nv.getSdt());
+                nhanVien.setEmail(nv.getEmail());
+                nhanVien.setTrangThai(0);
+                nhanVien.setChucVu(nv.getChucVu());
+                nhanVien.setLastModifiedDate(new Date());
+                nhanVien.setCreatedDate(nhanVien.getCreatedDate());
+                nhanVienServiceImpl.addOrUpdate(nhanVien);
+                listNV = nhanVienServiceImpl.getAllPage(0);
+                showData(listNV);
+                btnTrangThai.setVisible(false);
+                txtTen.setText("");
+                radioNam.setSelected(true);
+                txtNgaySinh.setText("");
+                txtSdt.setText("");
+                txtDiaChi.setText("");
+                txtEmail.setText("");
+                radioNhanVien.setSelected(true);
+            }
+        }
+    }//GEN-LAST:event_btnTrangThaiActionPerformed
     private String convertDate(Date ngaySinh) {
         String date;
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -1020,24 +1242,18 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         List<NhanVien> listNVien = new ArrayList<>();
         try {
             FileInputStream file = new FileInputStream(new File(fileName));
-            // Khởi tạo workbook cho tệp xlsx 
-            XSSFWorkbook workbook = new XSSFWorkbook(file);
-            // Lấy worksheet đầu tiên trong workbook
+            Workbook workbook = new XSSFWorkbook(file);
             Sheet worksheet = workbook.getSheetAt(0);
-            // Duyệt qua từng row
-            for (Row row : worksheet) {
-//                if (row.getRowNum() == 0) {
-//                    continue;
-//                }
-//                if (row.getCell(0).getCellType() == CellType.STRING){
-//                    continue;
-//                }
+            Iterator<Row> iterator = worksheet.iterator();
+            Row firstRow = iterator.next();
+            while (iterator.hasNext()) {
+                Row currentRow = iterator.next();
                 listNV = nhanVienServiceImpl.getAll();
                 NhanVien nhanVien = new NhanVien();
-                nhanVien.setMa("NV0" + ((listNV.size() + 1) + (listNVien.size())));
-                nhanVien.setHoTen(String.valueOf(getCellValue(row.getCell(0))).trim());
+                nhanVien.setMa("NV" + ((listNV.size() + 1) + (listNVien.size())));
+                nhanVien.setHoTen(String.valueOf(getCellValue(currentRow.getCell(0))).trim());
                 boolean gioiTinh;
-                if (String.valueOf(getCellValue(row.getCell(1))).trim().equalsIgnoreCase("Nam")) {
+                if (String.valueOf(getCellValue(currentRow.getCell(1))).trim().equalsIgnoreCase("Nam")) {
                     gioiTinh = true;
                 } else {
                     gioiTinh = false;
@@ -1045,31 +1261,27 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 nhanVien.setGioiTinh(gioiTinh);
                 SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
                 try {
-                    Date date = convertToDate.parse(String.valueOf(getCellValue(row.getCell(2))).trim());
+                    Date date = convertToDate.parse(String.valueOf(getCellValue(currentRow.getCell(2))).trim());
                     nhanVien.setNgaySinh(date);
                 } catch (Exception e) {
-                    e.printStackTrace(System.out);
+//                    e.printStackTrace(System.out);
                 }
-                nhanVien.setDiaChi(String.valueOf(getCellValue(row.getCell(3))).trim());
-                nhanVien.setSdt(String.valueOf(getCellValue(row.getCell(4))).trim());
-                nhanVien.setEmail(String.valueOf(getCellValue(row.getCell(5))).trim());
-                if (String.valueOf(getCellValue(row.getCell(6))).trim().equalsIgnoreCase("Quản lý")) {
+                nhanVien.setDiaChi(String.valueOf(getCellValue(currentRow.getCell(3))).trim());
+                nhanVien.setSdt(String.valueOf(getCellValue(currentRow.getCell(4))).trim());
+                nhanVien.setEmail(String.valueOf(getCellValue(currentRow.getCell(5))).trim());
+                if (String.valueOf(getCellValue(currentRow.getCell(6))).trim().equalsIgnoreCase("Quản lý")) {
                     nhanVien.setChucVu(0);
                 } else {
                     nhanVien.setChucVu(1);
                 }
                 nhanVien.setMatKhau(getMd5("123456"));
-                if (String.valueOf(getCellValue(row.getCell(7))).trim().equalsIgnoreCase("Đang làm việc")) {
-                    nhanVien.setTrangThai(0);
-                } else {
-                    nhanVien.setTrangThai(1);
-                }
+                nhanVien.setTrangThai(0);
                 nhanVien.setCreatedDate(new Date());
                 nhanVien.setLastModifiedDate(new Date());
                 listNVien.add(nhanVien);
             }
         } catch (IOException e) {
-            e.printStackTrace(System.out);
+//            e.printStackTrace(System.out);
         }
         return listNVien;
     }
@@ -1094,6 +1306,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDowloadTemplate;
     private javax.swing.JButton btnExport;
     private javax.swing.JButton btnFirst;
     private javax.swing.JButton btnImport;
@@ -1103,6 +1316,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     private javax.swing.JButton btnPrevious;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTrangThai;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -1115,7 +1329,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JPanel panelWebcam;
@@ -1123,8 +1336,6 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
     private javax.swing.JPanel pnQLNV;
     private javax.swing.JPanel pnThongTinNV;
     private javax.swing.JLabel qrCode;
-    private javax.swing.JRadioButton radioDaNghi;
-    private javax.swing.JRadioButton radioDangLamViec;
     private javax.swing.JRadioButton radioNam;
     private javax.swing.JRadioButton radioNhanVien;
     private javax.swing.JRadioButton radioNu;
@@ -1144,7 +1355,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             try {
                 Thread.sleep(2500);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
 
             Result result = null;
