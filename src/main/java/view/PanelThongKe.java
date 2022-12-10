@@ -1205,6 +1205,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnBoLocDTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocDTMouseExited
         btnBoLocDT.setBackground(new Color(41, 183, 212));
         btnBoLocDT.setForeground(Color.BLACK);
+        serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
     }//GEN-LAST:event_btnBoLocDTMouseExited
 
     private void btnBoLocDTMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocDTMouseMoved
@@ -1228,6 +1229,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnBoLocSPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocSPMouseExited
         btnBoLocSP.setBackground(new Color(41, 183, 212));
         btnBoLocSP.setForeground(Color.BLACK);
+        serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
     }//GEN-LAST:event_btnBoLocSPMouseExited
 
     private void btnBoLocSPMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocSPMouseMoved
@@ -1309,7 +1311,6 @@ public class PanelThongKe extends javax.swing.JPanel {
         btnLocSP.setBackground(new Color(41, 183, 212));
         btnLocSP.setForeground(Color.BLACK);
         serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
-
     }//GEN-LAST:event_btnLocSPMouseExited
 
     private void btnLocSPMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLocSPMouseMoved
@@ -1396,7 +1397,6 @@ public class PanelThongKe extends javax.swing.JPanel {
         cbbLoaiThoiGian.setSelectedIndex(1);
         serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
         cbbBieuDoChonThang.setSelectedItem(String.valueOf(nam));
-
     }//GEN-LAST:event_btnBoLocBieuDoActionPerformed
 
     private void cbbLoaiDoanhThuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiDoanhThuItemStateChanged
