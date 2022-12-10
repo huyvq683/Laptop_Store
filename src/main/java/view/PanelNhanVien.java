@@ -799,6 +799,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         txtEmail.setText("");
         radioNhanVien.setSelected(true);
         tbNhanVien.clearSelection();
+        btnTrangThai.setVisible(false);
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
@@ -1193,6 +1194,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 radioNhanVien.setSelected(true);
             }
         }
+        btnTrangThai.setVisible(false);
+        tbNhanVien.clearSelection();
     }//GEN-LAST:event_btnTrangThaiActionPerformed
     private String convertDate(Date ngaySinh) {
         String date;
