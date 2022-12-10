@@ -63,14 +63,14 @@ import service.impl.SanPhamServiceImpl;
  * @author huyxo
  */
 public class PanelSanPham extends javax.swing.JPanel {
-
+    
     DefaultComboBoxModel dfcbbSP = new DefaultComboBoxModel();
     DefaultComboBoxModel dfcbbCPU = new DefaultComboBoxModel();
     DefaultComboBoxModel dfcbbHang = new DefaultComboBoxModel();
     DefaultComboBoxModel dfcbbRam = new DefaultComboBoxModel();
     DefaultComboBoxModel dfcbbCard = new DefaultComboBoxModel();
     DefaultComboBoxModel dfcbbOCung = new DefaultComboBoxModel();
-
+    
     DefaultTableModel modelSP = new DefaultTableModel();
     DefaultTableModel modelSP1 = new DefaultTableModel();
     DefaultTableModel modelCPU = new DefaultTableModel();
@@ -78,7 +78,7 @@ public class PanelSanPham extends javax.swing.JPanel {
     DefaultTableModel modelCard = new DefaultTableModel();
     DefaultTableModel modelHang = new DefaultTableModel();
     DefaultTableModel modelOCung = new DefaultTableModel();
-
+    
     SanPhamService service = new SanPhamServiceImpl();
     List<SanPham> listSanPham = service.getAllSanPham();
     CPUService serviceCPU = new CPUServiceImql();
@@ -91,7 +91,7 @@ public class PanelSanPham extends javax.swing.JPanel {
     List<CardMH> listCard = serviceCard.getAll();
     OCungService serviceOCung = new OCungServiceImql();
     List<OCung> listOCung = serviceOCung.getAll();
-
+    
     DefaultTableModel modelCTSP = new DefaultTableModel();
     ChiTietSPService serviceCT = new ChiTietSPServiceImql();
     List<ChiTietSP> listCTsp = serviceCT.getAllChiTietSP();
@@ -122,62 +122,62 @@ public class PanelSanPham extends javax.swing.JPanel {
         showDataTableHang(listHang);
         showDataTableOCung(listOCung);
         showDataTableRam(listRam);
-
+        
         jFrame1.setLocationRelativeTo(null);
         jFrame2.setLocationRelativeTo(null);
         jFrame3.setLocationRelativeTo(null);
         jFrame4.setLocationRelativeTo(null);
         jFrame5.setLocationRelativeTo(null);
         jFrame6.setLocationRelativeTo(null);
-
+        
     }
-
+    
     public void showMaSP() {
         for (SanPham x : listSanPham) {
             dfcbbSP.addElement(x.getTen());
         }
     }
-
+    
     public void showCPU() {
         for (CPU x : listCPU) {
             dfcbbCPU.addElement(x.getTen());
         }
     }
-
+    
     public void showHang() {
         for (Hang x : listHang) {
             dfcbbHang.addElement(x.getTen());
         }
     }
-
+    
     public void showRam() {
         for (Ram x : listRam) {
             dfcbbRam.addElement(x.getTen());
         }
     }
-
+    
     public void showCard() {
         for (CardMH x : listCard) {
             dfcbbCard.addElement(x.getTen());
         }
     }
-
+    
     public void showOCung() {
         for (OCung x : listOCung) {
             dfcbbOCung.addElement(x.getTen());
         }
     }
-
+    
     public void showData(List<ChiTietSP> ctsp) {
         modelCTSP = (DefaultTableModel) tblBangChiTietSP.getModel();
         modelCTSP.setRowCount(0);
         int stt = 1;
         for (ChiTietSP x : ctsp) {
-            modelCTSP.addRow(new Object[]{false, stt, x.getIdSanPham().getTen(), x.getIdCPU().getTen(), x.getIdCard().getTen(), x.getIdHang().getTen(), x.getIdOCung().getTen(), x.getIdRam().getTen(), x.getSerial(), x.getGia(), x.getTinhTrang() == 0 ? "Đang bán" : x.getTinhTrang() == 1 ? "Đã bán bán" : "Ngừng kinh doanh"});
+            modelCTSP.addRow(new Object[]{false, stt, x.getIdSanPham().getTen(), x.getIdCPU().getTen(), x.getIdCard().getTen(), x.getIdHang().getTen(), x.getIdOCung().getTen(), x.getIdRam().getTen(), x.getSerial(), x.getGia(), x.getTinhTrang() == 0 ? "Đang bán" : x.getTinhTrang() == 1 ? "Đã bán" : "Ngừng kinh doanh"});
             stt++;
         }
     }
-
+    
     public void mountClick(List<ChiTietSP> ctsp, int index) {
         cbbCPU.setSelectedItem(ctsp.get(index).getIdCPU().getTen());
         cbbCard.setSelectedItem(ctsp.get(index).getIdCard().getTen());
@@ -188,35 +188,35 @@ public class PanelSanPham extends javax.swing.JPanel {
         txtSerialSP.setText(ctsp.get(index).getSerial());
         txtGia.setText(ctsp.get(index).getGia().toString());
     }
-
+    
     public void fillSP(int index, List<SanPham> sp) {
         txtTenSP1.setText(sp.get(index).getTen());
     }
-
+    
     public void fillCPU(int index, List<CPU> cpu) {
         txtTenCPU.setText(cpu.get(index).getTen());
     }
-
+    
     public void fillHang(int index, List<Hang> hang) {
         txtTenHang.setText(hang.get(index).getTen());
     }
-
+    
     public void fillRam(int index, List<Ram> ram) {
         txtTenRam.setText(ram.get(index).getTen());
     }
-
+    
     public void fillOCung(int index, List<OCung> oCung) {
         txtTenOCung.setText(oCung.get(index).getTen());
     }
-
+    
     public void fillCard(int index, List<CardMH> card) {
         txtTenCard.setText(card.get(index).getTen());
     }
-
+    
     public void fillSP1(int index, List<SanPham> sp1) {
         txtTenCPU1.setText(sp1.get(index).getTen());
     }
-
+    
     private void showDataTable(List<SanPham> listss) {
         modelSP = (DefaultTableModel) tblSanPham1.getModel();
         modelSP.setRowCount(0);
@@ -226,7 +226,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-
+    
     private void showDataTable1(List<SanPham> lists) {
         modelSP1 = (DefaultTableModel) tblSP1.getModel();
         modelSP1.setRowCount(0);
@@ -236,7 +236,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-
+    
     private void showDataTableCPU(List<CPU> list) {
         modelCPU = (DefaultTableModel) tblCPU.getModel();
         modelCPU.setRowCount(0);
@@ -246,7 +246,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-
+    
     private void showDataTableCard(List<CardMH> list) {
         modelCard = (DefaultTableModel) tblCard.getModel();
         modelCard.setRowCount(0);
@@ -256,7 +256,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-
+    
     private void showDataTableHang(List<Hang> list) {
         modelHang = (DefaultTableModel) tblHang.getModel();
         modelHang.setRowCount(0);
@@ -266,7 +266,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-
+    
     private void showDataTableOCung(List<OCung> list) {
         modelOCung = (DefaultTableModel) tblOCung.getModel();
         modelOCung.setRowCount(0);
@@ -276,7 +276,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-
+    
     private void showDataTableRam(List<Ram> list) {
         modelRam = (DefaultTableModel) tblRam.getModel();
         modelRam.setRowCount(0);
@@ -286,7 +286,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-
+    
     SanPham getData() {
         return new SanPham("SP" + (listSanPham.size() + 1), txtTenSP1.getText(), new Date(), new Date());
     }
@@ -423,6 +423,9 @@ public class PanelSanPham extends javax.swing.JPanel {
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 255));
 
+        txtTenCPU1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtTenCPU1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
+
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Chức năng"));
 
@@ -549,6 +552,9 @@ public class PanelSanPham extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel7.setText("Tên CPU");
+
+        txtTenCPU.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtTenCPU.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Chức năng"));
@@ -734,6 +740,9 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel8.setText("Tên Card");
 
+        txtTenCard.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtTenCard.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
+
         btnThoatCard.setText("Thoát");
         btnThoatCard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -795,6 +804,9 @@ public class PanelSanPham extends javax.swing.JPanel {
         jFrame4.setSize(new java.awt.Dimension(570, 308));
 
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+
+        txtTenHang.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtTenHang.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Chức năng"));
@@ -942,6 +954,9 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel13.setText("Tên OCung");
 
+        txtTenOCung.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtTenOCung.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
+
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Chức năng"));
 
@@ -994,15 +1009,13 @@ public class PanelSanPham extends javax.swing.JPanel {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTenOCung, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(txtTenOCung, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
@@ -1111,6 +1124,9 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel15.setText("Tên Ram");
 
+        txtTenRam.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtTenRam.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -1192,7 +1208,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
         jButton1.setText("jButton1");
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -1201,11 +1217,13 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel17.setText("Tên SP");
 
         txtTenSP1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtTenSP1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel18.setText("Tìm kiếm");
 
-        txtTimKiemSP.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtTimKiemSP.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtTimKiemSP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
         txtTimKiemSP.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtTimKiemSPCaretUpdate(evt);
@@ -1234,7 +1252,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
         jLabel4.setIcon(new ImageIcon("src/main/img/Lap.jpg"));
 
-        btnThemSP6.setBackground(new java.awt.Color(0, 153, 153));
+        btnThemSP6.setBackground(new java.awt.Color(41, 183, 212));
         btnThemSP6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThemSP6.setIcon(new ImageIcon("src/main/img/addNV.png"));
         btnThemSP6.setText("Thêm");
@@ -1244,7 +1262,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             }
         });
 
-        btnSuaSP6.setBackground(new java.awt.Color(0, 153, 153));
+        btnSuaSP6.setBackground(new java.awt.Color(41, 183, 212));
         btnSuaSP6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSuaSP6.setIcon(new ImageIcon("src/main/img/updateNV.png"));
         btnSuaSP6.setText("Sửa");
@@ -1275,7 +1293,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(33, 33, 33)
                         .addComponent(txtTimKiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60))
@@ -1297,11 +1315,11 @@ public class PanelSanPham extends javax.swing.JPanel {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txtTimKiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTimKiemSP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -1320,12 +1338,12 @@ public class PanelSanPham extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Sản Phẩm", jPanel1);
 
-        jPanel4.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thuộc tính", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
@@ -1347,7 +1365,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
         cbbCPU.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        btnCPU.setBackground(new java.awt.Color(0, 153, 153));
+        btnCPU.setBackground(new java.awt.Color(41, 183, 212));
         btnCPU.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnCPU.setIcon(new ImageIcon("src/main/img/newNV.png"));
         btnCPU.setToolTipText("Thêm cpu");
@@ -1357,7 +1375,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             }
         });
 
-        btnHang.setBackground(new java.awt.Color(0, 153, 153));
+        btnHang.setBackground(new java.awt.Color(41, 183, 212));
         btnHang.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnHang.setIcon(new ImageIcon("src/main/img/newNV.png"));
         btnHang.setToolTipText("Thêm hãng");
@@ -1371,7 +1389,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
         cbbOCung.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        btnOCung.setBackground(new java.awt.Color(0, 153, 153));
+        btnOCung.setBackground(new java.awt.Color(41, 183, 212));
         btnOCung.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnOCung.setIcon(new ImageIcon("src/main/img/newNV.png"));
         btnOCung.setToolTipText("Thêm ổ cứng");
@@ -1385,7 +1403,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
         cbbRam.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        btnRam.setBackground(new java.awt.Color(0, 153, 153));
+        btnRam.setBackground(new java.awt.Color(41, 183, 212));
         btnRam.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnRam.setIcon(new ImageIcon("src/main/img/newNV.png"));
         btnRam.setToolTipText("Thêm ram");
@@ -1395,7 +1413,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             }
         });
 
-        btnCard.setBackground(new java.awt.Color(0, 153, 153));
+        btnCard.setBackground(new java.awt.Color(41, 183, 212));
         btnCard.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnCard.setIcon(new ImageIcon("src/main/img/newNV.png"));
         btnCard.setToolTipText("Thêm card");
@@ -1512,12 +1530,16 @@ public class PanelSanPham extends javax.swing.JPanel {
             tblBangChiTietSP.getColumnModel().getColumn(0).setMaxWidth(20);
         }
 
+        txtLoc2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtLoc2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
         txtLoc2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLoc2ActionPerformed(evt);
             }
         });
 
+        txtLoc1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtLoc1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
         txtLoc1.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtLoc1CaretUpdate(evt);
@@ -1530,7 +1552,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("--");
 
-        btnXuatFiel.setBackground(new java.awt.Color(0, 153, 153));
+        btnXuatFiel.setBackground(new java.awt.Color(41, 183, 212));
         btnXuatFiel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnXuatFiel.setIcon(new ImageIcon("src/main/img/import.png"));
         btnXuatFiel.setText("EXPORT");
@@ -1541,7 +1563,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             }
         });
 
-        btnExport.setBackground(new java.awt.Color(0, 153, 153));
+        btnExport.setBackground(new java.awt.Color(41, 183, 212));
         btnExport.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnExport.setIcon(new ImageIcon("src/main/img/export.png"));
         btnExport.setText("IMPORT");
@@ -1585,7 +1607,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(txtLoc2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(tblChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXuatFiel)
@@ -1596,7 +1618,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức Năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        btnThem.setBackground(new java.awt.Color(0, 153, 153));
+        btnThem.setBackground(new java.awt.Color(41, 183, 212));
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnThem.setIcon(new ImageIcon("src/main/img/addNV.png"));
         btnThem.setText("Thêm");
@@ -1606,7 +1628,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             }
         });
 
-        btnSua.setBackground(new java.awt.Color(0, 153, 153));
+        btnSua.setBackground(new java.awt.Color(41, 183, 212));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSua.setIcon(new ImageIcon("src/main/img/updateNV.png"));
         btnSua.setText("Sửa");
@@ -1616,7 +1638,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             }
         });
 
-        btnXoa.setBackground(new java.awt.Color(0, 153, 153));
+        btnXoa.setBackground(new java.awt.Color(41, 183, 212));
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnXoa.setIcon(new ImageIcon("src/main/img/close.png"));
         btnXoa.setText("Ngừng bán");
@@ -1631,6 +1653,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel44.setText("Tìm kiếm ");
 
         txtTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
         txtTimKiem.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtTimKiemCaretUpdate(evt);
@@ -1643,6 +1666,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         });
 
         txtGia.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtGia.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         jLabel42.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel42.setText("Serial");
@@ -1651,8 +1675,9 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel43.setText("Giá");
 
         txtSerialSP.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtSerialSP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
-        btnLamMoi.setBackground(new java.awt.Color(0, 153, 153));
+        btnLamMoi.setBackground(new java.awt.Color(41, 183, 212));
         btnLamMoi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLamMoi.setIcon(new ImageIcon("src/main/img/newNV.png"));
         btnLamMoi.setText("Làm mới");
@@ -1667,7 +1692,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel30.setText("Tên sản phẩm");
 
-        jButton6.setBackground(new java.awt.Color(0, 153, 153));
+        jButton6.setBackground(new java.awt.Color(41, 183, 212));
         jButton6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButton6.setIcon(new ImageIcon("src/main/img/newNV.png"));
         jButton6.setToolTipText("Thêm sản phẩm");
@@ -1677,7 +1702,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             }
         });
 
-        btnKhoiPhuc.setBackground(new java.awt.Color(0, 153, 153));
+        btnKhoiPhuc.setBackground(new java.awt.Color(41, 183, 212));
         btnKhoiPhuc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnKhoiPhuc.setIcon(new ImageIcon("src/main/img/boloc.png"));
         btnKhoiPhuc.setText("Khôi phục");
@@ -1765,7 +1790,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(btnKhoiPhuc, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -1789,7 +1814,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -1954,6 +1979,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, service.addSanPham(getData1()));
         listSanPham = service.getAllSanPham();
         showDataTable1(listSanPham);
+        showDataTable(listSanPham);
         cbbMaSP.removeAllItems();
         showMaSP();
     }//GEN-LAST:event_btnThemSPActionPerformed
@@ -1975,7 +2001,7 @@ public class PanelSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_tblSP1MouseClicked
 
     private void btnThemSP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSP6ActionPerformed
-
+        
         JOptionPane.showMessageDialog(this, service.addSanPham(getData()));
         listSanPham = service.getAllSanPham();
         showDataTable(listSanPham);
@@ -2073,24 +2099,24 @@ public class PanelSanPham extends javax.swing.JPanel {
             try {
                 XSSFWorkbook workbook = new XSSFWorkbook();
                 XSSFSheet spreadsheet = workbook.createSheet("ChiTietSP");
-
+                
                 XSSFRow row = null;
                 Cell cell = null;
-
+                
                 Font headerFont = workbook.createFont();
                 headerFont.setBold(true);
                 headerFont.setFontHeightInPoints((short) 14);
                 headerFont.setColor(IndexedColors.RED.getIndex());
                 CellStyle headerCellStyle = workbook.createCellStyle();
                 headerCellStyle.setFont(headerFont);
-
+                
                 Font tieuDe = workbook.createFont();
                 tieuDe.setBold(true);
                 tieuDe.setFontHeightInPoints((short) 18);
                 tieuDe.setColor(IndexedColors.BLACK.getIndex());
                 CellStyle tieuDeStyle = workbook.createCellStyle();
                 tieuDeStyle.setFont(tieuDe);
-
+                
                 row = spreadsheet.createRow((short) 2);
                 row.setHeight((short) 500);
                 cell = row.createCell(3, CellType.STRING);
@@ -2156,7 +2182,7 @@ public class PanelSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXuatFielActionPerformed
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
-
+        
         createWindow();
     }//GEN-LAST:event_btnExportActionPerformed
 
@@ -2210,6 +2236,11 @@ public class PanelSanPham extends javax.swing.JPanel {
         List<ChiTietSP> listCT = new ArrayList<>();
         for (int i = 0; i < tblBangChiTietSP.getRowCount(); i++) {
             Boolean check = (Boolean) tblBangChiTietSP.getValueAt(i, 0);
+            ChiTietSP ctSanPham = listCTsp.get(tblBangChiTietSP.getSelectedRow());
+            if (ctSanPham.getTinhTrang() == 1) {
+                JOptionPane.showMessageDialog(this, "Sản phẩm đã bán");
+                return;
+            }
             if (check == true) {
                 listCT.add(listCTsp.get(i));
             }
@@ -2300,13 +2331,13 @@ public class PanelSanPham extends javax.swing.JPanel {
                 default -> {
                     return cell.getStringCellValue();
                 }
-
+                
             }
         } catch (Exception e) {
             return "";
         }
     }
-
+    
     public void ImportFile(String path) {
         try {
             List<ChiTietSP> listctsp = new ArrayList<>();
@@ -2319,7 +2350,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             Cell firstCell = firstRow.getCell(0);
             while (iterator.hasNext()) {
                 Row currentRow = iterator.next();
-
+                
                 String maCTSP = "CTSP" + (listCTsp.size() + 1);
                 String tenSp = String.valueOf(getCellValue(currentRow.getCell(0))).trim();
                 String tenCPU = String.valueOf(getCellValue(currentRow.getCell(1))).trim();
@@ -2393,15 +2424,15 @@ public class PanelSanPham extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
-
+    
     public void Temperate() {
         try {
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet spreadsheet = workbook.createSheet("ChiTietSP");
-
+            
             XSSFRow row = null;
             Cell cell = null;
-
+            
             Font headerFont = workbook.createFont();
             headerFont.setBold(true);
             headerFont.setFontHeightInPoints((short) 14);
@@ -2443,7 +2474,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Thất bại");
         }
     }
-
+    
     private void createWindow() {
         JFrame frame = new JFrame("Swing Tester");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -2451,10 +2482,10 @@ public class PanelSanPham extends javax.swing.JPanel {
         frame.setSize(560, 200);
         frame.setLocationRelativeTo(null);
     }
-
+    
     private void createUI(final JFrame frame) {
         final JLabel label = new JLabel();
-
+        
         Object[] options = {"Import file excel", "Temperlate mẫu", "Thoát"};
         int result = JOptionPane.showOptionDialog(frame,
                 "Mời bạn chọn chức năng",
@@ -2480,7 +2511,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         } else if (result == JOptionPane.NO_OPTION) {
             Temperate();
         }
-
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

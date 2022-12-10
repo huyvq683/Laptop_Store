@@ -139,11 +139,17 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
 
     @Override
     public String updateKhoiPhuc(List<ChiTietSP> ctsp) {
+
         Boolean check = repository.upDateKhoiPhuc(ctsp);
         if (check) {
             return "Khôi phục thành công";
         } else {
             return "Khôi phục thất bại";
         }
+    }
+
+    @Override
+    public ChiTietSP getOneTinhTrang(String tinhTrang) {
+        return repository.getOneCheck(tinhTrang);
     }
 }

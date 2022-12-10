@@ -33,11 +33,12 @@ public interface ChiTietSPService {
     String delete(ChiTietSP ctsp, UUID id);
 
     ChiTietSP getOne(String serial);
-
+    
+    ChiTietSP getOneTinhTrang(String tinhTrang);
+    
     List<ChiTietSP> seatch(String ram);
 
     String checkInt(String gia);
-    
 
     List<ChiTietSPResponse> getAll();
 
