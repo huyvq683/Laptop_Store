@@ -1203,6 +1203,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnBoLocDTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocDTMouseExited
         btnBoLocDT.setBackground(new Color(41, 183, 212));
         btnBoLocDT.setForeground(Color.BLACK);
+        serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
     }//GEN-LAST:event_btnBoLocDTMouseExited
 
     private void btnBoLocDTMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocDTMouseMoved
@@ -1226,6 +1227,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnBoLocSPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocSPMouseExited
         btnBoLocSP.setBackground(new Color(41, 183, 212));
         btnBoLocSP.setForeground(Color.BLACK);
+        serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
     }//GEN-LAST:event_btnBoLocSPMouseExited
 
     private void btnBoLocSPMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocSPMouseMoved
@@ -1307,7 +1309,6 @@ public class PanelThongKe extends javax.swing.JPanel {
         btnLocSP.setBackground(new Color(41, 183, 212));
         btnLocSP.setForeground(Color.BLACK);
         serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
-
     }//GEN-LAST:event_btnLocSPMouseExited
 
     private void btnLocSPMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLocSPMouseMoved
@@ -1394,7 +1395,6 @@ public class PanelThongKe extends javax.swing.JPanel {
         cbbLoaiThoiGian.setSelectedIndex(1);
         serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
         cbbBieuDoChonThang.setSelectedItem(String.valueOf(nam));
-
     }//GEN-LAST:event_btnBoLocBieuDoActionPerformed
 
     private void cbbLoaiDoanhThuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiDoanhThuItemStateChanged
@@ -1498,41 +1498,45 @@ public class PanelThongKe extends javax.swing.JPanel {
 
     private void btnMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaiActionPerformed
         String email = JOptionPane.showInputDialog("Vui lòng nhập mail nhân viên/quản lí nhận: ");
-        if (serviceQuenMK.getOne(email) == "Tài khoản chính xác") {
-            final String username = "laptopgroup3@gmail.com";
-            final String password = "lveekscgavporrkq";
-            Properties prop = new Properties();
-            prop.put("mail.smtp.host", "smtp.gmail.com");
-            prop.put("mail.smtp.port", "587");
-            prop.put("mail.smtp.auth", "true");
-            prop.put("mail.smtp.starttls.enable", "true"); //TLS
-            Session session = Session.getInstance(prop,
-                    new Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(username, password);
-                }
-            });
-            try {
-                Message message = new MimeMessage(session);
-                if (listDT.size() > 0) {
-                    JOptionPane.showMessageDialog(this, "Đã gửi doanh thu tới tài khoản của nhân viên");
-                    message.setFrom(new InternetAddress("laptopgroup3@gmail.com"));
-                    message.setRecipients(
-                            Message.RecipientType.TO,
-                            InternetAddress.parse(email)
-                    );
-                    message.setSubject("Doanh thu");
-                    message.setText("Doanh thu " + cbbLoaiDoanhThu.getSelectedItem() + ", cua ban la : " + lbTongDoanhThu.getText());
-                    Transport.send(message);
+        if (!email.isEmpty()) {
+            if (serviceQuenMK.getOne(email) == "Tài khoản chính xác") {
+                final String username = "laptopgroup3@gmail.com";
+                final String password = "lveekscgavporrkq";
+                Properties prop = new Properties();
+                prop.put("mail.smtp.host", "smtp.gmail.com");
+                prop.put("mail.smtp.port", "587");
+                prop.put("mail.smtp.auth", "true");
+                prop.put("mail.smtp.starttls.enable", "true"); //TLS
+                Session session = Session.getInstance(prop,
+                        new Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+                try {
+                    Message message = new MimeMessage(session);
+                    if (listDT.size() > 0) {
+                        JOptionPane.showMessageDialog(this, "Đã gửi doanh thu tới tài khoản của nhân viên");
+                        message.setFrom(new InternetAddress("laptopgroup3@gmail.com"));
+                        message.setRecipients(
+                                Message.RecipientType.TO,
+                                InternetAddress.parse(email)
+                        );
+                        message.setSubject("Doanh thu");
+                        message.setText("Your revenue is : " + lbTongDoanhThu.getText().substring(0, lbTongDoanhThu.getText().length() - 1) + "VND.");
+                        Transport.send(message);
 
-                } else {
-                    JOptionPane.showMessageDialog(this, "Vui lòng lọc hóa đơn có sẵn");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Vui lòng lọc hóa đơn có sẵn");
+                    }
+                } catch (MessagingException e) {
+                    e.printStackTrace();
                 }
-            } catch (MessagingException e) {
-                e.printStackTrace();
+            } else {
+                JOptionPane.showMessageDialog(this, "Tài khoản sai");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Tài khoản sai định dạng hoặc không được để trống");
+            JOptionPane.showMessageDialog(this, "Tài khoản không được để trống hoặc sai định dạng");
         }
     }//GEN-LAST:event_btnMaiActionPerformed
     private void loadThangBieuDo() {
