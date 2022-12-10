@@ -81,7 +81,6 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     SanPhamService service = new SanPhamServiceImpl();
     List<SanPham> listSanPham = service.getAllSanPham();
-//    List<SanPham> listSP = service.getAllSP();
     CPUService serviceCPU = new CPUServiceImql();
     List<CPU> listCPU = serviceCPU.getAll();
     HangService serviceHang = new HangServiceImql();
@@ -2071,89 +2070,89 @@ public class PanelSanPham extends javax.swing.JPanel {
         int results = exChooser.showOpenDialog(null);
         if (results == JFileChooser.APPROVE_OPTION) {
             file = exChooser.getSelectedFile();
-        try {
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            XSSFSheet spreadsheet = workbook.createSheet("ChiTietSP");
+            try {
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                XSSFSheet spreadsheet = workbook.createSheet("ChiTietSP");
 
-            XSSFRow row = null;
-            Cell cell = null;
+                XSSFRow row = null;
+                Cell cell = null;
 
-            Font headerFont = workbook.createFont();
-            headerFont.setBold(true);
-            headerFont.setFontHeightInPoints((short) 14);
-            headerFont.setColor(IndexedColors.RED.getIndex());
-            CellStyle headerCellStyle = workbook.createCellStyle();
-            headerCellStyle.setFont(headerFont);
+                Font headerFont = workbook.createFont();
+                headerFont.setBold(true);
+                headerFont.setFontHeightInPoints((short) 14);
+                headerFont.setColor(IndexedColors.RED.getIndex());
+                CellStyle headerCellStyle = workbook.createCellStyle();
+                headerCellStyle.setFont(headerFont);
 
-            Font tieuDe = workbook.createFont();
-            tieuDe.setBold(true);
-            tieuDe.setFontHeightInPoints((short) 18);
-            tieuDe.setColor(IndexedColors.BLACK.getIndex());
-            CellStyle tieuDeStyle = workbook.createCellStyle();
-            tieuDeStyle.setFont(tieuDe);
+                Font tieuDe = workbook.createFont();
+                tieuDe.setBold(true);
+                tieuDe.setFontHeightInPoints((short) 18);
+                tieuDe.setColor(IndexedColors.BLACK.getIndex());
+                CellStyle tieuDeStyle = workbook.createCellStyle();
+                tieuDeStyle.setFont(tieuDe);
 
-            row = spreadsheet.createRow((short) 2);
-            row.setHeight((short) 500);
-            cell = row.createCell(3, CellType.STRING);
-            cell.setCellValue("Danh sách chi tiết sản phẩm");
-            cell.setCellStyle(tieuDeStyle);
-            row = spreadsheet.createRow((short) 3);
-            row.setHeight((short) 500);
-            cell = row.createCell(0, CellType.STRING);
-            cell.setCellValue("STT");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(1, CellType.STRING);
-            cell.setCellValue("Tên SP");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(2, CellType.STRING);
-            cell.setCellValue("CPU");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(3, CellType.STRING);
-            cell.setCellValue("Card");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(4, CellType.STRING);
-            cell.setCellValue("Hãng");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(5, CellType.STRING);
-            cell.setCellValue("Ổ Cứng");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(6, CellType.STRING);
-            cell.setCellValue("Ram");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(7, CellType.STRING);
-            cell.setCellValue("Serial");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(8, CellType.STRING);
-            cell.setCellValue("Gía");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(9, CellType.STRING);
-            cell.setCellValue("Tình trạng");
-            cell.setCellStyle(headerCellStyle);
-            for (int i = 0; i < listCTsp.size(); i++) {
-                ChiTietSP ctcp = listCTsp.get(i);
-                row = spreadsheet.createRow((short) 4 + i);
-                row.setHeight((short) 400);
-                row.createCell(0).setCellValue(i + 1);
-                row.createCell(1).setCellValue(ctcp.getIdSanPham().getTen());
-                row.createCell(2).setCellValue(ctcp.getIdCPU().getTen());
-                row.createCell(3).setCellValue(ctcp.getIdCard().getTen());
-                row.createCell(4).setCellValue(ctcp.getIdHang().getTen());
-                //                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                //                String date = dateFormat.format(nv.getNgaySinh());
-                row.createCell(5).setCellValue(ctcp.getIdOCung().getTen());
-                row.createCell(6).setCellValue(ctcp.getIdRam().getTen());
-                row.createCell(7).setCellValue(ctcp.getSerial());
-                row.createCell(8).setCellValue(String.valueOf(ctcp.getGia()));
-                row.createCell(9).setCellValue(String.valueOf(ctcp.getTinhTrang()== 0 ? "Đang bán": ctcp.getTinhTrang() == 1 ?"Đã bán":"Ngừng bán"));
+                row = spreadsheet.createRow((short) 2);
+                row.setHeight((short) 500);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("Danh sách chi tiết sản phẩm");
+                cell.setCellStyle(tieuDeStyle);
+                row = spreadsheet.createRow((short) 3);
+                row.setHeight((short) 500);
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue("STT");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue("Tên SP");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue("CPU");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("Card");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue("Hãng");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue("Ổ Cứng");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(6, CellType.STRING);
+                cell.setCellValue("Ram");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(7, CellType.STRING);
+                cell.setCellValue("Serial");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(8, CellType.STRING);
+                cell.setCellValue("Gía");
+                cell.setCellStyle(headerCellStyle);
+                cell = row.createCell(9, CellType.STRING);
+                cell.setCellValue("Tình trạng");
+                cell.setCellStyle(headerCellStyle);
+                for (int i = 0; i < listCTsp.size(); i++) {
+                    ChiTietSP ctcp = listCTsp.get(i);
+                    row = spreadsheet.createRow((short) 4 + i);
+                    row.setHeight((short) 400);
+                    row.createCell(0).setCellValue(i + 1);
+                    row.createCell(1).setCellValue(ctcp.getIdSanPham().getTen());
+                    row.createCell(2).setCellValue(ctcp.getIdCPU().getTen());
+                    row.createCell(3).setCellValue(ctcp.getIdCard().getTen());
+                    row.createCell(4).setCellValue(ctcp.getIdHang().getTen());
+                    //                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    //                String date = dateFormat.format(nv.getNgaySinh());
+                    row.createCell(5).setCellValue(ctcp.getIdOCung().getTen());
+                    row.createCell(6).setCellValue(ctcp.getIdRam().getTen());
+                    row.createCell(7).setCellValue(ctcp.getSerial());
+                    row.createCell(8).setCellValue(String.valueOf(ctcp.getGia()));
+                    row.createCell(9).setCellValue(String.valueOf(ctcp.getTinhTrang() == 0 ? "Đang bán" : ctcp.getTinhTrang() == 1 ? "Đã bán" : "Ngừng bán"));
+                }
+                FileOutputStream out = new FileOutputStream(new File("D:/ExportSanPham .xlsx"));
+                workbook.write(out);
+                out.close();
+                JOptionPane.showMessageDialog(this, "Xuất file excel thành công");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Xuất file excel thất bại");
             }
-            FileOutputStream out = new FileOutputStream(new File("D:/ExportSanPham .xlsx"));
-            workbook.write(out);
-            out.close();
-            JOptionPane.showMessageDialog(this, "Xuất file excel thành công");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Xuất file excel thất bại");
         }
-    }
     }//GEN-LAST:event_btnXuatFielActionPerformed
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
@@ -2370,7 +2369,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "Không tìm thấy ram");
                     return;
                 }
-                ChiTietSP chiTietSP = new ChiTietSP(maCTSP, sanPham, soSerial, cpu, hang, ram, card, oCung, BigDecimal.ONE,tinhTrang);
+                ChiTietSP chiTietSP = new ChiTietSP(maCTSP, sanPham, soSerial, cpu, hang, ram, card, oCung, BigDecimal.ONE, tinhTrang);
                 chiTietSP.setMaCTSP(maCTSP);
                 chiTietSP.setIdSanPham(sanPham);
                 chiTietSP.setIdCPU(cpu);

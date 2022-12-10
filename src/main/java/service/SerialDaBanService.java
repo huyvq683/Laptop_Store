@@ -4,9 +4,7 @@
  */
 package service;
 
-import domainmodel.ChiTietSP;
-import domainmodel.HoaDonChiTiet;
-import java.util.List;
+import domainmodel.SerialDaBan;
 import java.util.UUID;
 
 /**
@@ -15,10 +13,9 @@ import java.util.UUID;
  */
 public interface SerialDaBanService {
 
-    void add(List<String> lists, HoaDonChiTiet hdct);
-    
-//    HoaDonChiTiet getByIdHDCT(UUID id);
+    void add(SerialDaBan serialDaBan);
     
     void delete(UUID id);
+
     
 }
