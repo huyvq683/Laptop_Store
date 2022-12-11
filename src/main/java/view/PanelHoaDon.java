@@ -7,7 +7,6 @@ package view;
 import custommodel.HoaDonChiTietResponse;
 import custommodel.HoaDonResponse;
 import custommodel.ViewExcelReponse;
-import domainmodel.ChiTietSP;
 import domainmodel.Common;
 import domainmodel.HoaDon;
 import java.io.File;
@@ -25,10 +24,14 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import service.ChiTietSPService;
 import service.HoaDonChiTietService;
 import service.HoaDonService;
+import service.KhachHangService;
+import service.impl.ChiTietSPServiceImql;
 import service.impl.HoaDonChiTietSeviceImpl;
 import service.impl.HoaDonServiceImpl;
+import service.impl.KhachHangServiceImpl;
 
 /**
  *
@@ -42,12 +45,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private DefaultTableModel model;
     private DefaultTableModel model1;
     private DefaultTableModel model2;
-
+    private KhachHangService khachHangService = new KhachHangServiceImpl();
     private List<HoaDonResponse> list = new ArrayList<>();
     private List<ViewExcelReponse> listExcel = new ArrayList<>();
     private List<HoaDonChiTietResponse> listHoaChiTietResponses = new ArrayList<>();
     private HoaDonService hoaDonService = new HoaDonServiceImpl();
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietSeviceImpl();
+    private ChiTietSPService chiTietSPService = new ChiTietSPServiceImql();
 
     public PanelHoaDon() {
         initComponents();
@@ -81,9 +85,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
     }
 
     public HoaDonResponse getThongTinHoaDon() {
-        int row = tbaBang.getSelectedRow();
-        HoaDonResponse hoaDon = list.get(row);
-        return hoaDonService.getByMa(hoaDon.getMa());
+        return hoaDonService.getByMa(lblMa.getText());
     }
 
     /**
@@ -430,13 +432,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
         tbaBangHDCT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã HĐ", "Tên", "Giá", "Số Lượng", "Tiền KM", "Tổng Tiền"
+                "STT", "Mã HĐ", "Tên", "Giá", "Serial", "Số Lượng", "Tiền KM", "Tổng Tiền"
             }
         ));
         jScrollPane2.setViewportView(tbaBangHDCT);
@@ -488,25 +490,27 @@ public class PanelHoaDon extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void tbaBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbaBangMouseClicked
         // TODO add your handling code here:
         int index = tbaBang.getSelectedRow();
+
         lblMa.setText(tbaBang.getModel().getValueAt(index, 0).toString());
         lblMaNV.setText(tbaBang.getModel().getValueAt(index, 2).toString());
         lblTGT.setText(tbaBang.getModel().getValueAt(index, 1).toString());
         lblTT.setText(tbaBang.getModel().getValueAt(index, 3).toString());
         listHoaChiTietResponses.removeAll(listHoaChiTietResponses);
-            HoaDonResponse hd = getThongTinHoaDon();
-            System.out.println(hd.getMa());
-            if (hd.getTenKH() != null) {
-                lblTenKh.setText(hd.getTenKH());
-            } else {
-                lblTenKh.setText("Khách lẻ");
-            }
+        HoaDonResponse hd = getThongTinHoaDon();
+        if (hd != null) {
+            lblTenKh.setText(hd.getIdKH().getHoTen().toString());
             lblLTT.setText(String.valueOf(hd.getHinhThuc()));
             lblTongTien.setText(hd.getTongTien().toString());
             lblKD.setText(hd.getTienKhachTra().toString());
             lblCK.setText(hd.getTienCK().toString());
+        } else {
+            lblTenKh.setText("Khách lẻ");
+        }
+
         getListHDCT();
         showResultHDCT(listHoaChiTietResponses);
     }//GEN-LAST:event_tbaBangMouseClicked
@@ -653,7 +657,17 @@ public class PanelHoaDon extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThaiHuy(hoaDon, hoaDonResponse.getId()));
         list = hoaDonService.getAll(Common.tenNV);
         showResult(list);
+        updateTrangThaiChuaBan();
     }//GEN-LAST:event_btnHuyActionPerformed
+
+    public void updateTrangThaiChuaBan() {
+        List<String> listSeral = new ArrayList<>();
+        for (int i = 0; i < tbaBangHDCT.getRowCount(); i++) {
+            listSeral.add(tbaBangHDCT.getValueAt(i, 4) + "");
+        }
+        chiTietSPService.updateTinhTrangChuaBan(listSeral);
+
+    }
 
     private void rbnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnHuyActionPerformed
         // TODO add your handling code here:

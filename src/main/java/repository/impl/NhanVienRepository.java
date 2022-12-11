@@ -10,7 +10,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
-import service.NhanVienService;
 import utility.HibernateUtil;
 
 /**
@@ -37,16 +36,25 @@ public class NhanVienRepository {
         }
         return null;
     }
-    public static void main(String[] args) {
-        List<NhanVien> list = new NhanVienRepository().getAllPage(0);
-        System.out.println(list);
-    }
 
     public NhanVien getOne(String email) {
         NhanVien nhanVien = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT n FROM NhanVien n "
                     + " WHERE n.email = :email");
+            query.setParameter("email", email);
+            nhanVien = (NhanVien) query.getSingleResult();
+            return nhanVien;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    public NhanVien getOneByMa(String ma, String email){
+        NhanVien nhanVien = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("SELECT n FROM NhanVien n WHERE n.ma NOT LIKE :ma AND n.email = :email");
+            query.setParameter("ma", ma);
             query.setParameter("email", email);
             nhanVien = (NhanVien) query.getSingleResult();
             return nhanVien;

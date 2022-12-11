@@ -58,10 +58,10 @@ public class HoaDonChiTietRepository {
        public List<HoaDonChiTietResponse> get_All(String ma) {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse "
-                    + "(c.idHoaDon.id, c.idHoaDon.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia, COUNT(c.idCTSP.idSanPham)) "
+            Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse"
+                    + "(c.idHoaDon.id, c.idHoaDon.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.idCTSP.serial , c.donGia, COUNT(c.idCTSP.idSanPham)) "
                     + "FROM HoaDonChiTiet c WHERE c.idHoaDon.ma = :ma "
-                    + "GROUP BY c.idHoaDon.id,  c.idHoaDon.ma, c.idCTSP.idSanPham.ma, c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
+                    + "GROUP BY c.idHoaDon.id,  c.idHoaDon.ma, c.idCTSP.idSanPham.ma,c.idCTSP.serial , c.idCTSP.idSanPham.ten, c.tienKM, c.donGia");
             query.setParameter("ma", ma);
             lists = query.getResultList();
         } catch (Exception e) {

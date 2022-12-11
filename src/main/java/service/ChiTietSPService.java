@@ -20,6 +20,8 @@ public interface ChiTietSPService {
     
     String validate(ChiTietSP ctsp);
     
+    String validateUpdate(ChiTietSP ctsp);
+    
     String update(ChiTietSP ctsp , UUID id);
     
     String updateTinhTrang(List<ChiTietSP> ctsp);
@@ -33,11 +35,12 @@ public interface ChiTietSPService {
     String delete(ChiTietSP ctsp, UUID id);
 
     ChiTietSP getOne(String serial);
-
+    
+    ChiTietSP getOneTinhTrang(String tinhTrang);
+    
     List<ChiTietSP> seatch(String ram);
 
     String checkInt(String gia);
-    
 
     List<ChiTietSPResponse> getAll();
 

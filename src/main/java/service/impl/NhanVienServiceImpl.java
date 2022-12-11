@@ -107,8 +107,9 @@ public class NhanVienServiceImpl implements NhanVienService {
             throw new RuntimeException(e);
         }
     }
-//    @Override
-//    public NhanVien get_One(String email) {
-//        return nhanVienRepository.get_One(email);
-//    }
+
+    @Override
+    public NhanVien getOneByMa(String ma, String email) {
+        return nhanVienRepository.getOneByMa(ma, email);
+    }
 }
