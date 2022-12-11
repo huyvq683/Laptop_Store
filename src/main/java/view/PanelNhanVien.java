@@ -696,38 +696,43 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên để tiến hành sửa.");
         } else {
             NhanVien nv = listNV.get(row);
-            NhanVien nhanVien = new NhanVien();
-            nhanVien.setId(nv.getId());
-            nhanVien.setMa(nv.getMa());
-            nhanVien.setHoTen(txtTen.getText());
-            if (radioNam.isSelected()) {
-                nhanVien.setGioiTinh(true);
+            NhanVien nVien = nhanVienServiceImpl.getOneByMa(nv.getMa(), txtEmail.getText());
+            if (nVien != null) {
+                JOptionPane.showMessageDialog(this, "Email này đã tồn tại ở nhân viên có mã: " + nVien.getMa());
             } else {
-                nhanVien.setGioiTinh(false);
-            }
-            SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
-            try {
-                Date date = convertToDate.parse(txtNgaySinh.getText());
-                nhanVien.setNgaySinh(date);
-            } catch (Exception e) {
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setId(nv.getId());
+                nhanVien.setMa(nv.getMa());
+                nhanVien.setHoTen(txtTen.getText());
+                if (radioNam.isSelected()) {
+                    nhanVien.setGioiTinh(true);
+                } else {
+                    nhanVien.setGioiTinh(false);
+                }
+                SimpleDateFormat convertToDate = new SimpleDateFormat("dd-MM-yyyy");
+                try {
+                    Date date = convertToDate.parse(txtNgaySinh.getText());
+                    nhanVien.setNgaySinh(date);
+                } catch (Exception e) {
 //                e.printStackTrace(System.out);
+                }
+                nhanVien.setMatKhau(nv.getMatKhau());
+                nhanVien.setDiaChi(txtDiaChi.getText());
+                nhanVien.setSdt(txtSdt.getText());
+                nhanVien.setEmail(txtEmail.getText());
+                nhanVien.setTrangThai(nv.getTrangThai());
+                if (radioQuanLy.isSelected()) {
+                    nhanVien.setChucVu(0);
+                } else {
+                    nhanVien.setChucVu(1);
+                }
+                nhanVien.setLastModifiedDate(new Date());
+                nhanVien.setCreatedDate(nhanVien.getCreatedDate());
+                JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
+                list = nhanVienServiceImpl.getAll();
+                listNV = nhanVienServiceImpl.getAllPage(0);
+                showData(listNV);
             }
-            nhanVien.setMatKhau(nv.getMatKhau());
-            nhanVien.setDiaChi(txtDiaChi.getText());
-            nhanVien.setSdt(txtSdt.getText());
-            nhanVien.setEmail(txtEmail.getText());
-            nhanVien.setTrangThai(nv.getTrangThai());
-            if (radioQuanLy.isSelected()) {
-                nhanVien.setChucVu(0);
-            } else {
-                nhanVien.setChucVu(1);
-            }
-            nhanVien.setLastModifiedDate(new Date());
-            nhanVien.setCreatedDate(nhanVien.getCreatedDate());
-            JOptionPane.showMessageDialog(this, nhanVienServiceImpl.addOrUpdate(nhanVien));
-            list = nhanVienServiceImpl.getAll();
-            listNV = nhanVienServiceImpl.getAllPage(0);
-            showData(listNV);
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
