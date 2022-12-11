@@ -191,6 +191,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                 listSeral.add(tbSerial.getValueAt(i, 3) + "");
             }
         }
+
         hoaDonChiTietService.add(listSeral, idHoaDon);
         showDataTableGioHang(hoaDonResponse.getId());
 
@@ -198,8 +199,8 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         listChiTietSP = chiTietSPService.getAll();
         showDataTableSanPham(listChiTietSP);
 
-//        HoaDonChiTiet hdct = serialDaBanService.getByIdHDCT(hoaDonResponse.getId());
-//        serialDaBanService.add(listSeral, hdct);
+        serialDaBanService.add(listSeral);
+
     }
 
     private void fillThanhToan() {
@@ -1265,6 +1266,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         lblRank.setText("");
         listHoaDon = hoaDonService.getAll(Common.tenNV);
         showDataHoaDonTable(listHoaDon);
+
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnChonKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKHActionPerformed
@@ -1292,7 +1294,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                 listSeral.add(tbHDCT.getValueAt(i, 4) + "");
             }
         }
-
+        serialDaBanService.delete(listSeral);
         hoaDonChiTietService.deleteHDCT(listSeral);
         showDataTableHDCT(hoaDonResponse.getId());
 
@@ -1345,33 +1347,33 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         long giamGia = Long.valueOf(txtGiamGia.getText());
         switch (khr.getCapBac()) {
             case 0:
-            lblRank.setIcon(new ImageIcon(""));
-            lblRank.setText("Chưa có rank");
-            break;
+                lblRank.setIcon(new ImageIcon(""));
+                lblRank.setText("Chưa có rank");
+                break;
             case 1:
-            lblRank.setIcon(new ImageIcon("src/main/img/dong.png"));
-            lblRank.setText("Đồng");
-            txtGiamGia.setText(String.valueOf((tienKM * 5 / 100) + giamGia));
-            txtTongTien.setText(String.valueOf(tienKM - (tienKM * 5 / 100)));
-            break;
+                lblRank.setIcon(new ImageIcon("src/main/img/dong.png"));
+                lblRank.setText("Đồng");
+                txtGiamGia.setText(String.valueOf((tienKM * 5 / 100) + giamGia));
+                txtTongTien.setText(String.valueOf(tienKM - (tienKM * 5 / 100)));
+                break;
             case 2:
-            lblRank.setIcon(new ImageIcon("src/main/img/bac.png"));
-            lblRank.setText("Bạc");
-            txtGiamGia.setText(String.valueOf((tienKM * 8 / 100) + giamGia));
-            txtTongTien.setText(String.valueOf(tienKM - (tienKM * 8 / 100)));
-            break;
+                lblRank.setIcon(new ImageIcon("src/main/img/bac.png"));
+                lblRank.setText("Bạc");
+                txtGiamGia.setText(String.valueOf((tienKM * 8 / 100) + giamGia));
+                txtTongTien.setText(String.valueOf(tienKM - (tienKM * 8 / 100)));
+                break;
             case 3:
-            lblRank.setIcon(new ImageIcon("src/main/img/vang.png"));
-            lblRank.setText("Vàng");
-            txtGiamGia.setText(String.valueOf((tienKM * 10 / 100) + giamGia));
-            txtTongTien.setText(String.valueOf(tienKM - (tienKM * 10 / 100)));
-            break;
+                lblRank.setIcon(new ImageIcon("src/main/img/vang.png"));
+                lblRank.setText("Vàng");
+                txtGiamGia.setText(String.valueOf((tienKM * 10 / 100) + giamGia));
+                txtTongTien.setText(String.valueOf(tienKM - (tienKM * 10 / 100)));
+                break;
             default:
-            lblRank.setIcon(new ImageIcon("src/main/img/kimcuong.png"));
-            lblRank.setText("Kim cương");
-            txtGiamGia.setText(String.valueOf((tienKM * 15 / 100) + giamGia));
-            txtTongTien.setText(String.valueOf(tienKM - (tienKM * 15 / 100)));
-            break;
+                lblRank.setIcon(new ImageIcon("src/main/img/kimcuong.png"));
+                lblRank.setText("Kim cương");
+                txtGiamGia.setText(String.valueOf((tienKM * 15 / 100) + giamGia));
+                txtTongTien.setText(String.valueOf(tienKM - (tienKM * 15 / 100)));
+                break;
         }
         ViewKhachHang.dispose();
     }//GEN-LAST:event_btnXacNhanActionPerformed
