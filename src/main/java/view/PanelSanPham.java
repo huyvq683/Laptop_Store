@@ -102,18 +102,21 @@ public class PanelSanPham extends javax.swing.JPanel {
      */
     public PanelSanPham() {
         initComponents();
+        
         cbbCPU.setModel(dfcbbCPU);
         cbbCard.setModel(dfcbbCard);
         cbbHang.setModel(dfcbbHang);
         cbbMaSP.setModel(dfcbbSP);
         cbbOCung.setModel(dfcbbOCung);
         cbbRam.setModel(dfcbbRam);
+        
         showCPU();
         showCard();
         showHang();
         showMaSP();
         showOCung();
         showRam();
+        
         showData(listCTsp);
         showDataTable1(listSanPham);
         showDataTable(listSanPham);
@@ -2181,7 +2184,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                 FileOutputStream out = new FileOutputStream(new File("D:/ExportSanPham .xlsx"));
                 workbook.write(out);
                 out.close();
-                JOptionPane.showMessageDialog(this, "Xuất file excel thành công (file ở ổ D )");
+                JOptionPane.showMessageDialog(this, "Xuất file excel thành công ( file ở ổ D )");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Xuất file excel thất bại");
             }

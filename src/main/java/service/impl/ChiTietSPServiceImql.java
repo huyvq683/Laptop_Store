@@ -7,6 +7,7 @@ package service.impl;
 import custommodel.ChiTietSPResponse;
 import domainmodel.ChiTietSP;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import repository.impl.ChiTietSPRepository;
@@ -73,16 +74,19 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
                 return "Thêm không thành công";
             }
         }
-
     }
 
     @Override
     public String update(ChiTietSP ctsp, UUID id) {
-        Boolean update = repository.upDate(ctsp, id);
-        if (update) {
-            return "Sửa thành công";
+        if (validateUpdate(ctsp) != null) {
+            return validateUpdate(ctsp);
         } else {
-            return "Sửa không thành công";
+            Boolean update = repository.upDate(ctsp, id);
+            if (update) {
+                return "Sửa thành công";
+            } else {
+                return "Sửa không thành công";
+            }
         }
     }
 
@@ -93,6 +97,17 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
         }
         if (getOne(ctsp.getSerial()) != null) {
             return "Serial đã tốn tại";
+        }
+        return null;
+    }
+
+    @Override
+    public String validateUpdate(ChiTietSP ctsp) {
+        if (ctsp.getSerial().isEmpty()) {
+            return "Serial trống";
+        }
+        if (getOne(ctsp.getSerial()) == null) {
+            return "Serial không được thay đổi";
         }
         return null;
     }
@@ -152,4 +167,5 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     public ChiTietSP getOneTinhTrang(String tinhTrang) {
         return repository.getOneCheck(tinhTrang);
     }
+
 }
