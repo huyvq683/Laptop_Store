@@ -63,14 +63,14 @@ import service.impl.SanPhamServiceImpl;
  * @author huyxo
  */
 public class PanelSanPham extends javax.swing.JPanel {
-    
+
     DefaultComboBoxModel dfcbbSP = new DefaultComboBoxModel();
     DefaultComboBoxModel dfcbbCPU = new DefaultComboBoxModel();
     DefaultComboBoxModel dfcbbHang = new DefaultComboBoxModel();
     DefaultComboBoxModel dfcbbRam = new DefaultComboBoxModel();
     DefaultComboBoxModel dfcbbCard = new DefaultComboBoxModel();
     DefaultComboBoxModel dfcbbOCung = new DefaultComboBoxModel();
-    
+
     DefaultTableModel modelSP = new DefaultTableModel();
     DefaultTableModel modelSP1 = new DefaultTableModel();
     DefaultTableModel modelCPU = new DefaultTableModel();
@@ -78,7 +78,7 @@ public class PanelSanPham extends javax.swing.JPanel {
     DefaultTableModel modelCard = new DefaultTableModel();
     DefaultTableModel modelHang = new DefaultTableModel();
     DefaultTableModel modelOCung = new DefaultTableModel();
-    
+
     SanPhamService service = new SanPhamServiceImpl();
     List<SanPham> listSanPham = service.getAllSanPham();
     CPUService serviceCPU = new CPUServiceImql();
@@ -91,7 +91,7 @@ public class PanelSanPham extends javax.swing.JPanel {
     List<CardMH> listCard = serviceCard.getAll();
     OCungService serviceOCung = new OCungServiceImql();
     List<OCung> listOCung = serviceOCung.getAll();
-    
+
     DefaultTableModel modelCTSP = new DefaultTableModel();
     ChiTietSPService serviceCT = new ChiTietSPServiceImql();
     List<ChiTietSP> listCTsp = serviceCT.getAllChiTietSP();
@@ -122,52 +122,52 @@ public class PanelSanPham extends javax.swing.JPanel {
         showDataTableHang(listHang);
         showDataTableOCung(listOCung);
         showDataTableRam(listRam);
-        
+
         jFrame1.setLocationRelativeTo(null);
         jFrame2.setLocationRelativeTo(null);
         jFrame3.setLocationRelativeTo(null);
         jFrame4.setLocationRelativeTo(null);
         jFrame5.setLocationRelativeTo(null);
         jFrame6.setLocationRelativeTo(null);
-        
+
     }
-    
+
     public void showMaSP() {
         for (SanPham x : listSanPham) {
             dfcbbSP.addElement(x.getTen());
         }
     }
-    
+
     public void showCPU() {
         for (CPU x : listCPU) {
             dfcbbCPU.addElement(x.getTen());
         }
     }
-    
+
     public void showHang() {
         for (Hang x : listHang) {
             dfcbbHang.addElement(x.getTen());
         }
     }
-    
+
     public void showRam() {
         for (Ram x : listRam) {
             dfcbbRam.addElement(x.getTen());
         }
     }
-    
+
     public void showCard() {
         for (CardMH x : listCard) {
             dfcbbCard.addElement(x.getTen());
         }
     }
-    
+
     public void showOCung() {
         for (OCung x : listOCung) {
             dfcbbOCung.addElement(x.getTen());
         }
     }
-    
+
     public void showData(List<ChiTietSP> ctsp) {
         modelCTSP = (DefaultTableModel) tblBangChiTietSP.getModel();
         modelCTSP.setRowCount(0);
@@ -177,7 +177,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-    
+
     public void mountClick(List<ChiTietSP> ctsp, int index) {
         cbbCPU.setSelectedItem(ctsp.get(index).getIdCPU().getTen());
         cbbCard.setSelectedItem(ctsp.get(index).getIdCard().getTen());
@@ -188,35 +188,35 @@ public class PanelSanPham extends javax.swing.JPanel {
         txtSerialSP.setText(ctsp.get(index).getSerial());
         txtGia.setText(ctsp.get(index).getGia().toString());
     }
-    
+
     public void fillSP(int index, List<SanPham> sp) {
         txtTenSP1.setText(sp.get(index).getTen());
     }
-    
+
     public void fillCPU(int index, List<CPU> cpu) {
         txtTenCPU.setText(cpu.get(index).getTen());
     }
-    
+
     public void fillHang(int index, List<Hang> hang) {
         txtTenHang.setText(hang.get(index).getTen());
     }
-    
+
     public void fillRam(int index, List<Ram> ram) {
         txtTenRam.setText(ram.get(index).getTen());
     }
-    
+
     public void fillOCung(int index, List<OCung> oCung) {
         txtTenOCung.setText(oCung.get(index).getTen());
     }
-    
+
     public void fillCard(int index, List<CardMH> card) {
         txtTenCard.setText(card.get(index).getTen());
     }
-    
+
     public void fillSP1(int index, List<SanPham> sp1) {
         txtTenCPU1.setText(sp1.get(index).getTen());
     }
-    
+
     private void showDataTable(List<SanPham> listss) {
         modelSP = (DefaultTableModel) tblSanPham1.getModel();
         modelSP.setRowCount(0);
@@ -226,7 +226,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-    
+
     private void showDataTable1(List<SanPham> lists) {
         modelSP1 = (DefaultTableModel) tblSP1.getModel();
         modelSP1.setRowCount(0);
@@ -236,7 +236,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-    
+
     private void showDataTableCPU(List<CPU> list) {
         modelCPU = (DefaultTableModel) tblCPU.getModel();
         modelCPU.setRowCount(0);
@@ -246,7 +246,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-    
+
     private void showDataTableCard(List<CardMH> list) {
         modelCard = (DefaultTableModel) tblCard.getModel();
         modelCard.setRowCount(0);
@@ -256,7 +256,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-    
+
     private void showDataTableHang(List<Hang> list) {
         modelHang = (DefaultTableModel) tblHang.getModel();
         modelHang.setRowCount(0);
@@ -266,7 +266,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-    
+
     private void showDataTableOCung(List<OCung> list) {
         modelOCung = (DefaultTableModel) tblOCung.getModel();
         modelOCung.setRowCount(0);
@@ -276,7 +276,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-    
+
     private void showDataTableRam(List<Ram> list) {
         modelRam = (DefaultTableModel) tblRam.getModel();
         modelRam.setRowCount(0);
@@ -286,7 +286,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             stt++;
         }
     }
-    
+
     SanPham getData() {
         return new SanPham("SP" + (listSanPham.size() + 1), txtTenSP1.getText(), new Date(), new Date());
     }
@@ -403,6 +403,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         btnXuatFiel = new javax.swing.JButton();
         btnExport = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
@@ -1574,13 +1575,22 @@ public class PanelSanPham extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(0, 153, 255));
+        jButton3.setIcon(new ImageIcon("src/main/img/taiXuong.jpg"));
+        jButton3.setToolTipText("Tải file excel mẫu");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tblChiTietSanPhamLayout = new javax.swing.GroupLayout(tblChiTietSanPham);
         tblChiTietSanPham.setLayout(tblChiTietSanPhamLayout);
         tblChiTietSanPhamLayout.setHorizontalGroup(
             tblChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 856, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tblChiTietSanPhamLayout.createSequentialGroup()
-                .addContainerGap(509, Short.MAX_VALUE)
+                .addContainerGap(454, Short.MAX_VALUE)
                 .addGroup(tblChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tblChiTietSanPhamLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1592,6 +1602,8 @@ public class PanelSanPham extends javax.swing.JPanel {
                         .addComponent(txtLoc1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tblChiTietSanPhamLayout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
                         .addComponent(btnXuatFiel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
                         .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1607,11 +1619,12 @@ public class PanelSanPham extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(txtLoc2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(tblChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXuatFiel)
-                    .addComponent(btnExport))
+                    .addComponent(btnExport)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -2001,7 +2014,7 @@ public class PanelSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_tblSP1MouseClicked
 
     private void btnThemSP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSP6ActionPerformed
-        
+
         JOptionPane.showMessageDialog(this, service.addSanPham(getData()));
         listSanPham = service.getAllSanPham();
         showDataTable(listSanPham);
@@ -2087,36 +2100,28 @@ public class PanelSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_txtLoc1CaretUpdate
 
     private void btnXuatFielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatFielActionPerformed
-        File file;
-        FileInputStream fis = null;
-        BufferedInputStream bis = null;
-        XSSFWorkbook wb = null;
-        String path = "D:";
-        JFileChooser exChooser = new JFileChooser(path);
-        int results = exChooser.showOpenDialog(null);
-        if (results == JFileChooser.APPROVE_OPTION) {
-            file = exChooser.getSelectedFile();
+
             try {
                 XSSFWorkbook workbook = new XSSFWorkbook();
                 XSSFSheet spreadsheet = workbook.createSheet("ChiTietSP");
-                
+
                 XSSFRow row = null;
                 Cell cell = null;
-                
+
                 Font headerFont = workbook.createFont();
                 headerFont.setBold(true);
                 headerFont.setFontHeightInPoints((short) 14);
                 headerFont.setColor(IndexedColors.RED.getIndex());
                 CellStyle headerCellStyle = workbook.createCellStyle();
                 headerCellStyle.setFont(headerFont);
-                
+
                 Font tieuDe = workbook.createFont();
                 tieuDe.setBold(true);
                 tieuDe.setFontHeightInPoints((short) 18);
                 tieuDe.setColor(IndexedColors.BLACK.getIndex());
                 CellStyle tieuDeStyle = workbook.createCellStyle();
                 tieuDeStyle.setFont(tieuDe);
-                
+
                 row = spreadsheet.createRow((short) 2);
                 row.setHeight((short) 500);
                 cell = row.createCell(3, CellType.STRING);
@@ -2174,16 +2179,26 @@ public class PanelSanPham extends javax.swing.JPanel {
                 FileOutputStream out = new FileOutputStream(new File("D:/ExportSanPham .xlsx"));
                 workbook.write(out);
                 out.close();
-                JOptionPane.showMessageDialog(this, "Xuất file excel thành công");
+                JOptionPane.showMessageDialog(this, "Xuất file excel thành công (file ở ổ D )");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Xuất file excel thất bại");
             }
-        }
     }//GEN-LAST:event_btnXuatFielActionPerformed
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
-        
-        createWindow();
+
+        File file;
+        FileInputStream fis = null;
+        BufferedInputStream bis = null;
+        XSSFWorkbook wb = null;
+        String path = "D:";
+        JFileChooser exChooser = new JFileChooser(path);
+        int results = exChooser.showOpenDialog(null);
+        if (results == JFileChooser.APPROVE_OPTION) {
+            file = exChooser.getSelectedFile();
+            String name = file.getPath();
+            ImportFile(name);
+        }
     }//GEN-LAST:event_btnExportActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -2319,6 +2334,10 @@ public class PanelSanPham extends javax.swing.JPanel {
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         jFrame1.dispose();
     }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Temperate();
+    }//GEN-LAST:event_jButton3ActionPerformed
     private static Object getCellValue(Cell cell) {
         try {
             switch (cell.getCellType()) {
@@ -2331,13 +2350,13 @@ public class PanelSanPham extends javax.swing.JPanel {
                 default -> {
                     return cell.getStringCellValue();
                 }
-                
+
             }
         } catch (Exception e) {
             return "";
         }
     }
-    
+
     public void ImportFile(String path) {
         try {
             List<ChiTietSP> listctsp = new ArrayList<>();
@@ -2350,7 +2369,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             Cell firstCell = firstRow.getCell(0);
             while (iterator.hasNext()) {
                 Row currentRow = iterator.next();
-                
+
                 String maCTSP = "CTSP" + (listCTsp.size() + 1);
                 String tenSp = String.valueOf(getCellValue(currentRow.getCell(0))).trim();
                 String tenCPU = String.valueOf(getCellValue(currentRow.getCell(1))).trim();
@@ -2424,15 +2443,15 @@ public class PanelSanPham extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
-    
+
     public void Temperate() {
         try {
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet spreadsheet = workbook.createSheet("ChiTietSP");
-            
+
             XSSFRow row = null;
             Cell cell = null;
-            
+
             Font headerFont = workbook.createFont();
             headerFont.setBold(true);
             headerFont.setFontHeightInPoints((short) 14);
@@ -2469,12 +2488,12 @@ public class PanelSanPham extends javax.swing.JPanel {
             FileOutputStream out = new FileOutputStream(new File("D:/Temperate.xlsx"));
             workbook.write(out);
             out.close();
-            JOptionPane.showMessageDialog(this, "Thành công");
+            JOptionPane.showMessageDialog(this, "Thành công (file ở ổ D )");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Thất bại");
         }
     }
-    
+
     private void createWindow() {
         JFrame frame = new JFrame("Swing Tester");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -2482,10 +2501,10 @@ public class PanelSanPham extends javax.swing.JPanel {
         frame.setSize(560, 200);
         frame.setLocationRelativeTo(null);
     }
-    
+
     private void createUI(final JFrame frame) {
         final JLabel label = new JLabel();
-        
+
         Object[] options = {"Import file excel", "Temperlate mẫu", "Thoát"};
         int result = JOptionPane.showOptionDialog(frame,
                 "Mời bạn chọn chức năng",
@@ -2511,7 +2530,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         } else if (result == JOptionPane.NO_OPTION) {
             Temperate();
         }
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2554,6 +2573,7 @@ public class PanelSanPham extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbbRam;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;

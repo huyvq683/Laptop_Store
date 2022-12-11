@@ -131,7 +131,7 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
     public String updateTinhTrang(List<ChiTietSP> ctsp) {
         Boolean upDate = repository.upDateTinhTrang(ctsp);
         if (upDate) {
-            return "Thành công";
+            return "Đã ngừng bán sản phẩm";
         } else {
             return "Thất bại";
         }
@@ -142,7 +142,7 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
 
         Boolean check = repository.upDateKhoiPhuc(ctsp);
         if (check) {
-            return "Khôi phục thành công";
+            return "Khôi phục sản phẩm thành công";
         } else {
             return "Khôi phục thất bại";
         }
