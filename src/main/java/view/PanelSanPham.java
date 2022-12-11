@@ -1251,7 +1251,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         jScrollPane8.setViewportView(tblSanPham1);
         tblSanPham1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        jLabel4.setIcon(new ImageIcon("src/main/img/Lap.jpg"));
+        jLabel4.setIcon(new ImageIcon("src/main/img/logoSP.png"));
 
         btnThemSP6.setBackground(new java.awt.Color(41, 183, 212));
         btnThemSP6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1302,11 +1302,11 @@ public class PanelSanPham extends javax.swing.JPanel {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(btnThemSP6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(36, 36, 36)
                         .addComponent(btnSuaSP6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
@@ -1315,8 +1315,8 @@ public class PanelSanPham extends javax.swing.JPanel {
                             .addComponent(jLabel17)))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtTimKiemSP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1329,10 +1329,10 @@ public class PanelSanPham extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(150, 150, 150)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(162, Short.MAX_VALUE)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGap(159, 159, 159))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1621,10 +1621,11 @@ public class PanelSanPham extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(tblChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXuatFiel)
-                    .addComponent(btnExport)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(tblChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(tblChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnXuatFiel)
+                        .addComponent(btnExport)))
                 .addContainerGap())
         );
 
@@ -1922,7 +1923,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void btnSuaHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaHangActionPerformed
         Hang sPham = listHang.get(tblHang.getSelectedRow());
-        Hang sp = new Hang(sPham.getMa(), txtTenHang.getText(), new Date(), sPham.getLastModifiedDate());
+        Hang sp = new Hang(sPham.getMa(), txtTenHang.getText(), sPham.getCreatedDate(), new Date());
         UUID id = sPham.getId();
         JOptionPane.showMessageDialog(this, serviceHang.upDate(sp, id));
         listHang = serviceHang.getAll();
@@ -1952,7 +1953,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void btnSuaOCungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaOCungActionPerformed
         OCung sPham = listOCung.get(tblOCung.getSelectedRow());
-        OCung sp = new OCung(sPham.getMa(), txtTenOCung.getText(), new Date(), sPham.getLastModifiedDate());
+        OCung sp = new OCung(sPham.getMa(), txtTenOCung.getText(),sPham.getCreatedDate(), new Date());
         UUID id = sPham.getId();
         JOptionPane.showMessageDialog(this, serviceOCung.upDate(sp, id));
         listOCung = serviceOCung.getAll();
@@ -1999,7 +2000,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void btnSuaSP7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSP7ActionPerformed
         SanPham sPham = listSanPham.get(tblSP1.getSelectedRow());
-        SanPham sp = new SanPham(sPham.getMa(), txtTenCPU1.getText(), new Date(), sPham.getLastModifiedDate());
+        SanPham sp = new SanPham(sPham.getMa(), txtTenCPU1.getText(),sPham.getCreatedDate(), new Date());
         UUID id = sPham.getId();
         JOptionPane.showMessageDialog(this, service.upDateSanPham(sp, id));
         listSanPham = service.getAllSanPham();
@@ -2025,11 +2026,12 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void btnSuaSP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSP6ActionPerformed
         SanPham sPham = listSanPham.get(tblSanPham1.getSelectedRow());
-        SanPham sp = new SanPham(sPham.getMa(), txtTenSP1.getText(), new Date(), sPham.getLastModifiedDate());
+        SanPham sp = new SanPham(sPham.getMa(), txtTenSP1.getText(),sPham.getCreatedDate() , new Date());
         UUID id = sPham.getId();
-        JOptionPane.showMessageDialog(this, service.upDateSanPham(getData(), id));
+        JOptionPane.showMessageDialog(this, service.upDateSanPham(sp, id));
         listSanPham = service.getAllSanPham();
         showDataTable(listSanPham);
+        showDataTable1(listSanPham);
         cbbMaSP.removeAllItems();
         showMaSP();
     }//GEN-LAST:event_btnSuaSP6ActionPerformed
