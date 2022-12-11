@@ -4,8 +4,7 @@
  */
 package service;
 
-import domainmodel.SerialDaBan;
-import java.util.UUID;
+import java.util.List;
 
 /**
  *
@@ -13,9 +12,7 @@ import java.util.UUID;
  */
 public interface SerialDaBanService {
 
-    void add(SerialDaBan serialDaBan);
+    void add(List<String>listSerial);
     
-    void delete(UUID id);
-
-    
+    void delete(List<String>listSerial);
 }

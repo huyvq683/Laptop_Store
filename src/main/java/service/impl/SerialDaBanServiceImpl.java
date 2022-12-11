@@ -4,8 +4,7 @@
  */
 package service.impl;
 
-import domainmodel.SerialDaBan;
-import java.util.UUID;
+import java.util.List;
 import repository.impl.SerialDaBanRepository;
 import service.SerialDaBanService;
 
@@ -18,13 +17,12 @@ public class SerialDaBanServiceImpl implements SerialDaBanService {
     private SerialDaBanRepository serialDaBanRepository = new SerialDaBanRepository();
 
     @Override
-    public void add(SerialDaBan serialDaBan) {
-         serialDaBanRepository.add(serialDaBan);
+    public void add(List<String>listSerial) {
+         serialDaBanRepository.add(listSerial);
     }
 
     @Override
-    public void delete(UUID id) {
-        serialDaBanRepository.delete(id);
+    public void delete(List<String> listSerial) {
+        Boolean delete = serialDaBanRepository.delete(listSerial);
     }
-
 }
