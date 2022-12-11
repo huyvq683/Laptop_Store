@@ -172,7 +172,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             FileOutputStream out = new FileOutputStream(new File("D:/tkdt.xlsx"));
             workbook.write(out);
             out.close();
-            JOptionPane.showMessageDialog(this, "Export hóa đơn thành công");
+            JOptionPane.showMessageDialog(this, "Export hóa đơn thành công(Ổ D)");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Export hóa đơn thất bại");
         }
@@ -238,7 +238,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             FileOutputStream out = new FileOutputStream(new File("D:/tksp.xlsx"));
             workbook.write(out);
             out.close();
-            JOptionPane.showMessageDialog(this, "Export sản phẩm thành công");
+            JOptionPane.showMessageDialog(this, "Export sản phẩm thành công(Ổ D)");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Export sản phẩm thất bại");
         }
