@@ -868,11 +868,12 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                     }
 
                 } while (i < listIm.size());
+                JOptionPane.showMessageDialog(this, "Import thành công");
                 listNV = nhanVienServiceImpl.getAll();
                 list = nhanVienServiceImpl.getAllPage(0);
                 showData(list);
             } catch (Exception e) {
-//                e.printStackTrace(System.out);
+                JOptionPane.showMessageDialog(this, "Import thất bại");
             }
         }
     }//GEN-LAST:event_btnImportActionPerformed
