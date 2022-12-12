@@ -4,6 +4,7 @@
  */
 package repository.impl;
 
+import custommodel.HoaDonInResponse;
 import custommodel.HoaDonResponse;
 import custommodel.KhachHangReponse;
 import custommodel.ViewExcelReponse;
@@ -80,6 +81,22 @@ public class HoaDonRepository {
             hoaDonResponse = (HoaDonResponse) sql.getSingleResult();
             return hoaDonResponse;
         } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public HoaDonInResponse getHDIn(String ma) {
+        HoaDonInResponse hoaDonInResponse = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query sql = session.createQuery("SELECT new custommodel.HoaDonInResponse(h.ma , n.hoTen , k.hoTen , k.sdt , k.diaChi ,  h.tongTien , h.hinhThuc )From HoaDon h "
+                    + " Join KhachHang k ON k.id = h.idKH"
+                    + " Join NhanVien n ON n.id = h.idNV"
+                    + " WHERE h.ma = :ma");
+            sql.setParameter("ma", ma);
+            hoaDonInResponse = (HoaDonInResponse) sql.getSingleResult();
+            return hoaDonInResponse;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
             return null;
         }
     }

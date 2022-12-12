@@ -4,6 +4,7 @@
  */
 package service;
 
+import custommodel.HoaDonInResponse;
 import custommodel.HoaDonResponse;
 import custommodel.KhachHangReponse;
 import custommodel.ViewExcelReponse;
@@ -22,6 +23,8 @@ public interface HoaDonService {
     List<HoaDonResponse> search(String searchKey);
 
     void exportExcel(JTable table);
+
+    HoaDonInResponse getHDIn(String ma);
 
     KhachHangReponse getKhachHang(String ma);
 

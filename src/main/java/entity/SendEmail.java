@@ -48,11 +48,7 @@ public class SendEmail extends Thread {
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1");
         properties.put(Environment.USER, "sa");
-<<<<<<< HEAD
         properties.put(Environment.PASS, "123456");
-=======
-        properties.put(Environment.PASS, "3403");
->>>>>>> 63338bfcc606bfb095c94871d7541d3b4350f39f
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
