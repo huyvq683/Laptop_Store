@@ -20,6 +20,8 @@ public interface ChiTietSPService {
     
     String validate(ChiTietSP ctsp);
     
+    String validateUpdate(ChiTietSP ctsp);
+    
     String update(ChiTietSP ctsp , UUID id);
     
     String updateTinhTrang(List<ChiTietSP> ctsp);

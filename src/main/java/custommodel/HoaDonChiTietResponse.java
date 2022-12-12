@@ -74,9 +74,13 @@ public class HoaDonChiTietResponse {
     }
 
     public Object[] toDataRow(int stt) {
-        return new Object[]{stt, ma, ten, gia, serial, soluong, tienKM, thanhTien()};
+        return new Object[]{stt, ma, ten, gia, soluong, tienKM, thanhTien()};
     }
 
+     public Object[] toDataRowQLHD(int stt) {
+        return new Object[]{stt, ma, ten, gia, serial, soluong, tienKM, thanhTien()};
+    }
+    
     public Object[] toDataRowHDCT() {
         return new Object[]{false, ma, ten, gia, serial};
     }

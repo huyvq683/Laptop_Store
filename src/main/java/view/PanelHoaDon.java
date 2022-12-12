@@ -56,7 +56,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
     public PanelHoaDon() {
         initComponents();
         model = (DefaultTableModel) tbaBang.getModel();
-//        model2 = (DefaultTableModel) tbaExcel.getModel();
         rbnTT.setSelected(true);
         list = hoaDonService.getAll();
         showResult(list);
@@ -80,7 +79,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         int i = 0;
         for (HoaDonChiTietResponse hdct : list) {
             i++;
-            model1.addRow(hdct.toDataRow(i));
+            model1.addRow(hdct.toDataRowQLHD(i));
         }
     }
 
