@@ -7,6 +7,7 @@ package repository.impl;
 import domainmodel.ChiTietSP;
 import domainmodel.HoaDonChiTiet;
 import domainmodel.SerialDaBan;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import org.hibernate.Session;
@@ -20,11 +21,20 @@ import utility.HibernateUtil;
  */
 public class SerialDaBanRepository {
 
-    public Boolean add(SerialDaBan serialDaBan) {
+    public Boolean add(List<String> listSerial) {
         Transaction tran = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             tran = session.beginTransaction();
+            for (String serial : listSerial) {
+                ChiTietSP chiTietSP = getCTSPBySerial(serial);
+                HoaDonChiTiet hoaDonChiTiet = getIdHoaDonChiTiet(serial);
+                SerialDaBan serialDaBan = new SerialDaBan();
+                serialDaBan.setMa(chiTietSP.getSerial());
+                serialDaBan.setIdHDCT(hoaDonChiTiet);
+                serialDaBan.setCreatedDate(new Date());
+                serialDaBan.setLastModifiedDate(new Date());
                 session.save(serialDaBan);
+            }
             tran.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,8 +55,6 @@ public class SerialDaBanRepository {
         }
         return hoaDonChiTiet;
     }
-    
-
 
     public ChiTietSP getCTSPBySerial(String serial) {
         ChiTietSP ctsp = null;
@@ -61,18 +69,22 @@ public class SerialDaBanRepository {
         }
         return ctsp;
     }
+    
 
-    public Boolean delete(UUID id) {
-        boolean check = false;
+    public Boolean delete(List<String> listSerial) {
         Transaction transaction = null;
-        try ( Session session = HibernateUtil.getFACTORY().openSession();) {
-            transaction = session.beginTransaction();
-            SerialDaBan sdb = session.get(SerialDaBan.class,id);
-            session.delete(sdb);
-            transaction.commit();
-            check = true;
+        boolean check = false;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            for (String serial : listSerial) {
+                transaction = session.beginTransaction();
+                Query query = session.createQuery("DELETE FROM SerialDaBan WHERE ma = :ma");
+                query.setParameter("ma", listSerial);
+                query.executeUpdate();
+                transaction.commit();
+                check = true;
+            }
         } catch (Exception e) {
-            e.printStackTrace(System.out);
+            e.printStackTrace();
         }
         return check;
     }
