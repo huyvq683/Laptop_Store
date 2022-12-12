@@ -18,6 +18,7 @@ import com.google.zxing.common.HybridBinarizer;
 import domainmodel.Common;
 import domainmodel.NhanVien;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
@@ -867,11 +868,12 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                     }
 
                 } while (i < listIm.size());
+                JOptionPane.showMessageDialog(this, "Import thành công");
                 listNV = nhanVienServiceImpl.getAll();
                 list = nhanVienServiceImpl.getAllPage(0);
                 showData(list);
             } catch (Exception e) {
-//                e.printStackTrace(System.out);
+                JOptionPane.showMessageDialog(this, "Import thất bại");
             }
         }
     }//GEN-LAST:event_btnImportActionPerformed
@@ -963,6 +965,10 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 workbook.write(out);
                 out.close();
                 JOptionPane.showMessageDialog(this, "Export nhân viên thành công");
+                Desktop desktop = Desktop.getDesktop();
+                if (new File("D:/NhanVien.xlsx").exists()) {
+                    desktop.open(new File("D:/NhanVien.xlsx"));
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Export nhân viên thất bại");
             }
@@ -1053,6 +1059,10 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 workbook.write(out);
                 out.close();
                 JOptionPane.showMessageDialog(this, "Export nhân viên thành công");
+                Desktop desktop = Desktop.getDesktop();
+                if (new File("D:/NhanVien.xlsx").exists()) {
+                    desktop.open(new File("D:/NhanVien.xlsx"));
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Export nhân viên thất bại");
             }

@@ -154,7 +154,7 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
 
     @Override
     public String updateKhoiPhuc(List<ChiTietSP> ctsp) {
-
+        
         Boolean check = repository.upDateKhoiPhuc(ctsp);
         if (check) {
             return "Khôi phục sản phẩm thành công";
