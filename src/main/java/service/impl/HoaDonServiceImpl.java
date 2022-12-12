@@ -5,6 +5,7 @@
 package service.impl;
 
 import custommodel.HoaDonResponse;
+import custommodel.KhachHangReponse;
 import custommodel.ViewExcelReponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
@@ -151,6 +152,11 @@ public class HoaDonServiceImpl implements HoaDonService {
     @Override
     public List<ViewExcelReponse> getListExcel(int tt) {
         return hoaDonRepository.getListExcel(tt);
+    }
+
+    @Override
+    public KhachHangReponse getKhachHang(String ma) {
+        return hoaDonRepository.getKhachHang(ma);
     }
 
 }

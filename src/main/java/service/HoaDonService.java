@@ -5,6 +5,7 @@
 package service;
 
 import custommodel.HoaDonResponse;
+import custommodel.KhachHangReponse;
 import custommodel.ViewExcelReponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
@@ -22,10 +23,11 @@ public interface HoaDonService {
 
     void exportExcel(JTable table);
 
+    KhachHangReponse getKhachHang(String ma);
 
     public List<ViewExcelReponse> getListExcel(int tt);
 
-    List<ViewExcelReponse> getAllExcel ();
+    List<ViewExcelReponse> getAllExcel();
 
     List<HoaDonResponse> getByOne(int tt);
 
