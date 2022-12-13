@@ -686,7 +686,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
             HoaDonResponse hoaDonResponse = list.get(row);
             HoaDon hoaDon = new HoaDon();
             JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThaiHuy(hoaDon, hoaDonResponse.getId()));
-            list = hoaDonService.getAll(Common.tenNV);
+            list = hoaDonService.getAllHoaDon(Common.tenNV);
             showResult(list);
             updateTrangThaiChuaBan();
         }
