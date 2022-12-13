@@ -1371,6 +1371,11 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel1.setText("Ổ Cứng");
 
         cbbCPU.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cbbCPU.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbCPUItemStateChanged(evt);
+            }
+        });
 
         btnCPU.setBackground(new java.awt.Color(41, 183, 212));
         btnCPU.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -1393,6 +1398,11 @@ public class PanelSanPham extends javax.swing.JPanel {
         });
 
         cbbHang.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cbbHang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbHangItemStateChanged(evt);
+            }
+        });
 
         cbbOCung.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
@@ -1475,19 +1485,19 @@ public class PanelSanPham extends javax.swing.JPanel {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbbCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel41))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnCard))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel40)
                             .addComponent(cbbRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRam))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel39)
@@ -2339,6 +2349,14 @@ public class PanelSanPham extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Temperate();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void cbbHangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbHangItemStateChanged
+
+    }//GEN-LAST:event_cbbHangItemStateChanged
+
+    private void cbbCPUItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbCPUItemStateChanged
+
+    }//GEN-LAST:event_cbbCPUItemStateChanged
     private static Object getCellValue(Cell cell) {
         try {
             switch (cell.getCellType()) {
@@ -2381,6 +2399,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                 String soSerial = String.valueOf(getCellValue(currentRow.getCell(6))).trim();
                 String gia = String.valueOf(getCellValue(currentRow.getCell(7))).trim();
                 int tinhTrang = 0;
+                
                 if (tenSp.isEmpty() && tenCPU.isEmpty() && tenCard.isEmpty() && tenHang.isEmpty()
                         && tenOcung.isEmpty() && tenRam.isEmpty() && soSerial.isEmpty() && gia.isEmpty()) {
                     continue;
@@ -2431,6 +2450,8 @@ public class PanelSanPham extends javax.swing.JPanel {
                 chiTietSP.setSerial(soSerial);
                 chiTietSP.setGia(new BigDecimal(gia));
                 chiTietSP.setTinhTrang(tinhTrang);
+                chiTietSP.setCreatedDate(new Date());
+                chiTietSP.setLastModifiedDate(new Date());
                 listctsp.add(chiTietSP);
                 serviceCT.add(chiTietSP);
                 listCTsp = ctspRepo.getAllChiTietSP();
