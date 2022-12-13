@@ -27,5 +27,6 @@ public class HoaDonInResponse {
     private BigDecimal tongTienTam;
     private BigDecimal giamGia;
     private BigDecimal tongTien;
+    private BigDecimal tienTraLai;
     private String hinhThucThanhToan;
 }

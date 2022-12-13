@@ -8,6 +8,9 @@ import domainmodel.Common;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -20,6 +23,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
     private int b1 = 0;
     private int b4 = 0;
     private int b6 = 0;
+    private int b7 = 0;
     private int b8 = 0;
 
     /**
@@ -79,6 +83,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
         btnBanHang.setBackground(new Color(0, 0, 0, 0));
         btnHoaDon.setBackground(new Color(0, 0, 0, 0));
         btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
         btnThoat.setBackground(new Color(0, 0, 0, 0));
     }
 
@@ -105,6 +110,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
         lblMa = new javax.swing.JLabel();
         lblTen = new javax.swing.JLabel();
         lblChucVu = new javax.swing.JLabel();
+        btnThongKe = new javax.swing.JButton();
         panelBanHang = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -245,6 +251,30 @@ public class ViewNhanVien extends javax.swing.JFrame {
         lblChucVu.setText("Mã nhân viên:");
         lblChucVu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
+        btnThongKe.setBackground(new java.awt.Color(0, 0, 0));
+        btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnThongKe.setForeground(new java.awt.Color(255, 255, 255));
+        btnThongKe.setIcon(new ImageIcon("src/main/img/thongke.png"));
+        btnThongKe.setText("Thống kê");
+        btnThongKe.setAlignmentY(0.0F);
+        btnThongKe.setBorder(null);
+        btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThongKeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnThongKeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnThongKeMouseExited(evt);
+            }
+        });
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout view2Layout = new javax.swing.GroupLayout(view2);
         view2.setLayout(view2Layout);
         view2Layout.setHorizontalGroup(
@@ -252,7 +282,6 @@ public class ViewNhanVien extends javax.swing.JFrame {
             .addComponent(btnBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(view2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,6 +299,8 @@ public class ViewNhanVien extends javax.swing.JFrame {
                         .addGap(63, 63, 63)
                         .addComponent(lblDoiMK)))
                 .addContainerGap(26, Short.MAX_VALUE))
+            .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         view2Layout.setVerticalGroup(
             view2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,8 +328,10 @@ public class ViewNhanVien extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
+                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(389, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -336,7 +369,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(panelBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 1289, Short.MAX_VALUE))
+                .addComponent(panelBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 1295, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,27 +421,33 @@ public class ViewNhanVien extends javax.swing.JFrame {
         b1 = 1;
         b4 = 0;
         b6 = 0;
+        b7 = 0;
         b8 = 0;
         btnHoaDon.setBackground(new Color(0, 0, 0, 0));
         btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
         btnThoat.setBackground(new Color(0, 0, 0, 0));
     }//GEN-LAST:event_btnBanHangMouseClicked
 
     private void btnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseClicked
         b1 = 0;
         b4 = 1;
+        b7 = 0;
         b8 = 0;
         btnBanHang.setBackground(new Color(0, 0, 0, 0));
         btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
         btnThoat.setBackground(new Color(0, 0, 0, 0));
     }//GEN-LAST:event_btnHoaDonMouseClicked
 
     private void btnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseClicked
         b1 = 0;
         b4 = 0;
+        b7 = 0;
         b6 = 1;
         b8 = 0;
         btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
         btnHoaDon.setBackground(new Color(0, 0, 0, 0));
         btnThoat.setBackground(new Color(0, 0, 0, 0));
     }//GEN-LAST:event_btnKhachHangMouseClicked
@@ -416,9 +455,11 @@ public class ViewNhanVien extends javax.swing.JFrame {
     private void btnThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseClicked
         b1 = 0;
         b4 = 0;
+        b7 = 0;
         b6 = 0;
         b8 = 1;
         btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
         btnHoaDon.setBackground(new Color(0, 0, 0, 0));
         btnKhachHang.setBackground(new Color(0, 0, 0, 0));
     }//GEN-LAST:event_btnThoatMouseClicked
@@ -464,6 +505,43 @@ public class ViewNhanVien extends javax.swing.JFrame {
         dmk.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_lblDoiMKMouseClicked
+
+    private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
+        b1 = 0;
+        b4 = 0;
+        b6 = 0;
+        b7 = 1;
+        b8 = 0;
+        btnBanHang.setBackground(new Color(0, 0, 0, 0));
+        btnHoaDon.setBackground(new Color(0, 0, 0, 0));
+        btnThongKe.setBackground(new Color(0, 0, 0, 0));
+        btnKhachHang.setBackground(new Color(0, 0, 0, 0));
+        btnThoat.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_btnThongKeMouseClicked
+
+    private void btnThongKeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseEntered
+        btnThongKe.setBackground(new Color(50, 159, 200));
+    }//GEN-LAST:event_btnThongKeMouseEntered
+
+    private void btnThongKeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseExited
+        if (b7 == 0) {
+            btnThongKe.setBackground(new Color(0, 0, 0, 0));
+        }
+    }//GEN-LAST:event_btnThongKeMouseExited
+
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        Common.webcam.close();
+        try {
+            panelBanHang.removeAll();
+            PanelThongKe panelTK = new PanelThongKe();
+            panelBanHang.add(panelTK);
+            panelBanHang.setLayout(new FlowLayout());
+            this.pack();
+            panelTK.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(ViewQuanLy.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnThongKeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -512,6 +590,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
     private javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnThoat;
+    private javax.swing.JButton btnThongKe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

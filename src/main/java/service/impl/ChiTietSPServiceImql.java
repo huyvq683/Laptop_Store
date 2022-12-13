@@ -168,4 +168,9 @@ public class ChiTietSPServiceImql implements ChiTietSPService {
         return repository.getOneCheck(tinhTrang);
     }
 
+    @Override
+    public List<ChiTietSPResponse> searchCTSP(String ma) {
+       return repository.searchCTSP(ma);
+    }
+
 }
