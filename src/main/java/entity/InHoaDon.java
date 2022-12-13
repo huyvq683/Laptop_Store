@@ -219,11 +219,11 @@ public class InHoaDon {
         fs3.addFont(font3);
         fs4.addFont(font4);
         
-        Phrase p1 = fs1.process("LAPTOP 7H\n\n");
+        Phrase p1 = fs1.process("LAPTOP 7H\n");
         Phrase p2 = fs2.process("Đ/c: Số nhà 44, đường HP1, Hoằng Phụ, Hoằng Hóa, Thanh Hóa\n"
         + "---------------------------------------------");
         Phrase p3 = fs3.process("HÓA ĐƠN BÁN HÀNG\n");
-        Phrase p4 = fs4.process("Ngày tạo: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date())+ "\n\n");
+        Phrase p4 = fs4.process("Ngày tạo: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date())+ "\n");
         PdfPCell c1 = new PdfPCell(p1);
         PdfPCell c2 = new PdfPCell(p2);
         PdfPCell c3 = new PdfPCell(p3);

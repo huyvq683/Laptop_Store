@@ -11,6 +11,7 @@ import domainmodel.Hang;
 import domainmodel.OCung;
 import domainmodel.Ram;
 import domainmodel.SanPham;
+import java.awt.Desktop;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -133,7 +134,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         jFrame5.setLocationRelativeTo(null);
         jFrame6.setLocationRelativeTo(null);
 
-        btnXoa.setVisible(false);
+        btnTrangThai.setVisible(false);
 
     }
 
@@ -408,14 +409,14 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnXuatFiel = new javax.swing.JButton();
-        btnExport = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnImport = new javax.swing.JButton();
+        btnTaiXuong = new javax.swing.JButton();
         jLabel44 = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        btnXoa = new javax.swing.JButton();
+        btnTrangThai = new javax.swing.JButton();
         txtGia = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
@@ -423,7 +424,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         btnLamMoi = new javax.swing.JButton();
         cbbMaSP = new javax.swing.JComboBox<>();
         jLabel30 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        btnThemSanPham = new javax.swing.JButton();
 
         jFrame1.setSize(new java.awt.Dimension(570, 308));
 
@@ -1371,6 +1372,11 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel1.setText("Ổ Cứng");
 
         cbbCPU.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cbbCPU.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbCPUItemStateChanged(evt);
+            }
+        });
 
         btnCPU.setBackground(new java.awt.Color(41, 183, 212));
         btnCPU.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -1393,6 +1399,11 @@ public class PanelSanPham extends javax.swing.JPanel {
         });
 
         cbbHang.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cbbHang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbHangItemStateChanged(evt);
+            }
+        });
 
         cbbOCung.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
@@ -1475,19 +1486,19 @@ public class PanelSanPham extends javax.swing.JPanel {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbbCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel41))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnCard))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel40)
                             .addComponent(cbbRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRam))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel39)
@@ -1570,23 +1581,23 @@ public class PanelSanPham extends javax.swing.JPanel {
             }
         });
 
-        btnExport.setBackground(new java.awt.Color(41, 183, 212));
-        btnExport.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/import.png"))); // NOI18N
-        btnExport.setText("IMPORT");
-        btnExport.setToolTipText("Thêm nhiều sản phẩm cùng lúc");
-        btnExport.addActionListener(new java.awt.event.ActionListener() {
+        btnImport.setBackground(new java.awt.Color(41, 183, 212));
+        btnImport.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/import.png"))); // NOI18N
+        btnImport.setText("IMPORT");
+        btnImport.setToolTipText("Thêm nhiều sản phẩm cùng lúc");
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExportActionPerformed(evt);
+                btnImportActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 153, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/taiXuong.jpg"))); // NOI18N
-        jButton3.setToolTipText("Tải file excel mẫu");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnTaiXuong.setBackground(new java.awt.Color(0, 153, 255));
+        btnTaiXuong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/taiXuong.jpg"))); // NOI18N
+        btnTaiXuong.setToolTipText("Tải file excel mẫu");
+        btnTaiXuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnTaiXuongActionPerformed(evt);
             }
         });
 
@@ -1629,11 +1640,11 @@ public class PanelSanPham extends javax.swing.JPanel {
                         .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tblChiTietSanPhamLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTaiXuong, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addComponent(btnXuatFiel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38))))
         );
         tblChiTietSanPhamLayout.setVerticalGroup(
@@ -1653,10 +1664,10 @@ public class PanelSanPham extends javax.swing.JPanel {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(tblChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTaiXuong, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(tblChiTietSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnXuatFiel)
-                        .addComponent(btnExport)))
+                        .addComponent(btnImport)))
                 .addContainerGap())
         );
 
@@ -1683,14 +1694,14 @@ public class PanelSanPham extends javax.swing.JPanel {
             }
         });
 
-        btnXoa.setBackground(new java.awt.Color(41, 183, 212));
-        btnXoa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sathai.png"))); // NOI18N
-        btnXoa.setText("Trạng thái");
-        btnXoa.setToolTipText("");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+        btnTrangThai.setBackground(new java.awt.Color(41, 183, 212));
+        btnTrangThai.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sathai.png"))); // NOI18N
+        btnTrangThai.setText("Trạng thái");
+        btnTrangThai.setToolTipText("");
+        btnTrangThai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
+                btnTrangThaiActionPerformed(evt);
             }
         });
 
@@ -1721,13 +1732,13 @@ public class PanelSanPham extends javax.swing.JPanel {
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel30.setText("Tên sản phẩm");
 
-        jButton6.setBackground(new java.awt.Color(41, 183, 212));
-        jButton6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/newNV.png"))); // NOI18N
-        jButton6.setToolTipText("Thêm sản phẩm");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnThemSanPham.setBackground(new java.awt.Color(41, 183, 212));
+        btnThemSanPham.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btnThemSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/newNV.png"))); // NOI18N
+        btnThemSanPham.setToolTipText("Thêm sản phẩm");
+        btnThemSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnThemSanPhamActionPerformed(evt);
             }
         });
 
@@ -1745,7 +1756,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                                 .addGap(15, 15, 15)
                                 .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnThemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(43, 43, 43)
                                 .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1770,7 +1781,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -1778,7 +1789,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel30)
                         .addComponent(cbbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1797,7 +1808,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -2068,7 +2079,7 @@ public class PanelSanPham extends javax.swing.JPanel {
 
     private void tblBangChiTietSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBangChiTietSPMouseClicked
         txtSerialSP.setEnabled(false);
-        btnXoa.setVisible(true);
+        btnTrangThai.setVisible(true);
         int indexx = tblBangChiTietSP.getSelectedRow();
         mountClick(listCTsp, indexx);
     }//GEN-LAST:event_tblBangChiTietSPMouseClicked
@@ -2120,12 +2131,12 @@ public class PanelSanPham extends javax.swing.JPanel {
             CellStyle tieuDeStyle = workbook.createCellStyle();
             tieuDeStyle.setFont(tieuDe);
 
-            row = spreadsheet.createRow((short) 2);
+            row = spreadsheet.createRow((short) 0);
             row.setHeight((short) 500);
             cell = row.createCell(3, CellType.STRING);
             cell.setCellValue("Danh sách chi tiết sản phẩm");
             cell.setCellStyle(tieuDeStyle);
-            row = spreadsheet.createRow((short) 3);
+            row = spreadsheet.createRow((short) 1);
             row.setHeight((short) 500);
             cell = row.createCell(0, CellType.STRING);
             cell.setCellValue("STT");
@@ -2159,15 +2170,13 @@ public class PanelSanPham extends javax.swing.JPanel {
             cell.setCellStyle(headerCellStyle);
             for (int i = 0; i < listCTsp.size(); i++) {
                 ChiTietSP ctcp = listCTsp.get(i);
-                row = spreadsheet.createRow((short) 4 + i);
+                row = spreadsheet.createRow((short) 2 + i);
                 row.setHeight((short) 400);
                 row.createCell(0).setCellValue(i + 1);
                 row.createCell(1).setCellValue(ctcp.getIdSanPham().getTen());
                 row.createCell(2).setCellValue(ctcp.getIdCPU().getTen());
                 row.createCell(3).setCellValue(ctcp.getIdCard().getTen());
                 row.createCell(4).setCellValue(ctcp.getIdHang().getTen());
-                //                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                //                String date = dateFormat.format(nv.getNgaySinh());
                 row.createCell(5).setCellValue(ctcp.getIdOCung().getTen());
                 row.createCell(6).setCellValue(ctcp.getIdRam().getTen());
                 row.createCell(7).setCellValue(ctcp.getSerial());
@@ -2178,12 +2187,19 @@ public class PanelSanPham extends javax.swing.JPanel {
             workbook.write(out);
             out.close();
             JOptionPane.showMessageDialog(this, "Xuất file excel thành công ( file ở ổ D )");
+            if (!Desktop.isDesktopSupported()) {
+                return ;
+            }
+            Desktop deskto = Desktop.getDesktop();
+            if (new File("D:/ExportSanPham .xlsx").exists()) {
+                deskto.open(new File("D:/ExportSanPham .xlsx"));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Xuất file excel thất bại");
         }
     }//GEN-LAST:event_btnXuatFielActionPerformed
 
-    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
 
         File file;
         FileInputStream fis = null;
@@ -2197,7 +2213,7 @@ public class PanelSanPham extends javax.swing.JPanel {
             String name = file.getPath();
             ImportFile(name);
         }
-    }//GEN-LAST:event_btnExportActionPerformed
+    }//GEN-LAST:event_btnImportActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         if (txtGia.getText().isEmpty()) {
@@ -2240,7 +2256,7 @@ public class PanelSanPham extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+    private void btnTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangThaiActionPerformed
 
         int row = tblBangChiTietSP.getSelectedRow();
         ChiTietSP chiTietSP = listCTsp.get(row);
@@ -2263,7 +2279,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, serviceCT.updateTinhTrang(listCT));
                 listCTsp = serviceCT.getAllChiTietSP();
                 showData(listCTsp);
-                btnXoa.setVisible(false);
+                btnTrangThai.setVisible(false);
             }
         } else {
             int updateTT = JOptionPane.showConfirmDialog(this, "Bạn có muốn khôi phục sản phẩm này không ? ", "Xác nhận", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -2283,11 +2299,11 @@ public class PanelSanPham extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, serviceCT.updateKhoiPhuc(listCT));
                 listCTsp = serviceCT.getAllChiTietSP();
                 showData(listCTsp);
-                btnXoa.setVisible(false);
+                btnTrangThai.setVisible(false);
             }
         }
 
-    }//GEN-LAST:event_btnXoaActionPerformed
+    }//GEN-LAST:event_btnTrangThaiActionPerformed
 
     private void txtTimKiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTimKiemCaretUpdate
         String search = txtTimKiem.getText();
@@ -2308,9 +2324,9 @@ public class PanelSanPham extends javax.swing.JPanel {
         txtSerialSP.setText("");
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnThemSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSanPhamActionPerformed
         jFrame1.setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnThemSanPhamActionPerformed
 
     private void btnThoatRamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatRamActionPerformed
         jFrame6.dispose();
@@ -2336,9 +2352,17 @@ public class PanelSanPham extends javax.swing.JPanel {
         jFrame1.dispose();
     }//GEN-LAST:event_btnThoatActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnTaiXuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiXuongActionPerformed
         Temperate();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnTaiXuongActionPerformed
+
+    private void cbbHangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbHangItemStateChanged
+
+    }//GEN-LAST:event_cbbHangItemStateChanged
+
+    private void cbbCPUItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbCPUItemStateChanged
+
+    }//GEN-LAST:event_cbbCPUItemStateChanged
     private static Object getCellValue(Cell cell) {
         try {
             switch (cell.getCellType()) {
@@ -2370,7 +2394,6 @@ public class PanelSanPham extends javax.swing.JPanel {
             Cell firstCell = firstRow.getCell(0);
             while (iterator.hasNext()) {
                 Row currentRow = iterator.next();
-
                 String maCTSP = "CTSP" + (listCTsp.size() + 1);
                 String tenSp = String.valueOf(getCellValue(currentRow.getCell(0))).trim();
                 String tenCPU = String.valueOf(getCellValue(currentRow.getCell(1))).trim();
@@ -2381,6 +2404,7 @@ public class PanelSanPham extends javax.swing.JPanel {
                 String soSerial = String.valueOf(getCellValue(currentRow.getCell(6))).trim();
                 String gia = String.valueOf(getCellValue(currentRow.getCell(7))).trim();
                 int tinhTrang = 0;
+                
                 if (tenSp.isEmpty() && tenCPU.isEmpty() && tenCard.isEmpty() && tenHang.isEmpty()
                         && tenOcung.isEmpty() && tenRam.isEmpty() && soSerial.isEmpty() && gia.isEmpty()) {
                     continue;
@@ -2431,6 +2455,8 @@ public class PanelSanPham extends javax.swing.JPanel {
                 chiTietSP.setSerial(soSerial);
                 chiTietSP.setGia(new BigDecimal(gia));
                 chiTietSP.setTinhTrang(tinhTrang);
+                chiTietSP.setCreatedDate(new Date());
+                chiTietSP.setLastModifiedDate(new Date());
                 listctsp.add(chiTietSP);
                 serviceCT.add(chiTietSP);
                 listCTsp = ctspRepo.getAllChiTietSP();
@@ -2537,8 +2563,8 @@ public class PanelSanPham extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCPU;
     private javax.swing.JButton btnCard;
-    private javax.swing.JButton btnExport;
     private javax.swing.JButton btnHang;
+    private javax.swing.JButton btnImport;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnOCung;
     private javax.swing.JButton btnRam;
@@ -2550,6 +2576,7 @@ public class PanelSanPham extends javax.swing.JPanel {
     private javax.swing.JButton btnSuaSP6;
     private javax.swing.JButton btnSuaSP7;
     private javax.swing.JButton btnSuacpu;
+    private javax.swing.JButton btnTaiXuong;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemCard;
     private javax.swing.JButton btnThemHang;
@@ -2557,13 +2584,14 @@ public class PanelSanPham extends javax.swing.JPanel {
     private javax.swing.JButton btnThemRam;
     private javax.swing.JButton btnThemSP;
     private javax.swing.JButton btnThemSP6;
+    private javax.swing.JButton btnThemSanPham;
     private javax.swing.JButton btnThemcpu;
     private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnThoatCard;
     private javax.swing.JButton btnThoatHang;
     private javax.swing.JButton btnThoatRam;
     private javax.swing.JButton btnThoatcpu;
-    private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnTrangThai;
     private javax.swing.JButton btnXuatFiel;
     private javax.swing.JComboBox<String> cbbCPU;
     private javax.swing.JComboBox<String> cbbCard;
@@ -2573,8 +2601,6 @@ public class PanelSanPham extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbbRam;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrame3;

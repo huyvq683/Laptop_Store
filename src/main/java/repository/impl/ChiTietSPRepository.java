@@ -161,7 +161,7 @@ public class ChiTietSPRepository {
     public List<ChiTietSP> search(String searchKey) {
         List<ChiTietSP> listCTSP = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("From ChiTietSP WHERE Serial like concat (:searchKey,'%') OR IdCPU like concat (:searchKey,'%') OR IdSanPham like concat (:searchKey,'%') OR IdRam like concat (:searchKey,'%') OR IdCardMH like concat (:searchKey,'%') OR IdOCung like concat (:searchKey,'%') OR Gia like concat (:searchKey,'%') OR IdHang like concat (:searchKey,'%')");
+            Query query = session.createQuery("FROM ChiTietSP WHERE Serial like concat (:searchKey,'%') OR IdCPU like concat (:searchKey,'%') OR IdSanPham like concat (:searchKey,'%') OR IdRam like concat (:searchKey,'%') OR IdCardMH like concat (:searchKey,'%') OR IdOCung like concat (:searchKey,'%') OR Gia like concat (:searchKey,'%') OR IdHang like concat (:searchKey,'%')");
             query.setParameter("searchKey", searchKey);
             listCTSP = query.getResultList();
             return listCTSP;
