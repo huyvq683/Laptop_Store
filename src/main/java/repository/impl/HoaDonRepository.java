@@ -71,6 +71,20 @@ public class HoaDonRepository {
         }
     }
 
+    public HoaDonResponse get_One(String ma) {
+        HoaDonResponse hoaDonResponse = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query sql = session.createQuery("SELECT new custommodel.HoaDonResponse( h.ngayTao , h.hinhThuc, h.tongTien, h.tienKhachTra, h.tienCK) From HoaDon h"
+                    + " Join NhanVien n On n.id = h.idNV"
+                    + " WHERE h.ma = :ma");
+            sql.setParameter("ma", ma);
+            hoaDonResponse = (HoaDonResponse) sql.getSingleResult();
+            return hoaDonResponse;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public HoaDonResponse getOne1(String ma) {
         HoaDonResponse hoaDonResponse = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -96,7 +110,20 @@ public class HoaDonRepository {
             hoaDonInResponse = (HoaDonInResponse) sql.getSingleResult();
             return hoaDonInResponse;
         } catch (Exception e) {
-            e.printStackTrace(System.out);
+            return null;
+        }
+    }
+
+    public HoaDonInResponse getHDInKhachLe(String ma) {
+        HoaDonInResponse hoaDonInResponse = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query sql = session.createQuery("SELECT new custommodel.HoaDonInResponse(h.ma , n.hoTen , h.tongTien , h.hinhThuc )From HoaDon h "
+                    + " Join NhanVien n ON n.id = h.idNV"
+                    + " WHERE h.ma = :ma");
+            sql.setParameter("ma", ma);
+            hoaDonInResponse = (HoaDonInResponse) sql.getSingleResult();
+            return hoaDonInResponse;
+        } catch (Exception e) {
             return null;
         }
     }

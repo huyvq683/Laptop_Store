@@ -163,4 +163,14 @@ public class HoaDonServiceImpl implements HoaDonService {
         return hoaDonRepository.getHDIn(ma);
     }
 
+    @Override
+    public HoaDonResponse get_ByMa(String ma) {
+        return hoaDonRepository.get_One(ma);
+    }
+
+    @Override
+    public HoaDonInResponse getHDInKhachLe(String ma) {
+        return hoaDonRepository.getHDInKhachLe(ma);
+    }
+
 }

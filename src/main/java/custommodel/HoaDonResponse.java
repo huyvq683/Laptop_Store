@@ -37,6 +37,14 @@ public class HoaDonResponse {
     private String maNV;
     private String tenNhanVien;
     private int tinhTrang;
+    
+    public HoaDonResponse(Date ngayTao, int hinhThuc, BigDecimal tongTien, BigDecimal tienKhachTra, BigDecimal tienCK) {
+        this.ngayTao = ngayTao;
+        this.hinhThuc = hinhThuc;
+        this.tongTien = tongTien;
+        this.tienKhachTra = tienKhachTra;
+        this.tienCK = tienCK;
+    }
 
     public HoaDonResponse(UUID id, String ma, KhachHang maKH, Date ngayTao, int hinhThuc, BigDecimal tongTien, BigDecimal tienKhachTra, BigDecimal tienCK, String maNV, String tenNhanVien, int tinhTrang) {
         this.id = id;

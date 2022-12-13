@@ -32,6 +32,13 @@ public class HoaDonInResponse {
     private String hinhThucThanhToan;
     private int hinhThuc;
 
+    public HoaDonInResponse(String maHD, String tenNV, BigDecimal tongTien, int hinhThuc) {
+        this.maHD = maHD;
+        this.tenNV = tenNV;
+        this.tongTien = tongTien;
+        this.hinhThuc = hinhThuc;
+    }
+
     public HoaDonInResponse(String maHD, String tenNV, String tenKH, String sdtKH, String diaChi, BigDecimal tongTien, int hinhThuc) {
         this.maHD = maHD;
         this.tenNV = tenNV;

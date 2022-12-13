@@ -24,6 +24,8 @@ public interface HoaDonService {
 
     void exportExcel(JTable table);
 
+    HoaDonInResponse getHDInKhachLe(String ma);
+
     HoaDonInResponse getHDIn(String ma);
 
     KhachHangReponse getKhachHang(String ma);
@@ -41,6 +43,8 @@ public interface HoaDonService {
     List<HoaDonResponse> getAll();
 
     HoaDonResponse getByMa(String ma);
+
+    HoaDonResponse get_ByMa(String ma);
 
     List<HoaDon> get_All();
 

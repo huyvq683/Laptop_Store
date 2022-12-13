@@ -13,10 +13,12 @@ import custommodel.ViewExcelReponse;
 import domainmodel.Common;
 import domainmodel.HoaDon;
 import entity.InHoaDon;
+import java.awt.Desktop;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -72,6 +74,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         ImageIcon scaledIcon = new ImageIcon(scaled);
         lblLogo.setIcon(scaledIcon);
         btnIN.setEnabled(false);
+        btnHuy.setEnabled(false);
     }
 
     public void showResult(List<HoaDonResponse> list) {
@@ -519,6 +522,12 @@ public class PanelHoaDon extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public DecimalFormat boTSP() {
+        DecimalFormat df = new DecimalFormat();
+        df.setMinimumFractionDigits(0);
+        df.setMaximumFractionDigits(0);
+        return df;
+    }
 
     private void tbaBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbaBangMouseClicked
         // TODO add your handling code here:
@@ -533,15 +542,24 @@ public class PanelHoaDon extends javax.swing.JPanel {
         if (hd != null) {
             lblTenKh.setText(hd.getIdKH().getHoTen().toString());
             lblLTT.setText(String.valueOf(hd.loaiThanhToan()));
-            lblTongTien.setText(hd.getTongTien().toString());
-            lblKD.setText(hd.getTienKhachTra().toString());
-            lblCK.setText(hd.getTienCK().toString());
+            lblTongTien.setText(boTSP().format(hd.getTongTien()));
+            lblKD.setText(boTSP().format(hd.getTienKhachTra()));
+            lblCK.setText(boTSP().format(hd.getTienCK()));
         } else {
+            HoaDonResponse hdkl = hoaDonService.get_ByMa(lblMa.getText());
             lblTenKh.setText("Khách lẻ");
-            lblLTT.setText("");
-            lblTongTien.setText("");
-            lblKD.setText("");
-            lblCK.setText("");
+            lblLTT.setText(hdkl.loaiThanhToan());
+            if (tbaBang.getModel().getValueAt(index, 3).toString().equalsIgnoreCase("Hủy")) {
+                lblTongTien.setText("");
+                lblKD.setText("");
+                lblCK.setText("");
+            } else if (tbaBang.getModel().getValueAt(index, 3).toString().equalsIgnoreCase("Chờ thanh toán")) {
+                lblTongTien.setText("");
+            } else {
+                lblTongTien.setText(boTSP().format(hdkl.getTongTien()));
+                lblKD.setText(boTSP().format(hdkl.getTienKhachTra()));
+                lblCK.setText(boTSP().format(hdkl.getTienCK()));
+            }
         }
 
         getListHDCT();
@@ -551,6 +569,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
         } else {
             btnIN.setEnabled(false);
         }
+
+        if (tbaBang.getModel().getValueAt(index, 3).toString().equalsIgnoreCase("Chờ thanh toán")) {
+            btnHuy.setEnabled(true);
+        } else {
+            btnHuy.setEnabled(false);
+        }
+
     }//GEN-LAST:event_tbaBangMouseClicked
 
     private void rbnChoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnChoActionPerformed
@@ -657,6 +682,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
             workbook.write(out);
             out.close();
             JOptionPane.showMessageDialog(this, "Export thành công");
+            if (!Desktop.isDesktopSupported()) {
+                return;
+            }
+            Desktop deskto = Desktop.getDesktop();
+            if (new File("D:/ExportHoaDon .xlsx").exists()) {
+                deskto.open(new File("D:/ExportHoaDon .xlsx"));
+            }
         } catch (Exception e) {
             e.printStackTrace(System.out);
             JOptionPane.showMessageDialog(this, "Export thất bại");
@@ -675,19 +707,12 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         // TODO add your handling code here:
         int row = tbaBang.getSelectedRow();
-        String trangThai = tbaBang.getModel().getValueAt(row, 3).toString();
-        if (trangThai.equalsIgnoreCase("Đã Thanh Toán")) {
-            JOptionPane.showMessageDialog(this, "Hóa Đơn Đã Thanh Toán Không Thể Hủy");
-        } else if (trangThai.equalsIgnoreCase("Hủy")) {
-            JOptionPane.showMessageDialog(this, "Hóa Đơn Này Đã Bị Hủy");
-        } else {
-            HoaDonResponse hoaDonResponse = list.get(row);
-            HoaDon hoaDon = new HoaDon();
-            JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThaiHuy(hoaDon, hoaDonResponse.getId()));
-            list = hoaDonService.getAll(Common.tenNV);
-            showResult(list);
-            updateTrangThaiChuaBan();
-        }
+        HoaDonResponse hoaDonResponse = list.get(row);
+        HoaDon hoaDon = new HoaDon();
+        JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThaiHuy(hoaDon, hoaDonResponse.getId()));
+        list = hoaDonService.getAll(Common.tenNV);
+        showResult(list);
+        updateTrangThaiChuaBan();
     }//GEN-LAST:event_btnHuyActionPerformed
 
     public void updateTrangThaiChuaBan() {
@@ -733,21 +758,45 @@ public class PanelHoaDon extends javax.swing.JPanel {
         return tongTien;
     }
 
+    public int getKieuThanhToan() {
+        if (lblLTT.getText().equalsIgnoreCase("Chờ thanh toán")) {
+            return 1;
+        } else if (lblLTT.getText().equalsIgnoreCase("Hủy")) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+
     private void btnINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINActionPerformed
         // TODO add your handling code here:
         if (JOptionPane.showConfirmDialog(this, "Bạn muốn in hóa đơn không") == JOptionPane.YES_OPTION) {
             HoaDonInResponse hd = hoaDonService.getHDIn(lblMa.getText());
             HoaDonInResponse hdin = new HoaDonInResponse();
-            hdin.setMaHD(hd.getMaHD());
-            hdin.setTenNV(Common.tenNV.getMa() + "-" + Common.tenNV.getHoTen());
-            hdin.setTenKH(hd.getTenKH());
-            hdin.setSdtKH(hd.getSdtKH());
-            hdin.setDiaChi(hd.getDiaChi());
-            hdin.setTongTienTam(tongTien(listHoaChiTietResponses));
-            hdin.setTongTien(hd.getTongTien());
-            int row = tbaBangHDCT.getSelectedRowCount();
-            hdin.setGiamGia(new BigDecimal(tbaBangHDCT.getModel().getValueAt(row, 6).toString()));
-            hdin.setHinhThucThanhToan(hd.loaiThanhToan());
+            if (hd == null) {
+                HoaDonInResponse hdKL = hoaDonService.getHDInKhachLe(lblMa.getText());
+                hdin.setMaHD(lblMa.getText());
+                hdin.setTenNV(Common.tenNV.getMa() + "-" + Common.tenNV.getHoTen());
+                hdin.setTenKH("Khách Lẻ");
+                hdin.setSdtKH("");
+                hdin.setDiaChi("");
+                hdin.setHinhThucThanhToan(lblLTT.getText());
+                hdin.setTongTienTam(tongTien(listHoaChiTietResponses));
+                hdin.setTongTien(hdKL.getTongTien());
+                int row = tbaBangHDCT.getSelectedRowCount();
+                hdin.setGiamGia(new BigDecimal(tbaBangHDCT.getModel().getValueAt(row, 6).toString()));
+            } else {
+                hdin.setMaHD(lblMa.getText());
+                hdin.setTenNV(Common.tenNV.getMa() + "-" + Common.tenNV.getHoTen());
+                hdin.setTenKH(hd.getTenKH());
+                hdin.setSdtKH(hd.getSdtKH());
+                hdin.setHinhThucThanhToan(lblLTT.getText());
+                hdin.setDiaChi(hd.getDiaChi());
+                hdin.setTongTienTam(tongTien(listHoaChiTietResponses));
+                hdin.setTongTien(hd.getTongTien());
+                int row = tbaBangHDCT.getSelectedRowCount();
+                hdin.setGiamGia(new BigDecimal(tbaBangHDCT.getModel().getValueAt(row, 6).toString()));
+            }
             List<HoaDonCHiTietInResponse> ghin = new ArrayList<>();
             for (int i = 0; i < tbaBangHDCT.getRowCount(); i++) {
                 HoaDonCHiTietInResponse gh = new HoaDonCHiTietInResponse();
