@@ -130,7 +130,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
         txtTaiKhoan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtTaiKhoan.setForeground(new java.awt.Color(51, 51, 51));
         txtTaiKhoan.setText("hungpvph25929@fpt.edu.vn");
-        txtTaiKhoan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+        txtTaiKhoan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 102));
@@ -139,7 +139,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtMatKhau.setForeground(new java.awt.Color(51, 51, 51));
         txtMatKhau.setText("123456");
-        txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+        txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setText("Đăng nhập");
@@ -178,7 +178,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
         });
 
         btnQuenMK.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnQuenMK.setForeground(new java.awt.Color(0, 102, 102));
+        btnQuenMK.setForeground(new java.awt.Color(40, 184, 213));
         btnQuenMK.setText("Quên mật khẩu ?");
         btnQuenMK.setBorderPainted(false);
         btnQuenMK.setContentAreaFilled(false);

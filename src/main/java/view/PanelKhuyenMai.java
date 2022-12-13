@@ -274,7 +274,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
 
         cboLoaiKM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "%", "Tiền" }));
 
-        btnThem.setIcon(new ImageIcon("src/main/img/newNV.png"));
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/newNV.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.setBackground(new java.awt.Color(40, 184, 213));
         btnThem.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -284,7 +284,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
             }
         });
 
-        btnCapNhat.setIcon(new ImageIcon("src/main/img/boloc.png"));
+        btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sua.png"))); // NOI18N
         btnCapNhat.setText("Cập nhật");
         btnCapNhat.setBackground(new java.awt.Color(40, 184, 213));
         btnCapNhat.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -484,7 +484,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblSanPham);
 
-        jButton1.setIcon(new ImageIcon("src/main/img/newNV.png"));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/newNV.png"))); // NOI18N
         jButton1.setText("Áp dụng khuyến mại");
         jButton1.setBackground(new java.awt.Color(40, 184, 213));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -534,7 +534,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel8.setIcon(new ImageIcon("src/main/img/sale.png"));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sale.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
