@@ -105,7 +105,6 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
         jLabel7.setText("Mật khẩu cũ");
 
         lblMkc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mkHide.png"))); // NOI18N
-        lblMkc.setPreferredSize(new java.awt.Dimension(30, 30));
         lblMkc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMkcMouseClicked(evt);
@@ -113,7 +112,6 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
         });
 
         lblMkm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mkHide.png"))); // NOI18N
-        lblMkm.setPreferredSize(new java.awt.Dimension(30, 30));
         lblMkm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMkmMouseClicked(evt);
@@ -121,7 +119,6 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
         });
 
         lblXnMkm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mkHide.png"))); // NOI18N
-        lblXnMkm.setPreferredSize(new java.awt.Dimension(30, 30));
         lblXnMkm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblXnMkmMouseClicked(evt);
@@ -199,11 +196,11 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblMkc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblMkc)
                                 .addGap(40, 40, 40)
-                                .addComponent(lblMkm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblMkm)
                                 .addGap(40, 40, 40)
-                                .addComponent(lblXnMkm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblXnMkm))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
