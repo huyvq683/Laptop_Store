@@ -11,6 +11,7 @@ import domainmodel.Hang;
 import domainmodel.OCung;
 import domainmodel.Ram;
 import domainmodel.SanPham;
+import java.awt.Desktop;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -2176,8 +2177,6 @@ public class PanelSanPham extends javax.swing.JPanel {
                 row.createCell(2).setCellValue(ctcp.getIdCPU().getTen());
                 row.createCell(3).setCellValue(ctcp.getIdCard().getTen());
                 row.createCell(4).setCellValue(ctcp.getIdHang().getTen());
-                //                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                //                String date = dateFormat.format(nv.getNgaySinh());
                 row.createCell(5).setCellValue(ctcp.getIdOCung().getTen());
                 row.createCell(6).setCellValue(ctcp.getIdRam().getTen());
                 row.createCell(7).setCellValue(ctcp.getSerial());
@@ -2188,6 +2187,13 @@ public class PanelSanPham extends javax.swing.JPanel {
             workbook.write(out);
             out.close();
             JOptionPane.showMessageDialog(this, "Xuất file excel thành công ( file ở ổ D )");
+            if (!Desktop.isDesktopSupported()) {
+                return ;
+            }
+            Desktop deskto = Desktop.getDesktop();
+            if (new File("D:/ExportSanPham .xlsx").exists()) {
+                deskto.open(new File("D:/ExportSanPham .xlsx"));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Xuất file excel thất bại");
         }
