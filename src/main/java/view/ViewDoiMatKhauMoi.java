@@ -42,7 +42,7 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
         this.mail = email;
         anIcon(btnHienMK1);
         anIcon(btnHienMK2);
-         ImageIcon originalIcon = new ImageIcon("src/main/img/logo.png");
+         ImageIcon originalIcon = new ImageIcon(getClass().getResource("/img/logo.png"));
         int width = 400;
         int height = 314;
         Image scaled = scaleImage(originalIcon.getImage(), width, height);
@@ -52,14 +52,14 @@ public class ViewDoiMatKhauMoi extends javax.swing.JFrame {
 
     // function , constructer icon ẩn / hiện
     private void anIcon(JButton a) {
-        ImageIcon privateIcon = new ImageIcon("src/main/img/anquenmk.png");
+        ImageIcon privateIcon = new ImageIcon(getClass().getResource("/img/anquenmk.png"));
         Image closeEye = scaleImage(privateIcon.getImage(), 24, 24);
         ImageIcon closeEyeView = new ImageIcon(closeEye);
         a.setIcon(closeEyeView);
     }
 
     private void hienIcon(JButton a) {
-        ImageIcon privateIcon = new ImageIcon("src/main/img/hienquenmk.png");
+        ImageIcon privateIcon = new ImageIcon(getClass().getResource("/img/hienquenmk.png"));
         Image closeEye = scaleImage(privateIcon.getImage(), 24, 24);
         ImageIcon closeEyeView = new ImageIcon(closeEye);
         a.setIcon(closeEyeView);
