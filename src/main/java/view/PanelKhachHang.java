@@ -122,11 +122,11 @@ public class PanelKhachHang extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(tbKhachHang);
 
-        jLabel34.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel34.setText("Tìm số điện thoại");
+        jLabel34.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
-        txtSearch.setForeground(new java.awt.Color(51, 51, 51));
         txtSearch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
+        txtSearch.setForeground(new java.awt.Color(51, 51, 51));
         txtSearch.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtSearchCaretUpdate(evt);
@@ -163,54 +163,54 @@ public class PanelKhachHang extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông Tin Khách Hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 18))); // NOI18N
 
-        jLabel29.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel29.setText("Họ Tên");
+        jLabel29.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
-        jLabel33.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel33.setText("Email");
+        jLabel33.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
-        jLabel35.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel35.setText("Địa chỉ");
+        jLabel35.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
+        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
         txtEmail.setForeground(new java.awt.Color(51, 51, 51));
-        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
+        txtDiaChiKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
         txtDiaChiKH.setForeground(new java.awt.Color(51, 51, 51));
-        txtDiaChiKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
+        txtHoTenKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
         txtHoTenKH.setForeground(new java.awt.Color(51, 51, 51));
-        txtHoTenKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
+        txtSDT.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
         txtSDT.setForeground(new java.awt.Color(51, 51, 51));
-        txtSDT.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
-        jLabel36.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel36.setText("Số điện thoại");
+        jLabel36.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/newNV.png"))); // NOI18N
+        btnThem.setText("Thêm");
         btnThem.setBackground(new java.awt.Color(41, 183, 212));
         btnThem.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/newNV.png"))); // NOI18N
-        btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
 
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sua.png"))); // NOI18N
+        btnSua.setText("Sửa");
         btnSua.setBackground(new java.awt.Color(41, 183, 212));
         btnSua.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
-        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sua.png"))); // NOI18N
-        btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
 
-        jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel37.setText("Cấp Bậc");
+        jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
         proCapBac.setStringPainted(true);
 
@@ -277,9 +277,9 @@ public class PanelKhachHang extends javax.swing.JPanel {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(lblCapBac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)))
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(90, 90, 90))
         );
 
@@ -314,8 +314,7 @@ public class PanelKhachHang extends javax.swing.JPanel {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(192, 192, 192)
-                        .addComponent(lblCapBac1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(lblCapBac1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
