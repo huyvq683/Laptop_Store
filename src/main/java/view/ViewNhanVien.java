@@ -117,14 +117,13 @@ public class ViewNhanVien extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1535, 850));
         setMinimumSize(new java.awt.Dimension(1535, 850));
-        setPreferredSize(new java.awt.Dimension(1535, 850));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         btnBanHang.setBackground(new java.awt.Color(0, 0, 0));
         btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnBanHang.setForeground(new java.awt.Color(255, 255, 255));
-        btnBanHang.setIcon(new ImageIcon("src/main/img/ban.png"));
+        btnBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ban.png"))); // NOI18N
         btnBanHang.setText("Bán hàng");
         btnBanHang.setAlignmentY(0.0F);
         btnBanHang.setBorder(null);
@@ -148,7 +147,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
         btnHoaDon.setBackground(new java.awt.Color(0, 0, 0));
         btnHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnHoaDon.setForeground(new java.awt.Color(255, 255, 255));
-        btnHoaDon.setIcon(new ImageIcon("src/main/img/hoadon.png"));
+        btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hoadon.png"))); // NOI18N
         btnHoaDon.setText("Hóa đơn");
         btnHoaDon.setToolTipText("");
         btnHoaDon.setActionCommand("   Hóa đơn");
@@ -174,7 +173,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
         btnKhachHang.setBackground(new java.awt.Color(0, 0, 0));
         btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnKhachHang.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang.setIcon(new ImageIcon("src/main/img/khachhang.png"));
+        btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/khachhang.png"))); // NOI18N
         btnKhachHang.setText("Khách hàng");
         btnKhachHang.setAlignmentY(0.0F);
         btnKhachHang.setBorder(null);
@@ -198,7 +197,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
         btnThoat.setBackground(new java.awt.Color(0, 0, 0));
         btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnThoat.setForeground(new java.awt.Color(255, 255, 255));
-        btnThoat.setIcon(new ImageIcon("src/main/img/thoat.png"));
+        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thoat.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.setAlignmentY(0.0F);
         btnThoat.setBorder(null);
@@ -254,7 +253,7 @@ public class ViewNhanVien extends javax.swing.JFrame {
         btnThongKe.setBackground(new java.awt.Color(0, 0, 0));
         btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnThongKe.setForeground(new java.awt.Color(255, 255, 255));
-        btnThongKe.setIcon(new ImageIcon("src/main/img/thongke.png"));
+        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thongke.png"))); // NOI18N
         btnThongKe.setText("Thống kê");
         btnThongKe.setAlignmentY(0.0F);
         btnThongKe.setBorder(null);
