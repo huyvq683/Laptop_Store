@@ -70,14 +70,11 @@ public class InHoaDon {
             PdfPTable validity = new PdfPTable(1);
             validity.setWidthPercentage(100);
             validity.addCell(getValidityCell(" "));
-            validity.addCell(getValidityCell("Lưu ý"));
-            validity.addCell(getValidityCell(" * Tất cả sản phẩm được mua tại cửa hàng được đổi miễn phí 30 ngày đầu nếu lỗi do nhà sản xuất"));
-            validity.addCell(getValidityCell(" * Nếu không còn sản phẩm để đổi áp dụng chính sách Bảo hành của hãng"));
-            validity.addCell(getValidityCell(" * Vui lòng không bóc mã imel được dán sau máy để được áp dụng bảo hành"));
             PdfPCell summaryL = new PdfPCell(validity);
             summaryL.setColspan(3);
             summaryL.setPadding(1.0f);
             billTable.addCell(summaryL);
+            
             PdfPTable accounts = new PdfPTable(2);
             accounts.setWidthPercentage(100);
             accounts.addCell(getAccountsCell("Tạm tính"));
@@ -211,20 +208,26 @@ public class InHoaDon {
         FontSelector fs1 = new FontSelector();
         FontSelector fs2 = new FontSelector();
         FontSelector fs3 = new FontSelector();
+        FontSelector fs4 = new FontSelector();
         Font font1 = new Font(bf, 30);
         Font font2 = new Font(bf, 15);
         Font font3 = new Font(bf, 25);
+        Font font4 = new Font(bf,15);
         font1.setColor(BaseColor.BLACK);
         fs1.addFont(font1);
         fs2.addFont(font2);
         fs3.addFont(font3);
+        fs4.addFont(font4);
+        
         Phrase p1 = fs1.process("LAPTOP 7H\n\n");
         Phrase p2 = fs2.process("Đ/c: Số nhà 44, đường HP1, Hoằng Phụ, Hoằng Hóa, Thanh Hóa\n"
         + "---------------------------------------------");
-        Phrase p3 = fs3.process("HÓA ĐƠN BÁN HÀNG\n\n");
+        Phrase p3 = fs3.process("HÓA ĐƠN BÁN HÀNG\n");
+        Phrase p4 = fs4.process("Ngày tạo: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date())+ "\n\n");
         PdfPCell c1 = new PdfPCell(p1);
         PdfPCell c2 = new PdfPCell(p2);
         PdfPCell c3 = new PdfPCell(p3);
+        PdfPCell c4 = new PdfPCell(p4);
         c1.setHorizontalAlignment(Element.ALIGN_CENTER);
         c1.setBorder(0);
         c1.setPadding(5.0f);
@@ -234,28 +237,32 @@ public class InHoaDon {
         c3.setHorizontalAlignment(Element.ALIGN_CENTER);
         c3.setBorder(0);
         c3.setPadding(5.0f);
+        c4.setHorizontalAlignment(Element.ALIGN_CENTER);
+        c4.setBorder(0);
+        c4.setPadding(5.0f);
         tieuDe.addCell(c1);
         tieuDe.addCell(c2);
         tieuDe.addCell(c3);
+        tieuDe.addCell(c4);
         return tieuDe;
     }
 
     public static PdfPTable ttHoaDon(HoaDonInResponse hd) throws Exception {
         PdfPTable tieuDe = new PdfPTable(3);
         tieuDe.setWidthPercentage(100);
-        tieuDe.setWidths(new float[]{5, 4, 3});
+        tieuDe.setWidths(new float[]{5, 3, 4});
         BaseFont bf = BaseFont.createFont("src/main/font/unicode.ttf", BaseFont.IDENTITY_H, true);
         FontSelector fs1 = new FontSelector();
         FontSelector fs2 = new FontSelector();
-        Font font1 = new Font(bf, 11);
+        Font font1 = new Font(bf, 12);
         Font font2 = new Font(bf, 12);
         font1.setColor(BaseColor.BLACK);
         fs1.addFont(font1);
         fs2.addFont(font2);
-        Phrase p2 = fs1.process("Mã HD: " + hd.getMaHD() + "\nNgày tạo: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date()) + "\n"
-                + "Nhân viên: " + hd.getTenNV() + "\n");
-        Phrase p3 = fs2.process(" ");
-        Phrase p1 = fs2.process("Tên khách hàng: " + hd.getTenKH() + "\nSố điện thoại: " + hd.getSdtKH() + "\nNơi nhận: " + hd.getDiaChi() + "\n"
+        Phrase p2 = fs1.process("Mã HD: " + hd.getMaHD() + "\n\n"
+                + "Nhân viên: " + hd.getTenNV());
+        Phrase p3 = fs2.process("");
+        Phrase p1 = fs2.process("Tên khách hàng: " + hd.getTenKH() + "\n\nSố điện thoại: " + hd.getSdtKH() + "\n\nĐịa chỉ: " + hd.getDiaChi() + "\n\n"
                 + "Hình thức thanh toán: " + hd.getHinhThucThanhToan());
         PdfPCell c1 = new PdfPCell(p1);
         PdfPCell c2 = new PdfPCell(p2);
@@ -272,4 +279,5 @@ public class InHoaDon {
         tieuDe.addCell(c2);
         return tieuDe;
     }
+    
 }

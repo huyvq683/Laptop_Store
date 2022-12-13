@@ -53,5 +53,7 @@ public interface ChiTietSPService {
     void updateTinhTrang(ChiTietSP chiTietSP);
     
     void updateTinhTrangChuaBan(List<String> listSerial);
+    
+    List<ChiTietSPResponse> searchCTSP(String ma);
 
 }

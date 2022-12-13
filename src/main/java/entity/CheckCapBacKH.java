@@ -85,19 +85,19 @@ public class CheckCapBacKH extends Thread {
                             continue;
                         }
                         if (tienKhachMua != null) {
-                            if (tienKhachMua.compareTo(new BigDecimal(15000000)) < 0) {
+                            if (tienKhachMua.compareTo(new BigDecimal(30000000)) < 0) {
                                 xx.setCapBac(0);
                             }
-                            if (tienKhachMua.compareTo(new BigDecimal(15000000)) > 0 && tienKhachMua.compareTo(new BigDecimal(30000000)) < 0) {
+                            if (tienKhachMua.compareTo(new BigDecimal(30000000)) > 0 && tienKhachMua.compareTo(new BigDecimal(60000000)) < 0) {
                                 xx.setCapBac(1);
                             }
-                            if (tienKhachMua.compareTo(new BigDecimal(30000000)) > 0 && tienKhachMua.compareTo(new BigDecimal(50000000)) < 0) {
+                            if (tienKhachMua.compareTo(new BigDecimal(60000000)) > 0 && tienKhachMua.compareTo(new BigDecimal(90000000)) < 0) {
                                 xx.setCapBac(2);
                             }
-                            if (tienKhachMua.compareTo(new BigDecimal(50000000)) > 0 && tienKhachMua.compareTo(new BigDecimal(100000000)) < 0) {
+                            if (tienKhachMua.compareTo(new BigDecimal(90000000)) > 0 && tienKhachMua.compareTo(new BigDecimal(120000000)) < 0) {
                                 xx.setCapBac(3);
                             }
-                            if (tienKhachMua.compareTo(new BigDecimal(100000000)) > 0) {
+                            if (tienKhachMua.compareTo(new BigDecimal(120000000)) > 0) {
                                 xx.setCapBac(4);
                             }
                             new KhachHangServiceImpl().add(xx);

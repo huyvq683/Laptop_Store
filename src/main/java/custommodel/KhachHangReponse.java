@@ -26,6 +26,12 @@ public class KhachHangReponse {
     private String sdt;
     private int capBac;
 
+    public KhachHangReponse(String ma, String ten, String sdt) {
+        this.ma = ma;
+        this.ten = ten;
+        this.sdt = sdt;
+    }
+
     public Object[] toDataRow() {
         return new Object[]{ma, ten, sdt, capBac};
     }
