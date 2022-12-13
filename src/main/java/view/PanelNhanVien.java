@@ -143,6 +143,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
         setPreferredSize(new java.awt.Dimension(1300, 850));
 
+        pnQLNV.setMaximumSize(new java.awt.Dimension(1300, 850));
+        pnQLNV.setMinimumSize(new java.awt.Dimension(1300, 850));
         pnQLNV.setPreferredSize(new java.awt.Dimension(1300, 850));
 
         pnThongTinNV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông Tin Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 18))); // NOI18N
@@ -201,7 +203,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnThem.setBackground(new java.awt.Color(41, 183, 212));
         btnThem.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
-        btnThem.setIcon(new ImageIcon("src/main/img/addNV.png"));
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addNV.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.setToolTipText("Thêm nhân viên");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +215,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnSua.setBackground(new java.awt.Color(41, 183, 212));
         btnSua.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
-        btnSua.setIcon(new ImageIcon("src/main/img/updateNV.png"));
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/updateNV.png"))); // NOI18N
         btnSua.setText("Sửa");
         btnSua.setToolTipText("Sửa nhân viên");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +227,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnNew.setBackground(new java.awt.Color(41, 183, 212));
         btnNew.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnNew.setForeground(new java.awt.Color(255, 255, 255));
-        btnNew.setIcon(new ImageIcon("src/main/img/newNV.png"));
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/newNV.png"))); // NOI18N
         btnNew.setText("New");
         btnNew.setToolTipText("Làm mới các trường");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
@@ -258,13 +260,13 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         );
 
         qrCode.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        qrCode.setIcon(new ImageIcon("src/main/img/scan.png"));
+        qrCode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/scan.png"))); // NOI18N
         qrCode.setText("QR Code scan");
 
         btnTrangThai.setBackground(new java.awt.Color(41, 183, 212));
         btnTrangThai.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnTrangThai.setForeground(new java.awt.Color(255, 255, 255));
-        btnTrangThai.setIcon(new ImageIcon("src/main/img/sathai.png"));
+        btnTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sathai.png"))); // NOI18N
         btnTrangThai.setText("Trạng thái");
         btnTrangThai.setToolTipText("Cập nhật trạng thái");
         btnTrangThai.addActionListener(new java.awt.event.ActionListener() {
@@ -439,7 +441,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         }
 
         jLabel54.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel54.setIcon(new ImageIcon("src/main/img/searchNV.png"));
+        jLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/searchNV.png"))); // NOI18N
         jLabel54.setText("Tìm kiếm");
 
         txtSearch.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -454,7 +456,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnImport.setBackground(new java.awt.Color(41, 183, 212));
         btnImport.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnImport.setForeground(new java.awt.Color(255, 255, 255));
-        btnImport.setIcon(new ImageIcon("src/main/img/import.png"));
+        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/import.png"))); // NOI18N
         btnImport.setText("Import");
         btnImport.setToolTipText("Nhập nhân viên");
         btnImport.addActionListener(new java.awt.event.ActionListener() {
@@ -466,7 +468,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnExport.setBackground(new java.awt.Color(41, 183, 212));
         btnExport.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnExport.setForeground(new java.awt.Color(255, 255, 255));
-        btnExport.setIcon(new ImageIcon("src/main/img/export.png"));
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/export.png"))); // NOI18N
         btnExport.setText("Export");
         btnExport.setToolTipText("Xuất file danh sách nhân viên");
         btnExport.addActionListener(new java.awt.event.ActionListener() {
@@ -478,7 +480,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnFirst.setBackground(new java.awt.Color(41, 183, 212));
         btnFirst.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnFirst.setForeground(new java.awt.Color(255, 255, 255));
-        btnFirst.setIcon(new ImageIcon("src/main/img/first.png"));
+        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/first.png"))); // NOI18N
         btnFirst.setText("First");
         btnFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -489,7 +491,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnPrevious.setBackground(new java.awt.Color(41, 183, 212));
         btnPrevious.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnPrevious.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrevious.setIcon(new ImageIcon("src/main/img/pre.png"));
+        btnPrevious.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pre.png"))); // NOI18N
         btnPrevious.setText("Previous");
         btnPrevious.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -500,7 +502,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnNext.setBackground(new java.awt.Color(41, 183, 212));
         btnNext.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setIcon(new ImageIcon("src/main/img/next.png"));
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/next.png"))); // NOI18N
         btnNext.setText("Next");
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -511,7 +513,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnLast.setBackground(new java.awt.Color(41, 183, 212));
         btnLast.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnLast.setForeground(new java.awt.Color(255, 255, 255));
-        btnLast.setIcon(new ImageIcon("src/main/img/last.png"));
+        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/last.png"))); // NOI18N
         btnLast.setText("Last");
         btnLast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -522,7 +524,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnDowloadTemplate.setBackground(new java.awt.Color(41, 183, 212));
         btnDowloadTemplate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnDowloadTemplate.setForeground(new java.awt.Color(255, 255, 255));
-        btnDowloadTemplate.setIcon(new ImageIcon("src/main/img/download.png"));
+        btnDowloadTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/download.png"))); // NOI18N
         btnDowloadTemplate.setToolTipText("Tải template mẫu");
         btnDowloadTemplate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -558,7 +560,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
         pnDanhSachNVLayout.setVerticalGroup(
             pnDanhSachNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -597,7 +599,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             .addGroup(pnQLNVLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnThongTinNV, javax.swing.GroupLayout.PREFERRED_SIZE, 1264, Short.MAX_VALUE)
+                    .addComponent(pnThongTinNV, javax.swing.GroupLayout.PREFERRED_SIZE, 1286, Short.MAX_VALUE)
                     .addComponent(pnDanhSachNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -618,7 +620,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
+                .addComponent(pnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 1310, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
