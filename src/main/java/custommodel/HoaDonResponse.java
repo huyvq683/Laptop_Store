@@ -27,9 +27,11 @@ public class HoaDonResponse {
 
     private UUID id;
     private String ma;
+    private String tenKH;
+    private String sdtKH;
+    private int capBacKH;
     private Date ngayTao;
     private KhachHang idKH;
-    private String tenKH;
     private int hinhThuc;
     private BigDecimal tongTien;
     private BigDecimal tienKhachTra;
@@ -78,6 +80,8 @@ public class HoaDonResponse {
         this.tinhTrang = tinhTrang;
     }
 
+    
+
     public String loaiThanhToan() {
         switch (hinhThuc) {
             case 0:
@@ -86,6 +90,23 @@ public class HoaDonResponse {
                 return "Tiền Mặt";
             case 2:
                 return "Cả Hai";
+            default:
+                return null;
+        }
+    }
+
+    public String capBac() {
+        switch (capBacKH) {
+            case 0:
+                return "Chưa có rank";
+            case 1:
+                return "Đồng";
+            case 2:
+                return "Bạc";
+            case 3:
+                return "Vàng";
+            case 4:
+                return "Kim cương";
             default:
                 return null;
         }

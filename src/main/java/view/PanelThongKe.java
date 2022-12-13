@@ -7,6 +7,7 @@ package view;
 import custommodel.ThongKeDoanhThuRespone;
 import custommodel.ThongKeSanPhamRespone;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.DateFormat;
@@ -33,7 +34,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -67,7 +71,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
 
     private int nam = 2022;
-    private int thaang;
+    private int thaang = 12;
 
     public PanelThongKe() throws ParseException {
         initComponents();
@@ -77,7 +81,6 @@ public class PanelThongKe extends javax.swing.JPanel {
         String hearSP[] = {"Mã SP", "Tên SP", "Giá", "Số lượng đã bán", "Doanh thu"};
         dtmSP.setColumnIdentifiers(hearSP);
         tbSanPham.setModel(dtmSP);
-
         nam = Integer.valueOf(dateFor.format(date).substring(6, 10));
         thaang = Integer.valueOf(dateFor.format(date).substring(3, 5));
         showDataSP(dateFor.format(date));
@@ -95,7 +98,6 @@ public class PanelThongKe extends javax.swing.JPanel {
         txtEndTKSP.setVisible(false);
         cbbThangNam.setVisible(false);
         lbChonNgayKetThucSP.setVisible(false);
-
         cbbLoaiDoanhThu.setSelectedIndex(0);
         lbChonNgayBDDT.setText("Chọn ngày :");
         lbChonNgayBDDT.setVisible(true);
@@ -103,9 +105,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         lbChonNgayKTDT.setVisible(false);
         cbbThangDoanhThu.setVisible(false);
         txtEndTKDT.setVisible(false);
-
         loadThangBieuDo();
-
     }
 
     public void exPortHoaDon() {
@@ -116,9 +116,27 @@ public class PanelThongKe extends javax.swing.JPanel {
             XSSFRow row = null;
             Cell cell = null;
 
-            row = spreadsheet.createRow((short) 2);
-            row.setHeight((short) 500);
+            Font headerFont = workbook.createFont();
+            headerFont.setBold(true);
+            headerFont.setFontHeightInPoints((short) 14);
+            headerFont.setColor(IndexedColors.RED.getIndex());
+            CellStyle headerCellStyle = workbook.createCellStyle();
+            headerCellStyle.setFont(headerFont);
 
+            Font tieuDe = workbook.createFont();
+            tieuDe.setBold(true);
+            tieuDe.setFontHeightInPoints((short) 18);
+            tieuDe.setColor(IndexedColors.BLACK.getIndex());
+            CellStyle tieuDeStyle = workbook.createCellStyle();
+            tieuDeStyle.setFont(tieuDe);
+
+            row = spreadsheet.createRow((short) 0);
+            row.setHeight((short) 500);
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Danh sách doanh thu hóa đơn");
+            cell.setCellStyle(tieuDeStyle);
+            row = spreadsheet.createRow((short) 1);
+            row.setHeight((short) 500);
             if (cbbLoaiDoanhThu.getSelectedIndex() == 0) {
                 listDT = serviceThongKe.getAllDoanhThu(dateFor.parse(dateFor.format(getDate(txtStartTKDT.getDateStringOrEmptyString()))));
                 cell = row.createCell(0, CellType.STRING);
@@ -138,7 +156,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 cell = row.createCell(0, CellType.STRING);
                 cell.setCellValue("Danh sách doanh thu hóa đơn năm : " + (int) cbbThangDoanhThu.getSelectedItem());
             }
-            row = spreadsheet.createRow((short) 3);
+            row = spreadsheet.createRow((short) 2);
             row.setHeight((short) 500);
             cell = row.createCell(0, CellType.STRING);
             cell.setCellValue("STT");
@@ -158,7 +176,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             cell.setCellValue("Tổng tiền");
             for (int i = 0; i < listDT.size(); i++) {
                 ThongKeDoanhThuRespone tk = listDT.get(i);
-                row = spreadsheet.createRow((short) 4 + i);
+                row = spreadsheet.createRow((short) 3 + i);
                 row.setHeight((short) 400);
                 row.createCell(0).setCellValue(i + 1);
                 row.createCell(1).setCellValue(tk.getMaHD());
@@ -169,10 +187,14 @@ public class PanelThongKe extends javax.swing.JPanel {
                 row.createCell(6).setCellValue(tk.dinhDangTienVN(tk.getTienCK()));
                 row.createCell(7).setCellValue(tk.dinhDangTienVN(tk.getTongTien()));
             }
-            FileOutputStream out = new FileOutputStream(new File("D:/tkdt.xlsx"));
+            FileOutputStream out = new FileOutputStream(new File("D:/ThongKeHoaDon.xlsx"));
             workbook.write(out);
             out.close();
             JOptionPane.showMessageDialog(this, "Export hóa đơn thành công(Ổ D)");
+            Desktop desktop = Desktop.getDesktop();
+            if (new File("D:/ThongKeHoaDon.xlsx").exists()) {
+                desktop.open(new File("D:/ThongKeHoaDon.xlsx"));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Export hóa đơn thất bại");
         }
@@ -180,16 +202,33 @@ public class PanelThongKe extends javax.swing.JPanel {
 
     public void exPortSanPham() {
         try {
-
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet spreadsheet = workbook.createSheet("Sản phẩm");
 
             XSSFRow row = null;
             Cell cell = null;
 
-            row = spreadsheet.createRow((short) 2);
-            row.setHeight((short) 500);
+            Font headerFont = workbook.createFont();
+            headerFont.setBold(true);
+            headerFont.setFontHeightInPoints((short) 14);
+            headerFont.setColor(IndexedColors.RED.getIndex());
+            CellStyle headerCellStyle = workbook.createCellStyle();
+            headerCellStyle.setFont(headerFont);
 
+            Font tieuDe = workbook.createFont();
+            tieuDe.setBold(true);
+            tieuDe.setFontHeightInPoints((short) 18);
+            tieuDe.setColor(IndexedColors.BLACK.getIndex());
+            CellStyle tieuDeStyle = workbook.createCellStyle();
+            tieuDeStyle.setFont(tieuDe);
+
+            row = spreadsheet.createRow((short) 0);
+            row.setHeight((short) 500);
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Danh sách chi tiết sản phẩm bán ra");
+            cell.setCellStyle(tieuDeStyle);
+            row = spreadsheet.createRow((short) 1);
+            row.setHeight((short) 500);
             if (cbbLoaiThoiGian.getSelectedIndex() == 0) {
                 listSP = serviceThongKe.getAllSanPham(dateFor.parse(dateFor.format(getDate(txtStartTKSP.getDateStringOrEmptyString()))));
                 cell = row.createCell(0, CellType.STRING);
@@ -209,8 +248,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 cell = row.createCell(0, CellType.STRING);
                 cell.setCellValue("Danh sách doanh thu sản phẩm năm : " + (int) cbbThangNam.getSelectedItem());
             }
-
-            row = spreadsheet.createRow((short) 3);
+            row = spreadsheet.createRow((short) 2);
             row.setHeight((short) 500);
             cell = row.createCell(0, CellType.STRING);
             cell.setCellValue("STT");
@@ -226,7 +264,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             cell.setCellValue("Doanh thu");
             for (int i = 0; i < listSP.size(); i++) {
                 ThongKeSanPhamRespone tk = listSP.get(i);
-                row = spreadsheet.createRow((short) 4 + i);
+                row = spreadsheet.createRow((short) 3 + i);
                 row.setHeight((short) 400);
                 row.createCell(0).setCellValue(i + 1);
                 row.createCell(1).setCellValue(tk.getMaSP());
@@ -235,10 +273,14 @@ public class PanelThongKe extends javax.swing.JPanel {
                 row.createCell(4).setCellValue(tk.getCount());
                 row.createCell(5).setCellValue(tk.getGia().doubleValue() * tk.getCount());
             }
-            FileOutputStream out = new FileOutputStream(new File("D:/tksp.xlsx"));
+            FileOutputStream out = new FileOutputStream(new File("D:/ThongKeSanPham.xlsx"));
             workbook.write(out);
             out.close();
             JOptionPane.showMessageDialog(this, "Export sản phẩm thành công(Ổ D)");
+            Desktop desktop = Desktop.getDesktop();
+            if (new File("D:/ThongKeSanPham.xlsx").exists()) {
+                desktop.open(new File("D:/ThongKeSanPham.xlsx"));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Export sản phẩm thất bại");
         }
@@ -1201,6 +1243,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnLocDTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLocDTMouseExited
         btnLocDT.setBackground(new Color(41, 183, 212));
         btnLocDT.setForeground(Color.BLACK);
+        serviceThongKe.bieuDoDoanhThuMonth(1, thaang, nam, panelHienBieuDo);
     }//GEN-LAST:event_btnLocDTMouseExited
 
     private void btnLocDTMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLocDTMouseMoved
@@ -1213,7 +1256,6 @@ public class PanelThongKe extends javax.swing.JPanel {
             showDataDoanhThu(dateFor.format(date));
             cbbLoaiDoanhThu.setSelectedIndex(0);
             txtStartTKDT.setDateToToday();
-
         } catch (ParseException ex) {
             Logger.getLogger(PanelThongKe.class
                     .getName()).log(Level.SEVERE, null, ex);
@@ -1223,7 +1265,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnBoLocDTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocDTMouseExited
         btnBoLocDT.setBackground(new Color(41, 183, 212));
         btnBoLocDT.setForeground(Color.BLACK);
-        serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
+        serviceThongKe.bieuDoDoanhThuMonth(1, thaang, nam, panelHienBieuDo);
     }//GEN-LAST:event_btnBoLocDTMouseExited
 
     private void btnBoLocDTMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocDTMouseMoved
@@ -1247,7 +1289,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnBoLocSPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocSPMouseExited
         btnBoLocSP.setBackground(new Color(41, 183, 212));
         btnBoLocSP.setForeground(Color.BLACK);
-        serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
+        serviceThongKe.bieuDoDoanhThuMonth(1, thaang, nam, panelHienBieuDo);
     }//GEN-LAST:event_btnBoLocSPMouseExited
 
     private void btnBoLocSPMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoLocSPMouseMoved
@@ -1328,7 +1370,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private void btnLocSPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLocSPMouseExited
         btnLocSP.setBackground(new Color(41, 183, 212));
         btnLocSP.setForeground(Color.BLACK);
-        serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
+        serviceThongKe.bieuDoDoanhThuMonth(1, thaang, nam, panelHienBieuDo);
     }//GEN-LAST:event_btnLocSPMouseExited
 
     private void btnLocSPMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLocSPMouseMoved
@@ -1412,9 +1454,9 @@ public class PanelThongKe extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBoLocBieuDoMouseExited
 
     private void btnBoLocBieuDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoLocBieuDoActionPerformed
-        cbbLoaiThoiGian.setSelectedIndex(1);
-        serviceThongKe.bieuDoDoanhThuYear(1, nam, panelHienBieuDo);
-        cbbBieuDoChonThang.setSelectedItem(String.valueOf(nam));
+        cbbLoaiThoiGianBD.setSelectedIndex(0);
+        cbbBieuDoChonThang.setSelectedItem(String.valueOf(thaang));
+        serviceThongKe.bieuDoDoanhThuMonth(1, thaang, nam, panelHienBieuDo);
     }//GEN-LAST:event_btnBoLocBieuDoActionPerformed
 
     private void cbbLoaiDoanhThuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiDoanhThuItemStateChanged

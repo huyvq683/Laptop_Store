@@ -25,7 +25,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

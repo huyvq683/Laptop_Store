@@ -707,12 +707,28 @@ public class PanelHoaDon extends javax.swing.JPanel {
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         // TODO add your handling code here:
         int row = tbaBang.getSelectedRow();
+<<<<<<< HEAD
         HoaDonResponse hoaDonResponse = list.get(row);
         HoaDon hoaDon = new HoaDon();
         JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThaiHuy(hoaDon, hoaDonResponse.getId()));
         list = hoaDonService.getAll(Common.tenNV);
         showResult(list);
         updateTrangThaiChuaBan();
+=======
+        String trangThai = tbaBang.getModel().getValueAt(row, 3).toString();
+        if (trangThai.equalsIgnoreCase("Đã Thanh Toán")) {
+            JOptionPane.showMessageDialog(this, "Hóa Đơn Đã Thanh Toán Không Thể Hủy");
+        } else if (trangThai.equalsIgnoreCase("Hủy")) {
+            JOptionPane.showMessageDialog(this, "Hóa Đơn Này Đã Bị Hủy");
+        } else {
+            HoaDonResponse hoaDonResponse = list.get(row);
+            HoaDon hoaDon = new HoaDon();
+            JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThaiHuy(hoaDon, hoaDonResponse.getId()));
+            list = hoaDonService.getAllHoaDon(Common.tenNV);
+            showResult(list);
+            updateTrangThaiChuaBan();
+        }
+>>>>>>> a7fcedb61dbb08d1a6620d65620b386cf7bf661d
     }//GEN-LAST:event_btnHuyActionPerformed
 
     public void updateTrangThaiChuaBan() {

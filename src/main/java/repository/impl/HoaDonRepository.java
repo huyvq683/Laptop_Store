@@ -9,7 +9,6 @@ import custommodel.HoaDonResponse;
 import custommodel.KhachHangReponse;
 import custommodel.ViewExcelReponse;
 import domainmodel.HoaDon;
-import domainmodel.KhachHang;
 import domainmodel.NhanVien;
 import java.util.ArrayList;
 import java.util.List;
@@ -206,13 +205,13 @@ public class HoaDonRepository {
         return null;
     }
 
-    public List<HoaDonResponse> getAll(NhanVien nhanVien) {
+    public List<HoaDonResponse> getAllHoaDon(NhanVien nhanVien) {
         List<HoaDonResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("SELECT new custommodel.HoaDonResponse"
-                    + "(h.id, h.ma, h.ngayTao, nv.hoTen, h.tinhTrang) "
-                    + "FROM HoaDon h LEFT JOIN NhanVien nv "
-                    + "on h.idNV = nv.id WHERE nv.id = :id  "
+            Query query = session.createQuery("SELECT new custommodel.HoaDonResponse(h.id, h.ma, "
+                    + "h.ngayTao, nv.hoTen, h.tinhTrang) "
+                    + "FROM HoaDon h LEFT JOIN NhanVien nv On h.idNV = nv.id "
+                    + "WHERE nv.id = :id  "
                     + "GROUP BY h.id, h.ma, h.ngayTao, nv.hoTen, h.tinhTrang "
                     + "ORDER BY MAX(CONVERT(INT, SUBSTRING(h.ma, 3, 10))) DESC");
             query.setParameter("id", nhanVien.getId());

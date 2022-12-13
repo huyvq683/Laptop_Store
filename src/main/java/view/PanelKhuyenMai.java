@@ -274,6 +274,10 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
         jLabel6.setText("Ngày kết thúc");
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
+        txtGiaTri.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
+
+        txtTenKM.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
+
         cboLoaiKM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "%", "Tiền" }));
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/newNV.png"))); // NOI18N
@@ -397,7 +401,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
         jLabel7.setText("Tìm khuyến mại:");
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
-        txtTimKiemKhuyenMai.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtTimKiemKhuyenMai.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
         txtTimKiemKhuyenMai.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtTimKiemKhuyenMaiCaretUpdate(evt);
@@ -454,7 +458,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
         jLabel10.setText("Tìm sản phẩm:");
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
 
-        txtTimKiemSanPham.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtTimKiemSanPham.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
         txtTimKiemSanPham.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtTimKiemSanPhamCaretUpdate(evt);
