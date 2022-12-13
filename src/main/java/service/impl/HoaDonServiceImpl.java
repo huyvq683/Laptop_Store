@@ -4,7 +4,9 @@
  */
 package service.impl;
 
+import custommodel.HoaDonInResponse;
 import custommodel.HoaDonResponse;
+import custommodel.KhachHangReponse;
 import custommodel.ViewExcelReponse;
 import domainmodel.HoaDon;
 import domainmodel.NhanVien;
@@ -141,8 +143,6 @@ public class HoaDonServiceImpl implements HoaDonService {
         return hoaDonRepository.getAllPage(row);
     }
 
-
-
     @Override
     public List<ViewExcelReponse> getAllExcel() {
         return hoaDonRepository.getAllExcel();
@@ -151,6 +151,16 @@ public class HoaDonServiceImpl implements HoaDonService {
     @Override
     public List<ViewExcelReponse> getListExcel(int tt) {
         return hoaDonRepository.getListExcel(tt);
+    }
+
+    @Override
+    public KhachHangReponse getKhachHang(String ma) {
+        return hoaDonRepository.getKhachHang(ma);
+    }
+
+    @Override
+    public HoaDonInResponse getHDIn(String ma) {
+        return hoaDonRepository.getHDIn(ma);
     }
 
 }

@@ -19,6 +19,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HoaDonInResponse {
+
     private String maHD;
     private String tenNV;
     private String tenKH;
@@ -29,4 +30,41 @@ public class HoaDonInResponse {
     private BigDecimal tongTien;
     private BigDecimal tienTraLai;
     private String hinhThucThanhToan;
+    private int hinhThuc;
+
+    public HoaDonInResponse(String maHD, String tenNV, String tenKH, String sdtKH, String diaChi, BigDecimal tongTien, int hinhThuc) {
+        this.maHD = maHD;
+        this.tenNV = tenNV;
+        this.tenKH = tenKH;
+        this.sdtKH = sdtKH;
+        this.diaChi = diaChi;
+        this.tongTien = tongTien;
+        this.hinhThuc = hinhThuc;
+    }
+
+    public String loaiThanhToan() {
+        switch (hinhThuc) {
+            case 0:
+                return "Chuyển Khoản";
+            case 1:
+                return "Tiền Mặt";
+            case 2:
+                return "Cả Hai";
+            default:
+                return null;
+        }
+    }
+
+    public HoaDonInResponse(String maHD, String tenNV, String tenKH, String sdtKH, String diaChi, BigDecimal tongTienTam, BigDecimal giamGia, BigDecimal tongTien, String hinhThucThanhToan) {
+        this.maHD = maHD;
+        this.tenNV = tenNV;
+        this.tenKH = tenKH;
+        this.sdtKH = sdtKH;
+        this.diaChi = diaChi;
+        this.tongTienTam = tongTienTam;
+        this.giamGia = giamGia;
+        this.tongTien = tongTien;
+        this.hinhThucThanhToan = hinhThucThanhToan;
+    }
+
 }
