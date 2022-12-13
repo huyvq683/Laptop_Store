@@ -236,7 +236,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnKhachHang.setBackground(new java.awt.Color(0, 0, 0));
         btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         btnKhachHang.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang.setIcon(new ImageIcon("src/main/img/khachhang.png"));
+        btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/khachhang.png"))); // NOI18N
         btnKhachHang.setText("Khách hàng");
         btnKhachHang.setAlignmentY(0.0F);
         btnKhachHang.setBorder(null);
@@ -260,7 +260,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnThongKe.setBackground(new java.awt.Color(0, 0, 0));
         btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         btnThongKe.setForeground(new java.awt.Color(255, 255, 255));
-        btnThongKe.setIcon(new ImageIcon("src/main/img/thongke.png"));
+        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thongke.png"))); // NOI18N
         btnThongKe.setText("Thống kê");
         btnThongKe.setAlignmentY(0.0F);
         btnThongKe.setBorder(null);
@@ -284,7 +284,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnThoat.setBackground(new java.awt.Color(0, 0, 0));
         btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         btnThoat.setForeground(new java.awt.Color(255, 255, 255));
-        btnThoat.setIcon(new ImageIcon("src/main/img/thoat.png"));
+        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thoat.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.setAlignmentY(0.0F);
         btnThoat.setBorder(null);
