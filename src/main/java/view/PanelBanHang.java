@@ -122,7 +122,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             dtmHoaDon.addRow(hoaDonResponse.toDataRow(stt));
         }
     }
-    
+
     private void showDataTableGioHang(UUID id) {
         listHoaDonChiTiet = hoaDonChiTietService.getAll(id);
         dtmGioHang.setRowCount(0);
@@ -1090,10 +1090,20 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         txtTienKhachDua.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtTienKhachDua.setForeground(new java.awt.Color(51, 51, 51));
         txtTienKhachDua.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
+        txtTienKhachDua.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtTienKhachDuaCaretUpdate(evt);
+            }
+        });
 
         txtTienCK.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtTienCK.setForeground(new java.awt.Color(51, 51, 51));
         txtTienCK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
+        txtTienCK.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtTienCKCaretUpdate(evt);
+            }
+        });
         txtTienCK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTienCKActionPerformed(evt);
@@ -1106,7 +1116,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
         btnThanhToan.setBackground(new java.awt.Color(41, 183, 212));
         btnThanhToan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnThanhToan.setIcon(new ImageIcon("src/main/img/thanhToan.png"));
+        btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thanhToan.png"))); // NOI18N
         btnThanhToan.setText("Thanh toán");
         btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1116,7 +1126,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
         btnlamMoi.setBackground(new java.awt.Color(41, 183, 212));
         btnlamMoi.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnlamMoi.setIcon(new ImageIcon("src/main/img/lamMoi.png"));
+        btnlamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lamMoi.png"))); // NOI18N
         btnlamMoi.setText("Làm mới");
         btnlamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1354,71 +1364,97 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
-        int row = tbHoaDon.getSelectedRow();
-        HoaDonResponse hd = listHoaDon.get(row);
-        HoaDon hoaDon = new HoaDon();
-        hoaDon.setId(hd.getId());
-        hoaDon.setMa(hd.getMa());
-        hoaDon.setNgayTao(hd.getNgayTao());
-        hoaDon.setIdNV(Common.tenNV);
-        hoaDon.setHinhThuc((int) cbbHinhThuc.getSelectedIndex());
-        hoaDon.setTienKhachTra(new BigDecimal(txtTienKhachDua.getText()));
-        hoaDon.setTienCK(new BigDecimal(txtTienCK.getText()));
-        hoaDon.setTienThua(new BigDecimal(txtTienTraLai.getText()));
-        hoaDon.setTongTien(new BigDecimal(txtTongTien.getText()));
-        hoaDon.setTinhTrang(1);
-        hoaDon.setCreatedDate(new Date());
-        hoaDon.setLastModifiedDate(new Date());
-        if (txtTenKH.getText().equalsIgnoreCase("Khách lẻ")) {
-            hoaDon.setIdKH(null);
+        if (txtTienKhachDua.getText().trim().isBlank()) {
+            if (cbbHinhThuc.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa trống");
+            }
+        } else if (!txtTienKhachDua.getText().matches("\\d+") || Integer.valueOf(txtTienKhachDua.getText()) < 0) {
+            JOptionPane.showMessageDialog(this, "Tiền khách đưa phải là số và lớn hơn 0");
+        } else if (txtTienCK.getText().trim().isBlank()) {
+            if (cbbHinhThuc.getSelectedIndex() == 1) {
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản trống");
+            }
+        } else if (!txtTienCK.getText().matches("\\d+") || Integer.valueOf(txtTienKhachDua.getText()) < 0) {
+            JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản phải là số và lớn hơn 0");
         } else {
-            int rowKH = tbHienThi.getSelectedRow();
-            KhachHangReponse kh = listKH.get(rowKH);
-            KhachHang khachHang = khachHangService.getIdKhachHang(kh.getId());
-            hoaDon.setIdKH(khachHang);
-        }
-        JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon));
-        if (JOptionPane.showConfirmDialog(this, "Bạn muốn in hóa đơn không") == JOptionPane.YES_OPTION) {
-            HoaDonInResponse hdin = new HoaDonInResponse();
-            hdin.setMaHD(hd.getMa());
+            int row = tbHoaDon.getSelectedRow();
+            HoaDonResponse hd = listHoaDon.get(row);
+            HoaDon hoaDon = new HoaDon();
+            hoaDon.setId(hd.getId());
+            hoaDon.setMa(hd.getMa());
+            hoaDon.setNgayTao(hd.getNgayTao());
+            hoaDon.setIdNV(Common.tenNV);
+            hoaDon.setHinhThuc((int) cbbHinhThuc.getSelectedIndex());
+            switch (cbbHinhThuc.getSelectedIndex()) {
+                case 0:
+                    hoaDon.setTienKhachTra(new BigDecimal(txtTienKhachDua.getText()));
+                    hoaDon.setTienCK(new BigDecimal(0));
+                    break;
+                case 1:
+                    hoaDon.setTienKhachTra(new BigDecimal(0));
+                    hoaDon.setTienCK(new BigDecimal(txtTienCK.getText()));
+                    break;
+                default:
+                    hoaDon.setTienKhachTra(new BigDecimal(txtTienKhachDua.getText()));
+                    hoaDon.setTienCK(new BigDecimal(txtTienCK.getText()));
+                    break;
+            }
+
+            hoaDon.setTienThua(new BigDecimal(txtTienTraLai.getText()));
+            hoaDon.setTongTien(new BigDecimal(txtTongTien.getText()));
+            hoaDon.setTinhTrang(1);
+            hoaDon.setCreatedDate(new Date());
+            hoaDon.setLastModifiedDate(new Date());
             if (txtTenKH.getText().equalsIgnoreCase("Khách lẻ")) {
-                hdin.setTenKH(" Khách lẻ");
-                hdin.setDiaChi(" Không");
-                hdin.setSdtKH(" Không"); 
+                hoaDon.setIdKH(null);
             } else {
                 int rowKH = tbHienThi.getSelectedRow();
                 KhachHangReponse kh = listKH.get(rowKH);
                 KhachHang khachHang = khachHangService.getIdKhachHang(kh.getId());
-                hdin.setTenKH(txtTenKH.getText());
-                hdin.setDiaChi(khachHang.getDiaChi());
-                hdin.setSdtKH(txtSDT.getText()); 
+                hoaDon.setIdKH(khachHang);
             }
-            hdin.setTenNV(Common.tenNV.getHoTen());
-            hdin.setTongTienTam(tongTien(listHoaDonChiTiet));
-            hdin.setTongTien(new BigDecimal(txtTongTien.getText()));
-            hdin.setGiamGia(new BigDecimal(txtGiamGia.getText()));
-            hdin.setTienTraLai(new BigDecimal(txtTienTraLai.getText()));
-            hdin.setHinhThucThanhToan((String) cbbHinhThuc.getSelectedItem());
-            List<HoaDonCHiTietInResponse> ghin = new ArrayList<>();
-            for (int i = 0; i < tbGioHang.getRowCount(); i++) {
-                HoaDonCHiTietInResponse gh = new HoaDonCHiTietInResponse();
-                gh.setTenSP(tbGioHang.getValueAt(i, 2).toString());
-                gh.setDonGia(new BigDecimal(tbGioHang.getValueAt(i, 3).toString()));
-                gh.setKhuyenMai(new BigDecimal(tbGioHang.getValueAt(i, 5).toString()));
-                gh.setSoLuong(Integer.parseInt(tbGioHang.getValueAt(i, 4).toString()));
-                gh.setThanhTien(new BigDecimal(Integer.parseInt(tbGioHang.getValueAt(i, 6).toString())));
-                ghin.add(gh);
+            JOptionPane.showMessageDialog(this, hoaDonService.updateTrangThai(hoaDon));
+            if (JOptionPane.showConfirmDialog(this, "Bạn muốn in hóa đơn không") == JOptionPane.YES_OPTION) {
+                HoaDonInResponse hdin = new HoaDonInResponse();
+                hdin.setMaHD(hd.getMa());
+                if (txtTenKH.getText().equalsIgnoreCase("Khách lẻ")) {
+                    hdin.setTenKH(" Khách lẻ");
+                    hdin.setDiaChi(" Không");
+                    hdin.setSdtKH(" Không");
+                } else {
+                    int rowKH = tbHienThi.getSelectedRow();
+                    KhachHangReponse kh = listKH.get(rowKH);
+                    KhachHang khachHang = khachHangService.getIdKhachHang(kh.getId());
+                    hdin.setTenKH(txtTenKH.getText());
+                    hdin.setDiaChi(khachHang.getDiaChi());
+                    hdin.setSdtKH(txtSDT.getText());
+                }
+                hdin.setTenNV(Common.tenNV.getHoTen());
+                hdin.setTongTienTam(tongTien(listHoaDonChiTiet));
+                hdin.setTongTien(new BigDecimal(txtTongTien.getText()));
+                hdin.setGiamGia(new BigDecimal(txtGiamGia.getText()));
+                hdin.setTienTraLai(new BigDecimal(txtTienTraLai.getText()));
+                hdin.setHinhThucThanhToan((String) cbbHinhThuc.getSelectedItem());
+                List<HoaDonCHiTietInResponse> ghin = new ArrayList<>();
+                for (int i = 0; i < tbGioHang.getRowCount(); i++) {
+                    HoaDonCHiTietInResponse gh = new HoaDonCHiTietInResponse();
+                    gh.setTenSP(tbGioHang.getValueAt(i, 2).toString());
+                    gh.setDonGia(new BigDecimal(tbGioHang.getValueAt(i, 3).toString()));
+                    gh.setKhuyenMai(new BigDecimal(tbGioHang.getValueAt(i, 5).toString()));
+                    gh.setSoLuong(Integer.parseInt(tbGioHang.getValueAt(i, 4).toString()));
+                    gh.setThanhTien(new BigDecimal(Integer.parseInt(tbGioHang.getValueAt(i, 6).toString())));
+                    ghin.add(gh);
+                }
+                if (InHoaDon.makePDF(hdin, ghin)) {
+                    JOptionPane.showMessageDialog(this, "In hoá đơn thành công");
+                }
             }
-            if (InHoaDon.makePDF(hdin, ghin)) {
-                JOptionPane.showMessageDialog(this, "In hoá đơn thành công");
-            }
+            txtSDT.setText("");
+            txtTenKH.setText("Khách lẻ");
+            lblRank.setText("");
+            listHoaDon = hoaDonService.getAll(Common.tenNV);
+            showDataHoaDonTable(listHoaDon);
         }
-        txtSDT.setText("");
-        txtTenKH.setText("Khách lẻ");
-        lblRank.setText("");
-        listHoaDon = hoaDonService.getAll(Common.tenNV);
-        showDataHoaDonTable(listHoaDon);
-
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnChonKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKHActionPerformed
@@ -1504,25 +1540,25 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                 lblRank.setText("Chưa có rank");
                 break;
             case 1:
-                lblRank.setIcon(new ImageIcon("src/main/img/dong.png"));
+                lblRank.setIcon(new ImageIcon(getClass().getResource("/img/dong.png")));
                 lblRank.setText("Đồng");
                 txtGiamGia.setText(String.valueOf((tienKM * 5 / 100) + giamGia));
                 txtTongTien.setText(String.valueOf(tienKM - (tienKM * 5 / 100)));
                 break;
             case 2:
-                lblRank.setIcon(new ImageIcon("src/main/img/bac.png"));
+                lblRank.setIcon(new ImageIcon(getClass().getResource("/img/bac.png")));
                 lblRank.setText("Bạc");
                 txtGiamGia.setText(String.valueOf((tienKM * 8 / 100) + giamGia));
                 txtTongTien.setText(String.valueOf(tienKM - (tienKM * 8 / 100)));
                 break;
             case 3:
-                lblRank.setIcon(new ImageIcon("src/main/img/vang.png"));
+                lblRank.setIcon(new ImageIcon(getClass().getResource("/img/vang.png")));
                 lblRank.setText("Vàng");
                 txtGiamGia.setText(String.valueOf((tienKM * 10 / 100) + giamGia));
                 txtTongTien.setText(String.valueOf(tienKM - (tienKM * 10 / 100)));
                 break;
             default:
-                lblRank.setIcon(new ImageIcon("src/main/img/kimcuong.png"));
+                lblRank.setIcon(new ImageIcon(getClass().getResource("/img/kimcuong.png")));
                 lblRank.setText("Kim cương");
                 txtGiamGia.setText(String.valueOf((tienKM * 15 / 100) + giamGia));
                 txtTongTien.setText(String.valueOf(tienKM - (tienKM * 15 / 100)));
@@ -1583,6 +1619,36 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         List<ChiTietSPResponse> listSearch = chiTietSPService.searchCTSP(ma);
         showDataTableSanPham(listSearch);
     }//GEN-LAST:event_txtSearchCaretUpdate
+
+    private void txtTienKhachDuaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienKhachDuaCaretUpdate
+        // TODO add your handling code here:
+        if (cbbHinhThuc.getSelectedIndex() == 0) {
+            if (!txtTienKhachDua.getText().isEmpty()) {
+                BigDecimal tienKhachDua = new BigDecimal(txtTienKhachDua.getText());
+                BigDecimal tienThua = tienKhachDua.subtract(new BigDecimal(txtTongTien.getText()));
+                txtTienTraLai.setText(String.valueOf(tienThua));
+            }
+        }
+    }//GEN-LAST:event_txtTienKhachDuaCaretUpdate
+
+    private void txtTienCKCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienCKCaretUpdate
+        // TODO add your handling code here:
+        if (cbbHinhThuc.getSelectedIndex() == 1) {
+            if (!txtTienCK.getText().isEmpty()) {
+                BigDecimal tienCK = new BigDecimal(txtTienCK.getText());
+                BigDecimal tienThua = tienCK.subtract(new BigDecimal(txtTongTien.getText()));
+                txtTienTraLai.setText(String.valueOf(tienThua));
+            }
+        }
+        else if(cbbHinhThuc.getSelectedIndex() == 2){
+            if (!txtTienCK.getText().isEmpty()) {
+                    BigDecimal tienKhachDua = new BigDecimal(txtTienKhachDua.getText());
+                    BigDecimal tienCK = new BigDecimal(txtTienCK.getText());
+                    BigDecimal tienThua = (tienKhachDua.add(tienCK)).subtract(new BigDecimal(txtTongTien.getText()));
+                    txtTienTraLai.setText(String.valueOf(tienThua));
+                }
+        }
+    }//GEN-LAST:event_txtTienCKCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
