@@ -253,7 +253,9 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
         cboAll = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(1254, 850));
+        setMaximumSize(new java.awt.Dimension(1300, 850));
+        setMinimumSize(new java.awt.Dimension(1300, 850));
+        setPreferredSize(new java.awt.Dimension(1300, 850));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Khuyến mại", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
 
@@ -553,7 +555,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

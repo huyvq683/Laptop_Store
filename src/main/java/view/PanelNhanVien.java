@@ -143,6 +143,8 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
 
         setPreferredSize(new java.awt.Dimension(1300, 850));
 
+        pnQLNV.setMaximumSize(new java.awt.Dimension(1300, 850));
+        pnQLNV.setMinimumSize(new java.awt.Dimension(1300, 850));
         pnQLNV.setPreferredSize(new java.awt.Dimension(1300, 850));
 
         pnThongTinNV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông Tin Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 18))); // NOI18N
@@ -558,7 +560,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
         pnDanhSachNVLayout.setVerticalGroup(
             pnDanhSachNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -597,7 +599,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             .addGroup(pnQLNVLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnThongTinNV, javax.swing.GroupLayout.PREFERRED_SIZE, 1264, Short.MAX_VALUE)
+                    .addComponent(pnThongTinNV, javax.swing.GroupLayout.PREFERRED_SIZE, 1286, Short.MAX_VALUE)
                     .addComponent(pnDanhSachNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -618,7 +620,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
+                .addComponent(pnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 1310, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
