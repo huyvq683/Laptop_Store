@@ -55,7 +55,7 @@ public class HoaDonChiTietRepository {
     }
 
 //lười dùng id quá :)))
-       public List<HoaDonChiTietResponse> get_All(String ma) {
+    public List<HoaDonChiTietResponse> get_All(String ma) {
         List<HoaDonChiTietResponse> lists = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("SELECT new custommodel.HoaDonChiTietResponse"
@@ -100,15 +100,15 @@ public class HoaDonChiTietRepository {
         return ctsp;
     }
 
-    public SanPhamKM getSanPhamKM(UUID id) {
-        SanPhamKM sanPhamKM = null;
+    public List<SanPhamKM> getSanPhamKM(UUID id) {
+        List<SanPhamKM> lits = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM SanPhamKM WHERE idChiTietSP.id = :idChiTietSP");
             query.setParameter("idChiTietSP", id);
-            sanPhamKM = (SanPhamKM) query.getSingleResult();
+            lits = query.getResultList();
         } catch (Exception e) {
         }
-        return sanPhamKM;
+        return lits;
     }
 
     public Boolean add(List<String> listSerial, HoaDon hd) {
@@ -119,9 +119,11 @@ public class HoaDonChiTietRepository {
             for (String serial : listSerial) {
                 HoaDonChiTiet hdct = new HoaDonChiTiet();
                 ChiTietSP ctsp = getCTSPBySerial(serial);
-                SanPhamKM sanPhamKM = getSanPhamKM(ctsp.getId());
-                if (sanPhamKM != null) {
-                    tienKM = sanPhamKM.getDonGia().subtract(sanPhamKM.getTienConLai());
+                List<SanPhamKM> ListSanPhamKM = getSanPhamKM(ctsp.getId());
+                for (SanPhamKM sanPhamKM : ListSanPhamKM) {
+                    if (sanPhamKM != null) {
+                        tienKM = tienKM.add(sanPhamKM.getDonGia().subtract(sanPhamKM.getTienConLai()));
+                    }
                 }
                 hdct.setIdHoaDon(hd);
                 hdct.setIdCTSP(ctsp);

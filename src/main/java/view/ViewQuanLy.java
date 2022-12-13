@@ -36,7 +36,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
      */
     public ViewQuanLy() {
         initComponents();
-        designImg();
         designMenu();
         CheckCapBacKH.dailyCheckingRankCustomer();
         btnBanHang.setBackground(new Color(50, 159, 200));
@@ -50,70 +49,6 @@ public class ViewQuanLy extends javax.swing.JFrame {
         lblMa.setText(nv.getMa());
         lblTen.setText(nv.getHoTen());
         lblChucVu.setText(chucVu());
-    }
-
-    private Image scaleImage(Image image, int w, int h) {
-        Image scaled = image.getScaledInstance(w, h, Image.SCALE_SMOOTH);
-        return scaled;
-    }
-
-    private void designImg() {
-
-        ImageIcon thoat = new ImageIcon("src/main/img/thoat.png");
-        int widthThoat = 55;
-        int heightThoat = 55;
-        Image imgThoat = scaleImage(thoat.getImage(), widthThoat, heightThoat);
-        ImageIcon scaledIconThoat = new ImageIcon(imgThoat);
-        btnThoat.setIcon(scaledIconThoat);
-
-        ImageIcon banHang = new ImageIcon("src/main/img/ban.png");
-        int withBan = 45;
-        int heightBan = 45;
-        Image imgBanHang = scaleImage(banHang.getImage(), withBan, heightBan);
-        ImageIcon scaledIconBanHang = new ImageIcon(imgBanHang);
-        btnBanHang.setIcon(scaledIconBanHang);
-
-        ImageIcon mayTinh = new ImageIcon("src/main/img/maytinh.png");
-        int withMayTinh = 40;
-        int heightMayTinh = 40;
-        Image imgMayTinh = scaleImage(mayTinh.getImage(), withMayTinh, heightMayTinh);
-        ImageIcon scaledIconMayTinh = new ImageIcon(imgMayTinh);
-        btnSanPham.setIcon(scaledIconMayTinh);
-
-        ImageIcon nhanVien = new ImageIcon("src/main/img/nhanvien.png");
-        int withNhanVien = 45;
-        int heightNhanVien = 45;
-        Image imgNhanVien = scaleImage(nhanVien.getImage(), withNhanVien, heightNhanVien);
-        ImageIcon scaledIconNhanVien = new ImageIcon(imgNhanVien);
-        btnNhanVien.setIcon(scaledIconNhanVien);
-
-        ImageIcon hoaDon = new ImageIcon("src/main/img/hoadon.png");
-        int withHoaDon = 40;
-        int heightHoaDon = 40;
-        Image imgHoaDon = scaleImage(hoaDon.getImage(), withHoaDon, heightHoaDon);
-        ImageIcon scaledIconHoaDon = new ImageIcon(imgHoaDon);
-        btnHoaDon.setIcon(scaledIconHoaDon);
-
-        ImageIcon sale = new ImageIcon("src/main/img/sale.png");
-        int withSale = 45;
-        int heightSale = 45;
-        Image imgSale = scaleImage(sale.getImage(), withSale, heightSale);
-        ImageIcon scaledIconSale = new ImageIcon(imgSale);
-        btnkhuyenMai.setIcon(scaledIconSale);
-
-        ImageIcon khachHang = new ImageIcon("src/main/img/khachhang.png");
-        int withKhachHang = 45;
-        int heightKhachHang = 45;
-        Image imgKhachHang = scaleImage(khachHang.getImage(), withKhachHang, heightKhachHang);
-        ImageIcon scaledIconKhachHang = new ImageIcon(imgKhachHang);
-        btnKhachHang.setIcon(scaledIconKhachHang);
-
-        ImageIcon thongKe = new ImageIcon("src/main/img/thongke.png");
-        int withThongKe = 50;
-        int heightThongKe = 50;
-        Image imgThongKe = scaleImage(thongKe.getImage(), withThongKe, heightThongKe);
-        ImageIcon scaledIconThongKe = new ImageIcon(imgThongKe);
-        btnThongKe.setIcon(scaledIconThongKe);
     }
 
     private void designMenu() {
@@ -177,7 +112,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnSanPham.setBackground(new java.awt.Color(0, 0, 0));
         btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         btnSanPham.setForeground(new java.awt.Color(255, 255, 255));
-        btnSanPham.setIcon(new ImageIcon("src/main/img/maytinh.png"));
+        btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/maytinh.png"))); // NOI18N
         btnSanPham.setText("Sản phẩm");
         btnSanPham.setActionCommand(" Sản phẩm");
         btnSanPham.setAlignmentY(0.0F);
@@ -203,7 +138,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnBanHang.setBackground(new java.awt.Color(0, 0, 0));
         btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         btnBanHang.setForeground(new java.awt.Color(255, 255, 255));
-        btnBanHang.setIcon(new ImageIcon("src/main/img/ban.png"));
+        btnBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ban.png"))); // NOI18N
         btnBanHang.setText("Bán hàng");
         btnBanHang.setAlignmentY(0.0F);
         btnBanHang.setBorder(null);
@@ -227,7 +162,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnNhanVien.setBackground(new java.awt.Color(0, 0, 0));
         btnNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         btnNhanVien.setForeground(new java.awt.Color(255, 255, 255));
-        btnNhanVien.setIcon(new ImageIcon("src/main/img/nhanvien.png"));
+        btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nhanvien.png"))); // NOI18N
         btnNhanVien.setText("Nhân viên");
         btnNhanVien.setAlignmentY(0.0F);
         btnNhanVien.setBorder(null);
@@ -251,7 +186,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnHoaDon.setBackground(new java.awt.Color(0, 0, 0));
         btnHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         btnHoaDon.setForeground(new java.awt.Color(255, 255, 255));
-        btnHoaDon.setIcon(new ImageIcon("src/main/img/hoadon.png"));
+        btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hoadon.png"))); // NOI18N
         btnHoaDon.setText("Hóa đơn");
         btnHoaDon.setToolTipText("");
         btnHoaDon.setActionCommand("   Hóa đơn");
@@ -277,7 +212,7 @@ public class ViewQuanLy extends javax.swing.JFrame {
         btnkhuyenMai.setBackground(new java.awt.Color(0, 0, 0));
         btnkhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         btnkhuyenMai.setForeground(new java.awt.Color(255, 255, 255));
-        btnkhuyenMai.setIcon(new ImageIcon("src/main/img/sale.png"));
+        btnkhuyenMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sale2.png"))); // NOI18N
         btnkhuyenMai.setText("Khuyến mãi");
         btnkhuyenMai.setAlignmentY(0.0F);
         btnkhuyenMai.setBorder(null);
