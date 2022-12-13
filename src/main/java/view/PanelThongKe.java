@@ -793,8 +793,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnMai.setIcon(new ImageIcon("src/main/img/mailtk.png")
-        );
+        btnMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mailtk.png"))); // NOI18N
         btnMai.setBorderPainted(false);
         btnMai.setContentAreaFilled(false);
         btnMai.setToolTipText("Gửi mail doanh thu");
@@ -1519,7 +1518,7 @@ public class PanelThongKe extends javax.swing.JPanel {
 
     private void btnMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaiActionPerformed
         String email = JOptionPane.showInputDialog("Vui lòng nhập mail nhân viên/quản lí nhận: ");
-        if (!email.isEmpty()) {
+        if (!email.isEmpty() || email == null) {
             if (serviceQuenMK.getOne(email) == "Tài khoản chính xác") {
                 final String username = "laptopgroup3@gmail.com";
                 final String password = "lveekscgavporrkq";
