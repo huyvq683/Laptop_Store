@@ -69,20 +69,32 @@ public class SerialDaBanRepository {
         }
         return ctsp;
     }
-    
+
+    public SerialDaBan getSerialDB(String serial) {
+        SerialDaBan serialDaBan = null;
+        try ( Session sess = HibernateUtil.getFACTORY().openSession();) {
+            Query q = sess.createQuery("FROM SerialDaBan WHERE ma = :serial");
+            q.setParameter("serial", serial);
+            serialDaBan = (SerialDaBan) q.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return serialDaBan;
+    }
 
     public Boolean delete(List<String> listSerial) {
-        Transaction transaction = null;
         boolean check = false;
+        Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
             for (String serial : listSerial) {
-                transaction = session.beginTransaction();
-                Query query = session.createQuery("DELETE FROM SerialDaBan WHERE ma = :ma");
-                query.setParameter("ma", listSerial);
-                query.executeUpdate();
-                transaction.commit();
-                check = true;
+                ChiTietSP chiTietSP = getCTSPBySerial(serial);
+                SerialDaBan serialDaBan = getSerialDB(chiTietSP.getSerial());
+                System.out.println(serialDaBan.getMa());
+                session.delete(serialDaBan);
             }
+            transaction.commit();
+            check = true;
         } catch (Exception e) {
             e.printStackTrace();
         }

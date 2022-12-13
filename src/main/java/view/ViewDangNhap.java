@@ -26,30 +26,24 @@ public class ViewDangNhap extends javax.swing.JFrame {
 
     public ViewDangNhap() {
         initComponents();
-        ImageIcon originalIcon = new ImageIcon("src/main/img/logo.png");
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/img/logo.png"));
         int width = 400;
         int height = 314;
         Image scaled = scaleImage(originalIcon.getImage(), width, height);
         ImageIcon scaledIcon = new ImageIcon(scaled);
         lblLogo.setIcon(scaledIcon);
-        ImageIcon privateIcon = new ImageIcon("src/main/img/private.png");
+        ImageIcon privateIcon = new ImageIcon(getClass().getResource("/img/private.png"));
         int widthPrEye = 30;
         int heightPrEye = 30;
         Image closeEye = scaleImage(privateIcon.getImage(), widthPrEye, heightPrEye);
         ImageIcon closeEyeView = new ImageIcon(closeEye);
         lblE.setIcon(closeEyeView);
-        ImageIcon showIcon = new ImageIcon("src/main/img/view.png");
+        ImageIcon showIcon = new ImageIcon(getClass().getResource("/img/view.png"));
         int widthVEye = 35;
         int heightVEye = 35;
         Image openEye = scaleImage(showIcon.getImage(), widthVEye, heightVEye);
         ImageIcon openEysView = new ImageIcon(openEye);
         lblEye.setIcon(openEysView);
-        ImageIcon loginIcon = new ImageIcon("src/main/img/loginIcon.png");
-        int loginWidth = 70;
-        int loginHeight = 70;
-        Image login = scaleImage(loginIcon.getImage(), loginWidth, loginHeight);
-        ImageIcon scaledLoginIcon = new ImageIcon(login);
-        lblLogin.setIcon(scaledLoginIcon);
         txtTaiKhoan.setBackground(new Color(0, 0, 0, 0));
         txtMatKhau.setBackground(new Color(0, 0, 0, 0));
         lblE.setVisible(false);
@@ -127,7 +121,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 314));
 
-        lblLogo.setIcon(new ImageIcon("src/main/img/logo.png"));
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 102));
@@ -225,7 +219,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addGap(0, 818, Short.MAX_VALUE)
@@ -233,13 +227,11 @@ public class ViewDangNhap extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)

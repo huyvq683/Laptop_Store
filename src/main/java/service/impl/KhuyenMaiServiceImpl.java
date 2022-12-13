@@ -68,17 +68,10 @@ public class KhuyenMaiServiceImpl {
         return list;
     }
 
-    public static void main(String[] args) {
-        new KhuyenMaiServiceImpl().getAllKhuyenMai("", 0).forEach(c -> System.out.println(c));
-    }
-
     public void deleteSanPhamKhuyenMaiByMa(List<SanPhamViewKMResponse> listMaSP, KhuyenMai km) {
         khuyenMaiRepository.deleteSanPhamKhuyenMaiByMa(listMaSP, km);
     }
 
-//    public static void main(String[] args) {
-//        new KhuyenMaiServiceImpl().getAllKhuyenMai("").forEach(c -> System.out.println(c.getTenKM()));
-//    }
     public int genMaHD() {
         return khuyenMaiRepository.genMaHD();
     }
