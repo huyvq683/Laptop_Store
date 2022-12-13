@@ -5,8 +5,6 @@ package view;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.awt.Color;
 import java.awt.Image;
 import java.util.Properties;
@@ -45,7 +43,7 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
         txtMaXacThuc.setBackground(new Color(0, 0, 0, 0));
         turnOff();
         anIcon(btnHienMaXacThuc);
-         ImageIcon originalIcon = new ImageIcon("src/main/img/logo.png");
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/img/logo.png"));
         int width = 400;
         int height = 314;
         Image scaled = scaleImage(originalIcon.getImage(), width, height);
@@ -54,14 +52,14 @@ public class ViewQuenMatKhau extends javax.swing.JFrame {
     }
 
     private void anIcon(JButton a) {
-        ImageIcon privateIcon = new ImageIcon("src/main/img/anquenmk.png");
+        ImageIcon privateIcon = new ImageIcon(getClass().getResource("/img/anquenmk.png"));
         Image closeEye = scaleImage(privateIcon.getImage(), 24, 24);
         ImageIcon closeEyeView = new ImageIcon(closeEye);
         a.setIcon(closeEyeView);
     }
 
     private void hienIcon(JButton a) {
-        ImageIcon privateIcon = new ImageIcon("src/main/img/hienquenmk.png");
+        ImageIcon privateIcon = new ImageIcon(getClass().getResource("/img/hienquenmk.png"));
         Image closeEye = scaleImage(privateIcon.getImage(), 24, 24);
         ImageIcon closeEyeView = new ImageIcon(closeEye);
         a.setIcon(closeEyeView);

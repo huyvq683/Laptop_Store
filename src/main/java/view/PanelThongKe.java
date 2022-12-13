@@ -465,7 +465,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             }
         });
 
-        btnLocSP.setIcon(new ImageIcon("src/main/img/loc.png"));
+        btnLocSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loc.png"))); // NOI18N
         btnLocSP.setText("Lọc");
         btnLocSP.setBackground(new java.awt.Color(41, 183, 212));
         btnLocSP.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -485,7 +485,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             }
         });
 
-        btnBoLocSP.setIcon(new ImageIcon("src/main/img/boloc.png"));
+        btnBoLocSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boloc.png"))); // NOI18N
         btnBoLocSP.setText("Bỏ lọc");
         btnBoLocSP.setBackground(new java.awt.Color(41, 183, 212));
         btnBoLocSP.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -686,7 +686,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         panelDoanhThuNgay.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Doanh thu theo ngày", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 20))); // NOI18N
         panelDoanhThuNgay.setMaximumSize(new java.awt.Dimension(0, 0));
 
-        btnBoLocDT.setIcon(new ImageIcon("src/main/img/boloc.png"));
+        btnBoLocDT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boloc.png"))); // NOI18N
         btnBoLocDT.setText("Bỏ lọc");
         btnBoLocDT.setBackground(new java.awt.Color(41, 183, 212));
         btnBoLocDT.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -706,7 +706,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             }
         });
 
-        btnLocDT.setIcon(new ImageIcon("src/main/img/loc.png"));
+        btnLocDT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loc.png"))); // NOI18N
         btnLocDT.setText("Lọc");
         btnLocDT.setBackground(new java.awt.Color(41, 183, 212));
         btnLocDT.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -950,7 +950,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelDoanhThuNgay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Thống kê", jPanel4);
@@ -985,7 +985,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         cbbBieuDoChonThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbbBieuDoChonThang.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        btnLocBieuDo.setIcon(new ImageIcon("src/main/img/loc.png"));
+        btnLocBieuDo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loc.png"))); // NOI18N
         btnLocBieuDo.setText("Lọc");
         btnLocBieuDo.setBackground(new java.awt.Color(41, 183, 212));
         btnLocBieuDo.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -1005,7 +1005,7 @@ public class PanelThongKe extends javax.swing.JPanel {
             }
         });
 
-        btnBoLocBieuDo.setIcon(new ImageIcon("src/main/img/boloc.png"));
+        btnBoLocBieuDo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boloc.png"))); // NOI18N
         btnBoLocBieuDo.setText("Bỏ lọc");
         btnBoLocBieuDo.setBackground(new java.awt.Color(41, 183, 212));
         btnBoLocBieuDo.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -1059,7 +1059,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                                 .addGap(32, 32, 32)
                                 .addComponent(btnBoLocBieuDo))
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 566, Short.MAX_VALUE)))
+                        .addGap(0, 514, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -1079,7 +1079,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                         .addComponent(cbbBieuDoChonThang, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25)
                 .addComponent(panelHienBieuDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jToolBar1.add(jPanel7);

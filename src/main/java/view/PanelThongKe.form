@@ -136,7 +136,7 @@
                           <Component id="panelSanPham" max="32767" attributes="0"/>
                           <Component id="panelDoanhThuNgay" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="117" max="32767" attributes="0"/>
+                      <EmptySpace pref="116" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -323,8 +323,8 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnLocSP">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new ImageIcon(&quot;src/main/img/loc.png&quot;)" type="code"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/loc.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="L&#x1ecd;c"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -342,8 +342,8 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnBoLocSP">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new ImageIcon(&quot;src/main/img/boloc.png&quot;)" type="code"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/boloc.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="B&#x1ecf; l&#x1ecd;c"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -684,8 +684,8 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btnBoLocDT">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new ImageIcon(&quot;src/main/img/boloc.png&quot;)" type="code"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/boloc.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="B&#x1ecf; l&#x1ecd;c"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -703,8 +703,8 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnLocDT">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new ImageIcon(&quot;src/main/img/loc.png&quot;)" type="code"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/loc.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="L&#x1ecd;c"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1028,7 +1028,7 @@
                                       </Group>
                                       <Component id="jLabel9" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="566" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="514" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1055,7 +1055,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="panelHienBieuDo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                          <EmptySpace pref="45" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1124,8 +1124,8 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnLocBieuDo">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new ImageIcon(&quot;src/main/img/loc.png&quot;)" type="code"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/loc.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="L&#x1ecd;c"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1143,8 +1143,8 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnBoLocBieuDo">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new ImageIcon(&quot;src/main/img/boloc.png&quot;)" type="code"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/boloc.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="B&#x1ecf; l&#x1ecd;c"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
