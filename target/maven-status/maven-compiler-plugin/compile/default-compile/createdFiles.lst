@@ -17,6 +17,7 @@ repository\impl\CPURepository.class
 view\ViewQuanLy$14.class
 view\PanelThongKe$26.class
 view\PanelThongKe.class
+view\PanelBanHang$24.class
 view\ViewNhanVien$1.class
 service\RamService.class
 domainmodel\Common.class
@@ -43,6 +44,7 @@ view\PanelHoaDon$4.class
 repository\impl\RamRepository.class
 view\PanelSanPham$44.class
 view\ViewDoiMatKhau2$1.class
+view\PanelBanHang$23.class
 view\PanelNhanVien$7.class
 view\PanelBanHang$5.class
 view\PanelSanPham$17.class
@@ -72,6 +74,7 @@ repository\impl\HangRepository.class
 view\PanelSanPham$26.class
 view\PanelBanHang$15.class
 repository\impl\NhanVienRepository.class
+view\PanelSanPham$49.class
 service\impl\SanPhamServiceImpl.class
 service\impl\KhachHangServiceImpl.class
 view\PanelNhanVien$9.class
@@ -192,6 +195,7 @@ entity\SendEmail$1.class
 view\ViewNhanVien$12.class
 view\PanelBanHang$6.class
 view\PanelSanPham$10.class
+view\PanelSanPham$50.class
 service\CPUService.class
 view\PanelSanPham$22.class
 domainmodel\SanPhamKM.class

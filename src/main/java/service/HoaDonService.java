@@ -44,7 +44,7 @@ public interface HoaDonService {
 
     List<HoaDon> get_All();
 
-    List<HoaDonResponse> getAll(NhanVien nhanVien);
+    List<HoaDonResponse> getAllHoaDon(NhanVien nhanVien);
 
     String add(HoaDon hoaDon);
 

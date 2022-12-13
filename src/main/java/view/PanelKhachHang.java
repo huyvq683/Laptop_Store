@@ -3,6 +3,7 @@ package view;
 import custommodel.KhachHangRespone;
 import domainmodel.KhachHang;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -125,7 +126,7 @@ public class PanelKhachHang extends javax.swing.JPanel {
         jLabel34.setText("Tìm số điện thoại");
 
         txtSearch.setForeground(new java.awt.Color(51, 51, 51));
-        txtSearch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+        txtSearch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
         txtSearch.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtSearchCaretUpdate(evt);
@@ -172,16 +173,16 @@ public class PanelKhachHang extends javax.swing.JPanel {
         jLabel35.setText("Địa chỉ");
 
         txtEmail.setForeground(new java.awt.Color(51, 51, 51));
-        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         txtDiaChiKH.setForeground(new java.awt.Color(51, 51, 51));
-        txtDiaChiKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+        txtDiaChiKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         txtHoTenKH.setForeground(new java.awt.Color(51, 51, 51));
-        txtHoTenKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+        txtHoTenKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         txtSDT.setForeground(new java.awt.Color(51, 51, 51));
-        txtSDT.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+        txtSDT.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 184, 213)));
 
         jLabel36.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel36.setText("Số điện thoại");
@@ -235,15 +236,16 @@ public class PanelKhachHang extends javax.swing.JPanel {
                                 .addComponent(jLabel33)
                                 .addComponent(jLabel29))
                             .addGap(62, 62, 62)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtDiaChiKH, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                                .addComponent(txtEmail)
-                                .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtHoTenKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel8Layout.createSequentialGroup()
                                     .addComponent(proCapBac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblCapBac, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addGap(33, 33, 33)
+                                    .addComponent(lblCapBac, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtHoTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtDiaChiKH, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))))))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -354,22 +356,22 @@ public class PanelKhachHang extends javax.swing.JPanel {
         BigDecimal tienKhachMua = (BigDecimal) new KhachHangServiceImpl().getTongTienByIDHD(kh.getId());
         if (tienKhachMua != null) {
             if (kh.getCapBac() == 0) {
-                x = (tienKhachMua.divide(new BigDecimal(30000000))).multiply(new BigDecimal(100));
+                x = (tienKhachMua.divide(new BigDecimal(30000000), 2, RoundingMode.HALF_UP)).multiply(new BigDecimal(100));
                 proCapBac.setValue(x.intValue());
                 lblCapBac.setText("");
                 lblCapBac.setIcon(new ImageIcon(""));
             } else if (kh.getCapBac() == 1) {
-                x = (tienKhachMua.divide(new BigDecimal(60000000))).multiply(new BigDecimal(100));
+                x = (tienKhachMua.divide(new BigDecimal(60000000), 2, RoundingMode.HALF_UP)).multiply(new BigDecimal(100));
                 proCapBac.setValue(x.intValue());
                 lblCapBac.setText("Đồng");
                 lblCapBac.setIcon(new ImageIcon(getClass().getResource("/img/dong.png")));
             } else if (kh.getCapBac() == 2) {
-                x = (tienKhachMua.divide(new BigDecimal(90000000))).multiply(new BigDecimal(100));
+                x = (tienKhachMua.divide(new BigDecimal(90000000), 2, RoundingMode.HALF_UP)).multiply(new BigDecimal(100));
                 proCapBac.setValue(x.intValue());
                 lblCapBac.setText("Bạc");
                 lblCapBac.setIcon(new ImageIcon(getClass().getResource("/img/bac.png")));
             } else if (kh.getCapBac() == 3) {
-                x = (tienKhachMua.divide(new BigDecimal(120000000))).multiply(new BigDecimal(100));
+                x = (tienKhachMua.divide(new BigDecimal(120000000), 2, RoundingMode.HALF_UP)).multiply(new BigDecimal(100));
                 proCapBac.setValue(x.intValue());
                 lblCapBac.setText("Vàng");
                 lblCapBac.setIcon(new ImageIcon(getClass().getResource("/img/vang.png")));

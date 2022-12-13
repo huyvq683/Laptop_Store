@@ -26,8 +26,6 @@ public class ViewExcelReponse {
     private String maHD;
     private String maNV;
     private String tenNV;
-    private String tenSP;
-    private BigDecimal donGia;
     private int hinhThuc;
     private BigDecimal tienKhachTra;
     private BigDecimal tienCK;
@@ -35,7 +33,6 @@ public class ViewExcelReponse {
     private BigDecimal tongTien;
     private Date ngayTao;
     private int tinhTrang;
-
 
     public String trangThai() {
         switch (tinhTrang) {
@@ -67,7 +64,7 @@ public class ViewExcelReponse {
     }
 
     public Object[] toDataRow() {
-        return new Object[]{maHD, maNV + tenNV, tenSP, donGia, getHinhThuc1(), tienKhachTra, tienCK, tienThua, tongTien, ngayTao1(), trangThai()};
+        return new Object[]{maHD, maNV + tenNV, getHinhThuc1(), tienKhachTra, tienCK, tienThua, tongTien, ngayTao1(), trangThai()};
     }
 
 }
