@@ -253,7 +253,9 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
         cboAll = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(1254, 850));
+        setMaximumSize(new java.awt.Dimension(1300, 850));
+        setMinimumSize(new java.awt.Dimension(1300, 850));
+        setPreferredSize(new java.awt.Dimension(1300, 850));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Khuyến mại", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
 
@@ -274,7 +276,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
 
         cboLoaiKM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "%", "Tiền" }));
 
-        btnThem.setIcon(new ImageIcon("src/main/img/newNV.png"));
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/newNV.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.setBackground(new java.awt.Color(40, 184, 213));
         btnThem.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -284,7 +286,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
             }
         });
 
-        btnCapNhat.setIcon(new ImageIcon("src/main/img/boloc.png"));
+        btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sua.png"))); // NOI18N
         btnCapNhat.setText("Cập nhật");
         btnCapNhat.setBackground(new java.awt.Color(40, 184, 213));
         btnCapNhat.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -484,7 +486,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblSanPham);
 
-        jButton1.setIcon(new ImageIcon("src/main/img/newNV.png"));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/newNV.png"))); // NOI18N
         jButton1.setText("Áp dụng khuyến mại");
         jButton1.setBackground(new java.awt.Color(40, 184, 213));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -534,7 +536,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel8.setIcon(new ImageIcon("src/main/img/sale.png"));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sale.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -553,7 +555,7 @@ public class PanelKhuyenMai extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

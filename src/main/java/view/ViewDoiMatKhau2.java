@@ -37,7 +37,7 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
         txtMatKhauMoi.setBackground(new Color(0, 0, 0, 0));
         txtMatKhauCu.setBackground(new Color(0, 0, 0, 0));
         txtNhapLaiMatKhauMoi.setBackground(new Color(0, 0, 0, 0));
-        ImageIcon originalIcon = new ImageIcon("src/main/img/logo.png");
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/img/logo.png"));
         int width = 400;
         int height = 314;
         Image scaled = scaleImage(originalIcon.getImage(), width, height);
@@ -104,24 +104,21 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 102, 102));
         jLabel7.setText("Mật khẩu cũ");
 
-        lblMkc.setIcon(new ImageIcon("src/main/img/mkHide.png"));
-        lblMkc.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblMkc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mkHide.png"))); // NOI18N
         lblMkc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMkcMouseClicked(evt);
             }
         });
 
-        lblMkm.setIcon(new ImageIcon("src/main/img/mkHide.png"));
-        lblMkm.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblMkm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mkHide.png"))); // NOI18N
         lblMkm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMkmMouseClicked(evt);
             }
         });
 
-        lblXnMkm.setIcon(new ImageIcon("src/main/img/mkHide.png"));
-        lblXnMkm.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblXnMkm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mkHide.png"))); // NOI18N
         lblXnMkm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblXnMkmMouseClicked(evt);
@@ -199,11 +196,11 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblMkc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblMkc)
                                 .addGap(40, 40, 40)
-                                .addComponent(lblMkm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblMkm)
                                 .addGap(40, 40, 40)
-                                .addComponent(lblXnMkm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblXnMkm))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,7 +274,6 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
                 Common.webcam.close();
                 ViewDangNhap dn = new ViewDangNhap();
                 dn.setVisible(true);
-
             }
         }
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
@@ -285,11 +281,11 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
     private void lblMkcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMkcMouseClicked
         if (checkMkc == 0) {
             txtMatKhauCu.setEchoChar('*');
-            lblMkc.setIcon(new ImageIcon("src/main/img/mkHide.png"));
+            lblMkc.setIcon(new ImageIcon(getClass().getResource("/img/mkHide.png")));
             checkMkc = 1;
         } else {
             txtMatKhauCu.setEchoChar((char) 0);
-            lblMkc.setIcon(new ImageIcon("src/main/img/mkView.png"));
+            lblMkc.setIcon(new ImageIcon(getClass().getResource("/img/mkView.png")));
             checkMkc = 0;
         }
     }//GEN-LAST:event_lblMkcMouseClicked
@@ -297,11 +293,11 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
     private void lblMkmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMkmMouseClicked
         if (checkMkm == 0) {
             txtMatKhauMoi.setEchoChar('*');
-            lblMkm.setIcon(new ImageIcon("src/main/img/mkHide.png"));
+            lblMkm.setIcon(new ImageIcon(getClass().getResource("/img/mkHide.png")));
             checkMkm = 1;
         } else {
             txtMatKhauMoi.setEchoChar((char) 0);
-            lblMkm.setIcon(new ImageIcon("src/main/img/mkView.png"));
+            lblMkm.setIcon(new ImageIcon(getClass().getResource("/img/mkView.png")));
             checkMkm = 0;
         }
     }//GEN-LAST:event_lblMkmMouseClicked
@@ -309,11 +305,11 @@ public class ViewDoiMatKhau2 extends javax.swing.JFrame {
     private void lblXnMkmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblXnMkmMouseClicked
         if (checkXn == 0) {
             txtNhapLaiMatKhauMoi.setEchoChar('*');
-            lblXnMkm.setIcon(new ImageIcon("src/main/img/mkHide.png"));
+            lblXnMkm.setIcon(new ImageIcon(getClass().getResource("/img/mkHide.png")));
             checkXn = 1;
         } else {
             txtNhapLaiMatKhauMoi.setEchoChar((char) 0);
-            lblXnMkm.setIcon(new ImageIcon("src/main/img/mkView.png"));
+            lblXnMkm.setIcon(new ImageIcon(getClass().getResource("/img/mkView.png")));
             checkXn = 0;
         }
     }//GEN-LAST:event_lblXnMkmMouseClicked
