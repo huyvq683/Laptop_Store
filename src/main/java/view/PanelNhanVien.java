@@ -445,7 +445,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         jLabel54.setText("Tìm kiếm");
 
         txtSearch.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtSearch.setToolTipText("Tìm kiếm nhân viên ");
+        txtSearch.setToolTipText("Tìm kiếm theo mã, tên, sđt, email");
         txtSearch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
         txtSearch.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -620,7 +620,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, 1310, Short.MAX_VALUE)
+                .addComponent(pnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

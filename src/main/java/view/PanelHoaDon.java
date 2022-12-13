@@ -71,6 +71,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         Image scaled = scaleImage(originalIcon.getImage(), width, height);
         ImageIcon scaledIcon = new ImageIcon(scaled);
         lblLogo.setIcon(scaledIcon);
+        btnIN.setEnabled(false);
     }
 
     public void showResult(List<HoaDonResponse> list) {
@@ -98,7 +99,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
     public HoaDonResponse getThongTinHoaDon() {
         return hoaDonService.getByMa(lblMa.getText());
     }
-    
+
     private Image scaleImage(Image image, int w, int h) {
         Image scaled = image.getScaledInstance(w, h, Image.SCALE_SMOOTH);
         return scaled;
@@ -144,7 +145,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lblTongTien = new javax.swing.JTextField();
         lblKD = new javax.swing.JTextField();
         lblCK = new javax.swing.JTextField();
-        btnThem2 = new javax.swing.JButton();
+        btnIN = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -366,13 +367,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lblCK.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblCK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
 
-        btnThem2.setBackground(new java.awt.Color(41, 183, 212));
-        btnThem2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnThem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_printer_48px_2.png"))); // NOI18N
-        btnThem2.setText("In lại hóa đơn");
-        btnThem2.addActionListener(new java.awt.event.ActionListener() {
+        btnIN.setBackground(new java.awt.Color(41, 183, 212));
+        btnIN.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnIN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_printer_48px_2.png"))); // NOI18N
+        btnIN.setText("In lại hóa đơn");
+        btnIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThem2ActionPerformed(evt);
+                btnINActionPerformed(evt);
             }
         });
 
@@ -418,7 +419,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(lblCK, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnThem2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnIN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54))
         );
         jPanel1Layout.setVerticalGroup(
@@ -456,7 +457,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblLTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnThem2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnIN, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -545,6 +546,11 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
         getListHDCT();
         showResultHDCT(listHoaChiTietResponses);
+        if (tbaBang.getModel().getValueAt(index, 3).toString().equalsIgnoreCase("Đã Thanh Toán")) {
+            btnIN.setEnabled(true);
+        } else {
+            btnIN.setEnabled(false);
+        }
     }//GEN-LAST:event_tbaBangMouseClicked
 
     private void rbnChoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnChoActionPerformed
@@ -608,27 +614,21 @@ public class PanelHoaDon extends javax.swing.JPanel {
             cell.setCellValue("Khách Hàng");
             cell.setCellStyle(headerCellStyle);
             cell = row.createCell(4, CellType.STRING);
-            cell.setCellValue("Tên SP");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(5, CellType.STRING);
-            cell.setCellValue("Đơn Giá");
-            cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(6, CellType.STRING);
             cell.setCellValue("Hình Thức");
             cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(7, CellType.STRING);
+            cell = row.createCell(5, CellType.STRING);
             cell.setCellValue("Tiền Khách Đưa");
             cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(8, CellType.STRING);
+            cell = row.createCell(6, CellType.STRING);
             cell.setCellValue("Tiền Thừa");
             cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(9, CellType.STRING);
+            cell = row.createCell(7, CellType.STRING);
             cell.setCellValue("Tổng Tiền");
             cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(10, CellType.STRING);
+            cell = row.createCell(8, CellType.STRING);
             cell.setCellValue("Ngày Tạo");
             cell.setCellStyle(headerCellStyle);
-            cell = row.createCell(11, CellType.STRING);
+            cell = row.createCell(9, CellType.STRING);
             cell.setCellValue("Tình Trạng");
             cell.setCellStyle(headerCellStyle);
 
@@ -644,15 +644,13 @@ public class PanelHoaDon extends javax.swing.JPanel {
                     row.createCell(3).setCellValue("Khách lẻ");
                 } else {
                     row.createCell(3).setCellValue(kh.getMa() + " - " + kh.getTen() + " - " + kh.getSdt());
-                    row.createCell(6).setCellValue(ctcp.getHinhThuc1());
-                    row.createCell(7).setCellValue(ctcp.getTienKhachTra().toString() + ctcp.getTienCK().toString());
-                    row.createCell(8).setCellValue(ctcp.getTienThua().toString());
-                    row.createCell(9).setCellValue(ctcp.getTongTien().toString());
+                    row.createCell(4).setCellValue(ctcp.getHinhThuc1());
+                    row.createCell(5).setCellValue(ctcp.getTienKhachTra().toString() + ctcp.getTienCK().toString());
+                    row.createCell(6).setCellValue(ctcp.getTienThua().toString());
+                    row.createCell(7).setCellValue(ctcp.getTongTien().toString());
                 }
-                row.createCell(10).setCellValue(ctcp.getNgayTao().toString());
-                row.createCell(4).setCellValue(ctcp.getTenSP());
-                row.createCell(5).setCellValue(String.valueOf(ctcp.getDonGia()));
-                row.createCell(11).setCellValue(ctcp.trangThai());
+                row.createCell(8).setCellValue(ctcp.getNgayTao().toString());
+                row.createCell(9).setCellValue(ctcp.trangThai());
 
             }
             FileOutputStream out = new FileOutputStream(new File("D:/ExportHoaDon .xlsx"));
@@ -735,50 +733,42 @@ public class PanelHoaDon extends javax.swing.JPanel {
         return tongTien;
     }
 
-    private void btnThem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem2ActionPerformed
+    private void btnINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINActionPerformed
         // TODO add your handling code here:
-        int rows = tbaBang.getSelectedRow();
-        String trangThai = tbaBang.getModel().getValueAt(rows, 3).toString();
-        if (trangThai.equalsIgnoreCase("Chờ Thanh Toán")) {
-            JOptionPane.showMessageDialog(this, "Hóa Đơn Chưa Thanh Toán");
-        } else if (trangThai.equalsIgnoreCase("Hủy")) {
-            JOptionPane.showMessageDialog(this, "Hóa Đơn Này Đã Bị Hủy");
-        } else {
-            if (JOptionPane.showConfirmDialog(this, "Bạn muốn in hóa đơn không") == JOptionPane.YES_OPTION) {
-                HoaDonInResponse hd = hoaDonService.getHDIn(lblMa.getText());
-                HoaDonInResponse hdin = new HoaDonInResponse();
-                hdin.setMaHD(hd.getMaHD());
-                hdin.setTenNV(Common.tenNV.getMa() + "-" + Common.tenNV.getHoTen());
-                hdin.setTenKH(hd.getTenKH());
-                hdin.setSdtKH(hd.getSdtKH());
-                hdin.setDiaChi(hd.getDiaChi());
-                hdin.setTongTienTam(tongTien(listHoaChiTietResponses));
-                hdin.setTongTien(hd.getTongTien());
-                int row = tbaBangHDCT.getSelectedRowCount();
-                hdin.setGiamGia(new BigDecimal(tbaBangHDCT.getModel().getValueAt(row, 6).toString()));
-                hdin.setHinhThucThanhToan(hd.loaiThanhToan());
-                List<HoaDonCHiTietInResponse> ghin = new ArrayList<>();
-                for (int i = 0; i < tbaBangHDCT.getRowCount(); i++) {
-                    HoaDonCHiTietInResponse gh = new HoaDonCHiTietInResponse();
-                    gh.setTenSP(tbaBangHDCT.getValueAt(i, 2).toString());
-                    gh.setDonGia(new BigDecimal(tbaBangHDCT.getValueAt(i, 3).toString()));
-                    gh.setKhuyenMai(new BigDecimal(tbaBangHDCT.getValueAt(i, 5).toString()));
-                    gh.setSoLuong(Integer.parseInt(tbaBangHDCT.getValueAt(i, 6).toString()));
-                    gh.setThanhTien(new BigDecimal(Integer.parseInt(tbaBangHDCT.getValueAt(i, 7).toString())));
-                    ghin.add(gh);
-                }
-                if (InHoaDon.makePDF(hdin, ghin)) {
-                    JOptionPane.showMessageDialog(this, "In hoá đơn thành công");
-                }
+        if (JOptionPane.showConfirmDialog(this, "Bạn muốn in hóa đơn không") == JOptionPane.YES_OPTION) {
+            HoaDonInResponse hd = hoaDonService.getHDIn(lblMa.getText());
+            HoaDonInResponse hdin = new HoaDonInResponse();
+            hdin.setMaHD(hd.getMaHD());
+            hdin.setTenNV(Common.tenNV.getMa() + "-" + Common.tenNV.getHoTen());
+            hdin.setTenKH(hd.getTenKH());
+            hdin.setSdtKH(hd.getSdtKH());
+            hdin.setDiaChi(hd.getDiaChi());
+            hdin.setTongTienTam(tongTien(listHoaChiTietResponses));
+            hdin.setTongTien(hd.getTongTien());
+            int row = tbaBangHDCT.getSelectedRowCount();
+            hdin.setGiamGia(new BigDecimal(tbaBangHDCT.getModel().getValueAt(row, 6).toString()));
+            hdin.setHinhThucThanhToan(hd.loaiThanhToan());
+            List<HoaDonCHiTietInResponse> ghin = new ArrayList<>();
+            for (int i = 0; i < tbaBangHDCT.getRowCount(); i++) {
+                HoaDonCHiTietInResponse gh = new HoaDonCHiTietInResponse();
+                gh.setTenSP(tbaBangHDCT.getValueAt(i, 2).toString());
+                gh.setDonGia(new BigDecimal(tbaBangHDCT.getValueAt(i, 3).toString()));
+                gh.setKhuyenMai(new BigDecimal(tbaBangHDCT.getValueAt(i, 5).toString()));
+                gh.setSoLuong(Integer.parseInt(tbaBangHDCT.getValueAt(i, 6).toString()));
+                gh.setThanhTien(new BigDecimal(Integer.parseInt(tbaBangHDCT.getValueAt(i, 7).toString())));
+                ghin.add(gh);
+            }
+            if (InHoaDon.makePDF(hdin, ghin)) {
+                JOptionPane.showMessageDialog(this, "In hoá đơn thành công");
             }
         }
 
-    }//GEN-LAST:event_btnThem2ActionPerformed
+    }//GEN-LAST:event_btnINActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuy;
+    private javax.swing.JButton btnIN;
     private javax.swing.JButton btnThem1;
-    private javax.swing.JButton btnThem2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

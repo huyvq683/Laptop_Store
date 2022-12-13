@@ -109,8 +109,7 @@ public class HoaDonRepository {
     }
 
     public List<ViewExcelReponse> getAllExcel() {
-        String sql = "SELECT new custommodel.ViewExcelReponse(h.ma , n.ma , n.hoTen , hd.tenSP , hd.donGia , h.hinhThuc , h.tienKhachTra , h.tienCK , h.tienThua , h.tongTien , h.ngayTao , h.tinhTrang) From HoaDonChiTiet hd\n"
-                + "			   Join HoaDon h On hd.idHoaDon = h.id\n"
+        String sql = "SELECT new custommodel.ViewExcelReponse(h.ma , n.ma , n.hoTen , h.hinhThuc , h.tienKhachTra , h.tienCK , h.tienThua , h.tongTien , h.ngayTao , h.tinhTrang) From HoaDon h\n"
                 + "                        JOIN NhanVien n ON h.idNV = n.id\n"
                 + " ORDER BY h.ma ASC";
         Query<ViewExcelReponse> query = session.createQuery(sql);
@@ -118,9 +117,8 @@ public class HoaDonRepository {
     }
 
     public List<ViewExcelReponse> getListExcel(int tt) {
-        String sql = "SELECT new custommodel.ViewExcelReponse(h.ma , n.ma , n.hoTen , hd.tenSP , hd.donGia , h.hinhThuc , h.tienKhachTra , h.tienCK , h.tienThua , h.tongTien , h.ngayTao , h.tinhTrang)\n"
-                + "From HoaDonChiTiet hd\n"
-                + "Join HoaDon h On hd.idHoaDon = h.id\n"
+        String sql = "SELECT new custommodel.ViewExcelReponse(h.ma , n.ma , n.hoTen , h.hinhThuc , h.tienKhachTra , h.tienCK , h.tienThua , h.tongTien , h.ngayTao , h.tinhTrang)\n"
+                + "From HoaDon h\n"
                 + "Join NhanVien n On h.idNV = n.id\n"
                 + "WHERE h.tinhTrang = :tinhTrang "
                 + "ORDER BY h.ma ASC ";
