@@ -793,8 +793,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnMai.setIcon(new ImageIcon("src/main/img/mailtk.png")
-        );
+        btnMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mailtk.png"))); // NOI18N
         btnMai.setBorderPainted(false);
         btnMai.setContentAreaFilled(false);
         btnMai.setToolTipText("Gửi mail doanh thu");
