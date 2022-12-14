@@ -75,6 +75,15 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lblLogo.setIcon(scaledIcon);
         btnIN.setEnabled(false);
         btnHuy.setEnabled(false);
+        lblCK.setEditable(false);
+        lblKD.setEditable(false);
+        lblLTT.setEditable(false);
+        lblMa.setEditable(false);
+        lblMaNV.setEditable(false);
+        lblTGT.setEditable(false);
+        lblTT.setEditable(false);
+        lblTenKh.setEditable(false);
+        lblTongTien.setEditable(false);
     }
 
     public void showResult(List<HoaDonResponse> list) {
@@ -353,7 +362,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lblLTT.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblLTT.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
 
-        lblTT.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        lblTT.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblTT.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
 
         lblTongTien.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
