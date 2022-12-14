@@ -786,7 +786,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
             if (hd == null) {
                 HoaDonInResponse hdKL = hoaDonService.getHDInKhachLe(lblMa.getText());
                 hdin.setMaHD(lblMa.getText());
-                hdin.setTenNV(Common.tenNV.getMa() + "-" + Common.tenNV.getHoTen());
+                hdin.setTenNV(Common.tenNV.getHoTen());
                 hdin.setTenKH("Khách Lẻ");
                 hdin.setSdtKH("");
                 hdin.setDiaChi("");
@@ -797,7 +797,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 hdin.setGiamGia(new BigDecimal(tbaBangHDCT.getModel().getValueAt(row, 6).toString()));
             } else {
                 hdin.setMaHD(lblMa.getText());
-                hdin.setTenNV(Common.tenNV.getMa() + "-" + Common.tenNV.getHoTen());
+                hdin.setTenNV(Common.tenNV.getHoTen());
                 hdin.setTenKH(hd.getTenKH());
                 hdin.setSdtKH(hd.getSdtKH());
                 hdin.setHinhThucThanhToan(lblLTT.getText());
