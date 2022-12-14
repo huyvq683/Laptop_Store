@@ -34,6 +34,8 @@ public interface KhachHangService<T> {
     String delete(T t);
 
     List<KhachHangReponse> getListKH();
+    
+    List<KhachHangReponse> searchKH(String sdt);
 
     BigDecimal getTongTienByIDHD(UUID id);
 

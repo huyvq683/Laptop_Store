@@ -101,4 +101,9 @@ public class KhachHangServiceImpl implements KhachHangService<KhachHang> {
     public BigDecimal getTongTienByIDHD(UUID id) {
         return repository.getTongTienByIDHD(id);
     }
+
+    @Override
+    public List<KhachHangReponse> searchKH(String sdt) {
+        return repository.searchKH(sdt);
+    }
 }

@@ -134,4 +134,16 @@ public class KhachHangRepository {
         }
         return lists;
     }
+    
+    public List<KhachHangReponse> searchKH(String sdt) {
+        List<KhachHangReponse> lists = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession();) {
+            Query query = session.createQuery("SELECT new custommodel.KhachHangReponse (k.id, k.ma, k.hoTen, k.sdt, k.capBac) FROM KhachHang k WHERE k.sdt LIKE CONCAT('%',:sdt,'%')");
+            query.setParameter("sdt", sdt);
+            lists = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return lists;
+    }
 }

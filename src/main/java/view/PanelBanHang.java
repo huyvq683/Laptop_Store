@@ -268,7 +268,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
         btnXacNhan = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        txtHoTenKH1 = new javax.swing.JTextField();
+        txtSearchKH = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
@@ -391,8 +391,13 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
 
         jLabel14.setText("Tìm kiếm:");
 
-        txtHoTenKH1.setForeground(new java.awt.Color(51, 51, 51));
-        txtHoTenKH1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
+        txtSearchKH.setForeground(new java.awt.Color(51, 51, 51));
+        txtSearchKH.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(40, 184, 213)));
+        txtSearchKH.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtSearchKHCaretUpdate(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -411,7 +416,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jLabel14)
                             .addGap(18, 18, 18)
-                            .addComponent(txtHoTenKH1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtSearchKH, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -422,7 +427,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
                 .addGap(28, 28, 28)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(txtHoTenKH1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearchKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -622,9 +627,7 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        ViewHDCT.setMaximumSize(new java.awt.Dimension(592, 325));
         ViewHDCT.setMinimumSize(new java.awt.Dimension(592, 325));
-        ViewHDCT.setPreferredSize(new java.awt.Dimension(592, 325));
         ViewHDCT.setSize(new java.awt.Dimension(592, 325));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -1646,6 +1649,13 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
             }
         }
     }//GEN-LAST:event_txtTienCKCaretUpdate
+
+    private void txtSearchKHCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtSearchKHCaretUpdate
+        // TODO add your handling code here:
+        String sdt = txtSearchKH.getText();
+        List<KhachHangReponse>listSearch = khachHangService.searchKH(sdt);
+        showDataTable(listSearch);
+    }//GEN-LAST:event_txtSearchKHCaretUpdate
     
     private void clear() {
         txtMaHD.setText("");
@@ -1738,12 +1748,12 @@ public class PanelBanHang extends javax.swing.JPanel implements Runnable, Thread
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtGiamGia;
     private javax.swing.JTextField txtHoTenKH;
-    private javax.swing.JTextField txtHoTenKH1;
     private javax.swing.JTextField txtMaHD;
     private javax.swing.JTextField txtNgayTao;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtSDTKH;
     private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtSearchKH;
     private javax.swing.JTextField txtTenKH;
     private javax.swing.JTextField txtTenNV;
     private javax.swing.JTextField txtTienCK;
