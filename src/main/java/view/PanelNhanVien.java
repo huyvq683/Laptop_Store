@@ -452,6 +452,11 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
                 txtSearchCaretUpdate(evt);
             }
         });
+        txtSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSearchMouseClicked(evt);
+            }
+        });
 
         btnImport.setBackground(new java.awt.Color(41, 183, 212));
         btnImport.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -599,7 +604,7 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
             .addGroup(pnQLNVLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnQLNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnThongTinNV, javax.swing.GroupLayout.PREFERRED_SIZE, 1286, Short.MAX_VALUE)
+                    .addComponent(pnThongTinNV, javax.swing.GroupLayout.PREFERRED_SIZE, 1288, Short.MAX_VALUE)
                     .addComponent(pnDanhSachNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1214,6 +1219,10 @@ public class PanelNhanVien extends javax.swing.JPanel implements Runnable, Threa
         btnTrangThai.setVisible(false);
         tbNhanVien.clearSelection();
     }//GEN-LAST:event_btnTrangThaiActionPerformed
+
+    private void txtSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSearchMouseClicked
+        btnTrangThai.setVisible(false);
+    }//GEN-LAST:event_txtSearchMouseClicked
     private String convertDate(Date ngaySinh) {
         String date;
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
