@@ -66,7 +66,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnThongTinNV" pref="1286" max="32767" attributes="0"/>
+                      <Component id="pnThongTinNV" pref="1288" max="32767" attributes="0"/>
                       <Component id="pnDanhSachNV" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -762,6 +762,7 @@
               </Properties>
               <Events>
                 <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtSearchCaretUpdate"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtSearchMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnImport">
